@@ -1,0 +1,7 @@
+.content-section {
+	& + .content-section {
+		margin-top: $grid-space-x;
+	}
+
+	@include grid-container();
+}

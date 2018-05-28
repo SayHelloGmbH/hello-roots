@@ -1,0 +1,16 @@
+body.theme-dev:after {
+	position: fixed;
+	padding: 6px 10px;
+	font-size: 13px;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: #000;
+	z-index: 9999;
+	display: block;
+	@each $bp in map-keys($theme_breakpoints) {
+		@include for-screen($bp) {
+			content: '#{$bp}';
+		}
+	}
+}

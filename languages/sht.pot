@@ -1,0 +1,100 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-16 08:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: 404.php:11
+msgid "404 page not found."
+msgstr ""
+
+#: 404.php:12
+msgid "Die Seite konnte nicht gefunden werden."
+msgstr ""
+
+#: archive.php:15 archive.php:27
+msgid "Kategorie"
+msgstr ""
+
+#: archive.php:18 archive.php:20 archive.php:22
+msgid "Archiv"
+msgstr ""
+
+#: archive.php:31
+#, php-format
+msgid "Archiv von %s"
+msgstr ""
+
+#: archive.php:33
+#, php-format
+msgid "Suchresultate für \"%s\""
+msgstr ""
+
+#: footer.php:20
+msgid "Dies ist ein Pflichtfeld"
+msgstr ""
+
+#: footer.php:21
+msgid "Bitte geben Sie eine gültige Email an."
+msgstr ""
+
+#: footer.php:27
+msgid ""
+"JavaScript ist deaktiviert. Bitte aktivieren Sie JavaScript um alle "
+"Funktionen der Seite nutzen zu können"
+msgstr ""
+
+#: footer.php:31 footer.php:35
+msgid ""
+"Sie nutzen einen veralteten Browser. Einige Inhalte können daher nicht "
+"richtig angezeigt werden. Bitte updaten Sie Ihren Browser:"
+msgstr ""
+
+#: functions.php:15
+msgid "Theme Settings"
+msgstr ""
+
+#: functions.php:18
+msgid "Ein unerwarteter Fehler ist aufgetreten."
+msgstr ""
+
+#: functions.php:49
+msgid "ErrorCode"
+msgstr ""
+
+#: functions.php:73
+msgid "Main Menu"
+msgstr ""
+
+#: SayHello_Basics/BasicTheme.php:110
+#, php-format
+msgid "Das Theme %1s benötigt folgendes Plugin: %2s"
+msgstr ""
+
+#. Name of the theme
+msgid "VTLDefaulttheme"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Das Theme wurde von der Say Hello GmbH erstellt. Fragen und Probleme können "
+"an hello@sayhello.ch gestellt werden."
+msgstr ""
+
+#. Author of the theme
+msgid "Say Hello GmbH"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://sayhello.ch"
+msgstr ""

@@ -1,0 +1,65 @@
+.hello-icon {
+
+	display: inline-block;
+	svg {
+		vertical-align: middle;
+		height: 1em;
+		width: auto;
+		fill: currentColor;
+	}
+}
+
+.hello-icon--size-lg {
+	font-size: (4em / 3);
+	line-height: (3em / 4);
+	vertical-align: -15%;
+}
+
+.hello-icon--fw {
+	width: (18em / 14);
+	text-align: center;
+}
+
+.hello-icon--border {
+	border: 1px solid currentColor;
+	height: 1em;
+	line-height: 1em;
+	width: 1em;
+	text-align: center;
+	svg {
+		height: 0.6em;
+		vertical-align: inherit;
+	}
+}
+
+.hello-icon--round {
+	@include border-radius(50%);
+}
+
+.hello-icon--animation-spin {
+	@include animation(spin 2s infinite linear);
+}
+
+.hello-icon--animation-pulse {
+	@include animation(spin 1s infinite steps(8));
+}
+
+.hello-icon--rotate-90 {
+	@include rotate(90deg);
+}
+
+.hello-icon--rotate-180 {
+	@include rotate(180deg);
+}
+
+.hello-icon--rotate-270 {
+	@include rotate(270deg);
+}
+
+.hello-icon--flip-horizontal {
+	@include scale(-1, 1);
+}
+
+.hello-icon--flip-vertical {
+	@include scale(1, -1);
+}

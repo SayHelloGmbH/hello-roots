@@ -1,0 +1,13 @@
+.header {
+	text-align: center;
+	&__logo {
+		display: inline-block;
+		margin: $item_space 0;
+		width: 200px;
+	}
+
+	&__navtoggler {
+		position: relative;
+		margin: $item_space auto;
+	}
+}

@@ -1,0 +1,7 @@
+@mixin grid-container($width:$grid-size) {
+	margin: 0 auto;
+	width: $grid-size-container;
+	max-width: $width;
+	padding-left: $grid-space;
+	padding-right: $grid-space;
+}

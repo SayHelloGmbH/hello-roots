@@ -1,0 +1,54 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-16 08:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: functions.php:15
+msgid "Theme Settings"
+msgstr ""
+
+#: functions.php:18
+msgid "Ein unerwarteter Fehler ist aufgetreten."
+msgstr ""
+
+#: functions.php:49
+msgid "ErrorCode"
+msgstr ""
+
+#: functions.php:73
+msgid "Main Menu"
+msgstr ""
+
+#: SayHello_Basics/BasicTheme.php:110
+#, php-format
+msgid "Das Theme %1s benötigt folgendes Plugin: %2s"
+msgstr ""
+
+#. Name of the theme
+msgid "VTLDefaulttheme"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Das Theme wurde von der Say Hello GmbH erstellt. Fragen und Probleme können "
+"an hello@sayhello.ch gestellt werden."
+msgstr ""
+
+#. Author of the theme
+msgid "Say Hello GmbH"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://sayhello.ch"
+msgstr ""

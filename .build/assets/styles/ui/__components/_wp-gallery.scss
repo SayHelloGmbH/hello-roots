@@ -1,0 +1,130 @@
+/* wp.gallery */
+.post-content .gallery {
+
+	$img-height: 300px;
+	$img-spacing: 60px;
+
+	height: $img-height + ($img-spacing*2);
+
+	position: relative;
+	list-style: none;
+	background-color: c(black);
+	padding: 0;
+	@include translateX(-50vw);
+	width: 100vw;
+	margin-left: 50%;
+	margin-bottom: $item_space * 3;
+
+	.flickity-page-dots {
+		padding-left: 0;
+		left: 0;
+		bottom: - $item_space;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -30px;
+		margin-left: -30px;
+		//z-index: 99999;
+		opacity: 0;
+		@include spinner(60px, 6px solid #fff);
+		@include single-transition(opacity);
+	}
+
+	.gallery-item {
+		opacity: 1;
+		overflow: visible;
+		@include single-transition(opacity);
+		margin: $img-spacing $img-spacing / 4;
+		a, .lazysizes-wrapper, img {
+			display: block;
+		}
+		img {
+			height: $img-height;
+			@include transition();
+			max-width: none !important;
+		}
+		position: relative;
+		.caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			@include translateY(100%);
+			display: block;
+			color: #fff;
+			font-size: .8rem;
+			padding-top: 1rem;
+			opacity: 0;
+			@include transition();
+		}
+		&.is-selected {
+			.caption {
+				opacity: 1;
+				padding-top: .5rem;
+			}
+		}
+	}
+
+	&.js-fallback {
+		overflow: hidden;
+		&:after {
+			opacity: .4;
+		}
+		.gallery-item {
+			opacity: 0;
+		}
+	}
+
+	@include for-screen-max(phone) {
+		$img-height: 200px;
+		$img-spacing: 40px;
+
+		height: $img-height + ($img-spacing*2);
+		.gallery-item {
+			margin: $img-spacing $img-spacing / 4;
+			img {
+				height: $img-height;
+			}
+		}
+	}
+
+	/*
+
+	$space: $item_space;
+
+	margin-left: -$space/2;
+	margin-right: -$space/2;
+	display: block;
+	list-style: none;
+	padding: 0;
+	@include clearfix();
+	@include single-transition(opacity);
+
+	.gallery-item {
+		float: left;
+		padding: $space/2;
+		width: 20%;
+		@include for-screen-max(tablet) {
+			width: 33.333%;
+		}
+		@include for-screen-max(small-phone) {
+			width: 50%;
+		}
+		@include single-transition(opacity);
+		* {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&:hover .gallery-item {
+		opacity: .5;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	*/
+}

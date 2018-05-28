@@ -1,0 +1,24 @@
+.lazysizes-wrapper {
+
+	display: inline-block;
+	max-width: 100%;
+
+	img {
+		display: block;
+	}
+
+	&.transparent-mode {
+
+		img {
+			position: relative;
+		}
+
+		.lazyload, .lazyloading {
+			@include opacity(0);
+		}
+		.lazyloaded {
+			@include opacity(1);
+			@include single-transition(opacity, $easing_speed + 0ms);
+		}
+	}
+}

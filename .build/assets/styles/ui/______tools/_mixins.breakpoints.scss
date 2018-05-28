@@ -1,0 +1,42 @@
+@mixin for-screen-min($name, $sizes: $breakpoints) {
+	$min: device-breakpoints-min($name, $sizes);
+	@if $min {
+		@media (min-width: $min+0px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin for-screen-max($name, $sizes: $breakpoints) {
+	$max: device-breakpoints-max($name, $sizes);
+	@if $max {
+		@media (max-width: $max+0px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin for-screen($name, $sizes: $breakpoints) {
+	@include for-screen-min($name, $sizes) {
+		@include for-screen-max($name, $sizes) {
+			@content;
+		}
+	}
+}
+
+@mixin menu-mobile() {
+	@include for-screen-max(tablet) {
+		@content;
+	}
+}
+
+@mixin menu-desktop() {
+	@include for-screen-min(tablet_landscape) {
+		@content;
+	}
+}
+

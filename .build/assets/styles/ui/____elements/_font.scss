@@ -1,0 +1,55 @@
+/* fonts */
+html {
+	font-family: $font;
+	font-weight: normal;
+	font-size: 18px;
+}
+
+body {
+	font-size: 1rem;
+}
+
+a, button {
+	color: c();
+	text-decoration: none;
+	@include transition();
+}
+
+p, tr, li, input {
+
+	color: c();
+	line-height: 120%;
+	margin: 0 0 0 0;
+
+	em {
+		font-style: italic;
+	}
+
+	strong, b {
+		font-weight: bold;
+	}
+
+	small {
+		font-size: small;
+		display: inline-block;
+	}
+
+	&.big, .big {
+		font-size: large;
+	}
+
+	sub, sup {
+		font-size: 0.75em;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+
+	sup {
+		top: -0.5em;
+	}
+
+	sub {
+		bottom: -0.25em;
+	}
+}

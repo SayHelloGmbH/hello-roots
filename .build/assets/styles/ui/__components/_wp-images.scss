@@ -1,0 +1,103 @@
+.post-content {
+
+	$space: $item_space / 2;
+
+	//align
+	.alignright {
+		float: right;
+		margin-left: $space;
+		margin-bottom: $space;
+	}
+
+	.alignleft {
+		float: left;
+		margin-right: $space;
+		margin-bottom: $space;
+	}
+
+	@include for-screen-max(phone){
+		.alignright,
+		.alignleft {
+			float: none;
+			margin-bottom: $space;
+			display: block;
+		}
+	}
+
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto
+	}
+
+	.alignnone {
+		display: block;
+	}
+
+	.alignright,
+	.alignleft,
+	.aligncenter,
+	.alignnone {
+		a, img {
+			margin: 0;
+			display: block;
+		}
+	}
+
+	a.alignnone, .wp-caption.alignnone {
+		display: block;
+		img {
+			margin: 0px;
+			display: block;
+		}
+	}
+
+	// caption
+	.wp-caption .wp-caption-text {
+		border-top: none;
+		padding: $space/4 0;
+		font-size: 0.8em;
+	}
+
+	// hover
+	a.image-expand {
+		overflow: hidden;
+		img {
+			@include transition();
+			@include scale(1);
+		}
+		&:hover img {
+			@include scale(1.05);
+		}
+	}
+
+	.wp-caption,
+	.post-img,
+	.alignright,
+	.alignleft,
+	.aligncenter,
+	.alignnone {
+		max-width: 100%;
+	}
+}
+
+.singular-post .main-content {
+	.alignright {
+		margin-right: -60px;
+		@include for-screen-max(phone){
+			margin-right: 0px;
+		}
+		.alignright {
+			margin-right: 0px;
+		}
+	}
+	.alignleft {
+		margin-left: -60px;
+		@include for-screen-max(phone){
+			margin-left: 0px;
+		}
+		.alignleft {
+			margin-left: 0px;
+		}
+	}
+}

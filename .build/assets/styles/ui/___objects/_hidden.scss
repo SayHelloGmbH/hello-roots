@@ -1,0 +1,17 @@
+@each $bp, $min in $theme_breakpoints {
+	.hidden-#{$bp}-up {
+		@include for-screen-min($bp) {
+			display: none;
+		}
+	}
+	.hidden-#{$bp}-down {
+		@include for-screen-max($bp) {
+			display: none;
+		}
+	}
+	.hidden-#{$bp} {
+		@include for-screen($bp) {
+			display: none;
+		}
+	}
+}

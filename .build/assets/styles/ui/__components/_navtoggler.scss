@@ -1,0 +1,48 @@
+.navtoggler {
+	display: none;
+	@include menu-mobile() {
+		display: block;
+	}
+	height: 1.2rem;
+	width: 1.7rem;
+	cursor: pointer;
+	color: c();
+
+	&__line {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: .2rem;
+		@include transform(translateY(-50%));
+		background-color: currentColor;
+		display: block;
+		@include transition();
+		will-change: transform;
+		&--1 {
+			top: 0;
+		}
+		&--3 {
+			top: 100%;
+		}
+	}
+
+	&[aria-expanded="true"] {
+		.navtoggler__line {
+			&--1 {
+				top: 50%;
+				@include transform(translateY(-50%) rotate(45deg));
+			}
+
+			&--2 {
+				left: 50%;
+				right: 50%;
+			}
+
+			&--3 {
+				top: 50%;
+				@include transform(translateY(-50%) rotate(-45deg));
+			}
+		}
+	}
+}

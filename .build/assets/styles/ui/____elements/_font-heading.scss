@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5, h6, .heading {
+	margin: 0 0 0 0;
+	color: c(black, dark);
+	font-size: 3rem;
+	line-height: 120%;
+	font-family: $font_heading;
+}
+
+h1, .heading.heading-1 {
+	font-size: 4rem;
+}
+
+h2, .heading.heading-2 {
+	font-size: 3rem;
+}
+
+h3, .heading.heading-3 {
+	font-size: 2rem;
+}
+
+h4, h5, h6, .heading.heading-small {
+	font-size: 1rem;
+}

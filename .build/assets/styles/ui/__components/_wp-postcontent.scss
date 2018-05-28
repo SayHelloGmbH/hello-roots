@@ -1,0 +1,101 @@
+/* wp.postcontent */
+.post-content {
+
+	.row {
+		margin-top: $item_space * .5;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	margin-top: -$item_space;
+	p, h1, h2, h3, h4, h5, ul, ol, table, blockquote, q, figure {
+		margin-top: $item_space;
+	}
+
+	//Avoid margin collapse
+	&:before {
+		content: ' ';
+		display: table;
+	}
+
+	p {
+		vertical-align: top;
+		margin-bottom: 0;
+	}
+
+	hr.clear-both {
+		clear: both;
+		margin: 0;
+		border: none;
+		display: block;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	ul, ol {
+		padding-left: 1.5rem;
+	}
+
+	table {
+		width: 100%;
+		tr {
+			td {
+				padding: 0.3em 0;
+				@include single-transition(background-color);
+				border-bottom: 1px solid #000;
+				&:first-child {
+					padding-right: 0.6em;
+				}
+			}
+			&:last-child {
+				td {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+
+	blockquote {
+		background: #f1f1f1;
+		padding: $item_space * .8;
+		position: relative;
+		&:before {
+			content: '\201c';
+			font-size: 100px;
+			font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+			position: absolute;
+			left: -20px;
+			top: -25px;
+			display: block;
+		}
+		p {
+			text-align: left;
+			font-weight: 700;
+			font-size: 1.3rem;
+			font-style: italic;
+			margin-top: $item_space * .5;
+			&:first-child {
+				margin-top: 0px;
+			}
+		}
+		cite {
+			font-size: .9rem;
+			line-height: 1.2rem;
+			font-weight: normal;
+			margin-top: $item_space * .5;
+			font-style: normal;
+			display: block;
+		}
+	}
+}

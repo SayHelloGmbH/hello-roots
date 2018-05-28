@@ -1,0 +1,32 @@
+.browser-check {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: c(black);
+	display: none;
+	p {
+		margin: 0 0 0 0;
+		padding: $item_space;
+		color: #fff;
+		text-align: center;
+		font-size: .8rem;
+		line-height: 1.2rem;
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+}
+
+body.no-js {
+	.browser-check--noscript {
+		display: block;
+	}
+}
+
+body.browser-outdated {
+	.browser-check--outdated {
+		display: block;
+	}
+}

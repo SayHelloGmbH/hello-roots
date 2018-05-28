@@ -1,0 +1,19 @@
+html {
+	overflow-y: scroll;
+	max-height: 100%;
+}
+
+body {
+	overflow: hidden;
+	background-color: #fff;
+}
+
+::selection {
+	background: c(black);
+	color: #fff;
+}
+
+::-moz-selection {
+	background: c(black);
+	color: #fff;
+}
