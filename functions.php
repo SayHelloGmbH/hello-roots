@@ -67,34 +67,4 @@ if ( version_compare( get_bloginfo( 'version' ), '4.6', '<' ) || version_compare
 	sht_theme()->gtm->set_property_id( sht_theme()->pfx . '-analytics-tracking-id' );
 	sht_theme()->gtm->run();
 
-	/*
-
-	hello_theme();
-
-	hello_theme()->run_default_settings();
-	hello_theme()->run_assets();
-	hello_theme()->run_theme();
-
-	sht_autoload( [
-		'LazySizes',
-		'LoginLogo',
-		'CustomBodyClass',
-		'CustomPtArchive',
-		'Hyphenate',
-	] );
-
-	require_once 'classes/class-themeoptions.php';
-	hello_theme()->Options = new sayhello\Theme\ThemeOptions();
-	hello_theme()->Options->run();
-
-	require_once 'classes/class-themecustom.php';
-	hello_theme()->Custom = new sayhello\Theme\ThemeCustom();
-	hello_theme()->Custom->run();
-
-	require_once 'classes/modules/class-googleanalytics.php';
-	hello_theme()->ga = new sayhello\Theme\GoogleAnalytics();
-	hello_theme()->ga->set_property_id( 'analytics-tracking-id' );
-	hello_theme()->ga->run();
-	*/
-
 } // End if().

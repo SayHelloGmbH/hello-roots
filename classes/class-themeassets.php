@@ -8,7 +8,7 @@ class ThemeAssets {
 	public $theme_url = '';
 
 	public function __construct() {
-		$this->font_version = sht_theme()->version;;
+		$this->font_version = sht_theme()->version;
 		$this->theme_url = get_template_directory_uri();
 	}
 
