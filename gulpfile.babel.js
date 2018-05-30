@@ -61,4 +61,4 @@ for (let [task, values] of Object.entries(config)) {
 	}
 }
 
-gulp.task('default', ['styles', 'fonts', 'scripts', 'minify', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'minify', 'watch']);
