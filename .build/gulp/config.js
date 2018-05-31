@@ -1,7 +1,7 @@
-const assetsDir = 'assets/';
-const assetsBuild = '.build/assets/';
+export const assetsDir = 'assets/';
+export const assetsBuild = '.build/assets/';
 
-const config = {
+export const config = {
 
 	styles: {
 		args: {
@@ -15,7 +15,14 @@ const config = {
 		}
 	},
 
-	fonts: {
+	fontsconvert: {
+		args: {
+			src: `${assetsBuild}fonts/`,
+			dest: `${assetsDir}fonts/`
+		},
+	},
+
+	fontsinline: {
 		args: {
 			src: `${assetsBuild}fonts/`,
 			dest: `${assetsDir}fonts/`,
@@ -68,5 +75,3 @@ const config = {
 
 	watch: {}
 };
-
-module.exports = config;

@@ -1,4 +1,4 @@
-import * as main from './config.js';
+import {config as main} from './config.js';
 
 module.exports = function (key, config, gulp, $, errorLog) {
 	return function () {
@@ -9,9 +9,6 @@ module.exports = function (key, config, gulp, $, errorLog) {
 
 		console.log('starting styles..');
 		gulp.watch(mainConfig.styles.args.src, ['styles']);
-
-		console.log('starting fonts..');
-		gulp.watch(mainConfig.fonts.args.src, ['fonts']);
 
 		for (let subtask of mainConfig.scripts.subtasks) {
 			console.log(`starting scripts:${subtask}..`);

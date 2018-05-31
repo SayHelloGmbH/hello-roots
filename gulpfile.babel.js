@@ -1,4 +1,4 @@
-import config from './.build/gulp/config.js';
+import {config, assetsDir, assetsBuild} from './.build/gulp/config.js';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 

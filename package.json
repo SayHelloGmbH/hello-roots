@@ -16,6 +16,7 @@
         "gulp": "^3.9.1",
         "gulp-compass": "^2.1.0",
         "gulp-concat": "^2.6.1",
+        "gulp-debug": "^4.0.0",
         "gulp-inline-fonts": "^1.0.4",
         "gulp-livereload": "^3.8.1",
         "gulp-load-plugins": "^1.5.0",
