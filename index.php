@@ -1,8 +1,4 @@
 <?php
-/**
- * Start of the Theme
- * Loading Partials singular template
- */
 
 get_header();
 if ( have_posts() ) {
