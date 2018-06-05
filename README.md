@@ -1,5 +1,5 @@
 # Project Description
-This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It has an object oriented php architecture and comes with some very handy biuld workflows.
+This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It has an object oriented php architecture and comes with some very handy build workflows.
 
 # Getting started
 It is distributed under the GNU General Public License v2.0. Or in short: **It's open source**.  
