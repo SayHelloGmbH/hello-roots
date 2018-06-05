@@ -13,7 +13,7 @@ $ gulp fontsconvert
 ```
 Converts the fonts inside the `source/`-Folder to woff and woff2.
 ```
-$ gulp fontsconvert
+$ gulp fontsinline
 ```
 Creates or updates `assets/fonts/fonts-woff.css` and `assets/fonts/fonts-woff2.css` which contain the `@fontface`-rules for all fonts and styles.  
 The font itself is included a base64 encoded data url.
