@@ -15,13 +15,13 @@ function sht_error( $error = '', $shown_text = '' ) {
 	if ( current_user_can( 'administrator' ) || current_user_can( 'dev' ) ) {
 		$return_text = $error;
 	} elseif ( '' == $shown_text ) {
-		$return_text = hello_theme()->error;
+		$return_text = sht_theme()->error;
 	} else {
 		$return_text = $shown_text;
 	}
 
 	if ( '' == $return_text ) {
-		$return_text = hello_theme()->error;
+		$return_text = sht_theme()->error;
 	}
 
 	if ( function_exists( 'hellolog_register_log' ) ) {
@@ -167,7 +167,7 @@ function helloicon( $icon, $classes = [] ) {
  * @return string
  */
 function sht_lazyframes( $html ) {
-	return hello_theme()->LazySizes->render_lazyframes( $html );
+	return sht_theme()->LazySizes->render_lazyframes( $html );
 }
 
 /**
@@ -187,6 +187,7 @@ function sht_sayhello_autoload() {
 		if ( ! class_exists( $class ) && is_file( $path ) ) {
 			require_once $path;
 			sht_theme()->$class = new $class_name();
+			sht_theme()->$class->run();
 		}
 	}
 }
