@@ -46,7 +46,8 @@ export const config = {
 		args: {
 			files: [
 				'**/*.php',
-				'**/*.html'
+				'**/*.html',
+				'!node_modules/**'
 			]
 		}
 	},
@@ -57,7 +58,8 @@ export const config = {
 			svg: {
 				src: [
 					'**/*.svg',
-					'!**/*.min.svg'
+					'!**/*.min.svg',
+					'!node_modules/**'
 				],
 				dest: './'
 			},

@@ -7,24 +7,20 @@ module.exports = function (key, config, gulp, $, errorLog) {
 
 		$.livereload.listen();
 
-		console.log('starting styles..');
+		console.log('watch styles..');
 		gulp.watch(mainConfig.styles.args.src, ['styles']);
 
 		for (let subtask of mainConfig.scripts.subtasks) {
-			console.log(`starting scripts:${subtask}..`);
+			console.log(`watch scripts:${subtask}..`);
 			gulp.watch(`${mainConfig.scripts.args.build}${subtask}/**/*.js`, [`scripts:${subtask}`]);
 		}
 
-		console.log('starting reload..');
+		console.log('watch reload..');
 		gulp.watch(mainConfig.reload.args.files).on('change', $.livereload.changed);
 
 		for (let subtask of mainConfig.minify.subtasks) {
-			console.log(`starting minify:${subtask}..`);
-			if (subtask === 'scripts') {
-				gulp.watch(mainConfig.minify.args.scripts.src, [`minify:${subtask}`]);
-			} else if (subtask === 'svg') {
-				gulp.watch(mainConfig.minify.args.svg.src, [`minify:${subtask}`]);
-			}
+			console.log(`watch minify:${subtask}..`);
+			gulp.watch(mainConfig.minify.args[subtask].src, [`minify:${subtask}`]);
 		}
 	};
 };
