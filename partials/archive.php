@@ -1,4 +1,5 @@
-<div class="page-section page-section--content">
+<section class="page-section page-section--archive" id="content" role="main">
+	<?php do_action( 'sht_before_content' ); ?>
 	<div class="content-section content-section--title">
 		<?php the_archive_title( '<h1>', '</h1>' ); ?>
 	</div>
@@ -13,11 +14,13 @@
 		}
 		?>
 	</div>
-</div>
-<?php
-$paginate = paginate_links();
-if ( '' != $paginate ) {
-	echo '<div class="content-section content-section--pagination pagination">';
-	echo "<p class='pagination__container'>$paginate</p>";
-	echo '</div>';
-}
+	<?php
+	$paginate = paginate_links();
+	if ( '' != $paginate ) {
+		echo '<div class="content-section content-section--pagination pagination">';
+		echo "<p class='pagination__container'>$paginate</p>";
+		echo '</div>';
+	}
+	?>
+	<?php do_action( 'sht_after_content' ); ?>
+</section>

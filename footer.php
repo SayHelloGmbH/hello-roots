@@ -1,4 +1,4 @@
-</section><!-- #content -->
+<?php do_action( 'sht_before_footer' ); ?>
 <section class="page-section" id="footer">
 	<footer class="footer" role="contentinfo">
 		<?php

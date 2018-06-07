@@ -29,4 +29,4 @@
 		?>
 	</header>
 </section>
-<section class="page-section" id="content" role="main">
+<?php do_action( 'sht_after_header' ); ?>
