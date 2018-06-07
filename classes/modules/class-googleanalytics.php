@@ -3,11 +3,11 @@
 namespace sayhello;
 
 /**
- * Class GTM
- * This class provides an easy way to implement Google Analytics and Google Tag Manager.
+ * Class GoogleAnalytics
+ * This class provides an easy way to implement Google Analytics.
  * It adds as well an easy client side Opt-Out.
  */
-class GTM {
+class GoogleAnalytics {
 
 	private $property_id = '';
 
