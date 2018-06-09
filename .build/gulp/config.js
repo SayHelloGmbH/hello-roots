@@ -52,26 +52,14 @@ export const config = {
 		}
 	},
 
-	minify: {
-		subtasks: ['svg', 'scripts'],
+	svg: {
 		args: {
-			svg: {
-				src: [
-					'**/*.svg',
-					'!**/*.min.svg',
-					'!node_modules/**'
-				],
-				dest: './'
-			},
-			scripts: {
-				src: [
-					`${assetsDir}scripts/*.js`,
-					`!${assetsDir}scripts/*.min.js`
-				],
-				dest: './',
-				base: `${assetsDir}scripts/`,
-				build: `${assetsBuild}scripts/`
-			}
+			src: [
+				'**/*.svg',
+				'!**/*.min.svg',
+				'!node_modules/**'
+			],
+			dest: './'
 		}
 	},
 

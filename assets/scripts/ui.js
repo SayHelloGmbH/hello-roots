@@ -217,7 +217,7 @@ module.exports = {
 		0.515,
 		0.955
 	],
-	"theme_fontver": 1.2000000000000002
+	"theme_fontver": 0
 };
 
 /***/ }),

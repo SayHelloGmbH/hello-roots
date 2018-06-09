@@ -18,9 +18,7 @@ module.exports = function (key, config, gulp, $, errorLog) {
 		console.log('watch reload..');
 		gulp.watch(mainConfig.reload.args.files).on('change', $.livereload.changed);
 
-		for (let subtask of mainConfig.minify.subtasks) {
-			console.log(`watch minify:${subtask}..`);
-			gulp.watch(mainConfig.minify.args[subtask].src, [`minify:${subtask}`]);
-		}
+		console.log(`watch svg..`);
+		gulp.watch(mainConfig.svg.args.src, ['svg']);
 	};
 };
