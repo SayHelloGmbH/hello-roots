@@ -1,7 +1,7 @@
 module.exports = function (key, config, gulp, $, errorLog) {
 	return function () {
 		gulp.src(config.src)
-			.pipe($.debug({title: 'svg:'}))
+			//.pipe($.debug({title: 'svg:'}))
 			.pipe($.svgmin())
 			.pipe($.rename({
 				suffix: '.min'
