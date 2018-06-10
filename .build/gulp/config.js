@@ -45,9 +45,8 @@ export const config = {
 	reload: {
 		args: {
 			files: [
-				'**/*.php',
-				'**/*.html',
-				'!node_modules/**'
+				'*.php',
+				'{classes,inc,partials,templates}/**/*.{php,html,twig}'
 			]
 		}
 	},
@@ -55,9 +54,8 @@ export const config = {
 	svg: {
 		args: {
 			src: [
-				'**/*.svg',
-				'!**/*.min.svg',
-				'!node_modules/**'
+				'assets/**/*.svg',
+				'!assets/**/*.min.svg'
 			],
 			dest: './'
 		}
