@@ -13,5 +13,4 @@
 	From: Earth
 
 /* SITE */
-	CMS: WordPress
-	Software: Theme based on Hello Roots https://github.com/SayHelloGmbH/hello-roots/
+	Software: WordPress Theme based on Hello Roots https://github.com/SayHelloGmbH/hello-roots/
