@@ -45,8 +45,6 @@ class ThemeAssets {
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true );
 		$deps[] = 'jquery';
-		wp_enqueue_script( 'lazysizes', $this->theme_url . '/assets/scripts/lazysizes.min.js', [], '3.0.0', true );
-		$deps[] = 'lazysizes';
 		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.1.24', true );
 		$deps[] = 'fancybox';
 		wp_enqueue_script( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true );

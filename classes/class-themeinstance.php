@@ -80,6 +80,7 @@ class ThemeInstance {
 		add_action( 'wp_footer', [ $this, 'browser_requirements' ], 100 );
 		add_filter( 'upload_mimes', [ $this, 'add_svg_support' ] );
 		add_action( 'after_setup_theme', [ $this, 'theme_setup' ] );
+		add_filter( 'wp_get_attachment_image_src', [ $this, 'fix_wp_get_attachment_image_svg' ], 10, 4 );
 
 		/**
 		 * Hidden/Hover admin bar
@@ -179,6 +180,25 @@ class ThemeInstance {
 		if ( get_option( 'timezone_string' ) != '' ) {
 			date_default_timezone_set( get_option( 'timezone_string' ) );
 		}
+	}
+
+	public function fix_wp_get_attachment_image_svg( $image, $attachment_id, $size, $icon ) {
+		if ( is_array( $image ) && preg_match( '/\.svg$/i', $image[0] ) && $image[1] <= 1 ) {
+			if ( is_array( $size ) ) {
+				$image[1] = $size[0];
+				$image[2] = $size[1];
+			} elseif ( ( $xml = simplexml_load_file( $image[0] ) ) !== false ) {
+				$attr     = $xml->attributes();
+				$viewbox  = explode( ' ', $attr->viewBox );
+				$image[1] = isset( $attr->width ) && preg_match( '/\d+/', $attr->width, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[2] : null );
+				$image[2] = isset( $attr->height ) && preg_match( '/\d+/', $attr->height, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[3] : null );
+			} else {
+				$image[1] = null;
+				$image[2] = null;
+			}
+		}
+
+		return $image;
 	}
 
 	/**

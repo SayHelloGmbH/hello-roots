@@ -482,29 +482,6 @@ img {
   height: auto;
 }
 
-.lazysizes-wrapper {
-  display: inline-block;
-  max-width: 100%;
-}
-.lazysizes-wrapper img {
-  display: block;
-}
-.lazysizes-wrapper.transparent-mode img {
-  position: relative;
-}
-.lazysizes-wrapper.transparent-mode .lazyload, .lazysizes-wrapper.transparent-mode .lazyloading {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-}
-.lazysizes-wrapper.transparent-mode .lazyloaded {
-  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-  opacity: 1;
-  -moz-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  -o-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  -webkit-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-
 /*
 >> OBJECTS
 >> class-based selectors which define undecorated design patterns, for example media object known from OOCSS
@@ -741,6 +718,89 @@ body.no-js .browser-check--noscript {
 
 body.browser-outdated .browser-check--outdated {
   display: block;
+}
+
+.lazyimage {
+  display: inline-block;
+  position: relative;
+}
+.lazyimage__image {
+  display: block;
+  position: relative;
+  opacity: 0;
+  -moz-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -o-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -webkit-transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: opacity 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.lazyimage__image--lazyloaded {
+  opacity: 1;
+}
+.lazyimage--svg .lazyimage__image {
+  opacity: 1;
+}
+.lazyimage__preview {
+  -webkit-filter: url("#ls-sharp-blur");
+  filter: url("#ls-sharp-blur");
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.lazyimage--background {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+.lazyimage--background .lazyimage__image,
+.lazyimage--background .lazyimage__preview {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  background: center center no-repeat;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.lazyimage--transparent:before {
+  content: '';
+  background-color: transparent;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-animation: spinner 0.65s infinite linear;
+  -webkit-animation: spinner 0.65s infinite linear;
+  animation: spinner 0.65s infinite linear;
+  margin-top: -20px;
+  margin-left: -20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.lazysizes-svgfilter {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /*

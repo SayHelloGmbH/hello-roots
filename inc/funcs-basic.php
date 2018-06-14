@@ -38,38 +38,29 @@ function sht_error( $error = '', $shown_text = '' ) {
  *
  * @since    0.0.1
  *
- * @param  int $image_id post_ID of an attachment
- * @param  string $size desired attachment size (org_large)
- * @param  array $attributes html attributes
+ * @param  int|WP_Post $image post_object or post_id of an attachment
+ * @param  string|array $size Image size. Accepts any valid image size, or an array of width and height values in pixels (in that order).
+ * @param  string $class classes
  * @param  boolean $background if true, a div containing a background image will be reurned instead of the <img>
+ * @param  array $attributes an array of additional attributes for the image
  *
  * @return string                image or background-image ready to be loaded via lazysizes
  */
-function sht_get_lazysizes_img( $image_id, $size, $attributes = [], $background = false ) {
+function sht_get_lazysizes_img( $image, $size, $class = '', $background = false, $attributes = [] ) {
 
-	if ( get_post_type( $image_id ) != 'attachment' ) {
-		return '';
+	$class_path = get_template_directory() . '/classes/modules/class-wplazysizes.php';
+
+	if ( ! file_exists( $class_path ) || ! sht_theme()->Lazysizes->init ) {
+		return false;
 	}
 
-	if ( sht_theme()->Lazysizes->init ) {
+	require_once $class_path;
 
-		return sht_theme()->Lazysizes->get_lazysizes_img( $image_id, $size, $attributes, $background );
+	$image_object = new sayhello\WPLazySizes( $image, $size );
+	$image_object->set_wrapper_class( $class );
+	$image_object->set_attributes( $attributes );
 
-	} else {
-
-		if ( $background ) {
-
-			$atts = '';
-			foreach ( $attributes as $key => $val ) {
-				$atts .= $key . '="' . esc_attr( $val ) . '" ';
-			}
-
-			return '<div ' . $atts . ' style="background-image: url(' . wp_get_attachment_image_src( $image_id, $size )[0] . ')"; ></div>';
-
-		} else {
-			return wp_get_attachment_image( $image_id, $size, false, $attributes );
-		}
-	}
+	return $image_object->get_image( $background );
 }
 
 /**

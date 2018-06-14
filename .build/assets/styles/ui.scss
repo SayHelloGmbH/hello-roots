@@ -56,7 +56,6 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/____elements/img";
 @import "ui/____elements/modules/fancybox.custom";
 @import "ui/____elements/modules/flickity.custom";
-@import "ui/____elements/modules/lazysizes";
 /*
 >> OBJECTS
 >> class-based selectors which define undecorated design patterns, for example media object known from OOCSS
@@ -67,6 +66,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/___objects/css-loaded";
 @import "ui/___objects/theme-dev";
 @import "ui/___objects/browser-check";
+@import "ui/___objects/lazyimage";
 /*
 >> COMPONENTS
 >> specific UI components

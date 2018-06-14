@@ -9,6 +9,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php do_action( 'sht_after_body_open' ); ?>
 <section class="page-section" id="header">
 	<header class="header" role="banner">
 		<?php sht_logo(); ?>

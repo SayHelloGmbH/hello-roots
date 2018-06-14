@@ -1,0 +1,67 @@
+.lazyimage {
+	display: inline-block;
+	position: relative;
+
+	&__image {
+		display: block;
+		position: relative;
+		opacity: 0;
+		@include single-transition(opacity);
+		&--lazyloaded {
+			opacity: 1;
+		}
+	}
+
+	&--svg {
+		.lazyimage__image {
+			opacity: 1;
+		}
+	}
+
+	&__preview {
+		@include filter(url("#ls-sharp-blur"));
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	&--background {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		top: 0;
+		.lazyimage__image,
+		.lazyimage__preview {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			top: 0;
+			background: center center no-repeat;
+			@include background-size(cover);
+		}
+	}
+}
+
+.lazyimage--transparent:before {
+	content: '';
+	@include spinner(5px solid #fff, 40px);
+	margin-top: -20px;
+	margin-left: -20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.lazysizes-svgfilter {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
