@@ -21,12 +21,15 @@
 			?>
 		</button>
 		<?php
-		wp_nav_menu( [
-			'theme_location' => 'primary',
-			'container'      => '',
-			'menu_id'        => 'primary-menu',
-			'menu_class'     => 'header__menu navigation navigation--primary',
-		] );
+		wp_nav_menu(
+			[
+				'theme_location' => 'primary',
+				'container'      => '',
+				'menu_id'        => 'primary-menu',
+				'menu_class'     => 'header__menu navigation navigation--primary',
+				'walker'         => new ShtWalker(),
+			]
+		);
 		?>
 	</header>
 </section>
