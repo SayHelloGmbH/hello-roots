@@ -33,3 +33,11 @@
 	</header>
 </section>
 <?php do_action( 'sht_after_header' ); ?>
+<?php echo sht_get_lazysizes_img( 334, 'full' ); ?>
+<figure class='lazyimage' style='background-color: transparent'>
+	<img class='lazyimage__preview' src='http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-30x19-q30.jpg'/>
+	<img width='4912' height='3264' alt='' class='lazyimage__image lazyimage__image--lazyload' data-sizes='auto' src='http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-30x19-q30.jpg' data-srcset='http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang.jpg 4912w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-2000x1328.jpg 2000w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-1200x797.jpg 1200w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-640x425.jpg 640w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-320x212.jpg 320w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-160x106.jpg 160w'/>
+	<noscript>
+		<img width='4912' height='3264' alt='' src='http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang.jpg' srcset='http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang.jpg 4912w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-2000x1328.jpg 2000w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-1200x797.jpg 1200w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-640x425.jpg 640w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-320x212.jpg 320w, http://shdev.hello/wp-content/uploads/2018/03/sonnenuntergang-160x106.jpg 160w'/>
+	</noscript>
+</figure>

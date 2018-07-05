@@ -57,7 +57,7 @@ export const config = {
 				'assets/**/*.svg',
 				'!assets/**/*.min.svg'
 			],
-			dest: './'
+			dest: 'assets/'
 		}
 	},
 
