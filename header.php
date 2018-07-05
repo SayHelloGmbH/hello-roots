@@ -27,7 +27,6 @@
 				'container'      => '',
 				'menu_id'        => 'primary-menu',
 				'menu_class'     => 'header__menu navigation navigation--primary',
-				'walker'         => new ShtWalker(),
 			]
 		);
 		?>

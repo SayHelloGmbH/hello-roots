@@ -8,7 +8,6 @@
 				'container'      => '',
 				'menu_id'        => 'footer-menu',
 				'menu_class'     => 'footer__menu navigation navigation--footer',
-				'walker'         => new ShtWalker(),
 			]
 		);
 		?>
