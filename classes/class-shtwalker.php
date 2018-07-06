@@ -5,9 +5,13 @@ namespace HelloTheme;
 class ShtWalker extends \Walker_Nav_Menu {
 
 	public $css_base = 'menu';
-	public $css_suffixes = 'menu';
+	public $css_suffixes = '';
 
-	public function __construct() {
+	public function __construct( $base = '' ) {
+
+		if ( '' != $base ) {
+			$this->css_base = $base;
+		}
 
 		$this->css_suffixes = [
 			'item'                    => '__item',
