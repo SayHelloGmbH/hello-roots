@@ -13,18 +13,14 @@
 
 if ( version_compare( get_bloginfo( 'version' ), '4.6', '<' ) || version_compare( PHP_VERSION, '5.4', '<' ) || ! class_exists( 'acf' ) ) {
 
-	add_action(
-		'admin_notices', function () {
-			// translators: Admin notice for system requirements
-			echo '<div class="error"><p>' . sprintf( __( 'This Theme requires PHP %1$s (or newer) and WordPress %2$s (or newer) and the Plugin “Advanced Custom Fields” to function properly. Your site is using PHP %3$s and WordPress %4$s. Please upgrade. The Theme has been automatically deactivated.', 'sha' ), '5.4', '4.6', PHP_VERSION, $GLOBALS['wp_version'] ) . '</p></div>';
-		}
-	);
+	add_action( 'admin_notices', function () {
+		// translators: Admin notice for system requirements
+		echo '<div class="error"><p>' . sprintf( __( 'This Theme requires PHP %1$s (or newer) and WordPress %2$s (or newer) and the Plugin “Advanced Custom Fields” to function properly. Your site is using PHP %3$s and WordPress %4$s. Please upgrade. The Theme has been automatically deactivated.', 'sha' ), '5.4', '4.6', PHP_VERSION, $GLOBALS['wp_version'] ) . '</p></div>';
+	} );
 
-	add_action(
-		'after_switch_theme', function () {
-			switch_theme( get_option( 'theme_switched' ) );
-		}
-	);
+	add_action( 'after_switch_theme', function () {
+		switch_theme( get_option( 'theme_switched' ) );
+	} );
 
 } else {
 
@@ -37,22 +33,9 @@ if ( version_compare( get_bloginfo( 'version' ), '4.6', '<' ) || version_compare
 
 	require_once 'inc/funcs-basic.php';
 	require_once 'inc/funcs.php';
+	require_once 'classes/class-shtwalker.php';
 
 	require_once 'classes/class-themeinstance.php';
-
-	/**
-	 * Set ShtWalker as default wp_nav_menu Walker
-	 */
-	require_once 'classes/class-shtwalker.php';
-	add_filter( 'wp_nav_menu_args', 'sht_walker' );
-	function sht_walker( $args ) {
-
-		if ( empty( $args['walker'] ) ) {
-			$args['walker'] = new HelloTheme\ShtWalker();
-		}
-
-		return $args;
-	}
 
 
 	/**

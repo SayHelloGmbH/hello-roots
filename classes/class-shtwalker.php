@@ -4,147 +4,98 @@ namespace HelloTheme;
 
 class ShtWalker extends \Walker_Nav_Menu {
 
-	public $wp_classes = '';
+	public $css_base = 'menu';
+	public $css_suffixes = 'menu';
 
 	public function __construct() {
 
-		// wp classes https://developer.wordpress.org/reference/functions/wp_nav_menu/
-		// set the wp class to a class you like or set it to false
-		$this->wp_classes = [
-			'menu-item'                 => 'navigation__item item',
-			'menu-item-has-children'    => 'item--has-children',
-			'menu-item-object-category' => false,
-			'menu-item-object-{object}' => false,
-			'menu-item-object-category' => false,
-			'menu-item-object-tag'      => false,
-			'menu-item-object-page'     => false,
-			'menu-item-object-{custom}' => false,
-			'menu-item-type-{type}'     => false,
-			'menu-item-type-post_type'  => false,
-			'menu-item-type-taxonomy'   => false,
-			'current-menu-item'         => 'item--active',
-			'current-menu-parent'       => 'item--parent',
-			'current-{object}-parent'   => false,
-			'current-{type}-parent'     => false,
-			'current-menu-ancestor'     => 'item--ancestor',
-			'current-{object}-ancestor' => false,
-			'current-{type}-ancestor'   => false,
-			'menu-item-home'            => false,
-			'page_item'                 => 'navigation__item item',
-			'page_item_has_children'    => 'item--has-children',
-			'page-item-{ID}'            => false,
-			'current_page_item'         => 'item--active',
-			'current_page_parent'       => 'item--parent',
-			'current_page_ancestor'     => 'item--ancestor',
+		$this->css_suffixes = [
+			'item'                    => '__item',
+			'parent_item'             => '__item--parent',
+			'active_item'             => '__item--active',
+			'parent_of_active_item'   => '__item--parent--active',
+			'ancestor_of_active_item' => '__item--ancestor--active',
+			'sub_menu'                => '__sub-menu',
+			'sub_menu_item'           => '__sub-menu__item',
+			'link'                    => '__link',
 		];
 	}
 
-	function start_el( &$output, $item, $depth, $args ) {
+	public function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
-		global $wp_query;
-		//global $this->wp_classes;
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-		// get wp classes
-		$classes     = empty( $item->classes ) ? array() : (array) $item->classes;
-		$class_names = [];
-
-		// modify wp_classes for this item
-		$wp_classes = [];
-		foreach ( $this->wp_classes as $key => $class ) {
-
-			// check if this $key has value in curly braces
-			preg_match_all( '/{(.*?)}/', $key, $matches );
-
-			switch ( $matches[1][0] ) {
-				case 'object':
-					$value = $item->object;
-					break;
-				case 'custom':
-					$value = $item->custom;
-					break;
-				case 'type':
-					$value = $item->type;
-					break;
-				case 'ID':
-					$value = $item->ID;
-					break;
-			}
-
-			// if has value in curly braces
-			if ( ! empty( $matches[1] ) ) {
-
-				// if $item prop matches matches[1][0] is not empty, push the new key to $wp_classes
-				if ( ! empty( $value ) ) {
-					$new_key                = str_replace( '{' . $matches[1][0] . '}', $value, $key );
-					$wp_classes[ $new_key ] = $class;
-				}
-			} else {
-				$wp_classes[ $key ] = $class;
-			}
-		}
-
-		foreach ( $wp_classes as $key => $class ) {
-
-			// if class is not false, check if class is in $classes array, then add specified class
-			if ( $class && in_array( $key, $classes ) && ! in_array( $class, $class_names ) ) {
-				$class_names[] = $class;
-			}
-		}
-
-		// add item id class
-		// $class_names[] = 'item--id-' . $item->ID;
-
-		// add class for depth
-		$class_names[] = 'item--depth-' . $depth;
-
-		// get custom classes, add them to $class_names
-		$custom_classes = get_post_meta( $item->ID, '_menu_item_classes' );
-		foreach ( $custom_classes[0] as $key => $value ) {
-			$class_names[] = $value;
-		}
-
-		// generate class string for output
-		$class_names = ' class="' . esc_attr( implode( ' ', $class_names ) ) . '"';
-		$output     .= $indent . '<li ' . $class_names . '>';
-
-		// define attributes
-		$permalink_classes   = [];
-		$permalink_classes[] = 'item__permalink';
-		$attributes         .= ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
-		$attributes         .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
-		$attributes         .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
-		$attributes         .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
-
-		$item_output  = $args->before;
-		$item_output .= '<a class="' . implode( ' ', $permalink_classes ) . '" ' . $attributes . '>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID );
-		$item_output .= $args->link_after;
-		$item_output .= '</a>';
-
-		// if the item has children add the sub-toggle after closing the anchor tag
-		if ( $args->has_children ) {
-			$item_output .= '<span class="item__sub-toggle" data-toggle="+ navigation__sub"></span>';
-		}
-
-		$item_output .= $args->after;
-
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-
-	function start_lvl( &$output, $depth ) {
-		$indent = str_repeat( "\t", $depth );
-		$depth++;
-		$output .= "\n$indent<ul class=\"navigation__sub sub--depth-$depth\">\n";
-	}
-
-	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		$id_field = $this->db_fields['id'];
+
 		if ( is_object( $args[0] ) ) {
 			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
 		}
+
 		return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 
+		$real_depth = $depth + 1;
+
+		$indent      = str_repeat( "\t", $real_depth );
+		$prefix      = $this->css_base;
+		$suffix      = $this->css_suffixes;
+		$classes     = array(
+			$prefix . $suffix['sub_menu'],
+			$prefix . $suffix['sub_menu'] . '--' . $real_depth,
+		);
+		$class_names = implode( ' ', $classes );
+		// Add a ul wrapper to sub nav
+		$output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
+	}
+
+	// Add main/sub classes to li's and links
+
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+
+		global $wp_query;
+
+		$indent = ( $depth > 0 ? str_repeat( '    ', $depth ) : '' ); // code indent
+		$prefix = $this->css_base;
+		$suffix = $this->css_suffixes;
+		// Item classes
+		$item_classes = array(
+			'item_class'            => 0 == $depth ? $prefix . $suffix['item'] : '',
+			'parent_class'          => $args->has_children ? $parent_class = $prefix . $suffix['parent_item'] : '',
+			'active_page_class'     => in_array( 'current-menu-item', $item->classes ) ? $prefix . $suffix['active_item'] : '',
+			'active_parent_class'   => in_array( 'current-menu-parent', $item->classes ) ? $prefix . $suffix['parent_of_active_item'] : '',
+			'active_ancestor_class' => in_array( 'current-menu-ancestor', $item->classes ) ? $prefix . $suffix['ancestor_of_active_item'] : '',
+			'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu_item'] . ' ' . $prefix . $suffix['sub_menu'] . '--' . $depth . '__item' : '',
+			'item_id_class'         => $prefix . '__item--' . $item->object_id,
+			'user_class'            => '' !== $item->classes[0] ? $prefix . '__item--' . $item->classes[0] : '',
+		);
+		// convert array to string excluding any empty values
+		$class_string = implode( ' ', array_filter( $item_classes ) );
+		// Add the classes to the wrapping <li>
+		$output .= $indent . '<li class="' . $class_string . '">';
+		// Link classes
+		$link_classes      = array(
+			'item_link'   => 0 == $depth ? $prefix . $suffix['link'] : '',
+			'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . ' ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
+		);
+		$link_class_string = implode( ' ', array_filter( $link_classes ) );
+		$link_class_output = 'class="' . $link_class_string . '"';
+		// link attributes
+		$attributes = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
+		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
+		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
+		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
+		// Creatre link markup
+		$item_output = $args->before;
+		$item_output .= '<a' . $attributes . ' ' . $link_class_output . '>';
+		$item_output .= $args->link_before;
+		$item_output .= apply_filters( 'the_title', $item->title, $item->ID );
+		$item_output .= $args->link_after;
+		$item_output .= $args->after;
+		$item_output .= '</a>';
+		// Filter <li>
+
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+
+		return $output;
+	}
 }
