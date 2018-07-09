@@ -80,7 +80,7 @@
 	height: $size;
 	display: inline-block;
 	vertical-align: middle;
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 	@include animation(spinner $duration infinite linear);
 }
 

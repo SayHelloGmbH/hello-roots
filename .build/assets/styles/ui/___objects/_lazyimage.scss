@@ -6,7 +6,7 @@
 		display: block;
 		position: relative;
 		opacity: 0;
-		@include single-transition(opacity);
+		@include transition(opacity);
 		&--lazyloaded {
 			opacity: 1;
 		}
@@ -19,7 +19,8 @@
 	}
 
 	&__preview {
-		@include filter(url("#ls-sharp-blur"));
+		-webkit-filter: url(#ls-sharp-blur);
+		filter: url(#ls-sharp-blur);
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -40,7 +41,7 @@
 			left: 0;
 			top: 0;
 			background: center center no-repeat;
-			@include background-size(cover);
+			background-size: cover;
 		}
 	}
 }

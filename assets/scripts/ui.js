@@ -117,18 +117,18 @@ module.exports = __webpack_require__(9);
 var _settings = __webpack_require__(4);
 
 (function ($) {
-	$(function () {
+		$(function () {
 
-		console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
-		console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
-		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-		console.log('');
+				console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
+				console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
+				console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+				console.log('');
 
-		console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
-		console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
-		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-		console.log('');
-	});
+				console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
+				console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
+				console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+				console.log('');
+		});
 })(jQuery);
 
 /***/ }),
@@ -188,37 +188,7 @@ var theme = exports.theme = Object.assign(settings, ThemeJSVars);
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = {
-	"theme_colors": {
-		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000",
-			"light": "#ddd"
-		},
-		"white": {
-			"base": "#fff"
-		},
-		"blue": {
-			"base": "#77adbf"
-		}
-	},
-	"theme_breakpoints": {
-		"phone": 330,
-		"tablet": 600,
-		"tablet_landscape": 900,
-		"desktop": 1300
-	},
-	"easing_speed": 200,
-	"easing_speed_fast": 100,
-	"easing_speed_slow": 400,
-	"easing_bezier": [
-		0.455,
-		0.03,
-		0.515,
-		0.955
-	],
-	"theme_fontver": 0
-};
+module.exports = {"theme_colors":{"black":{"base":"#1d1d1b","dark":"#000","light":"#ddd"},"white":{"base":"#fff"},"blue":{"base":"#77adbf"}},"theme_breakpoints":{"phone":330,"tablet":600,"tablet_landscape":900,"desktop":1300},"easing_speed":200,"easing_speed_fast":100,"easing_speed_slow":400,"easing_bezier":[0.455,0.03,0.515,0.955],"theme_fontver":4}
 
 /***/ }),
 /* 6 */
@@ -227,9 +197,9 @@ module.exports = {
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
   if (true) {
     // AMD. Register as an anonymous module unless amdModuleId is set
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_RESULT__ = function (a0) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_RESULT__ = (function (a0) {
       return (root['jQuery'] = factory(a0));
-    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   } else if (typeof exports === 'object') {
     // Node. Does not work with strict CommonJS, but

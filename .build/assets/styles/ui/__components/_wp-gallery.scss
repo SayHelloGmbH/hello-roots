@@ -10,7 +10,7 @@
 	list-style: none;
 	background-color: c(black);
 	padding: 0;
-	@include translateX(-50vw);
+	@include translate(-50vw, 0);
 	width: 100vw;
 	margin-left: 50%;
 	margin-bottom: $item_space * 3;
@@ -31,13 +31,13 @@
 		//z-index: 99999;
 		opacity: 0;
 		@include spinner(60px, 6px solid #fff);
-		@include single-transition(opacity);
+		@include transition(opacity);
 	}
 
 	.gallery-item {
 		opacity: 1;
 		overflow: visible;
-		@include single-transition(opacity);
+		@include transition(opacity);
 		margin: $img-spacing $img-spacing / 4;
 		a, .lazysizes-wrapper, img {
 			display: block;
@@ -52,7 +52,7 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			@include translateY(100%);
+			@include translate(0, 100%);
 			display: block;
 			color: #fff;
 			font-size: .8rem;

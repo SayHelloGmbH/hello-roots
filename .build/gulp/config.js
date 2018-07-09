@@ -6,12 +6,7 @@ export const config = {
 	styles: {
 		args: {
 			src: `${assetsBuild}styles/**/*.scss`,
-			compass: {
-				css: `${assetsDir}styles/`,
-				image: `${assetsDir}img/`,
-				sass: `${assetsBuild}styles/`,
-				style: 'expanded'
-			}
+			dest: `${assetsDir}styles/`
 		}
 	},
 

@@ -52,7 +52,7 @@
 		tr {
 			td {
 				padding: 0.3em 0;
-				@include single-transition(background-color);
+				@include transition(background-color);
 				border-bottom: 1px solid #000;
 				&:first-child {
 					padding-right: 0.6em;

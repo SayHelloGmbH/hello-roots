@@ -2,7 +2,7 @@
 
 	list-style: none;
 	text-align: center;
-	@include display-flex();
+	@include flexbox();
 	@include justify-content(center);
 	@include flex-wrap(wrap);
 

@@ -33,7 +33,7 @@
 }
 
 .hello-icon--round {
-	@include border-radius(50%);
+	border-radius: 50%;
 }
 
 .hello-icon--animation-spin {
@@ -57,9 +57,9 @@
 }
 
 .hello-icon--flip-horizontal {
-	@include scale(-1, 1);
+	@include scale(-1 1);
 }
 
 .hello-icon--flip-vertical {
-	@include scale(1, -1);
+	@include scale(1 -1);
 }

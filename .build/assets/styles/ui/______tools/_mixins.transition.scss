@@ -1,0 +1,28 @@
+@mixin transition($properties: all, $speed: normal, $delay: 0) {
+	$duration: transition-get-duration($speed);
+
+	$string: $properties $duration cubic-bezier($easing_bezier);
+
+	@if type-of($properties) == 'list' {
+		$string: false;
+		@each $prop in $properties {
+			@if $string {
+				$string: #{$string}, #{$prop $duration cubic-bezier($easing_bezier)};
+			} @else {
+				$string: #{$prop $duration cubic-bezier($easing_bezier)};
+			}
+		}
+	}
+
+	transition: $string;
+}
+
+@function transition-get-duration($speed:normal) {
+	$duration: $easing_speed + 0ms;
+	@if $speed == fast {
+		$duration: $easing_speed_fast + 0ms;
+	} @else if $speed == slow {
+		$duration: $easing_speed_slow + 0ms;
+	}
+	@return $duration;
+}
