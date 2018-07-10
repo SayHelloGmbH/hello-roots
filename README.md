@@ -19,16 +19,6 @@ Prefix:      sht
 `node` and node package manager `npm` are required to run the build commands.
 Please visit [https://nodejs.org/en/download/](https://nodejs.org/en/download/) and download the latest LTS version of nodeJS.
 
-### RubyGem
-`gem` is required to run the css precompiler `sass` together with `compass`. If you are using Windows you need to install Ruby first [https://rubyinstaller.org/](https://rubyinstaller.org/).
-Afterwards you are able to install compass and the required json loader.
-```
-$ gem install compass
-```
-```
-$ gem install sass-json-vars
-```
-
 # Automation: Gulp
 This theme comes with some very handy gulp tasks to make your life much easier.
 
