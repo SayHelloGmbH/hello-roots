@@ -33,10 +33,8 @@ if ( version_compare( get_bloginfo( 'version' ), '4.6', '<' ) || version_compare
 
 	require_once 'inc/funcs-basic.php';
 	require_once 'inc/funcs.php';
-	require_once 'classes/class-shtwalker.php';
-
+	require_once 'classes/class-navwalker.php';
 	require_once 'classes/class-themeinstance.php';
-
 
 	/**
 	 * Returns the Theme Instance

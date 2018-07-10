@@ -25,8 +25,8 @@
 			'theme_location' => 'primary',
 			'container'      => '',
 			'menu_id'        => 'primary-menu',
-			'menu_class'     => 'header__menu navigation navigation--primary',
-			'walker'         => new \HelloTheme\ShtWalker( 'navigation' ),
+			'menu_class'     => 'header__menu menu menu--primary',
+			'walker'         => new \HelloTheme\NavWalker(),
 		] );
 		?>
 	</header>

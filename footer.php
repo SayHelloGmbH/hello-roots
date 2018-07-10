@@ -4,10 +4,10 @@
 		<?php
 		wp_nav_menu( [
 			'theme_location' => 'footer',
-			'container'      => '',
+			'container' => '',
 			'menu_id'        => 'footer-menu',
 			'menu_class'     => 'footer__menu navigation navigation--footer',
-			'walker'         => new \HelloTheme\ShtWalker( 'navigation' ),
+			'walker'         => new \HelloTheme\NavWalker(),
 		] );
 		?>
 	</footer>
