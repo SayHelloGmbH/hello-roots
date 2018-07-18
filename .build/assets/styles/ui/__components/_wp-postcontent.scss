@@ -1,16 +1,8 @@
 /* wp.postcontent */
 .post-content {
 
-	.row {
-		margin-top: $item_space * .5;
-		&:first-child {
-			margin-top: 0;
-		}
-	}
-
-	margin-top: -$item_space;
-	p, h1, h2, h3, h4, h5, ul, ol, table, blockquote, q, figure {
-		margin-top: $item_space;
+	> * + * {
+		margin-top: 1.6rem;
 	}
 
 	//Avoid margin collapse
@@ -68,7 +60,7 @@
 
 	blockquote {
 		background: #f1f1f1;
-		padding: $item_space * .8;
+		padding: $space-item * .8;
 		position: relative;
 		&:before {
 			content: '\201c';
@@ -84,7 +76,7 @@
 			font-weight: 700;
 			font-size: 1.3rem;
 			font-style: italic;
-			margin-top: $item_space * .5;
+			margin-top: $space-item * .5;
 			&:first-child {
 				margin-top: 0px;
 			}
@@ -93,7 +85,7 @@
 			font-size: .9rem;
 			line-height: 1.2rem;
 			font-weight: normal;
-			margin-top: $item_space * .5;
+			margin-top: $space-item * .5;
 			font-style: normal;
 			display: block;
 		}

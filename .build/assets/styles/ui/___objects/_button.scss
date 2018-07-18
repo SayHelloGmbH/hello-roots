@@ -1,11 +1,10 @@
 .button {
 
-}
+	&--size-small {
+		font-size: $font-size-small;
+	}
 
-.button--size-xl {
-	font-size: 1.5rem;
-}
-
-.button--size-xxl {
-	font-size: 1.7rem;
+	&--size-large {
+		font-size: $font-size-large;
+	}
 }

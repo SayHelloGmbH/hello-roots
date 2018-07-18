@@ -55,17 +55,19 @@ class NavWalker extends \Walker_Nav_Menu {
 		if ( $args->has_children ) {
 			$item_classes['parent_class'] = "{$prefix}__item--has-children";
 		}
-		if ( in_array( 'current-menu-item', $item->classes ) ) {
-			$item_classes['active_page_class'] = "{$prefix}__item--active";
-		}
-		if ( in_array( 'current-menu-parent', $item->classes ) ) {
-			$item_classes['active_parent_class'] = "{$prefix}__item--parent-active";
-		}
-		if ( in_array( 'current-menu-ancestor', $item->classes ) ) {
-			$item_classes['active_ancestor_class'] = "{$prefix}__item--ancestor-active";
-		}
-		if ( '' !== $item->classes[0] ) {
-			$item_classes['user_class'] = $item->classes[0];
+		if ( isset( $item->classes ) ) {
+			if ( in_array( 'current-menu-item', $item->classes ) ) {
+				$item_classes['active_page_class'] = "{$prefix}__item--active";
+			}
+			if ( in_array( 'current-menu-parent', $item->classes ) ) {
+				$item_classes['active_parent_class'] = "{$prefix}__item--parent-active";
+			}
+			if ( in_array( 'current-menu-ancestor', $item->classes ) ) {
+				$item_classes['active_ancestor_class'] = "{$prefix}__item--ancestor-active";
+			}
+			if ( '' !== $item->classes[0] ) {
+				$item_classes['user_class'] = $item->classes[0];
+			}
 		}
 
 		// Attributes

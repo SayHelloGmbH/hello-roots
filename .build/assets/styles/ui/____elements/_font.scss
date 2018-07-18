@@ -2,11 +2,11 @@
 html {
 	font-family: $font;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 62.5%;
 }
 
 body {
-	font-size: 1rem;
+	font-size: $font-size;
 }
 
 a, button {
@@ -18,7 +18,7 @@ a, button {
 p, tr, li, input {
 
 	color: c();
-	line-height: 120%;
+	line-height: 1.2;
 	margin: 0 0 0 0;
 
 	em {
@@ -30,12 +30,12 @@ p, tr, li, input {
 	}
 
 	small {
-		font-size: small;
+		font-size: $font-size-small;
 		display: inline-block;
 	}
 
 	&.big, .big {
-		font-size: large;
+		font-size: $font-size-large;
 	}
 
 	sub, sup {

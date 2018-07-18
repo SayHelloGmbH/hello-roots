@@ -15,8 +15,9 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> no output expected
 */
 @import "ui/_______settings/grid";
-@import "ui/_______settings/theme";
+@import "ui/_______settings/fonts";
 @import "ui/_______settings/boxshadow";
+@import "ui/_______settings/transition";
 /*
 >> TOOLS
 >> Mixins and Functions used inside Sass
@@ -75,8 +76,8 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> specific UI components
 */
 @import "ui/__components/header";
-@import "ui/__components/navigation";
-@import "ui/__components/navtoggler";
+@import "ui/__components/menu";
+@import "ui/__components/menutoggler";
 @import "ui/__components/page-section";
 @import "ui/__components/content-section";
 @import "ui/__components/footer";

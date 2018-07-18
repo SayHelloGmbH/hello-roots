@@ -1,6 +1,6 @@
 .post-content {
 
-	$space: $item_space / 2;
+	$space: $space-item / 2;
 
 	//align
 	.alignright {
@@ -85,19 +85,19 @@
 	.alignright {
 		margin-right: -60px;
 		@include for-screen-max(phone){
-			margin-right: 0px;
+			margin-right: 0;
 		}
 		.alignright {
-			margin-right: 0px;
+			margin-right: 0;
 		}
 	}
 	.alignleft {
 		margin-left: -60px;
 		@include for-screen-max(phone){
-			margin-left: 0px;
+			margin-left: 0;
 		}
 		.alignleft {
-			margin-left: 0px;
+			margin-left: 0;
 		}
 	}
 }
