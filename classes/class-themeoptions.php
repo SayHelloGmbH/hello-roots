@@ -183,17 +183,23 @@ class ThemeOptions {
 	 * @param $args array of options to display. you can set just the option name or define an option array like $itemprops
 	 * @param $return set to false to return array of data, if true echo html
 	 * @param $container set to true to add container with itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"
+	 * @param $base_class set to true to use classes. you can specify your BEM class base as string
 	 *
 	 * @example return all options as array sht_theme()->Options->get_options( );
 	 * @example return tel option as array sht_theme()->Options->get_options( [ 'tel' ] );
 	 * @example echo all options with container sht_theme()->Options->get_options( [], true, true );
 	 */
 
-	public function get_options( $args = [], $return = false, $container = false ) {
+	public function get_options( $args = [], $return = false, $container = false, $base_class = false ) {
 
 		// if $args is string, set string to first item of $args
 		if ( 'string' == gettype( $args ) ) {
 			$args = [ $args ];
+		}
+
+		// defualt $base_class if $base_class = true
+		if ( $base_class && 'string' != gettype( $base_class ) ) {
+			$base_class = 'address';
 		}
 
 		// if $args is not an array return
@@ -268,12 +274,47 @@ class ThemeOptions {
 					$value = ( ! empty( get_field( $field_key . 'number', 'option' ) ) ) ? $value . ' ' . get_field( $field_key . 'number', 'option' ) : $value;
 				}
 
-				if ( ! empty( $value ) && ! empty( $elem ) ) {
+				// if $attr is string, set string to first item of $attr
+				if ( 'string' == gettype( $attr ) ) {
+					$attr = [ $attr ];
+				}
 
-					// if $attr is string, set string to first item of $attr
-					if ( 'string' == gettype( $attr ) ) {
-						$attr = [ $attr ];
+				// // if classes are enabled, check $string and generate BEM class
+				if ( $base_class ) {
+
+					// generate the bem class for the current item
+					$bem_class = $base_class . '__' . $key;
+
+					if ( is_array( $attr ) ) {
+
+						foreach ( $attr as $name => $string ) {
+
+							//check if $string contains 'class'
+							if ( strpos( $string, 'class' ) !== false ) {
+								preg_match_all( '/"(.*?)"/', $string, $matches );
+
+								// get value in class=""
+								if ( ! empty( $matches[1] ) ) {
+									unset( $attr[ $name ] );
+									$bem_class .= ' ' . $matches[1][0];
+								}
+
+								// remove class attribute in array
+								unset( $matches );
+							}
+						}
+
+						// push new class attribute to array
+						array_push( $attr, 'class="' . $bem_class . '"' );
+
+					} else {
+
+						// set class attribute in array
+						$attr = [ 'class="' . $bem_class . '"' ];
 					}
+				}
+
+				if ( ! empty( $value ) && ! empty( $elem ) ) {
 
 					// check if this items of $attr has value in curly braces
 					if ( is_array( $attr ) ) {
@@ -332,7 +373,16 @@ class ThemeOptions {
 		switch ( $return ) {
 			default:
 				// if $container is set to true, start with wrapper
-				$html_output = ( $container ) ? '<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
+
+				// generate class string
+				if ( $base_class ) {
+					$class = 'class="' . $base_class . '"';
+				} else {
+					$class = '';
+				}
+
+				// QUESTION: this container is hardcoded. should it be customizable?
+				$html_output = ( $container ) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
 
 				foreach ( $output as $key => $value ) {
 					$html_output .= $value['html'];
@@ -340,7 +390,7 @@ class ThemeOptions {
 
 				// if $container is set to true, end with wrapper
 				if ( $container ) {
-					$html_output .= '</p>';
+					$html_output .= '</address>';
 				}
 
 				echo $html_output;
