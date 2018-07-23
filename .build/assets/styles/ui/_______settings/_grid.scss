@@ -1,14 +1,13 @@
-// GRID
-// grid settings
-
 $grid-space-x: 1.6rem;
 $grid-space: ($grid-space-x / 2);
 
-$grid-size: 0px;
+$grid-size: 100%;
+$grid-max-size: 0px;
 @each $name, $size in $theme_breakpoints {
-	$grid-size: $size + 0px;
+	$grid-max-size: $size + 0px;
 }
 
-$grid-size-container: 94%;
-
 $breakpoints: map-merge((small-phone : 0), $theme_breakpoints);
+
+$space-item: 2rem;
+$space-section: $space-item*2;

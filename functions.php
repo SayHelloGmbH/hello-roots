@@ -62,6 +62,14 @@ if ( version_compare( get_bloginfo( 'version' ), '4.6', '<' ) || version_compare
 	sht_theme()->Options = new HelloTheme\ThemeOptions();
 	sht_theme()->Options->run();
 
+	/**
+	 * Post Types
+	 */
+
+	/**
+	 * Misc
+	 */
+
 	require_once 'classes/modules/class-googleanalytics.php';
 	sht_theme()->ga = new sayhello\GoogleAnalytics();
 	sht_theme()->ga->set_property_id( sht_theme()->pfx . '-analytics-tracking-id' );

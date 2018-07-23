@@ -1,6 +1,6 @@
-@mixin grid-container($width:$grid-size) {
+@mixin grid-container($width:$grid-max-size) {
 	margin: 0 auto;
-	width: $grid-size-container;
+	width: $grid-size;
 	max-width: $width;
 	padding-left: $grid-space;
 	padding-right: $grid-space;

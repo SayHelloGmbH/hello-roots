@@ -671,24 +671,24 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 (function ($) {
 	$(function () {
 
-		var $toggler = $('.js-navtoggler');
+		var $toggler = $('[aria-controls="primary-menu"]');
+		var navID = $toggler.attr('aria-controls');
+		var $nav = $('#' + navID);
 
 		$toggler.on('click', function () {
-			var $e = $(this);
-			var navID = $e.attr('aria-controls');
-			var $nav = $('#' + navID);
+
 			if (!$nav.length) {
 				console.log('navigation #' + navID + ' not found');
 				return;
 			}
 
-			var open = $e.attr('aria-expanded') === 'true';
+			var open = $toggler.attr('aria-expanded') === 'true';
 
 			if (open) {
-				$e.attr('aria-expanded', 'false');
+				$toggler.attr('aria-expanded', 'false');
 				$nav.slideUp();
 			} else {
-				$e.attr('aria-expanded', 'true');
+				$toggler.attr('aria-expanded', 'true');
 				$nav.slideDown();
 			}
 		});

@@ -13,12 +13,12 @@
 	@include translate(-50vw, 0);
 	width: 100vw;
 	margin-left: 50%;
-	margin-bottom: $item_space * 3;
+	margin-bottom: $space-item * 3;
 
 	.flickity-page-dots {
 		padding-left: 0;
 		left: 0;
-		bottom: - $item_space;
+		bottom: - $space-item;
 	}
 
 	&:after {
@@ -93,7 +93,7 @@
 
 	/*
 
-	$space: $item_space;
+	$space: $space-item;
 
 	margin-left: -$space/2;
 	margin-right: -$space/2;

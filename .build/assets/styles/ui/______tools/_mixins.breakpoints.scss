@@ -28,13 +28,13 @@
 	}
 }
 
-@mixin menu-mobile() {
+@mixin mobile() {
 	@include for-screen-max(tablet) {
 		@content;
 	}
 }
 
-@mixin menu-desktop() {
+@mixin desktop() {
 	@include for-screen-min(tablet_landscape) {
 		@content;
 	}

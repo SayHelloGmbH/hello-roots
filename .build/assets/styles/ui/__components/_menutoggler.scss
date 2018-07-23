@@ -1,10 +1,11 @@
-.navtoggler {
+.menutoggler {
 	display: none;
-	@include menu-mobile() {
+	@include mobile() {
 		display: block;
 	}
-	height: 1.2rem;
-	width: 1.7rem;
+	height: 3rem;
+	width: 4rem;
+	position: relative;
 	cursor: pointer;
 	color: c();
 
@@ -13,7 +14,7 @@
 		top: 50%;
 		left: 0;
 		right: 0;
-		height: .2rem;
+		height: .5rem;
 		@include transform(translateY(-50%));
 		background-color: currentColor;
 		display: block;
@@ -28,7 +29,7 @@
 	}
 
 	&[aria-expanded="true"] {
-		.navtoggler__line {
+		.menutoggler__line {
 			&--1 {
 				top: 50%;
 				@include transform(translateY(-50%) rotate(45deg));
