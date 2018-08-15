@@ -5,8 +5,7 @@ import babelloader from 'babel-loader';
 module.exports = function (key, config, gulp, $, errorLog) {
 	return function () {
 		gulp.src([
-			`${config.build + key}/**/*.js`,
-			`!${config.build + key}/modules/*.js`
+			`${config.build + key}/*.js`
 		])
 			//.pipe($.debug({title: 'scripts:'}))
 

@@ -22,4 +22,9 @@ export const is_mobile = () => {
 	return (verge.viewportW() <= settings.theme_breakpoints['tablet']);
 };
 
-export const theme = Object.assign(settings, ThemeJSVars);
+const themeObject = settings;
+for (const attrname in ThemeJSVars) {
+	themeObject[attrname] = ThemeJSVars[attrname];
+}
+
+export const theme = themeObject;
