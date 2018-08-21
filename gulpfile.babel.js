@@ -2,11 +2,7 @@ import {config, assetsDir, assetsBuild} from './.build/gulp/config.js';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
-const $ = gulpLoadPlugins({
-	rename: {
-		'gulp-inline-fonts': 'inlinefonts'
-	}
-});
+const $ = gulpLoadPlugins();
 
 const errorLog = function (error) {
 	console.log(error);

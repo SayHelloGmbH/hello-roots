@@ -1,13 +1,16 @@
+/**
+ * written by Nico Martin - mail@nicomartin.ch
+ */
+
 import merge from 'merge-stream';
 import fs from 'fs';
+import inlineFonts from './modules/nm-inline-fonts.js';
 
 module.exports = function (key, config, gulp, $, errorLog) {
 	return function () {
 
 		const types = ['woff', 'woff2'];
 		const files = fs.readdirSync(`${config.src}source/`);
-		const settings = JSON.parse(fs.readFileSync(`${config.settingsDir}settings.json`));
-		const newFontver = parseInt(settings['theme_fontver']) + 1;
 		const weights = {
 			100: 'thin',
 			200: 'extralight',
@@ -22,7 +25,7 @@ module.exports = function (key, config, gulp, $, errorLog) {
 
 		types.forEach((type) => {
 
-			let fontStream = merge();
+			const fontStream = merge();
 			files.forEach(function (font) {
 
 				const file = font.split('.');
@@ -48,18 +51,16 @@ module.exports = function (key, config, gulp, $, errorLog) {
 				let filename = font.replace('.ttf', `.${type}`);
 				let fontfile = `${config.src}processed/${type}/${filename}`;
 
-				fontStream.add(
-					gulp.src(fontfile)
-						.pipe($.debug({title: `inlining ${name} ${weight} ${style} (${type}):`}))
-						.pipe($.inlinefonts({
-								name: name,
-								weight: weight,
-								formats: [type],
-								style: style
-							})
-						)
-						.on('error', errorLog)
-				);
+				fontStream.add(gulp.src(fontfile)
+					.pipe($.debug({title: `inlining ${name} ${weight} ${style} (${type}):`}))
+					.pipe(inlineFonts({
+							name: name,
+							weight: weight,
+							formats: [type],
+							style: style
+						})
+					)
+					.on('error', errorLog));
 			});
 
 			if (fs.existsSync(`${config.dest}fonts-${type}.css`)) {
@@ -71,12 +72,5 @@ module.exports = function (key, config, gulp, $, errorLog) {
 				.pipe(gulp.dest(config.dest))
 				.on('error', errorLog);
 		});
-
-		gulp.src(`${config.settingsDir}settings.json`).pipe($.jsonModify({
-			key: 'theme_fontver',
-			value: newFontver
-		}))
-			.pipe($.debug({title: 'fontver:'}))
-			.pipe(gulp.dest(config.settingsDir));
 	};
 };
