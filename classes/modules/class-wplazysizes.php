@@ -366,7 +366,7 @@ class WPLazySizes {
 		if ( $quality ) {
 			$new_img_path = "{$src_img_info['dirname']}/{$src_img_info['filename']}-{$new_width}x{$new_height}-q{$quality}.{$src_img_info['extension']}";
 		}
-		$new_img_url = str_replace( trailingslashit( ABSPATH ), trailingslashit( get_home_url() ), $new_img_path );
+		$new_img_url = str_replace( trailingslashit( ABSPATH ), trailingslashit( get_site_url() ), $new_img_path );
 
 		/**
 		 * return if already exists
