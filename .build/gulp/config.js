@@ -56,6 +56,13 @@ export const config = {
 		}
 	},
 
+	modernizr: {
+		args: {
+			src: `${assetsDir}scripts/*.js`,
+			dest: `${assetsDir}scripts/modernizr/`
+		}
+	},
+
 	serve: {},
 
 	watch: {}

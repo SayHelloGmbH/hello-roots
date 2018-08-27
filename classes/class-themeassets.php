@@ -5,11 +5,12 @@ namespace HelloTheme;
 class ThemeAssets {
 
 	public $font_version = '1.0';
-	public $theme_url = '';
+	public $theme_url    = '';
 
 	public function __construct() {
 		$this->font_version = sht_theme()->version;
-		$this->theme_url = get_template_directory_uri();
+		$this->theme_url    = get_template_directory_uri();
+		$this->theme_path   = get_template_directory();
 	}
 
 	public function run() {
@@ -45,6 +46,12 @@ class ThemeAssets {
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true );
 		$deps[] = 'jquery';
+
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/modernizr.min.js' ) ) {
+			wp_enqueue_script( 'modernizr', $this->theme_url . '/assets/scripts/modernizr/modernizr.min.js', [], $script_version, true );
+			$deps[] = 'modernizr';
+		}
+
 		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.1.24', true );
 		$deps[] = 'fancybox';
 		wp_enqueue_script( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true );
