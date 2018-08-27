@@ -10,10 +10,12 @@
         "babel-loader": "^7.1.4",
         "babel-preset-env": "^1.7.0",
         "babel-register": "^6.26.0",
+        "browser-sync": "^2.24.7",
         "fs": "0.0.1-security",
         "gulp": "^3.9.1",
         "gulp-concat": "^2.6.1",
         "gulp-debug": "^4.0.0",
+        "gulp-if": "^2.0.2",
         "gulp-inline-fonts": "^1.0.4",
         "gulp-json-modify": "^1.0.2",
         "gulp-livereload": "^3.8.1",
@@ -36,7 +38,8 @@
         "stream-assert": "^2.0.3",
         "through2": "^2.0.3",
         "webpack": "^3.12.0",
-        "webpack-stream": "^3.2.0"
+        "webpack-stream": "^3.2.0",
+        "yargs": "^12.0.1"
     },
     "author": "Say Hello GmbH - https://sayhello.ch",
     "license": "GNU General Public License v2 or later",

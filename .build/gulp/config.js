@@ -56,5 +56,7 @@ export const config = {
 		}
 	},
 
+	serve: {},
+
 	watch: {}
 };
