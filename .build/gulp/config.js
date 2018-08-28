@@ -58,8 +58,8 @@ export const config = {
 
 	modernizr: {
 		args: {
-			src: `${assetsDir}scripts/*.js`,
-			dest: `${assetsDir}scripts/modernizr/`
+			dest: `${assetsDir}scripts/modernizr/`,
+			build: `${assetsBuild}scripts/`
 		}
 	},
 

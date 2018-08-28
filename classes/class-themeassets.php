@@ -47,9 +47,9 @@ class ThemeAssets {
 		wp_enqueue_script( 'jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true );
 		$deps[] = 'jquery';
 
-		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/modernizr.min.js' ) ) {
-			wp_enqueue_script( 'modernizr', $this->theme_url . '/assets/scripts/modernizr/modernizr.min.js', [], $script_version, true );
-			$deps[] = 'modernizr';
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js' ) ) {
+			wp_enqueue_script( 'modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true );
+			$deps[] = 'ui-modernizr';
 		}
 
 		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.1.24', true );
@@ -75,6 +75,11 @@ class ThemeAssets {
 	public function add_admin_assets() {
 
 		$script_version = sht_theme()->version;
+
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js' ) ) {
+			wp_enqueue_script( sht_theme()->pfx . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true );
+		}
+
 		wp_enqueue_style( sht_theme()->pfx . '-admin-style', $this->theme_url . '/assets/styles/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.css', [], $script_version );
 		wp_enqueue_script( sht_theme()->pfx . '-admin-script', $this->theme_url . '/assets/scripts/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.js', [], $script_version, true );
 

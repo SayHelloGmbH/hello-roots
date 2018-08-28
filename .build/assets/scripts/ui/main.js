@@ -13,8 +13,5 @@ import {c, color, theme, is_mobile} from './modules/settings.js';
 		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
 		console.log('');
 
-		if (!Modernizr.objectfit) { $('html').addClass('!objectfit'); }
-		if (Modernizr.objectfit) { $('html').addClass('objectfit'); }
-
 	});
 })(jQuery);
