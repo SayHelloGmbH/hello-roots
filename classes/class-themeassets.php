@@ -5,11 +5,12 @@ namespace HelloTheme;
 class ThemeAssets {
 
 	public $font_version = '1.0';
-	public $theme_url = '';
+	public $theme_url    = '';
 
 	public function __construct() {
 		$this->font_version = sht_theme()->version;
-		$this->theme_url = get_template_directory_uri();
+		$this->theme_url    = get_template_directory_uri();
+		$this->theme_path   = get_template_directory();
 	}
 
 	public function run() {
@@ -45,6 +46,12 @@ class ThemeAssets {
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true );
 		$deps[] = 'jquery';
+
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js' ) ) {
+			wp_enqueue_script( 'modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true );
+			$deps[] = 'ui-modernizr';
+		}
+
 		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.1.24', true );
 		$deps[] = 'fancybox';
 		wp_enqueue_script( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true );
@@ -68,6 +75,11 @@ class ThemeAssets {
 	public function add_admin_assets() {
 
 		$script_version = sht_theme()->version;
+
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js' ) ) {
+			wp_enqueue_script( sht_theme()->pfx . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true );
+		}
+
 		wp_enqueue_style( sht_theme()->pfx . '-admin-style', $this->theme_url . '/assets/styles/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.css', [], $script_version );
 		wp_enqueue_script( sht_theme()->pfx . '-admin-script', $this->theme_url . '/assets/scripts/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.js', [], $script_version, true );
 

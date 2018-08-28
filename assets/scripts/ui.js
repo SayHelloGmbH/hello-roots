@@ -117,18 +117,25 @@ module.exports = __webpack_require__(9);
 var _settings = __webpack_require__(4);
 
 (function ($) {
-		$(function () {
+	$(function () {
 
-				console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
-				console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
-				console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-				console.log('');
+		console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
+		console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
+		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+		console.log('');
 
-				console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
-				console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
-				console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-				console.log('');
-		});
+		console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
+		console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
+		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+		console.log('');
+
+		if (!Modernizr.objectfit) {
+			$('html').addClass('!objectfit');
+		}
+		if (Modernizr.objectfit) {
+			$('html').addClass('objectfit');
+		}
+	});
 })(jQuery);
 
 /***/ }),
@@ -182,7 +189,12 @@ var is_mobile = exports.is_mobile = function is_mobile() {
 	return _verge2.default.viewportW() <= settings.theme_breakpoints['tablet'];
 };
 
-var theme = exports.theme = Object.assign(settings, ThemeJSVars);
+var themeObject = settings;
+for (var attrname in ThemeJSVars) {
+	themeObject[attrname] = ThemeJSVars[attrname];
+}
+
+var theme = exports.theme = themeObject;
 
 /***/ }),
 /* 5 */
