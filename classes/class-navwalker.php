@@ -52,7 +52,7 @@ class NavWalker extends \Walker_Nav_Menu {
 
 		$item_classes               = [];
 		$item_classes['item_class'] = "{$prefix}__item";
-		if ( $args->has_children ) {
+		if ( is_object( $args ) && $args->has_children ) {
 			$item_classes['parent_class'] = "{$prefix}__item--has-children";
 		}
 		if ( isset( $item->classes ) ) {
@@ -115,17 +115,26 @@ class NavWalker extends \Walker_Nav_Menu {
 		array_walk( $link_attributes, 'esc_attr' );
 
 		// Markup
-		$link_markup = $args->before;
+		$link_markup = '';
+		if ( is_object( $args ) ) {
+			$link_markup .= $args->before;
+		}
 		$link_markup .= '<a';
 		foreach ( $link_attributes as $att => $value ) {
 			$link_markup .= " $att='$value'";
 		}
 		$link_markup .= '>';
-		$link_markup .= $args->link_before;
+		if ( is_object( $args ) ) {
+			$link_markup .= $args->link_before;
+		}
 		$link_markup .= apply_filters( 'the_title', $item->title, $item->ID );
-		$link_markup .= $args->link_after;
+		if ( is_object( $args ) ) {
+			$link_markup .= $args->link_after;
+		}
 		$link_markup .= '</a>';
-		$link_markup .= $args->after;
+		if ( is_object( $args ) ) {
+			$link_markup .= $args->after;
+		}
 
 		/**
 		 * create markup
