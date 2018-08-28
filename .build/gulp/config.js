@@ -56,5 +56,14 @@ export const config = {
 		}
 	},
 
+	modernizr: {
+		args: {
+			dest: `${assetsDir}scripts/modernizr/`,
+			build: `${assetsBuild}scripts/`
+		}
+	},
+
+	serve: {},
+
 	watch: {}
 };
