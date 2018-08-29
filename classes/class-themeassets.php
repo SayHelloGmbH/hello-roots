@@ -33,7 +33,7 @@ class ThemeAssets {
 		 * CSS
 		 */
 		$deps = [];
-		wp_enqueue_style( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.1.24' );
+		wp_enqueue_style( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0' );
 		$deps[] = 'fancybox';
 		wp_enqueue_style( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.css', [], '2.0.10' );
 		$deps[] = 'flickity';
@@ -52,7 +52,7 @@ class ThemeAssets {
 			$deps[] = 'ui-modernizr';
 		}
 
-		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.1.24', true );
+		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true );
 		$deps[] = 'fancybox';
 		wp_enqueue_script( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true );
 		$deps[] = 'flickity';
