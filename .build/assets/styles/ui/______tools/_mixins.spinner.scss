@@ -81,7 +81,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	box-sizing: border-box;
-	@include animation(spinner $duration infinite linear);
+	animation: spinner $duration infinite linear;
 }
 
 @function isValidBorder($border) {

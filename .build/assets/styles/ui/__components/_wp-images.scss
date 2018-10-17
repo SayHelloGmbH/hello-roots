@@ -15,7 +15,7 @@
 		margin-bottom: $space;
 	}
 
-	@include for-screen-max(phone){
+	@include for-screen-max(phone) {
 		.alignright,
 		.alignleft {
 			float: none;
@@ -47,7 +47,7 @@
 	a.alignnone, .wp-caption.alignnone {
 		display: block;
 		img {
-			margin: 0px;
+			margin: 0;
 			display: block;
 		}
 	}
@@ -64,10 +64,10 @@
 		overflow: hidden;
 		img {
 			@include transition();
-			@include scale(1);
+			transform: scale(1);
 		}
 		&:hover img {
-			@include scale(1.05);
+			transform: scale(1.05);
 		}
 	}
 
@@ -84,7 +84,7 @@
 .singular-post .main-content {
 	.alignright {
 		margin-right: -60px;
-		@include for-screen-max(phone){
+		@include for-screen-max(phone) {
 			margin-right: 0;
 		}
 		.alignright {
@@ -93,7 +93,7 @@
 	}
 	.alignleft {
 		margin-left: -60px;
-		@include for-screen-max(phone){
+		@include for-screen-max(phone) {
 			margin-left: 0;
 		}
 		.alignleft {

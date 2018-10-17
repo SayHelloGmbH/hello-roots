@@ -15,7 +15,7 @@
 		left: 0;
 		right: 0;
 		height: .5rem;
-		@include transform(translateY(-50%));
+		transform: translateY(-50%);
 		background-color: currentColor;
 		display: block;
 		@include transition();
@@ -32,7 +32,7 @@
 		.menutoggler__line {
 			&--1 {
 				top: 50%;
-				@include transform(translateY(-50%) rotate(45deg));
+				transform: translateY(-50%) rotate(45deg);
 			}
 
 			&--2 {
@@ -42,7 +42,7 @@
 
 			&--3 {
 				top: 50%;
-				@include transform(translateY(-50%) rotate(-45deg));
+				transform: translateY(-50%) rotate(-45deg);
 			}
 		}
 	}

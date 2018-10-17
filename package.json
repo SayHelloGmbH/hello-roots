@@ -13,6 +13,7 @@
         "browser-sync": "^2.24.7",
         "fs": "0.0.1-security",
         "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^6.0.0",
         "gulp-concat": "^2.6.1",
         "gulp-debug": "^4.0.0",
         "gulp-if": "^2.0.2",
