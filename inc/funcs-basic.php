@@ -111,6 +111,21 @@ function sht_get_setting( $setting ) {
 }
 
 /**
+ * @param string $color
+ * @param string $tone
+ *
+ * @return bool | string
+ */
+function sht_get_c( $color = 'black', $tone = 'base' ) {
+	$colors = sht_get_setting( 'theme_colors' );
+	if ( ! is_array( $color ) || ! array_key_exists( $color, $colors ) || ! array_key_exists( $tone, $colors[ $color ] ) ) {
+		return false;
+	}
+
+	return $colors[ $color ][ $tone ];
+}
+
+/**
  * this function returns a i-Tag with an SVG-Icon inside
  *
  * @since    0.0.1

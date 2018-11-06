@@ -9,8 +9,11 @@ class Custompages {
 
 	public function __construct() {
 		$this->special_pages = [
-			'search' => __( 'Search', 'sha' ),
-			'404'    => __( '404 Error', 'sha' ),
+			'selfservice' => __( 'Self-Service', 'sha' ),
+			'vzughome'    => __( 'V-ZUG-Home', 'sha' ),
+			'contact'     => __( 'Kontakt', 'sha' ),
+			'search'      => __( 'Search', 'sha' ),
+			'404'         => __( '404 Error', 'sha' ),
 		];
 	}
 
@@ -23,9 +26,13 @@ class Custompages {
 		//Update slug on save
 		add_action( 'save_post', [ $this, 'change_pageslug_to_cptslug' ] );
 		add_action( 'acf/save_post', [ $this, 'change_pageslug_to_cptslug_onacf' ], 1 );
+		add_filter( 'page_link', [ $this, 'archive_permalink' ], 10, 2 );
 
 		// Archive Title
 		add_filter( 'get_the_archive_title', [ $this, 'change_archive_title' ] );
+
+		// Body Class
+		add_filter( 'body_class', [ $this, 'body_classes' ] );
 	}
 
 	public function options_page() {
@@ -202,7 +209,7 @@ class Custompages {
 
 			$assoc_pt_ob = get_post_type_object( $assoc_pt );
 
-			$slug = $assoc_pt_ob->rewrite['slug'];
+			$slug = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
 			if ( strpos( $slug, '/' ) !== false ) {
 				$slug = explode( '/', $slug )[0];
 			}
@@ -228,7 +235,7 @@ class Custompages {
 			if ( isset( $_POST['acf'][ 'page_for_' . $pt ] ) ) {
 
 				$assoc_pt_ob = get_post_type_object( $pt );
-				$slug        = $assoc_pt_ob->rewrite['slug'];
+				$slug        = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
 				if ( strpos( $slug, '/' ) !== false ) {
 					$slug = explode( '/', $slug )[0];
 				}
@@ -237,6 +244,19 @@ class Custompages {
 			}
 		}
 	}
+
+	public function archive_permalink( $url, $post_id ) {
+		$assoc_pt = $this->get_posttype_for_archive_pageid( $post_id );
+		if ( ! $assoc_pt ) {
+			return $url;
+		}
+
+		return get_post_type_archive_link( $assoc_pt );
+	}
+
+	/**
+	 * Helpers
+	 */
 
 	public function changeslug( $post_id, $slug ) {
 
@@ -261,10 +281,6 @@ class Custompages {
 			] );
 		}
 	}
-
-	/**
-	 * Helpers
-	 */
 
 	public function get_posttype_items() {
 		$posttypes = get_post_types( [
@@ -309,5 +325,15 @@ class Custompages {
 		}
 
 		return $title;
+	}
+
+	public function body_classes( $classes ) {
+		foreach ( $this->special_pages as $key => $name ) {
+			if ( is_singular() && get_field( "page_for_$key", 'option' ) == get_the_id() ) {
+				$classes[] = "page-special--$key";
+			}
+		}
+
+		return $classes;
 	}
 }
