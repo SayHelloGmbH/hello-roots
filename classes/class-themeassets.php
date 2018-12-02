@@ -48,7 +48,7 @@ class ThemeAssets {
 		$deps[] = 'jquery';
 
 		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js' ) ) {
-			wp_enqueue_script( 'modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true );
+			wp_enqueue_script( 'ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true );
 			$deps[] = 'ui-modernizr';
 		}
 
