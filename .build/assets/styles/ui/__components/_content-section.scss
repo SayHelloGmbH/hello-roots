@@ -1,5 +1,5 @@
 .content-section {
-	& + .content-section {
+	&+.content-section {
 		margin-top: $grid-space-x;
 	}
 

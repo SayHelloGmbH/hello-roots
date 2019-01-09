@@ -5,7 +5,8 @@ hr.clear-both {
 	border-bottom: 1px dashed #ccc;
 	display: block;
 	position: relative;
-	line-height:100%;
+	line-height: 100%;
+
 	&:after {
 		content: 'clear: both;';
 		display: block;

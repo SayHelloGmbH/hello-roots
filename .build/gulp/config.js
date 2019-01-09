@@ -63,6 +63,15 @@ export const config = {
 		}
 	},
 
+	pot: {
+		args: {
+			src: ['**/*.php', '**/*.twig'],
+			dest: `languages/`,
+			domain: `sht`,
+			package: `Hello Theme`
+		}
+	},
+
 	serve: {},
 
 	watch: {}

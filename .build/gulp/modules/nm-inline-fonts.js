@@ -18,9 +18,9 @@ var cssFormats = {
 	otf: false
 };
 
-module.exports = function (custom) {
+module.exports = function(custom) {
 	var fonts = [],
-		options = {name: 'font', style: 'normal', weight: 400, formats: ['woff', 'woff2'], stretch: 'normal'},
+		options = { name: 'font', style: 'normal', weight: 400, formats: ['woff', 'woff2'], stretch: 'normal' },
 		output = null;
 
 	for (var attr in custom) {
@@ -39,14 +39,14 @@ module.exports = function (custom) {
 		return {
 			format: mime_ext,
 			cssFormat: cssFormat,
-			compile: function () {
+			compile: function() {
 				return 'url("data:' + mime_type + ';base64,' + file.contents.toString('base64') + '")' +
 					(cssFormat ? ' ' + cssFormat : '');
 			}
 		}
 	}
 
-	var transform = function (file, encoding, cb) {
+	var transform = function(file, encoding, cb) {
 		if (file.isBuffer()) {
 			var font = process(file);
 
@@ -68,22 +68,25 @@ module.exports = function (custom) {
 		cb();
 	}
 
-	var flush = function (cb) {
+	var flush = function(cb) {
 		// if there are no matched files
 		if (!output) return cb();
-		var fontGroups = fonts.reduce(function (acc, font) {
+		var fontGroups = fonts.reduce(function(acc, font) {
 			acc[font.cssFormat ? 1 : 0].push(font);
 			return acc;
-		}, [[], []]);
+		}, [
+			[],
+			[]
+		]);
 		var content = '@font-face { ' +
 			'font-family: "' + options.name + '"; ' +
 			'font-style: ' + options.style + '; ' +
 			'font-stretch: ' + options.stretch + '; ' +
 			'font-weight: ' + options.weight + '; ' +
-			fontGroups[0].map(function (f) {
+			fontGroups[0].map(function(f) {
 				return 'src: ' + f.compile() + '; '
 			}).join('') +
-			'src: ' + fontGroups[1].map(function (f) {
+			'src: ' + fontGroups[1].map(function(f) {
 				return f.compile()
 			}).join(', ') + '; ' +
 			'}';

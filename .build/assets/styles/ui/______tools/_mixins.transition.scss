@@ -3,12 +3,16 @@
 
 	$string: $properties $duration cubic-bezier($easing_bezier);
 
-	@if type-of($properties) == 'list' {
+	@if type-of($properties)=='list' {
 		$string: false;
+
 		@each $prop in $properties {
 			@if $string {
-				$string: #{$string}, #{$prop $duration cubic-bezier($easing_bezier)};
-			} @else {
+				$string: #{$string},
+				#{$prop $duration cubic-bezier($easing_bezier)};
+			}
+
+			@else {
 				$string: #{$prop $duration cubic-bezier($easing_bezier)};
 			}
 		}
@@ -19,10 +23,14 @@
 
 @function transition-get-duration($speed:normal) {
 	$duration: $easing_speed + 0ms;
-	@if $speed == fast {
+
+	@if $speed==fast {
 		$duration: $easing_speed_fast + 0ms;
-	} @else if $speed == slow {
+	}
+
+	@else if $speed==slow {
 		$duration: $easing_speed_slow + 0ms;
 	}
+
 	@return $duration;
 }

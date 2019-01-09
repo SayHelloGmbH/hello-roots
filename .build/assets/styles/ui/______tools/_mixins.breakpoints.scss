@@ -1,21 +1,27 @@
 @mixin for-screen-min($name, $sizes: $breakpoints) {
 	$min: device-breakpoints-min($name, $sizes);
+
 	@if $min {
 		@media (min-width: $min+0px) {
 			@content;
 		}
-	} @else {
+	}
+
+	@else {
 		@content;
 	}
 }
 
 @mixin for-screen-max($name, $sizes: $breakpoints) {
 	$max: device-breakpoints-max($name, $sizes);
+
 	@if $max {
 		@media (max-width: $max+0px) {
 			@content;
 		}
-	} @else {
+	}
+
+	@else {
 		@content;
 	}
 }
@@ -39,4 +45,3 @@
 		@content;
 	}
 }
-

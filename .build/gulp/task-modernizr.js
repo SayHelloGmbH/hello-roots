@@ -1,8 +1,8 @@
-import {config as main} from './config.js';
+import { config as main } from './config.js';
 import modernizr from 'gulp-modernizr';
 
 module.exports = function(key, config, gulp, $, errorLog) {
-    return function() {
+	return function() {
 
 		const mainConfig = main;
 		//console.log(mainConfig.scripts);
@@ -12,18 +12,18 @@ module.exports = function(key, config, gulp, $, errorLog) {
 			const key = mainConfig.scripts.subtasks[i];
 
 			gulp.src([
-				`${config.build + key}/*.js`
-			])
-	        .pipe(modernizr(`${key}-modernizr.js`))
+					`${config.build + key}/*.js`
+				])
+				.pipe(modernizr(`${key}-modernizr.js`))
 
-	        // Minify
-	        .pipe($.uglify())
-	        .pipe($.rename({
-	            suffix: '.min'
-	        }))
-	        .on('error', errorLog)
-	        .pipe(gulp.dest(config.dest));
+				// Minify
+				.pipe($.uglify())
+				.pipe($.rename({
+					suffix: '.min'
+				}))
+				.on('error', errorLog)
+				.pipe(gulp.dest(config.dest));
 
 		}
-    };
+	};
 };

@@ -6,10 +6,12 @@
 	&--primary {
 		@include mobile() {
 			display: none;
+
 			.menu__item {
 				display: block;
 			}
 		}
+
 		@include desktop() {
 			display: block !important;
 		}

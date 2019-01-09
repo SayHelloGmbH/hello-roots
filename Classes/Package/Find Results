@@ -1,0 +1,155 @@
+Searching 19 files for "Packages"
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Ajax.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Assets.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Error.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Helpers.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use SayHello\Theme\Vendor\LazyImage;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Language.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Lazysizes.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/LoginScreen.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use \WP_Customize_Color_Control;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Media.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/SVG.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use enshrined\svgSanitize\Sanitizer;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/ThemeOptions.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Theme.php:
+    7  /**
+    8   * Theme class which gets loaded in functions.php.
+    9:  * Defines the Starting point of the Theme and registers Packages.
+   10   *
+   11   * @author Mark Howells-Mead <mark@sayhello.ch>
+
+11 matches across 11 files
+
+
+Searching 19 files for "namespace SayHello\Theme\Packages;"
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Ajax.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Assets.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Error.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Helpers.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use SayHello\Theme\Vendor\LazyImage;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Language.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Lazysizes.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/LoginScreen.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use \WP_Customize_Color_Control;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/Media.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/SVG.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  use enshrined\svgSanitize\Sanitizer;
+
+/Users/mark/Projects/VVV/www/roots/public_html/wp-content/themes/hello-roots/Classes/Package/ThemeOptions.php:
+    1  <?php
+    2  
+    3: namespace SayHello\Theme\Packages;
+    4  
+    5  /**
+
+10 matches across 10 files

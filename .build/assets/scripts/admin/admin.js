@@ -1,6 +1,6 @@
-(function ($, theme) {
+(function($, theme) {
 
-	$(function () {
+	$(function() {
 
 		console.log("Hello Theme init");
 	});

@@ -3,9 +3,11 @@
 		@if map-has-key(map-get($theme_colors, $color), $tone) {
 			@return map-get(map-get($theme_colors, $color), $tone);
 		}
+
 		@warn "Unknown tone `#{$tone}` of #{$color}.";
 		@return null;
 	}
+
 	@warn "Unknown `#{$color}` in $colors.";
 	@return null;
 }

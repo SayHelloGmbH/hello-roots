@@ -1,100 +1,103 @@
-#, fuzzy
+# Copyright (C) 2019 Hello Theme
+# This file is distributed under the same license as the Hello Theme package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-16 08:06+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"Project-Id-Version: Hello Theme\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: 404.php:11
-msgid "404 page not found."
+#: offline.php:6
+msgid "Offliner"
 msgstr ""
 
-#: 404.php:12
+#: offline.php:10
+msgid "You're offline."
+msgstr ""
+
+#: Classes/Theme.php:103
+msgid "An unexpected error occured."
+msgstr ""
+
+#: Classes/Theme.php:196
+msgid "JavaScript seems to be disabled. Some functionalities might not work correctly."
+msgstr ""
+
+#: Classes/Theme.php:197
+msgctxt "translators: %s = Link to browsehappy.org"
+msgid "You are using an outdated browser. Please update your browser to view this website correctly: %s"
+msgstr ""
+
+#. translators: published at %1$1s and by %2$2s
+#: partials/excerpt.php:16
+msgid "published at %1$1s by %2$2s"
+msgstr ""
+
+#: partials/singular-404.php:3
+msgid "404 error"
+msgstr ""
+
+#: partials/singular-404.php:7
+msgid "404 - page not found."
+msgstr ""
+
+#: partials/singular-404.php:8
 msgid "Die Seite konnte nicht gefunden werden."
 msgstr ""
 
-#: archive.php:15 archive.php:27
-msgid "Kategorie"
+#: Classes/Package/CustomPages.php:43
+msgid "Custom Pages"
 msgstr ""
 
-#: archive.php:18 archive.php:20 archive.php:22
-msgid "Archiv"
-msgstr ""
-
-#: archive.php:31
-#, php-format
-msgid "Archiv von %s"
-msgstr ""
-
-#: archive.php:33
-#, php-format
-msgid "Suchresultate für \"%s\""
-msgstr ""
-
-#: footer.php:20
-msgid "Dies ist ein Pflichtfeld"
-msgstr ""
-
-#: footer.php:21
-msgid "Bitte geben Sie eine gültige Email an."
-msgstr ""
-
-#: footer.php:27
-msgid ""
-"JavaScript ist deaktiviert. Bitte aktivieren Sie JavaScript um alle "
-"Funktionen der Seite nutzen zu können"
-msgstr ""
-
-#: footer.php:31 footer.php:35
-msgid ""
-"Sie nutzen einen veralteten Browser. Einige Inhalte können daher nicht "
-"richtig angezeigt werden. Bitte updaten Sie Ihren Browser:"
-msgstr ""
-
-#: functions.php:15
-msgid "Theme Settings"
-msgstr ""
-
-#: functions.php:18
-msgid "Ein unerwarteter Fehler ist aufgetreten."
-msgstr ""
-
-#: functions.php:49
+#: Classes/Package/Error.php:50
 msgid "ErrorCode"
 msgstr ""
 
-#: functions.php:73
-msgid "Main Menu"
+#: Classes/Package/LoginScreen.php:36
+msgctxt "The section title in the WordPress Customizer"
+msgid "Loginseite"
 msgstr ""
 
-#: SayHello_Basics/BasicTheme.php:110
-#, php-format
-msgid "Das Theme %1s benötigt folgendes Plugin: %2s"
+#: Classes/Package/LoginScreen.php:53
+msgctxt "Field description title in Customizer"
+msgid "Logo"
 msgstr ""
 
-#. Name of the theme
-msgid "VTLDefaulttheme"
+#: Classes/Package/LoginScreen.php:71
+msgctxt "Field label in Customizer"
+msgid "Hintergrundfarbe"
 msgstr ""
 
-#. Description of the theme
-msgid ""
-"Das Theme wurde von der Say Hello GmbH erstellt. Fragen und Probleme können "
-"an hello@sayhello.ch gestellt werden."
+#: Classes/Package/LoginScreen.php:88
+msgctxt "Field label in Customizer"
+msgid "Buttonfarbe"
 msgstr ""
 
-#. Author of the theme
-msgid "Say Hello GmbH"
+#: Classes/Package/LoginScreen.php:105
+msgctxt "Field label in Customizer"
+msgid "Farbe für Links"
 msgstr ""
 
-#. Author URI of the theme
-msgid "https://sayhello.ch"
+#: Classes/Package/LoginScreen.php:121
+msgctxt "Field label in Customizer"
+msgid "Breite des Logos"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:122
+msgctxt "Field label in Customizer"
+msgid "(Pixelgrösse)"
+msgstr ""
+
+#: Classes/Package/Sidebars.php:17
+msgid "Main sidebar"
+msgstr ""
+
+#: Classes/Package/Sidebars.php:19
+msgid "Widget area"
 msgstr ""

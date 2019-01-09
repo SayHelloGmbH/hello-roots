@@ -1,18 +1,18 @@
-(function ($) {
+(function($) {
 
     tinymce.create('tinymce.plugins.hellotheme_clearboth', {
-        init: function (ed, url) {
+        init: function(ed, url) {
 
             //spacer
             ed.addButton('hellotheme_clearboth', {
                 title: 'Add Clear Floats Break',
                 image: url + '/../img/tinymce/spacer.png',
-                onclick: function () {
+                onclick: function() {
                     ed.selection.setContent('<hr class="clear-both">');
                 }
             });
         },
-        createControl: function (n, cm) {
+        createControl: function(n, cm) {
             return null;
         },
     });

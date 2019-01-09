@@ -2,24 +2,22 @@ import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
 import babelloader from 'babel-loader';
 
-module.exports = function (key, config, gulp, $, errorLog) {
-	return function () {
+module.exports = function(key, config, gulp, $, errorLog) {
+	return function() {
 		gulp.src([
-			`${config.build + key}/*.js`
-		])
+				`${config.build + key}/*.js`
+			])
 			//.pipe($.debug({title: 'scripts:'}))
 
 			// Webpack
 			.pipe(
 				gulpWebpack({
 					module: {
-						rules: [
-							{
-								test: /\.js$/,
-								exclude: /node_modules/,
-								loader: "babel-loader"
-							}
-						]
+						rules: [{
+							test: /\.js$/,
+							exclude: /node_modules/,
+							loader: "babel-loader"
+						}]
 					},
 					output: {
 						filename: `${key}.js`
