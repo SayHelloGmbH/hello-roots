@@ -8,6 +8,7 @@ body.theme-dev:after {
 	color: #000;
 	z-index: 9999;
 	display: block;
+
 	@each $bp in map-keys($theme_breakpoints) {
 		@include for-screen($bp) {
 			content: '#{$bp}';

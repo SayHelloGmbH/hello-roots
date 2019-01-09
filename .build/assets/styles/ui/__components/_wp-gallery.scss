@@ -39,15 +39,21 @@
 		overflow: visible;
 		@include transition(opacity);
 		margin: $img-spacing $img-spacing / 4;
-		a, .lazysizes-wrapper, img {
+
+		a,
+		.lazysizes-wrapper,
+		img {
 			display: block;
 		}
+
 		img {
 			height: $img-height;
 			@include transition();
 			max-width: none !important;
 		}
+
 		position: relative;
+
 		.caption {
 			position: absolute;
 			bottom: 0;
@@ -60,6 +66,7 @@
 			opacity: 0;
 			@include transition();
 		}
+
 		&.is-selected {
 			.caption {
 				opacity: 1;
@@ -70,9 +77,11 @@
 
 	&.js-fallback {
 		overflow: hidden;
+
 		&:after {
 			opacity: .4;
 		}
+
 		.gallery-item {
 			opacity: 0;
 		}
@@ -83,8 +92,10 @@
 		$img-spacing: 40px;
 
 		height: $img-height + ($img-spacing*2);
+
 		.gallery-item {
 			margin: $img-spacing $img-spacing / 4;
+
 			img {
 				height: $img-height;
 			}

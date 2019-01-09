@@ -8,6 +8,10 @@
 	Contact: joel@sayhello.ch
 	From: Steffisburg, Bern, Switzerland
 
+	Full-stack developer: Mark Howells-Mead
+	Contact: mark@sayhello.ch
+	From: Faulensee, Bern, Switzerland
+
 	Designer: Some Cool Designer
 	Twitter: @cooldesigner
 	From: Earth

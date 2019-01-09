@@ -16,7 +16,7 @@
         "phone": 330,
         "tablet": 600,
         "tablet_landscape": 900,
-        "desktop": 1300
+        "desktop": 1280
     },
     "easing_speed": 200,
     "easing_speed_fast": 100,

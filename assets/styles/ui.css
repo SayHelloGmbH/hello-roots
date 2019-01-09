@@ -393,22 +393,22 @@ img {
   .hidden-tablet_landscape-up {
     display: none; } }
 
-@media (max-width: 1299.9px) {
+@media (max-width: 1279.9px) {
   .hidden-tablet_landscape-down {
     display: none; } }
 
-@media (min-width: 900px) and (max-width: 1299.9px) {
+@media (min-width: 900px) and (max-width: 1279.9px) {
   .hidden-tablet_landscape {
     display: none; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1280px) {
   .hidden-desktop-up {
     display: none; } }
 
 .hidden-desktop-down {
   display: none; }
 
-@media (min-width: 1300px) {
+@media (min-width: 1280px) {
   .hidden-desktop {
     display: none; } }
 
@@ -482,10 +482,10 @@ body.theme-dev:after {
   body.theme-dev:after {
     content: "tablet"; } }
 
-@media (min-width: 900px) and (max-width: 1299.9px) {
+@media (min-width: 900px) and (max-width: 1279.9px) {
   body.theme-dev:after {
     content: "tablet_landscape"; } }
-  @media (min-width: 1300px) {
+  @media (min-width: 1280px) {
     body.theme-dev:after {
       content: "desktop"; } }
 
@@ -643,7 +643,7 @@ body.browser-outdated .browser-check--outdated {
 .content-section {
   margin: 0 auto;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1280px;
   padding-left: 0.8rem;
   padding-right: 0.8rem; }
   .content-section + .content-section {

@@ -16,6 +16,7 @@
 	}
 
 	@include for-screen-max(phone) {
+
 		.alignright,
 		.alignleft {
 			float: none;
@@ -38,14 +39,18 @@
 	.alignleft,
 	.aligncenter,
 	.alignnone {
-		a, img {
+
+		a,
+		img {
 			margin: 0;
 			display: block;
 		}
 	}
 
-	a.alignnone, .wp-caption.alignnone {
+	a.alignnone,
+	.wp-caption.alignnone {
 		display: block;
+
 		img {
 			margin: 0;
 			display: block;
@@ -62,10 +67,12 @@
 	// hover
 	a.image-expand {
 		overflow: hidden;
+
 		img {
 			@include transition();
 			transform: scale(1);
 		}
+
 		&:hover img {
 			transform: scale(1.05);
 		}
@@ -84,18 +91,23 @@
 .singular-post .main-content {
 	.alignright {
 		margin-right: -60px;
+
 		@include for-screen-max(phone) {
 			margin-right: 0;
 		}
+
 		.alignright {
 			margin-right: 0;
 		}
 	}
+
 	.alignleft {
 		margin-left: -60px;
+
 		@include for-screen-max(phone) {
 			margin-left: 0;
 		}
+
 		.alignleft {
 			margin-left: 0;
 		}

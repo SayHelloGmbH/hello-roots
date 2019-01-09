@@ -1,8 +1,10 @@
 .menutoggler {
 	display: none;
+
 	@include mobile() {
 		display: block;
 	}
+
 	height: 3rem;
 	width: 4rem;
 	position: relative;
@@ -20,9 +22,11 @@
 		display: block;
 		@include transition();
 		will-change: transform;
+
 		&--1 {
 			top: 0;
 		}
+
 		&--3 {
 			top: 100%;
 		}

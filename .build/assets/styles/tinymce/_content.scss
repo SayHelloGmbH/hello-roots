@@ -3,6 +3,7 @@ blockquote {
 	background: #f1f1f1;
 	padding: 20px;
 	position: relative;
+
 	&:before {
 		content: "\201C";
 		font-size: 60px;
@@ -11,9 +12,11 @@ blockquote {
 		top: -25px;
 		display: block;
 	}
+
 	p {
 		text-align: left;
 	}
+
 	cite {
 		font-size: 16px;
 		margin-top: 10px;

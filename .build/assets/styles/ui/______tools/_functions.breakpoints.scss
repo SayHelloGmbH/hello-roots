@@ -1,6 +1,6 @@
 @function device-breakpoints-min($name, $sizes: $breakpoints) {
 	$min: map-get($sizes, $name);
-	@return if($min != 0px, $min, null);
+	@return if($min !=0px, $min, null);
 }
 
 @function device-breakpoints-max($name, $sizes: $breakpoints) {
