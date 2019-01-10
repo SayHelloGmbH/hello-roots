@@ -1,10 +1,17 @@
 .button {
-
 	&--size-small {
 		font-size: $font-size-small;
 	}
 
 	&--size-large {
 		font-size: $font-size-large;
+	}
+
+	&--size-smaller {
+		font-size: $font-size-smaller;
+	}
+
+	&--size-larger {
+		font-size: $font-size-larger;
 	}
 }

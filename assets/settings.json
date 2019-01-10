@@ -1,5 +1,8 @@
 {
     "theme_colors": {
+        "primary": {
+            "base": "#77adbf"
+        },
         "black": {
             "base": "#1d1d1b",
             "dark": "#000",
@@ -7,9 +10,6 @@
         },
         "white": {
             "base": "#fff"
-        },
-        "blue": {
-            "base": "#77adbf"
         }
     },
     "theme_breakpoints": {

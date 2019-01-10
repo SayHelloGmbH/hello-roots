@@ -459,7 +459,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         factory(jQuery);
     }
 })(function ($) {
-    $.extend({ bez: function bez(encodedFuncName, coOrdArray) {
+    $.extend({
+        bez: function bez(encodedFuncName, coOrdArray) {
             if ($.isArray(encodedFuncName)) {
                 coOrdArray = encodedFuncName;
                 encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
@@ -496,7 +497,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 };
             }
             return encodedFuncName;
-        } });
+        }
+    });
 });
 
 /***/ }),
