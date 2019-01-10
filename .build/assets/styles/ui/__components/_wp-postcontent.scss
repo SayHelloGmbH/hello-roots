@@ -23,18 +23,6 @@
 		display: block;
 	}
 
-	h2 {
-		font-size: 2rem;
-	}
-
-	h3 {
-		font-size: 1.5rem;
-	}
-
-	h4 {
-		font-size: 1.2rem;
-	}
-
 	ul,
 	ol {
 		padding-left: 1.5rem;
@@ -69,7 +57,7 @@
 
 		&:before {
 			content: '\201c';
-			font-size: 100px;
+			font-size: 6em;
 			font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
 			position: absolute;
 			left: -20px;
@@ -80,7 +68,7 @@
 		p {
 			text-align: left;
 			font-weight: 700;
-			font-size: 1.3rem;
+			font-size: $font-size-larger;
 			font-style: italic;
 			margin-top: $space-item * .5;
 
@@ -90,8 +78,7 @@
 		}
 
 		cite {
-			font-size: .9rem;
-			line-height: 1.2rem;
+			font-size: $font-size-small;
 			font-weight: normal;
 			margin-top: $space-item * .5;
 			font-style: normal;

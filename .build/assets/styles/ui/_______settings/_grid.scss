@@ -4,8 +4,7 @@ $grid-space: ($grid-space-x / 2);
 $grid-size: 100%;
 $grid-max-size: 0px;
 
-@each $name,
-$size in $theme_breakpoints {
+@each $name, $size in $theme_breakpoints {
 	$grid-max-size: $size + 0px;
 }
 

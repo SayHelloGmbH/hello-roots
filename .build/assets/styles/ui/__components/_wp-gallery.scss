@@ -61,7 +61,7 @@
 			transform: translateY(100%);
 			display: block;
 			color: #fff;
-			font-size: .8rem;
+			font-size: $font-size-small;
 			padding-top: 1rem;
 			opacity: 0;
 			@include transition();

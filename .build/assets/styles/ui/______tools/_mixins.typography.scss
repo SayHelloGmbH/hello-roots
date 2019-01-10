@@ -1,0 +1,155 @@
+$global-font-size: 16px !default;
+
+@function rem-calc($values, $base-value: $global-font-size) {
+	$max: length($values);
+
+	@if $max==1 {
+		@return convert-to-rem(nth($values, 1), $base-value);
+	}
+
+	$remValues: ();
+
+	@for $i from 1 through $max {
+		$remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+	}
+
+	@return $remValues;
+}
+
+@function convert-to-rem($value, $base-value: $global-font-size) {
+	$value: strip-unit($value) / strip-unit($base-value) * 1rem;
+
+	@if ($value==0rem) {
+		$value: 0;
+	}
+
+	// Turn 0rem into 0
+	@return $value;
+}
+
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+/**
+ * Set custom typography sizes (e.g. header)
+ * @param  {int} $size        font-size
+ * @param  {int} $line-height line-height
+ * @param  {int} $av          AV letter-spacing from XD
+ * @return {void}
+ */
+
+@mixin typo($size: null, $line-height: null, $av: null) {
+	@if ($size) {
+		font-size: rem-calc($size*$global-font-size/100);
+	}
+
+	@if ($size) {
+		@if ($line-height) {
+			line-height: ($line-height/$size);
+		}
+	}
+
+	@if ($av) {
+		@include av($av);
+	}
+}
+
+/// Converts a pixel, percentage, rem or em value to a unitless value based on a given font size. Ideal for working out unitless line heights.
+///
+/// @param {Number} $value - Value to convert to a unitless line height
+/// @param {Number} $base - The font size to use to work out the line height - defaults to $global-font-size
+///
+/// @return {Number} - Unitless number
+@function unitless-calc($value, $base: null) {
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: $global-font-size;
+  }
+
+  // First, lets convert our $base to pixels
+
+  // If the base font size is a %, then multiply it by 16px
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if unit($base) == 'rem' {
+    $base: strip-unit($base) * 16px;
+  }
+
+  @if unit($base) == 'em' {
+    $base: strip-unit($base) * 16px;
+  }
+
+  // Now let's convert our value to pixels too
+  @if unit($value) == '%' {
+    $value: ($value / 100%) * $base;
+  }
+
+  @if unit($value) == 'rem' {
+    $value: strip-unit($value) * $base;
+  }
+
+  @if unit($value) == 'em' {
+    $value: strip-unit($value) * $base;
+  }
+
+  // 'px'
+  @if unit($value) == 'px' {
+    @return strip-unit($value) / strip-unit($base);
+  }
+
+  // assume that line-heights greater than 10 are meant to be absolute in 'px'
+  @if unitless($value) and ($value > 10) {
+    @return $value / strip-unit($base);
+  }
+
+  @return $value;
+}
+
+
+// AV letter spacing measurement convertor from Adobe applications
+// https://scotch.io/tutorials/converting-photoshop-letter-spacing-to-css
+@mixin av($size) {
+	letter-spacing: ($size / 1000) * 1em;
+}
+
+
+@mixin typography-loop($elements){
+	@each $element, $element-defs in $elements {
+	    $font-size-temp: 1rem;
+	    #{$element} {
+
+	      @if map-has-key($element-defs, font-size) {
+	        $font-size-temp: rem-calc(map-get($element-defs, font-size));
+	        font-size: $font-size-temp;
+	      } @else if map-has-key($element-defs, fs) {
+	        $font-size-temp: rem-calc(map-get($element-defs, fs));
+	        font-size: $font-size-temp;
+	      }
+	      @if map-has-key($element-defs, line-height) {
+	        line-height: unitless-calc(map-get($element-defs, line-height), $font-size-temp);
+	      } @else if map-has-key($element-defs, lh) {
+	        line-height: unitless-calc(map-get($element-defs, lh), $font-size-temp);
+	      }
+	    }
+	  }
+}
+
+/**
+ * Mixin to calculate font size and line height (only) from the $typography-settings array
+ */
+@mixin typography-build(){
+	@each $size, $elements in $typography-settings {
+		@if $size == default {
+		  @include typography-loop($elements);
+		}
+		@else {
+			@include for-screen-min($size) {
+				@include typography-loop($elements);
+			}
+		}
+	}
+}
