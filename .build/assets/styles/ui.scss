@@ -15,7 +15,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> no output expected
 */
 @import "ui/_______settings/grid";
-@import "ui/_______settings/fonts";
+@import "ui/_______settings/typography";
 @import "ui/_______settings/boxshadow";
 @import "ui/_______settings/transition";
 /*
@@ -33,6 +33,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/______tools/mixins.spinner";
 @import "ui/______tools/mixins.grid";
 @import "ui/______tools/mixins.theme";
+@import "ui/______tools/mixins.typography";
 @import "ui/______tools/functions.color";
 /*
 >> GENERIC
@@ -50,8 +51,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 */
 @import "ui/____elements/document";
 @import "ui/____elements/forms";
-@import "ui/____elements/font";
-@import "ui/____elements/font-heading";
+@import "ui/____elements/typography";
 @import "ui/____elements/iframe";
 @import "ui/____elements/table";
 @import "ui/____elements/img";

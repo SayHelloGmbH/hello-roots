@@ -2,27 +2,19 @@
 html {
 	font-family: $font;
 	font-weight: normal;
-	font-size: 62.5%;
 }
 
-body {
-	font-size: $font-size;
-}
+@include typography-build;
 
-a,
-button {
+a, button {
 	color: c();
 	text-decoration: none;
 	@include transition();
 }
 
-p,
-tr,
-li,
-input {
+p, tr, li, input {
 
 	color: c();
-	line-height: 1.2;
 	margin: 0 0 0 0;
 
 	em {
@@ -35,18 +27,16 @@ input {
 	}
 
 	small {
-		font-size: $font-size-small;
+		font-size: $font-size-smaller;
 		display: inline-block;
 	}
 
-	&.big,
-	.big {
-		font-size: $font-size-large;
+	&.big, .big {
+		font-size: $font-size-larger;
 	}
 
-	sub,
-	sup {
-		font-size: 0.75em;
+	sub, sup {
+		font-size: $font-size-smaller;
 		line-height: 0;
 		position: relative;
 		vertical-align: baseline;
@@ -59,4 +49,8 @@ input {
 	sub {
 		bottom: -0.25em;
 	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: c(black, dark);
 }
