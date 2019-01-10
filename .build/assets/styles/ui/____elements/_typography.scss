@@ -7,7 +7,7 @@ html {
 @include typography-build;
 
 a, button {
-	color: c();
+	color: c(primary);
 	text-decoration: none;
 	@include transition();
 }
