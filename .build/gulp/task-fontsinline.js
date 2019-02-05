@@ -1,5 +1,8 @@
 /**
- * written by Nico Martin - mail@nicomartin.ch
+ * Written by Nico Martin - mail@nicomartin.ch
+ * Use normalized file names: name-weight-style.ttf
+ * e.g. lato-400-normal.ttf
+ * e.g. late-700-italic.ttf
  */
 
 import merge from 'merge-stream';
@@ -39,7 +42,7 @@ module.exports = function(key, config, gulp, $, errorLog) {
 					weight = 400;
 				} else if (fontElements[1].toLowerCase() === 'italic') {
 					weight = 400;
-					style = 'italc';
+					style = 'italic';
 				} else if (isNaN(weight)) {
 					for (let [num, w] of Object.entries(weights)) {
 						if (w === fontElements[1].toLowerCase()) {
