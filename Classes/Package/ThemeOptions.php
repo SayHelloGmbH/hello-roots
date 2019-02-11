@@ -8,23 +8,27 @@ namespace SayHello\Theme\Package;
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
 
-class ThemeOptions {
+class ThemeOptions
+{
 
 	public $main_slug = '';
 	public $general_slug = '';
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->main_slug = sht_theme()->prefix . '-settings';
 		$this->general_slug = $this->main_slug . '-general';
 	}
 
-	public function run() {
+	public function run()
+	{
 		add_action('acf/init', [$this, 'pageMain'], 1);
 		add_action('acf/init', [$this, 'pageGeneral']);
 		add_action('acf/init', [$this, 'optionsGeneral']);
 	}
 
-	public function pageMain() {
+	public function pageMain()
+	{
 
 		if (function_exists('acf_add_options_page')) {
 			acf_add_options_page(
@@ -37,7 +41,8 @@ class ThemeOptions {
 		}
 	}
 
-	public function pageGeneral() {
+	public function pageGeneral()
+	{
 		if (function_exists('acf_add_options_sub_page')) {
 			acf_add_options_sub_page(
 				[
@@ -51,14 +56,14 @@ class ThemeOptions {
 		}
 	}
 
-	public function optionsGeneral() {
+	public function optionsGeneral()
+	{
 
 		/**
 		 * Contact
 		 */
 
 		if (function_exists('acf_add_local_field_group')) {
-
 			$prefix = sht_theme()->prefix;
 
 			acf_add_local_field_group(
@@ -185,7 +190,6 @@ class ThemeOptions {
 					'menu_order' => 50,
 				]
 			);
-
 		}
 	}
 
@@ -202,7 +206,8 @@ class ThemeOptions {
 	 * @example echo all options with container sht_theme()->Options->getOptions( [], true, true );
 	 */
 
-	public function getOptions($args = [], $return = false, $container = false, $base_class = false) {
+	public function getOptions($args = [], $return = false, $container = false, $base_class = false)
+	{
 
 		// if $args is string, set string to first item of $args
 		if ('string' == gettype($args)) {
@@ -273,9 +278,8 @@ class ThemeOptions {
 		$field_key = 'field_' . sht_theme()->prefix . '-contact-';
 
 		foreach ($itemprops as $key => $itemprop) {
-
-			if (empty($args) || isset($args[$key])) {
-
+			// add all options or just the one in $args
+			if (empty($args) || in_array($key, $args)) {
 				$prop = isset($args[$key]['prop']) ? $args[$key]['prop'] : $itemprops[$key]['prop'];
 				$elem = isset($args[$key]['elem']) ? $args[$key]['elem'] : $itemprops[$key]['elem'];
 				$attr = isset($args[$key]['attr']) ? $args[$key]['attr'] : $itemprops[$key]['attr'];
@@ -293,14 +297,11 @@ class ThemeOptions {
 
 				// // if classes are enabled, check $string and generate BEM class
 				if ($base_class) {
-
 					// generate the bem class for the current item
 					$bem_class = $base_class . '__' . $key;
 
 					if (is_array($attr)) {
-
 						foreach ($attr as $name => $string) {
-
 							//check if $string contains 'class'
 							if (strpos($string, 'class') !== false) {
 								preg_match_all('/"(.*?)"/', $string, $matches);
@@ -318,33 +319,27 @@ class ThemeOptions {
 
 						// push new class attribute to array
 						array_push($attr, 'class="' . $bem_class . '"');
-
 					} else {
-
 						// set class attribute in array
 						$attr = ['class="' . $bem_class . '"'];
 					}
 				}
 
 				if (!empty($value) && !empty($elem)) {
-
 					// check if this items of $attr has value in curly braces
 					if (is_array($attr)) {
-
 						foreach ($attr as $name => $string) {
-
 							//var_dump( $value );
 							preg_match_all('/{(.*?)}/', $string, $matches);
 
 							// if has value in curly braces
 							if (!empty($matches[1])) {
-
 								// what to do for matches matching
 								switch ($matches[1][0]) {
-								case 'value':
-									$replace = str_replace('{' . $matches[1][0] . '}', $value, $attr[$name]);
-									//var_dump( $replace );
-									break;
+									case 'value':
+										$replace = str_replace('{' . $matches[1][0] . '}', $value, $attr[$name]);
+										//var_dump( $replace );
+										break;
 								}
 
 								// replace value from attr item
@@ -383,32 +378,31 @@ class ThemeOptions {
 		}
 
 		switch ($return) {
-		default:
-			// if $container is set to true, start with wrapper
+			default:
+				// if $container is set to true, start with wrapper
 
-			// generate class string
-			if ($base_class) {
-				$class = 'class="' . $base_class . '"';
-			} else {
-				$class = '';
-			}
+				// generate class string
+				if ($base_class) {
+					$class = 'class="' . $base_class . '"';
+				} else {
+					$class = '';
+				}
 
-			// QUESTION: this container is hardcoded. should it be customizable?
-			$html_output = ($container) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
+				// QUESTION: this container is hardcoded. should it be customizable?
+				$html_output = ($container) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
 
-			foreach ($output as $key => $value) {
-				$html_output .= $value['html'];
-			}
+				foreach ($output as $key => $value) {
+					$html_output .= $value['html'];
+				}
 
-			// if $container is set to true, end with wrapper
-			if ($container) {
-				$html_output .= '</address>';
-			}
+				// if $container is set to true, end with wrapper
+				if ($container) {
+					$html_output .= '</address>';
+				}
 
-			echo $html_output;
+				echo $html_output;
 
-			break;
+				break;
 		}
-
 	}
 }
