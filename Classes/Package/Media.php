@@ -7,9 +7,11 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Media {
+class Media
+{
 
-	public function run() {
+	public function run()
+	{
 	}
 
 	/**
@@ -21,7 +23,8 @@ class Media {
 	 *
 	 * @return bool
 	 */
-	public function isSVG($attachment_id) {
+	public function isSVG($attachment_id)
+	{
 		if ('attachment' !== get_post_type($attachment_id)) {
 			return false;
 		}
