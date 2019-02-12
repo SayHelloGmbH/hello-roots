@@ -19,9 +19,9 @@
 		<?php sht_logo();?>
 		<button class="header__menutoggler menutoggler menutoggler--primary" aria-controls="primary-menu" aria-expanded="false">
 			<?php
-				for ($i = 1; $i <= 3; $i++) {
-					echo "<span class='menutoggler__line menutoggler__line--$i'></span>";
-				}
+			for ($i = 1; $i <= 3; $i++) {
+				echo "<span class='menutoggler__line menutoggler__line--$i'></span>";
+			}
 			?>
 		</button>
 		<?php
@@ -32,7 +32,7 @@
 				'menu_class' => 'header__menu menu menu--primary',
 				'walker' => new NavWalker(),
 			]);
-		?>
+			?>
 	</header>
 </section>
 <?php do_action('sht_after_header');
