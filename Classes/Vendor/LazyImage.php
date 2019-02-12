@@ -2,8 +2,8 @@
 
 namespace SayHello\Theme\Vendor;
 
-class LazyImage {
-
+class LazyImage
+{
 	public $image_id = 0;
 	public $wp_size = '';
 	public $error = false;
@@ -22,7 +22,15 @@ class LazyImage {
 	public $ls_background = 'transparent';
 	public $ls_sizes = [];
 
-	public function __construct($image, $size) {
+	public function __construct($image, $size)
+	{
+		if (is_array($image)) {
+			$image = (int)$image['id'];
+		}
+
+		if (!$image) {
+			return;
+		}
 
 		$this->ls_transparent = apply_filters('lazy_sizes_transparent', $this->ls_transparent);
 		if ($this->ls_transparent) {
@@ -45,14 +53,15 @@ class LazyImage {
 	 * Setters
 	 */
 
-	private function set_image_id($image) {
+	private function set_image_id($image)
+	{
 		if ($this->error) {
 			return;
 		}
 
 		$post = get_post($image);
 		$this->image_id = isset($post->ID) ? $post->ID : 0;
-		if ('attachment' != get_post_type($this->image_id)) {
+		if ('attachment' !== get_post_type($this->image_id)) {
 			$this->error = 'Invalid Image ID';
 		} elseif (strpos(get_post_mime_type($this->image_id), 'image') !== 0) {
 			$this->error = 'Invalid Image mime type';
@@ -69,13 +78,14 @@ class LazyImage {
 		$this->image_full = wp_get_attachment_image_src($this->image_id, 'full');
 	}
 
-	private function set_wp_size($size) {
+	private function set_wp_size($size)
+	{
 		if ($this->error) {
 			return;
 		}
 
 		$check = $this->check_image_size($size);
-		if ('' != $check) {
+		if ('' !== $check) {
 			$this->error = $check;
 
 			return;
@@ -129,7 +139,6 @@ class LazyImage {
 		$this->image_srcset[$this->image_org[1]] = $this->image_org[0];
 
 		foreach ($this->get_ls_sizes() as $key => $width) {
-
 			if ($width > $this->image_org[1]) {
 				continue;
 			}
@@ -158,7 +167,8 @@ class LazyImage {
 		}
 	}
 
-	public function set_wrapper_class($class = '') {
+	public function set_wrapper_class($class = '')
+	{
 		if ($this->error) {
 			return;
 		}
@@ -166,7 +176,8 @@ class LazyImage {
 		$this->wrapper_class = $class;
 	}
 
-	public function set_attributes($attributes) {
+	public function set_attributes($attributes)
+	{
 		if ($this->error) {
 			return;
 		}
@@ -182,7 +193,8 @@ class LazyImage {
 	 * Getters
 	 */
 
-	public function get_image($background = false) {
+	public function get_image($background = false)
+	{
 		if ($this->error) {
 			return $this->error;
 		}
@@ -213,7 +225,7 @@ class LazyImage {
 		if ($this->is_svg) {
 			$class .= ' lazyimage--svg';
 		}
-		if ('' != $this->wrapper_class) {
+		if ('' !== $this->wrapper_class) {
 			$class .= " {$this->wrapper_class}";
 		}
 
@@ -244,7 +256,8 @@ class LazyImage {
 	 * Helpers
 	 */
 
-	private function check_image_size($size) {
+	private function check_image_size($size)
+	{
 		if ('full' == $size) {
 			return '';
 		} elseif (is_array($size) && 2 == count($size)) {
@@ -258,7 +271,8 @@ class LazyImage {
 		return '';
 	}
 
-	private function get_wp_image_sizes() {
+	private function get_wp_image_sizes()
+	{
 		global $_wp_additional_image_sizes;
 
 		$sizes = [];
@@ -280,8 +294,8 @@ class LazyImage {
 		return $sizes;
 	}
 
-	private function get_ls_sizes() {
-
+	private function get_ls_sizes()
+	{
 		$sizes = $this->ls_sizes;
 
 		foreach ($sizes as $key => $size) {
@@ -297,13 +311,14 @@ class LazyImage {
 		return $sizes;
 	}
 
-	private function generate_image($attach_id, $width, $height, $crop = false, $quality = false) {
+	private function generate_image($attach_id, $width, $height, $crop = false, $quality = false)
+	{
 
 		/**
 		 * wrong attachment id
 		 */
 
-		if ('attachment' != get_post_type($attach_id)) {
+		if ('attachment' !== get_post_type($attach_id)) {
 			return false;
 		}
 
@@ -402,8 +417,8 @@ class LazyImage {
 		return false;
 	}
 
-	private function generate_placeholder_image($width = 1, $height = 1, $color = 'transparent') {
-
+	private function generate_placeholder_image($width = 1, $height = 1, $color = 'transparent')
+	{
 		$width = intval($width);
 		$height = intval($height);
 
@@ -438,8 +453,9 @@ class LazyImage {
 		return false;
 	}
 
-	private function greatest_common_divisor($num1, $num2) {
-		while (0 != $num2) {
+	private function greatest_common_divisor($num1, $num2)
+	{
+		while (0 !== $num2) {
 			$t = $num1 % $num2;
 			$num1 = $num2;
 			$num2 = $t;
@@ -448,7 +464,8 @@ class LazyImage {
 		return $num1;
 	}
 
-	private function attributes() {
+	private function attributes()
+	{
 		if (!$this->image_id) {
 			return [];
 		}

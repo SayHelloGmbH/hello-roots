@@ -2,6 +2,8 @@
 
 namespace SayHello\Theme\Package;
 
+use SayHello\Theme\Vendor\LazyImage;
+
 /**
  * This Class provides advanced media loading possibilities via lazysizes.
  * Please make sure you included https://github.com/aFarkas/lazysizes/ so the images are loaded via JS.
@@ -10,21 +12,25 @@ namespace SayHello\Theme\Package;
  * @author Nico Martin <nico@sayhello.ch>
  */
 
-class Lazysizes {
+class Lazysizes
+{
 
 	public $init = false;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->init = true;
 	}
 
-	public function run() {
+	public function run()
+	{
 		add_action('wp_head', [$this, 'noscript_css'], 50);
 		add_action('sht_after_body_open', [$this, 'svg_filter'], 50000);
 		add_action('wp_enqueue_scripts', [$this, 'add_assets']);
 	}
 
-	public function noscript_css() {
+	public function noscript_css()
+	{
 		echo '<noscript>
 		<style type="text/css">
 			div.lazyimage__image--lazyload, img.lazyimage__image--lazyload {
@@ -34,7 +40,8 @@ class Lazysizes {
 		</noscript>';
 	}
 
-	public function svg_filter() {
+	public function svg_filter()
+	{
 		echo '<svg class="lazysizes-svgfilter">
 				<filter id="ls-sharp-blur">
 					<feGaussianBlur stdDeviation="10"></feGaussianBlur>
@@ -44,7 +51,8 @@ class Lazysizes {
 			</svg>';
 	}
 
-	public function add_assets() {
+	public function add_assets()
+	{
 		wp_enqueue_script('lazysizes', get_template_directory_uri() . '/assets/scripts/lazysizes.min.js', [], '3.0.0', true);
 		$data = '';
 		$data .= 'window.lazySizesConfig = window.lazySizesConfig || {};';
@@ -55,5 +63,25 @@ class Lazysizes {
 		//$data .= "function lazySizesFindParent (el) { while ((el = el.parentElement) && !el.classList.contains('lazyimage')); return el;}\n";
 
 		wp_add_inline_script('lazysizes', $data, 'after');
+	}
+
+	/**
+	 * returns an image
+	 *
+	 * @param  int|WP_Post $image post_object or post_id of an attachment
+	 * @param  string|array $size Image size. Accepts any valid image size, or an array of width and height values in pixels (in that order).
+	 * @param  string $class classes
+	 * @param  boolean $background if true, a div containing a background image will be reurned instead of the <img>
+	 * @param  array $attributes an array of additional attributes for the image
+	 *
+	 * @return string                image or background-image ready to be loaded via lazysizes
+	 */
+	public static function getLazyImage($image, $size, $class = '', $background = false, $attributes = [])
+	{
+		$image_object = new LazyImage($image, $size);
+		$image_object->set_wrapper_class($class);
+		$image_object->set_attributes($attributes);
+
+		return $image_object->get_image($background);
 	}
 }

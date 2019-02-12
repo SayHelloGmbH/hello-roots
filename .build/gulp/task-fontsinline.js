@@ -1,5 +1,9 @@
 /**
- * written by Nico Martin - mail@nicomartin.ch
+ * written by Nico Martin - hello@sayhello.ch
+ * Use normalized file names: name-weight-style.ttf
+ * e.g. lato-400-normal.ttf
+ * e.g. lato-400-italic.ttf
+ * e.g. lato-700-italic.ttf
  */
 
 import merge from 'merge-stream';
@@ -32,6 +36,7 @@ module.exports = function(key, config, gulp, $, errorLog) {
 				const fontElements = file[0].split('-');
 
 				const name = fontElements[0];
+
 				let weight = parseInt(fontElements[1]);
 				let style = 'normal';
 
@@ -39,7 +44,9 @@ module.exports = function(key, config, gulp, $, errorLog) {
 					weight = 400;
 				} else if (fontElements[1].toLowerCase() === 'italic') {
 					weight = 400;
-					style = 'italc';
+					style = 'italic';
+				} else if (typeof fontElements[2] !== 'undefined') {
+					style = fontElements[2];
 				} else if (isNaN(weight)) {
 					for (let [num, w] of Object.entries(weights)) {
 						if (w === fontElements[1].toLowerCase()) {
