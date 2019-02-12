@@ -3,7 +3,7 @@
 namespace SayHello\Theme\Package;
 
 /**
- * Ajax stuff
+ * Everything to do with images, videos etc
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
