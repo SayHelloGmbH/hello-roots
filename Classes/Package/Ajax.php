@@ -12,7 +12,7 @@ class Ajax {
 	public function run() {
 	}
 
-	public function exit($type, $msg, $add = []) {
+	public function send_response($type, $msg, $add = []) {
 
 		$return = [
 			'type' => $type,
