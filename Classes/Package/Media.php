@@ -9,11 +9,6 @@ namespace SayHello\Theme\Package;
  */
 class Media
 {
-
-	public function run()
-	{
-	}
-
 	/**
 	 * This function check if a given attachment ID is a svg or not
 	 *
