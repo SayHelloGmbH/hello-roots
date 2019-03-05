@@ -1,6 +1,6 @@
 {
     "name": "hello-theme",
-    "version": "0.0.0",
+    "version": "			0.0.1",
     "dependencies": {
         "jquery-easing": "0.0.1",
         "jquery.cookie": "^1.4.1",
