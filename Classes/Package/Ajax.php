@@ -7,6 +7,10 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
+class Ajax
+{
+	public function sendResponse($type, $msg, $add = [])
+	{
 
 		$return = [
 			'type' => $type,
