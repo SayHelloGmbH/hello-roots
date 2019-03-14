@@ -7,9 +7,11 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Language {
+class Language
+{
 
-	public function run() {
+	public function run()
+	{
 		add_action('after_setup_theme', [$this, 'loadTranslations']);
 	}
 
@@ -18,9 +20,9 @@ class Language {
 	 * Other files - stored in wp-content/languages - are loaded automatically.
 	 * @return void
 	 */
-	public function loadTranslations() {
+	public function loadTranslations()
+	{
 		load_theme_textdomain('sht', get_template_directory() . '/languages'); // Textdomain Frontend
 		load_theme_textdomain('sha', get_template_directory() . '/languages'); // Textdomain Admin
 	}
-
 }

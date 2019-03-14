@@ -7,14 +7,17 @@ namespace SayHello\Theme\Package;
  *
  * @author Nico Martin <nico@sayhello.ch>
  */
-class Error {
+class Error
+{
 
-	public function run() {
+	public function run()
+	{
 		// Third party plugin support
 		add_filter('hellolog_types', [$this, 'registerErrorLog'], 10, 1);
 	}
 
-	public function registerErrorLog($types) {
+	public function registerErrorLog($types)
+	{
 		$types['error'] = __('Error', 'sha');
 		return $types;
 	}
@@ -30,7 +33,8 @@ class Error {
 	 *
 	 * @return string             The error message
 	 */
-	public function get($error = '', $shown_text = '') {
+	public function get($error = '', $shown_text = '')
+	{
 
 		if (current_user_can('administrator') || current_user_can('dev')) {
 			$return_text = $error;

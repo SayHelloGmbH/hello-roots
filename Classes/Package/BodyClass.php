@@ -2,9 +2,11 @@
 
 namespace SayHello\Theme\Package;
 
-class Bodyclass {
+class Bodyclass
+{
 
-	public function run() {
+	public function run()
+	{
 		add_filter('body_class', [$this, 'bodyClasses'], 10, 1);
 	}
 
@@ -16,7 +18,8 @@ class Bodyclass {
 	 *
 	 * @return array Containing all necessary Classes
 	 */
-	public function bodyClasses(array $classes) {
+	public function bodyClasses(array $classes)
+	{
 		if (sht_theme()->debug) {
 			$classes[] = 'theme-dev';
 		}
