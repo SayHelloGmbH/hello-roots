@@ -7,11 +7,13 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Sidebars {
+class Sidebars
+{
 
 	private $sidebars;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->sidebars = [
 			[
 				'name' => __('Main sidebar', 'sht'),
@@ -25,21 +27,23 @@ class Sidebars {
 		];
 	}
 
-	public function run() {
+	public function run()
+	{
 		if (count($this->sidebars)) {
 			add_action('after_setup_theme', [$this, 'themeSupport']);
 			add_action('widgets_init', [$this, 'register']);
 		}
 	}
 
-	public function themeSupport() {
+	public function themeSupport()
+	{
 		add_theme_support('sidebars');
 	}
 
-	public function register() {
+	public function register()
+	{
 		foreach ($this->sidebars as $sidebar) {
 			register_sidebar($sidebar);
 		}
 	}
-
 }

@@ -2,12 +2,14 @@
 
 namespace SayHello\Theme\Package;
 
-class CustomPages {
+class CustomPages
+{
 
 	public $prefix = 'cp';
 	public $special_pages = '';
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->special_pages = [
 			'selfservice' => __('Self-Service', 'sha'),
 			'vzughome' => __('V-ZUG-Home', 'sha'),
@@ -17,7 +19,8 @@ class CustomPages {
 		];
 	}
 
-	public function run() {
+	public function run()
+	{
 
 		//Adds an options Page (ACF) if there are CPTs that have an Archive.
 		add_action('init', [$this, 'optionsPage'], 35);
@@ -35,10 +38,10 @@ class CustomPages {
 		add_filter('body_class', [$this, 'bodyClasses']);
 	}
 
-	public function optionsPage() {
+	public function optionsPage()
+	{
 
 		if (function_exists('acf_add_local_field') && function_exists('acf_add_options_sub_page') && function_exists('acf_add_local_field_group')) {
-
 			$options_slug = $this->prefix . '-settings';
 			$options_title = __('Custom Pages', 'sht');
 
@@ -92,7 +95,6 @@ class CustomPages {
 			$post_types = $this->getPosttypeItems();
 
 			if (!empty($post_types)) {
-
 				if (function_exists('acf_add_local_field')) {
 					acf_add_local_field([
 						'key' => 'field_page_for_x_title',
@@ -149,14 +151,13 @@ class CustomPages {
 		}
 	}
 
-	public function footerJs() {
+	public function footerJs()
+	{
 
 		if (function_exists('get_field')) {
-
 			$screen = get_current_screen();
 
 			if ('page' == $screen->id) {
-
 				$page_pt = false;
 				foreach ($this->getPosttypeItems() as $pt => $name) {
 					$field = get_field("page_for_$pt", 'options');
@@ -177,9 +178,7 @@ class CustomPages {
 				echo '$("#titlediv").append("<div class=\"notice notice-warning inline\" style=\"margin-top:20px;\"><p>' . addslashes($infotext) . '</p></div>");';
 				echo '});';
 				echo '</script>';
-
 			} elseif ('edit-page' == $screen->id) {
-
 				$items = array_merge($this->getPosttypeItems(), $this->getSpecialItems());
 
 				echo '<script id="sayhello_CustomPage">';
@@ -196,15 +195,14 @@ class CustomPages {
 
 				echo '});';
 				echo '</script>';
-
 			}
 		}
 	}
 
-	public function changePageslugToCptslug($post_id) {
+	public function changePageslugToCptslug($post_id)
+	{
 
 		if (!wp_is_post_revision($post_id)) {
-
 			//remove the hook to prevent from invinite loop
 			remove_action('save_post', [$this, 'changePageslugToCptslug']);
 
@@ -227,7 +225,8 @@ class CustomPages {
 		}
 	}
 
-	public function changePageslugToCptslugOnacf($post_id) {
+	public function changePageslugToCptslugOnacf($post_id)
+	{
 
 		if (empty($_POST['acf'])) {
 			return;
@@ -239,7 +238,6 @@ class CustomPages {
 
 		foreach ($posttypes as $pt) {
 			if (isset($_POST['acf']['page_for_' . $pt])) {
-
 				$assoc_pt_ob = get_post_type_object($pt);
 				$slug = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
 				if (strpos($slug, '/') !== false) {
@@ -251,7 +249,8 @@ class CustomPages {
 		}
 	}
 
-	public function archivePermalink($url, $post_id) {
+	public function archivePermalink($url, $post_id)
+	{
 		$assoc_pt = $this->getPosttypeForArchivePageid($post_id);
 		if (!$assoc_pt) {
 			return $url;
@@ -264,7 +263,8 @@ class CustomPages {
 	 * Helpers
 	 */
 
-	public function changeslug($post_id, $slug) {
+	public function changeslug($post_id, $slug)
+	{
 
 		$post_with_sameslug = get_page_by_path($slug);
 		if (!is_null($post_with_sameslug)) {
@@ -288,7 +288,8 @@ class CustomPages {
 		}
 	}
 
-	public function getPosttypeItems() {
+	public function getPosttypeItems()
+	{
 		$posttypes = get_post_types([
 			'_builtin' => false,
 		]);
@@ -305,11 +306,13 @@ class CustomPages {
 		return $post_types;
 	}
 
-	public function getSpecialItems() {
+	public function getSpecialItems()
+	{
 		return apply_filters('sht_special_pages', $this->special_pages);
 	}
 
-	public function getPosttypeForArchivePageid($post_id) {
+	public function getPosttypeForArchivePageid($post_id)
+	{
 		if (function_exists('get_field')) {
 			foreach (array_keys($this->getPosttypeItems()) as $key) {
 				$field = get_field("page_for_$key", 'options');
@@ -321,7 +324,8 @@ class CustomPages {
 		return false;
 	}
 
-	public function changeArchiveTitle($title) {
+	public function changeArchiveTitle($title)
+	{
 		if (function_exists('get_field')) {
 			if (!is_admin() && is_post_type_archive()) {
 				$post_type = get_query_var('post_type');
@@ -336,7 +340,8 @@ class CustomPages {
 		return $title;
 	}
 
-	public function bodyClasses($classes) {
+	public function bodyClasses($classes)
+	{
 		if (function_exists('get_field')) {
 			foreach (array_keys($this->special_pages) as $key) {
 				if (is_singular() && get_field("page_for_$key", 'option') == get_the_id()) {
