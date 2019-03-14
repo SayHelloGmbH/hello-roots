@@ -116,11 +116,14 @@ class Theme {
 	 *
 	 * @param $classes
 	 */
-	private function loadClasses($classes) {
+	private function loadClasses($classes)
+	{
 		foreach ($classes as $class) {
-			sht_theme()->$class = new $class();
-			if (method_exists(sht_theme()->$class, 'run')) {
-				sht_theme()->$class->run();
+			$class_parts = explode('\\', $class);
+			$class_short = end($class_parts);
+			sht_theme()->$class_short = new $class();
+			if (method_exists(sht_theme()->$class_short, 'run')) {
+				sht_theme()->$class_short->run();
 			}
 		}
 	}
