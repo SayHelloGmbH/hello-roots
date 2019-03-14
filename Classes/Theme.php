@@ -10,7 +10,8 @@ use SayHello\Theme\Package\Helpers;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Theme {
+class Theme
+{
 
 	/**
 	 * the instance of the object, used for singelton check
@@ -50,11 +51,13 @@ class Theme {
 
 	private $theme;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->theme = wp_get_theme();
 	}
 
-	public function run() {
+	public function run()
+	{
 		$this->loadClasses([
 			\SayHello\Theme\Package\Helpers::class,
 			\SayHello\Theme\Package\Adminbar::class,
@@ -91,10 +94,10 @@ class Theme {
 	 * then return the current instance.
 	 * @return object       The class instance.
 	 */
-	public static function get_instance() {
+	public static function getInstance()
+	{
 
 		if (!isset(self::$instance) && !(self::$instance instanceof Theme)) {
-
 			self::$instance = new Theme;
 
 			self::$instance->name = self::$instance->theme->name;
@@ -131,7 +134,8 @@ class Theme {
 	/**
 	 * Allow the Theme to use additional core features
 	 */
-	public function addThemeSupports() {
+	public function addThemeSupports()
+	{
 		add_theme_support('automatic-feed-links');
 		add_theme_support('custom-logo', [
 			'height' => 250,
@@ -148,14 +152,16 @@ class Theme {
 	/**
 	 * Add navigations
 	 */
-	public function addNavigations() {
+	public function addNavigations()
+	{
 		register_nav_menus([
 			'primary' => __('Primary Menu', 'sha'),
 			'footer' => __('Footer Menu', 'sha'),
 		]);
 	}
 
-	public function cleanHead() {
+	public function cleanHead()
+	{
 		remove_action('wp_head', 'wp_generator');
 		remove_action('wp_head', 'wlwmanifest_link');
 		remove_action('wp_head', 'rsd_link');
@@ -163,11 +169,13 @@ class Theme {
 		remove_action('wp_print_styles', 'print_emoji_styles');
 	}
 
-	public function humansTxt() {
+	public function humansTxt()
+	{
 		echo '<link type="text/plain" rel="author" href="' . trailingslashit(get_template_directory_uri()) . 'humans.txt" />';
 	}
 
-	public function setTimezone() {
+	public function setTimezone()
+	{
 		if (get_option('timezone_string') !== '') {
 			date_default_timezone_set(get_option('timezone_string'));
 		}
@@ -176,19 +184,23 @@ class Theme {
 	/**
 	 * Adds a JS script to the head that removes 'no-js' from the html class list
 	 */
-	public function noJsScript() {
+	public function noJsScript()
+	{
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 	}
 
 	/**
 	 * Checks if the browser supports css grid and adds "browser-outdated"-class to the html
 	 */
-	public function browserOutdatedScript() {
+	public function browserOutdatedScript()
+	{
 		echo "<script>(function(html){if(typeof document.createElement('div').style.grid !== 'string'){html.className = html.className + ' browser-outdated'}})(document.documentElement);</script>\n";
 	}
 
-	public function browserRequirements() {
-		printf('<noscript>
+	public function browserRequirements()
+	{
+		printf(
+			'<noscript>
 			<div class="browser-check browser-check--noscript">
 				<p>%1$s</p>
 			</div>

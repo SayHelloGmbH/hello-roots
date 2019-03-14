@@ -36,7 +36,7 @@ if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_
 	if (!function_exists('sht_theme')) {
 		function sht_theme()
 		{
-			return SayHello\Theme\Theme::get_instance();
+			return SayHello\Theme\Theme::getInstance();
 		}
 	}
 

@@ -24,12 +24,12 @@ class Lazysizes
 
 	public function run()
 	{
-		add_action('wp_head', [$this, 'noscript_css'], 50);
-		add_action('sht_after_body_open', [$this, 'svg_filter'], 50000);
-		add_action('wp_enqueue_scripts', [$this, 'add_assets']);
+		add_action('wp_head', [$this, 'noscriptCSS'], 50);
+		add_action('sht_after_body_open', [$this, 'svgFilter'], 50000);
+		add_action('wp_enqueue_scripts', [$this, 'addAssets']);
 	}
 
-	public function noscript_css()
+	public function noscriptCSS()
 	{
 		echo '<noscript>
 		<style type="text/css">
@@ -40,7 +40,7 @@ class Lazysizes
 		</noscript>';
 	}
 
-	public function svg_filter()
+	public function svgFilter()
 	{
 		echo '<svg class="lazysizes-svgfilter">
 				<filter id="ls-sharp-blur">
@@ -51,7 +51,7 @@ class Lazysizes
 			</svg>';
 	}
 
-	public function add_assets()
+	public function addAssets()
 	{
 		wp_enqueue_script('lazysizes', get_template_directory_uri() . '/assets/scripts/lazysizes.min.js', [], '3.0.0', true);
 		$data = '';

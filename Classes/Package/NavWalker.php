@@ -2,18 +2,21 @@
 
 namespace SayHello\Theme\Package;
 
-class NavWalker extends \Walker_Nav_Menu {
+class NavWalker extends \Walker_Nav_Menu
+{
 
 	public $css_base = 'menu';
 
-	public function __construct($base = '') {
+	public function __construct($base = '')
+	{
 
 		if ('' != $base) {
 			$this->css_base = $base;
 		}
 	}
 
-	public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+	public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output)
+	{
 
 		$id_field = $this->db_fields['id'];
 
@@ -24,7 +27,8 @@ class NavWalker extends \Walker_Nav_Menu {
 		return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 	}
 
-	public function start_lvl(&$output, $depth = 0, $args = array()) {
+	public function start_lvl(&$output, $depth = 0, $args = array())
+	{
 
 		$real_depth = $depth + 1;
 
@@ -39,9 +43,8 @@ class NavWalker extends \Walker_Nav_Menu {
 
 	// Add main/sub classes to li's and links
 
-	public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) {
-
-		global $wp_query;
+	public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
+	{
 
 		$indent = ($depth > 0 ? str_repeat('    ', $depth) : '');
 		$prefix = $this->css_base;

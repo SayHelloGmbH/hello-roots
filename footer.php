@@ -1,5 +1,6 @@
 <?php
 	use SayHello\Theme\Package\NavWalker;
+
 	do_action('sht_before_footer');
 ?>
 <section class="page-section" id="footer">
@@ -12,7 +13,7 @@
 				'menu_class' => 'footer__menu menu menu--footer',
 				'walker' => new NavWalker(),
 			]);
-		?>
+			?>
 	</footer>
 </section>
 <?php wp_footer();?>

@@ -10,10 +10,12 @@ use \WP_Customize_Upload_Control;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class LoginScreen {
+class LoginScreen
+{
 	public $wp_customize = null;
 
-	public function run() {
+	public function run()
+	{
 		if (class_exists('WP_Customize_Control')) {
 			add_action('customize_register', [$this, 'customSections']);
 		}
@@ -29,7 +31,8 @@ class LoginScreen {
 	 *
 	 * @return void
 	 */
-	public function customSections(\WP_Customize_Manager $wp_customize) {
+	public function customSections(\WP_Customize_Manager $wp_customize)
+	{
 		$this->wp_customize = $wp_customize;
 		if ($this->wp_customize) {
 			$this->wp_customize->add_section('theme_mods_loginpage', [
@@ -41,7 +44,8 @@ class LoginScreen {
 	}
 
 	// All settings for the login screen
-	public function settingsLogin() {
+	public function settingsLogin()
+	{
 		if ($this->wp_customize) {
 			// Company logo for the website
 			$this->wp_customize->add_setting('login_logo');
@@ -125,12 +129,14 @@ class LoginScreen {
 	}
 
 	// Make sure that the value is a boolean
-	public function sanitizeCheckbox($checked) {
+	public function sanitizeCheckbox($checked)
+	{
 		return ((isset($checked) && true == $checked) ? true : false);
 	}
 
 	// Make sure that the value is an absolute integer
-	public function sanitizeAbsint($number, $setting) {
+	public function sanitizeAbsint($number, $setting)
+	{
 		// Ensure $number is an absolute integer (whole number, zero or greater).
 		$number = absint($number);
 
@@ -140,7 +146,8 @@ class LoginScreen {
 
 	// Adds inline CSS to the login form page
 	// if the appropriate theme mods are set
-	public function customizeLoginForm() {
+	public function customizeLoginForm()
+	{
 		$theme_mods = get_theme_mods();
 
 		$css = [];
@@ -167,42 +174,46 @@ class LoginScreen {
 	}
 
 	// Customize the link on the login page logo
-	public function loginLogoUrl() {
+	public function loginLogoUrl()
+	{
 		return home_url();
 	}
 
 	// Customize the link title text on the login page logo
-	public function loginLogoTitle() {
+	public function loginLogoTitle()
+	{
 		return get_bloginfo('name');
 	}
 
 	// Calculate a semi-transparent RGBA colour value from a hex value
-	private static function boxshadow($hex) {
+	private static function boxshadow($hex)
+	{
 		return self::hex2rgba(str_replace('#', '#FF', $hex));
 	}
 
-	private static function hex2rgba($hex) {
+	private static function hex2rgba($hex)
+	{
 		$hex = str_replace("#", "", $hex);
 
 		switch (strlen($hex)) {
-		case 3:
-			$red = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
-			$green = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
-			$blue = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
-			$alpha = 1;
-			break;
-		case 6:
-			$red = hexdec(substr($hex, 0, 2));
-			$green = hexdec(substr($hex, 2, 2));
-			$blue = hexdec(substr($hex, 4, 2));
-			$alpha = 1;
-			break;
-		case 8:
-			$alpha = hexdec(substr($hex, 0, 2)) / 255;
-			$red = hexdec(substr($hex, 2, 2));
-			$green = hexdec(substr($hex, 4, 2));
-			$blue = hexdec(substr($hex, 6, 2));
-			break;
+			case 3:
+				$red = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+				$green = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+				$blue = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+				$alpha = 1;
+				break;
+			case 6:
+				$red = hexdec(substr($hex, 0, 2));
+				$green = hexdec(substr($hex, 2, 2));
+				$blue = hexdec(substr($hex, 4, 2));
+				$alpha = 1;
+				break;
+			case 8:
+				$alpha = hexdec(substr($hex, 0, 2)) / 255;
+				$red = hexdec(substr($hex, 2, 2));
+				$green = hexdec(substr($hex, 4, 2));
+				$blue = hexdec(substr($hex, 6, 2));
+				break;
 		}
 		$rgba = array($red, $green, $blue, $alpha);
 		return 'rgba(' . implode(', ', $rgba) . ')';

@@ -7,26 +7,30 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Assets {
+class Assets
+{
 
 	public $font_version = '1.0';
 	public $theme_url = '';
 	public $theme_path = '';
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->font_version = sht_theme()->version;
 		$this->theme_url = get_template_directory_uri();
 		$this->theme_path = get_template_directory();
 	}
 
-	public function run() {
+	public function run()
+	{
 		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
 		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
 		add_action('admin_init', [$this, 'editorStyle']);
 		add_action('wp_head', [$this, 'loadFonts']);
 	}
 
-	public function registerAssets() {
+	public function registerAssets()
+	{
 
 		if (!is_user_logged_in()) {
 			wp_deregister_style('dashicons');
@@ -82,7 +86,8 @@ class Assets {
 		wp_add_inline_script(sht_theme()->prefix . '-script', "var ThemeJSVars = {$vars};", 'before');
 	}
 
-	public function registerAdminAssets() {
+	public function registerAdminAssets()
+	{
 
 		$script_version = sht_theme()->version;
 
@@ -107,11 +112,13 @@ class Assets {
 		wp_add_inline_script(sht_theme()->prefix . '-admin-script', "var SayHelloVars = {$vars};", 'before');
 	}
 
-	public function editorStyle() {
+	public function editorStyle()
+	{
 		add_editor_style($this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 	}
 
-	public function loadFonts() {
+	public function loadFonts()
+	{
 
 		$fontver = $this->getSetting('theme_fontver');
 		if ($fontver) {
@@ -145,7 +152,8 @@ class Assets {
 	 *
 	 * @return string | bool
 	 */
-	public function getSetting($setting) {
+	public function getSetting($setting)
+	{
 		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
 		if (!is_file($path)) {
 			return false;
@@ -158,5 +166,4 @@ class Assets {
 
 		return $settings[$setting];
 	}
-
 }
