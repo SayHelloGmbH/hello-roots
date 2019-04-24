@@ -22,9 +22,9 @@ class Error {
 
 	/**
 	 * this function returns an error message. If the Plugin "Hello-Log" is active it saves the error and returns only the error code.
-	 * Usage: sht_theme()->Error->get();
-	 * Usage: sht_theme()->Error->get('Error text for developer');
-	 * Usage: sht_theme()->Error->get('Error text for developer', 'Error text for user');
+	 * Usage: sht_theme()->Package->Error->get();
+	 * Usage: sht_theme()->Package->Error->get('Error text for developer');
+	 * Usage: sht_theme()->Package->Error->get('Error text for developer', 'Error text for user');
 	 *
 	 * @param string $error      detailed error description
 	 * @param string $shown_text the error the not-logged-in user sees

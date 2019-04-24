@@ -122,17 +122,28 @@ class Theme {
 	}
 
 	/**
-	 * Loads and initializes the provided classes.
-	 *
-	 * @param $classes
-	 */
+		 * Loads and initializes the provided classes.
+		 *
+		 * @param $classes
+		 */
 	private function loadClasses( $classes ) {
 		foreach ( $classes as $class ) {
-			$class_parts              = explode( '\\', $class );
-			$class_short              = end( $class_parts );
-			sht_theme()->$class_short = new $class();
-			if ( method_exists( sht_theme()->$class_short, 'run' ) ) {
-				sht_theme()->$class_short->run();
+			$class_parts = explode( '\\', $class );
+			$class_short = end( $class_parts );
+			$class_set   = $class_parts[ count( $class_parts ) - 2 ];
+
+			if ( ! is_object( sht_theme()->$class_set ) ) {
+				sht_theme()->$class_set = new \stdClass();
+			}
+
+			if ( is_object( sht_theme()->$class_set->$class_short ) ) {
+				wp_die( sprintf( __( 'A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be assigned to the “%2$s” object in the Theme.', 'sht' ), $class_short, $class_set ), 500 );
+			}
+
+			sht_theme()->$class_set->$class_short = new $class();
+
+			if ( method_exists( sht_theme()->$class_set->$class_short, 'run' ) ) {
+				sht_theme()->$class_set->$class_short->run();
 			}
 		}
 	}

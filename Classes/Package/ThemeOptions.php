@@ -196,12 +196,12 @@ class ThemeOptions {
 	 * @param $container set to true to add container with itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"
 	 * @param $base_class set to true to use classes. you can specify your BEM class base as string
 	 *
-	 * @example return all options as array sht_theme()->Options->getOptions( );
-	 * @example return tel option as array sht_theme()->Options->getOptions( [ 'tel' ] );
-	 * @example echo all options with container sht_theme()->Options->getOptions( [], true, true );
+	 * @example return all options as array sht_theme()->Package->ThemeOptions->get( );
+	 * @example return tel option as array sht_theme()->Package->ThemeOptions->get( [ 'tel' ] );
+	 * @example echo all options with container sht_theme()->ThemeOptions->get( [], true, true );
 	 */
 
-	public function getOptions( $args = [], $return = false, $container = false, $base_class = false ) {
+	public function get( $args = [], $return = false, $container = false, $base_class = false ) {
 
 		// if $args is string, set string to first item of $args
 		if ( 'string' == gettype( $args ) ) {
