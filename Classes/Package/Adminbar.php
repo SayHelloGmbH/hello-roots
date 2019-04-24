@@ -7,29 +7,26 @@ namespace SayHello\Theme\Package;
  *
  * @author Joel Stüdle <joel@sayhello.ch>
  */
-class Adminbar
-{
+class Adminbar {
 
-	public function run()
-	{
-		add_action('get_header', [$this, 'removeAdminBarStyles']);
-		add_action('wp_head', [$this, 'customAdminBarStyles']);
+
+	public function run() {
+		add_action( 'get_header', [ $this, 'removeAdminBarStyles' ] );
+		add_action( 'wp_head', [ $this, 'customAdminBarStyles' ] );
 	}
 
 	/**
 	 * Removes admin bar styles
 	 */
-	public function removeAdminBarStyles()
-	{
-		remove_action('wp_head', '_admin_bar_bump_cb');
+	public function removeAdminBarStyles() {
+		remove_action( 'wp_head', '_admin_bar_bump_cb' );
 	}
 
 	/**
 	 * adds custom admin bar styles
 	 */
-	public function customAdminBarStyles()
-	{
-		if (is_user_logged_in()) {
+	public function customAdminBarStyles() {
+		if ( is_user_logged_in() ) {
 			echo '<style>
 			#wpadminbar {
 				top: -30px;

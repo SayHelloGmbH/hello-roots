@@ -7,39 +7,36 @@ namespace SayHello\Theme\Package;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Assets
-{
+class Assets {
+
 
 	public $font_version = '1.0';
-	public $theme_url = '';
-	public $theme_path = '';
+	public $theme_url    = '';
+	public $theme_path   = '';
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->font_version = sht_theme()->version;
-		$this->theme_url = get_template_directory_uri();
-		$this->theme_path = get_template_directory();
+		$this->theme_url    = get_template_directory_uri();
+		$this->theme_path   = get_template_directory();
 	}
 
-	public function run()
-	{
-		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
-		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
-		add_action('admin_init', [$this, 'editorStyle']);
-		add_action('wp_head', [$this, 'loadFonts']);
+	public function run() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'registerAssets' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'registerAdminAssets' ] );
+		add_action( 'admin_init', [ $this, 'editorStyle' ] );
+		add_action( 'wp_head', [ $this, 'loadFonts' ] );
 	}
 
-	public function registerAssets()
-	{
+	public function registerAssets() {
 
-		if (!is_user_logged_in()) {
-			wp_deregister_style('dashicons');
+		if ( ! is_user_logged_in() ) {
+			wp_deregister_style( 'dashicons' );
 		}
 
 		$script_version = sht_theme()->version;
 
 		$min = true;
-		if (sht_theme()->debug && is_user_logged_in()) {
+		if ( sht_theme()->debug && is_user_logged_in() ) {
 			$min = false;
 		}
 
@@ -47,95 +44,92 @@ class Assets
 		 * CSS
 		 */
 		$deps = [];
-		wp_enqueue_style('fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
+		wp_enqueue_style( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0' );
 		$deps[] = 'fancybox';
-		wp_enqueue_style('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.css', [], '2.0.10');
+		wp_enqueue_style( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.css', [], '2.0.10' );
 		$deps[] = 'flickity';
-		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, $script_version);
+		wp_enqueue_style( sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ( $min ? '.min' : '' ) . '.css', $deps, $script_version );
 
 		/**
 		 * Javascript
 		 */
 		$deps = [];
-		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true);
+		wp_deregister_script( 'jquery' );
+		wp_enqueue_script( 'jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true );
 		$deps[] = 'jquery';
 
-		if (file_exists($this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js')) {
-			wp_enqueue_script('ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true);
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js' ) ) {
+			wp_enqueue_script( 'ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true );
 			$deps[] = 'ui-modernizr';
 		}
 
-		wp_enqueue_script('fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
+		wp_enqueue_script( 'fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true );
 		$deps[] = 'fancybox';
-		wp_enqueue_script('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', ['jquery'], '3.2.1', true);
+		wp_enqueue_script( 'flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true );
 		$deps[] = 'flickity';
-		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js', $deps, $script_version, true);
+		wp_enqueue_script( sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ( $min ? '.min' : '' ) . '.js', $deps, $script_version, true );
 
 		/**
 		 * Footer JS
 		 */
 		$defaults = [
 			'GeneralError' => sht_theme()->error,
-			'AjaxURL' => admin_url('admin-ajax.php'),
-			'homeurl' => get_home_url(),
-			'templateurl' => get_template_directory_uri(),
+			'AjaxURL'      => admin_url( 'admin-ajax.php' ),
+			'homeurl'      => get_home_url(),
+			'templateurl'  => get_template_directory_uri(),
 		];
 
-		$vars = json_encode(apply_filters('sht_footer_js', $defaults));
-		wp_add_inline_script(sht_theme()->prefix . '-script', "var ThemeJSVars = {$vars};", 'before');
+		$vars = json_encode( apply_filters( 'sht_footer_js', $defaults ) );
+		wp_add_inline_script( sht_theme()->prefix . '-script', "var ThemeJSVars = {$vars};", 'before' );
 	}
 
-	public function registerAdminAssets()
-	{
+	public function registerAdminAssets() {
 
 		$script_version = sht_theme()->version;
 
-		if (file_exists($this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js')) {
-			wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true);
+		if ( file_exists( $this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js' ) ) {
+			wp_enqueue_script( sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true );
 		}
 
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [], $script_version);
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], $script_version, true);
+		wp_enqueue_style( sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.css', [], $script_version );
+		wp_enqueue_script( sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.js', [], $script_version, true );
 
 		/**
 		 * Admin Footer JS
 		 */
 		$defaults = [
 			'GeneralError' => sht_theme()->error,
-			'AjaxURL' => admin_url('admin-ajax.php'),
-			'homeurl' => get_home_url(),
-			'templateurl' => get_template_directory_uri(),
+			'AjaxURL'      => admin_url( 'admin-ajax.php' ),
+			'homeurl'      => get_home_url(),
+			'templateurl'  => get_template_directory_uri(),
 		];
 
-		$vars = json_encode(apply_filters('sht_admin_footer_js', $defaults));
-		wp_add_inline_script(sht_theme()->prefix . '-admin-script', "var SayHelloVars = {$vars};", 'before');
+		$vars = json_encode( apply_filters( 'sht_admin_footer_js', $defaults ) );
+		wp_add_inline_script( sht_theme()->prefix . '-admin-script', "var SayHelloVars = {$vars};", 'before' );
 	}
 
-	public function editorStyle()
-	{
-		add_editor_style($this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
+	public function editorStyle() {
+		add_editor_style( $this->theme_url . '/assets/styles/admin-editor' . ( sht_theme()->debug ? '' : '.min' ) . '.css' );
 	}
 
-	public function loadFonts()
-	{
+	public function loadFonts() {
 
-		$fontver = $this->getSetting('theme_fontver');
-		if ($fontver) {
+		$fontver = $this->getSetting( 'theme_fontver' );
+		if ( $fontver ) {
 			$this->font_version = $fontver;
 		}
 
-		$theme_url = str_replace(get_home_url(), '', get_template_directory_uri());
-		$font_name = sanitize_title(sht_theme()->name) . '-font-' . $this->font_version;
+		$theme_url = str_replace( get_home_url(), '', get_template_directory_uri() );
+		$font_name = sanitize_title( sht_theme()->name ) . '-font-' . $this->font_version;
 
 		$file = get_template_directory() . '/assets/scripts/loadfonts.min.js';
-		if (!file_exists($file)) {
+		if ( ! file_exists( $file ) ) {
 			echo 'loadfonts.min.js not found!';
 			die;
 		}
 
 		echo '<script id="loadFonts">';
-		echo file_get_contents($file);
+		echo file_get_contents( $file );
 		echo "loadFont('$font_name', '$theme_url/assets/fonts/fonts-woff.css', '$theme_url/assets/fonts/fonts-woff2.css');";
 		echo '</script>';
 		echo '<noscript>';
@@ -146,24 +140,23 @@ class Assets
 	/**
 	 * This function returns the settings value from assets/settings.js
 	 *
-	 * @since    0.1.0
+	 * @since 0.1.0
 	 *
 	 * @param string $setting settings key
 	 *
 	 * @return string | bool
 	 */
-	public function getSetting($setting)
-	{
-		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
-		if (!is_file($path)) {
+	public function getSetting( $setting ) {
+		$path = trailingslashit( get_template_directory() ) . 'assets/settings.json';
+		if ( ! is_file( $path ) ) {
 			return false;
 		}
 
-		$settings = json_decode(file_get_contents($path), true);
-		if (!array_key_exists($setting, $settings)) {
+		$settings = json_decode( file_get_contents( $path ), true );
+		if ( ! array_key_exists( $setting, $settings ) ) {
 			return false;
 		}
 
-		return $settings[$setting];
+		return $settings[ $setting ];
 	}
 }
