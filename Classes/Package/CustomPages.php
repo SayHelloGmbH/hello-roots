@@ -148,16 +148,16 @@ class CustomPages {
 			);
 
 			foreach ( $special_pages as $key => $name ) {
-					acf_add_local_field(
-						[
-							'key'     => "field_page_for_$key",
-							'name'    => "page_for_$key",
-							'label'   => sprintf( _x( 'Page for "%s"', 'Page for "Search"', 'sha' ), $name ),
-							'type'    => 'select',
-							'parent'  => $this->prefix . '-cp-group',
-							'choices' => $possible_pages,
-						]
-					);
+				acf_add_local_field(
+					[
+						'key'     => "field_page_for_$key",
+						'name'    => "page_for_$key",
+						'label'   => sprintf( _x( 'Page for "%s"', 'Page for "Search"', 'sha' ), $name ),
+						'type'    => 'select',
+						'parent'  => $this->prefix . '-cp-group',
+						'choices' => $possible_pages,
+					]
+				);
 			}
 		}
 	}
@@ -264,8 +264,8 @@ class CustomPages {
 	}
 
 	/**
-	 Helpers
-*/
+	* Helpers
+	*/
 
 	public function changeslug( $post_id, $slug ) {
 
