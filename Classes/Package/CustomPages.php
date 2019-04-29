@@ -10,7 +10,7 @@ class CustomPages {
 	public function __construct() {
 		$this->special_pages = [
 			'contact'   => __( 'Kontakt', 'sha' ),
-			'search'    => __( 'Search', 'sha' ),
+			'search'    => __( 'Suche', 'sha' ),
 			'404_error' => __( '404 Error', 'sha' ),
 		];
 	}
