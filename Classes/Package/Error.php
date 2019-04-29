@@ -7,16 +7,18 @@ namespace SayHello\Theme\Package;
  *
  * @author Nico Martin <nico@sayhello.ch>
  */
-class Error {
+class Error
+{
 
-
-	public function run() {
+	public function run()
+	{
 		// Third party plugin support
-		add_filter( 'hellolog_types', [ $this, 'registerErrorLog' ], 10, 1 );
+		add_filter('hellolog_types', [ $this, 'registerErrorLog' ], 10, 1);
 	}
 
-	public function registerErrorLog( $types ) {
-		$types['error'] = __( 'Error', 'sha' );
+	public function registerErrorLog($types)
+	{
+		$types['error'] = __('Error', 'sha');
 		return $types;
 	}
 
@@ -31,24 +33,25 @@ class Error {
 	 *
 	 * @return string             The error message
 	 */
-	public function get( $error = '', $shown_text = '' ) {
+	public function get($error = '', $shown_text = '')
+	{
 
-		if ( current_user_can( 'administrator' ) || current_user_can( 'dev' ) ) {
+		if (current_user_can('administrator') || current_user_can('dev')) {
 			$return_text = $error;
-		} elseif ( '' == $shown_text ) {
+		} elseif ('' == $shown_text) {
 			$return_text = sht_theme()->error;
 		} else {
 			$return_text = $shown_text;
 		}
 
-		if ( '' == $return_text ) {
+		if ('' == $return_text) {
 			$return_text = sht_theme()->error;
 		}
 
-		if ( function_exists( 'hellolog_register_log' ) ) {
-			$code = hellolog_register_log( 'error', $error, debug_backtrace() );
+		if (function_exists('hellolog_register_log')) {
+			$code = hellolog_register_log('error', $error, debug_backtrace());
 
-			return $return_text . ' (' . __( 'ErrorCode', 'sht' ) . ': ' . $code . ')';
+			return $return_text . ' (' . __('ErrorCode', 'sht') . ': ' . $code . ')';
 		} else {
 			return $return_text;
 		}
