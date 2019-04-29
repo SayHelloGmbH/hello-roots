@@ -11,7 +11,7 @@ class CustomPages {
 		$this->special_pages = [
 			'contact'   => __( 'Kontakt', 'sha' ),
 			'search'    => __( 'Suche', 'sha' ),
-			'404_error' => __( '404 Error', 'sha' ),
+			'404_error' => __( '404-Fehler', 'sha' ),
 		];
 	}
 
