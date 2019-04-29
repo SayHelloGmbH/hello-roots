@@ -9,7 +9,8 @@ use enshrined\svgSanitize\Sanitizer;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class SVG {
+class SVG
+{
 
 
 	/**
@@ -18,11 +19,12 @@ class SVG {
 	 *
 	 * @return void
 	 */
-	public function run() {
-		add_filter( 'upload_mimes', array( $this, 'allowSvgUpload' ) );
-		add_filter( 'wp_handle_upload_prefilter', array( $this, 'sanitizeSvg' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'addSvgStyles' ) );
-		add_filter( 'wp_get_attachment_image_src', [ $this, 'fixWpGetAttachmentImageSvg' ], 10, 3 );
+	public function run()
+	{
+		add_filter('upload_mimes', array( $this, 'allowSvgUpload' ));
+		add_filter('wp_handle_upload_prefilter', array( $this, 'sanitizeSvg' ));
+		add_action('admin_enqueue_scripts', array( $this, 'addSvgStyles' ));
+		add_filter('wp_get_attachment_image_src', [ $this, 'fixWpGetAttachmentImageSvg' ], 10, 3);
 	}
 
 	/**
@@ -30,8 +32,9 @@ class SVG {
 	 *
 	 * @return void
 	 */
-	public function addSvgStyles() {
-		wp_add_inline_style( 'wp-admin', "img.attachment-80x60[src$='.svg'] { width: 100%; height: auto; }" );
+	public function addSvgStyles()
+	{
+		wp_add_inline_style('wp-admin', "img.attachment-80x60[src$='.svg'] { width: 100%; height: auto; }");
 	}
 
 	/**
@@ -40,7 +43,8 @@ class SVG {
 	 * @param  Array $mimeTypes Allowed mime types.
 	 * @return Array             Allowed mime types with SVGs.
 	 */
-	public function allowSvgUpload( $mimeTypes ) {
+	public function allowSvgUpload($mimeTypes)
+	{
 		$mimeTypes['svg'] = 'image/svg+xml';
 
 		return $mimeTypes;
@@ -54,20 +58,21 @@ class SVG {
 	 * @param  Array $file Uploaded file.
 	 * @return Array        Cleaned file if type is SVG.
 	 */
-	public function sanitizeSvg( $file ) {
-		if ( $file['type'] == 'image/svg+xml' ) {
+	public function sanitizeSvg($file)
+	{
+		if ($file['type'] == 'image/svg+xml') {
 			$sanitizer    = new Sanitizer();
-			$dirtySVG     = file_get_contents( $file['tmp_name'] );
-			$sanitizedSvg = $sanitizer->sanitize( $dirtySVG );
+			$dirtySVG     = file_get_contents($file['tmp_name']);
+			$sanitizedSvg = $sanitizer->sanitize($dirtySVG);
 
 			global $wp_filesystem;
-			$credentials = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
-			if ( ! WP_Filesystem( $credentials ) ) {
-				request_filesystem_credentials( site_url() . '/wp-admin/', '', true, false, null );
+			$credentials = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, array());
+			if (! WP_Filesystem($credentials)) {
+				request_filesystem_credentials(site_url() . '/wp-admin/', '', true, false, null);
 			}
 
 			// Using the filesystem API provided by WordPress, we replace the contents of the temporary file and then let the process continue as normal.
-			$wp_filesystem->put_contents( $file['tmp_name'], $sanitizedSvg, FS_CHMOD_FILE );
+			$wp_filesystem->put_contents($file['tmp_name'], $sanitizedSvg, FS_CHMOD_FILE);
 		}
 
 		return $file;
@@ -83,32 +88,34 @@ class SVG {
 	 *
 	 * @return string          <i ...><svg ...></svg></i>
 	 */
-	public function getIcon( $icon, $classes = [] ) {
+	public function getIcon($icon, $classes = [])
+	{
 
 		$path_min = get_template_directory() . "/assets/img/icons/$icon.min.svg";
 		$path     = get_template_directory() . "/assets/img/icons/$icon.svg";
 
-		$classes = array_merge( [ 'hello-icon' ], $classes );
+		$classes = array_merge([ 'hello-icon' ], $classes);
 
-		if ( file_exists( $path_min ) ) {
-			return '<i class="' . implode( ' ', $classes ) . '">' . file_get_contents( $path_min ) . '</i>';
-		} elseif ( file_exists( $path ) ) {
-			return '<i class="' . implode( ' ', $classes ) . '">' . file_get_contents( $path ) . '</i>';
+		if (file_exists($path_min)) {
+			return '<i class="' . implode(' ', $classes) . '">' . file_get_contents($path_min) . '</i>';
+		} elseif (file_exists($path)) {
+			return '<i class="' . implode(' ', $classes) . '">' . file_get_contents($path) . '</i>';
 		} else {
 			return 'icon not found ' . $path_min . ' / ' . $path;
 		}
 	}
 
-	public function fixWpGetAttachmentImageSvg( $image, $attachment_id, $size ) {
-		if ( is_array( $image ) && preg_match( '/\.svg$/i', $image[0] ) && $image[1] <= 1 ) {
-			if ( is_array( $size ) ) {
+	public function fixWpGetAttachmentImageSvg($image, $attachment_id, $size)
+	{
+		if (is_array($image) && preg_match('/\.svg$/i', $image[0]) && $image[1] <= 1) {
+			if (is_array($size)) {
 				$image[1] = $size[0];
 				$image[2] = $size[1];
-			} elseif ( ( $xml = simplexml_load_file( $image[0] ) ) !== false ) {
+			} elseif (( $xml = simplexml_load_file($image[0]) ) !== false) {
 				$attr     = $xml->attributes();
-				$viewbox  = explode( ' ', $attr->viewBox );
-				$image[1] = isset( $attr->width ) && preg_match( '/\d+/', $attr->width, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[2] : null );
-				$image[2] = isset( $attr->height ) && preg_match( '/\d+/', $attr->height, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[3] : null );
+				$viewbox  = explode(' ', $attr->viewBox);
+				$image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : ( count($viewbox) == 4 ? (int) $viewbox[2] : null );
+				$image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : ( count($viewbox) == 4 ? (int) $viewbox[3] : null );
 			} else {
 				$image[1] = null;
 				$image[2] = null;
