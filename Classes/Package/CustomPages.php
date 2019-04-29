@@ -194,7 +194,7 @@ class CustomPages {
 					if ( get_post_type_object( $key ) ) {
 						$class    = 'notice notice-warning';
 						$infotext = sprintf(
-							__( 'Du bearbeitest gerade die Seite, die als Übersicht über "%s" definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha' ),
+							__( 'Du bearbeitest gerade die Seite, die als Übersicht über «%s» definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha' ),
 							"<b>{$name}</b>"
 						);
 							printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $infotext );
