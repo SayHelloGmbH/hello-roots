@@ -13,7 +13,7 @@
 		<p>
 			<?php
 			// translators: published at %1$1s and by %2$2s
-			printf( __( 'published at %1$1s by %2$2s', 'sht' ), get_the_date(), '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>' );
+			printf(__('published at %1$1s by %2$2s', 'sht'), get_the_date(), '<a href="' . get_author_posts_url(get_the_author_meta('ID')) . '">' . get_the_author() . '</a>');
 			?>
 		</p>
 	</footer>

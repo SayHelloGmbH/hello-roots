@@ -1,7 +1,7 @@
 <?php
 	use SayHello\Theme\Package\NavWalker;
 
-	do_action( 'sht_before_footer' );
+	do_action('sht_before_footer');
 ?>
 <section class="page-section" id="footer">
 	<footer class="footer" role="contentinfo">

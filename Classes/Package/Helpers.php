@@ -9,12 +9,13 @@ use SayHello\Theme\Vendor\LazyImage;
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
-class Helpers {
+class Helpers
+{
 
-
-	public static function dump( $var, $exit = false ) {
-		echo '<pre>' . print_r( $var, true ) . '</pre>';
-		if ( $exit ) {
+	public static function dump($var, $exit = false)
+	{
+		echo '<pre>' . print_r($var, true) . '</pre>';
+		if ($exit) {
 			exit;
 		}
 	}
@@ -25,19 +26,20 @@ class Helpers {
 	 * @param  string $number The legible phone number
 	 * @return string         The usable tel: link
 	 */
-	public static function telephoneUrl( $number ) {
+	public static function telephoneUrl($number)
+	{
 		$nationalprefix  = '+41';
 		$protocol        = 'tel:';
 		$formattedNumber = $number;
-		if ( $formattedNumber !== '' ) {
+		if ($formattedNumber !== '') {
 			// add national dialing code prefix to tel: link if it's not already set
-			if ( strpos( $formattedNumber, '00' ) !== 0 && strpos( $formattedNumber, '0800' ) !== 0 && strpos( $formattedNumber, '+' ) !== 0 && strpos( $formattedNumber, $nationalprefix ) !== 0 ) {
-				$formattedNumber = preg_replace( '/^0/', $nationalprefix, $formattedNumber );
+			if (strpos($formattedNumber, '00') !== 0 && strpos($formattedNumber, '0800') !== 0 && strpos($formattedNumber, '+') !== 0 && strpos($formattedNumber, $nationalprefix) !== 0) {
+				$formattedNumber = preg_replace('/^0/', $nationalprefix, $formattedNumber);
 			}
 		}
-		$formattedNumber = str_replace( '(0)', '', $formattedNumber );
-		$formattedNumber = preg_replace( '~[^0-9\+]~', '', $formattedNumber );
-		$formattedNumber = trim( $formattedNumber );
+		$formattedNumber = str_replace('(0)', '', $formattedNumber);
+		$formattedNumber = preg_replace('~[^0-9\+]~', '', $formattedNumber);
+		$formattedNumber = trim($formattedNumber);
 		return $protocol . $formattedNumber;
 	}
 }
