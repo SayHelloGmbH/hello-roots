@@ -77,26 +77,6 @@ class CustomPages
 				]
 			);
 
-			$possible_pages = [
-				0 => 'select..',
-			];
-
-			$pages = get_pages(
-				[
-					'numberposts' => -1,
-				]
-			);
-
-			foreach ($pages as $page) {
-				$pretitle = '';
-				$parents  = get_post_ancestors($page);
-				foreach ($parents as $parent) {
-					$pretitle .= '- ';
-				}
-
-				$possible_pages[ $page->ID ] = $pretitle . get_the_title($page->ID);
-			}
-
 			$post_types = $this->getPosttypeItems();
 
 			if (! empty($post_types)) {
@@ -148,7 +128,7 @@ class CustomPages
 						'parent'  => $this->prefix . '-cp-group',
 					]
 				);
-			} // End if().
+			}
 
 			$special_pages = $this->getSpecialItems();
 
