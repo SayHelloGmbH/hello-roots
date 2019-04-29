@@ -4,26 +4,25 @@ namespace SayHello\Theme\Package;
 
 class CustomPages {
 
-
 	public $prefix        = 'cp';
 	public $special_pages = '';
 
 	public function __construct() {
 		$this->special_pages = [
-			'selfservice' => __( 'Self-Service', 'sha' ),
-			'vzughome'    => __( 'V-ZUG-Home', 'sha' ),
-			'contact'     => __( 'Kontakt', 'sha' ),
-			'search'      => __( 'Search', 'sha' ),
-			'404'         => __( '404 Error', 'sha' ),
+			'contact'   => __( 'Kontakt', 'sha' ),
+			'search'    => __( 'Suche', 'sha' ),
+			'404_error' => __( '404-Fehler', 'sha' ),
 		];
 	}
 
 	public function run() {
-
 		//Adds an options Page (ACF) if there are CPTs that have an Archive.
 		add_action( 'init', [ $this, 'optionsPage' ], 35 );
-		//Adds some JS to the footer for a proper Archivepage Styling
-		add_action( 'admin_footer', [ $this, 'footerJs' ] );
+
+		//Adds a page-state to the page-list and show a message on edit Archivepage for a proper Archivepage Styling
+		add_action( 'display_post_states', [ $this, 'pageState' ], 10, 2 );
+		add_action( 'admin_notices', [ $this, 'editPageNotification' ] );
+
 		//Update slug on save
 		add_action( 'save_post', [ $this, 'changePageslugToCptslug' ] );
 		add_action( 'acf/save_post', [ $this, 'changePageslugToCptslugOnacf' ], 1 );
@@ -37,7 +36,6 @@ class CustomPages {
 	}
 
 	public function optionsPage() {
-
 		if ( function_exists( 'acf_add_local_field' ) && function_exists( 'acf_add_options_sub_page' ) && function_exists( 'acf_add_local_field_group' ) ) {
 			$options_slug  = $this->prefix . '-settings';
 			$options_title = __( 'Custom Pages', 'sht' );
@@ -86,13 +84,13 @@ class CustomPages {
 			);
 
 			foreach ( $pages as $page ) {
-				   $pretitle = '';
-				   $parents  = get_post_ancestors( $page );
+					$pretitle = '';
+					$parents  = get_post_ancestors( $page );
 				foreach ( $parents as $parent ) {
 					$pretitle .= '- ';
 				}
 
-				   $possible_pages[ $page->ID ] = $pretitle . get_the_title( $page->ID );
+					$possible_pages[ $page->ID ] = $pretitle . get_the_title( $page->ID );
 			}
 
 			$post_types = $this->getPosttypeItems();
@@ -164,49 +162,44 @@ class CustomPages {
 		}
 	}
 
-	public function footerJs() {
+	public function pageState( $post_states, $post ) {
 
 		if ( function_exists( 'get_field' ) ) {
-			$screen = get_current_screen();
+			$items = array_merge( $this->getPosttypeItems(), $this->getSpecialItems() );
 
-			if ( 'page' == $screen->id ) {
-				$page_pt = false;
-				foreach ( $this->getPosttypeItems() as $pt => $name ) {
-					$field = get_field( "page_for_$pt", 'options' );
-					if ( $field && $field == $_GET['post'] ) {
-						$page_pt = $name;
+			foreach ( $items as $key => $name ) {
+				$page_id = get_field( "page_for_$key", 'options' );
+
+				if ( intval( $page_id ) == $post->ID ) {
+					if ( get_post_type_object( $key ) ) {
+						$post_states[] = sprintf( __( 'Archivseite für «%s»', 'sha' ), $name );
+					} else {
+						$post_states[] = sprintf( __( 'Seite für «%s»', 'sha' ), $name );
 					}
 				}
+			}
+		}
 
-				if ( ! $page_pt ) {
-					return;
-				}
+		return $post_states;
+	}
 
-				// translators: Du bearbeitest gerade die Seite, die als Übersicht über "Posts" definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.
-				$infotext = sprintf( __( 'Du bearbeitest gerade die Seite, die als Übersicht über "%s" definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha' ), "<b>{$page_pt}</b>" );
+	public function editPageNotification() {
+		if ( function_exists( 'get_field' ) ) {
+			$items = array_merge( $this->getPosttypeItems(), $this->getSpecialItems() );
 
-				echo '<script id="sayhello_CustomPage">';
-				echo 'jQuery(function($){';
-				echo '$("#titlediv").append("<div class=\"notice notice-warning inline\" style=\"margin-top:20px;\"><p>' . addslashes( $infotext ) . '</p></div>");';
-				echo '});';
-				echo '</script>';
-			} elseif ( 'edit-page' == $screen->id ) {
-				$items = array_merge( $this->getPosttypeItems(), $this->getSpecialItems() );
+			foreach ( $items as $key => $name ) {
+				$page_id = get_field( "page_for_$key", 'options' );
 
-				echo '<script id="sayhello_CustomPage">';
-				echo "jQuery(function($){\n";
-
-				foreach ( $items as $key => $name ) {
-					$page_id = get_field( "page_for_$key", 'options' );
-					if ( 'page' == get_post_type( $page_id ) ) {
-						// translators: "Posts" Page
-						$text = sprintf( __( '"%s" Page', 'sha' ), $name );
-						echo "$('tbody#the-list tr#post-$page_id td.title strong').append(' — <span class=\"post-state\">$text</ span>');\n";
+				if ( intval( $page_id ) == get_the_ID() ) {
+					if ( get_post_type_object( $key ) ) {
+						$class    = 'notice notice-warning';
+						$infotext = sprintf(
+							__( 'Du bearbeitest gerade die Seite, die als Übersicht über «%s» definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha' ),
+							"<strong>{$name}</strong>"
+						);
+							printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $infotext );
 					}
 				}
-
-				echo '});';
-				echo '</script>';
 			}
 		}
 	}
@@ -271,8 +264,8 @@ class CustomPages {
 	}
 
 	/**
-	 * Helpers
-	 */
+	* Helpers
+	*/
 
 	public function changeslug( $post_id, $slug ) {
 
