@@ -88,13 +88,13 @@ class CustomPages
 			);
 
 			foreach ($pages as $page) {
-					$pretitle = '';
-					$parents  = get_post_ancestors($page);
+				$pretitle = '';
+				$parents  = get_post_ancestors($page);
 				foreach ($parents as $parent) {
 					$pretitle .= '- ';
 				}
 
-					$possible_pages[ $page->ID ] = $pretitle . get_the_title($page->ID);
+				$possible_pages[ $page->ID ] = $pretitle . get_the_title($page->ID);
 			}
 
 			$post_types = $this->getPosttypeItems();
@@ -112,15 +112,30 @@ class CustomPages
 					);
 				}
 
-				foreach ($post_types as $pt => $name) {
+				foreach ($post_types as $key => $name) {
 					acf_add_local_field(
 						[
-							'key'     => 'field_page_for_' . $pt,
-							'name'    => 'page_for_' . $pt,
-							'label'   => $name . ' Archiv',
-							'type'    => 'select',
-							'parent'  => $this->prefix . '-cp-group',
-							'choices' => $possible_pages,
+							'key'               => 'field_page_for_' . $key,
+							'name'              => 'page_for_' . $key,
+							'label'             => sprintf(_x('Archiv-Seite für «%s»', '“Custom Post Type” archive', 'sha'), $name),
+							'parent'            => $this->prefix . '-cp-group',
+							'type'              => 'post_object',
+							'instructions'      => sprintf(__('Eine Seite auswählen, die als Archivansicht für den Custom Post Type «%s» dienen soll.', 'sha'), $name),
+							'required'          => 0,
+							'conditional_logic' => 0,
+							'wrapper'           => [
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							],
+							'post_type'         => [
+								'post'
+							],
+							'taxonomy'          => '',
+							'allow_null'        => 0,
+							'multiple'          => 0,
+							'return_format'     => 'object',
+							'ui'                => 1,
 						]
 					);
 				}
@@ -129,7 +144,7 @@ class CustomPages
 					[
 						'key'     => $this->prefix . '-cp-group-message-none',
 						'type'    => 'message',
-						'message' => __('Es existieren keine custom Post-Types bein denen has_archive und publicly_queryable auf true gesetzt sind.', 'sha'),
+						'message' => __('Es existieren keine custom Post-Types bei denen «has_archive» und «publicly_queryable» auf true gesetzt sind.', 'sha'),
 						'parent'  => $this->prefix . '-cp-group',
 					]
 				);
@@ -154,12 +169,27 @@ class CustomPages
 			foreach ($special_pages as $key => $name) {
 				acf_add_local_field(
 					[
-						'key'     => "field_page_for_$key",
-						'name'    => "page_for_$key",
-						'label'   => sprintf(_x('Page for "%s"', 'Page for "Search"', 'sha'), $name),
-						'type'    => 'select',
-						'parent'  => $this->prefix . '-cp-group',
-						'choices' => $possible_pages,
+						'key'               => 'field_page_for_' . $key,
+						'name'              => 'page_for_' . $key,
+						'label'             => sprintf(_x('«%s»-Seite', 'Page for "Search"', 'sha'), $name),
+						'parent'            => $this->prefix . '-cp-group',
+						'type'              => 'post_object',
+						'instructions'      => sprintf(__('Eine Seite auswählen, die für die Frontend-Seite «%s» dienen soll.', 'sha'), $name),
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'post_type'         => [
+							'post'
+						],
+						'taxonomy'          => '',
+						'allow_null'        => 0,
+						'multiple'          => 0,
+						'return_format'     => 'object',
+						'ui'                => 1,
 					]
 				);
 			}
