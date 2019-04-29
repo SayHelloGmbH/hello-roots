@@ -172,7 +172,7 @@ class CustomPages {
 
 				if ( intval( $page_id ) == $post->ID ) {
 					if ( get_post_type_object( $key ) ) {
-						$post_states[] = sprintf( __( 'Archive Page for "%s"', 'sha' ), $name );
+						$post_states[] = sprintf( __( 'Archivseite für «%s»', 'sha' ), $name );
 					} else {
 						$post_states[] = sprintf( __( 'Page for "%s"', 'sha' ), $name );
 					}
