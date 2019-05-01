@@ -30,10 +30,6 @@ if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_
 	require_once 'vendor/autoload.php';
 	require_once 'inc/funcs-basic.php';
 
-	if (! isset($content_width)) {
-		$content_width = 660;
-	}
-
 	/**
 	 * Returns the Theme Instance
 	 *

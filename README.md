@@ -44,6 +44,10 @@ $ npm start
 
 ## Feature overview
 
+### Content width
+
+WordPress loads content at an appropriate size - e.g. responsive images or external video embeds - using the `$content_width` variable. This should be modified for your project based on the standard width of a content element in the single blog post view. The definition is in the `Theme` class and can either be modified directly or via the filter `sht/content_width`.
+
 ### settings.json
 
 There are shared settings between css and js Files which are stored inside `assets/settings.json`. You can import them into any js module (`import * as settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
@@ -56,7 +60,7 @@ The Class `classes/class-themeassets.php` enqueues them directly.
 
 ### Scripts
 
-This theme uses es6 modules which are converted to es5 using babel and bundled using webpack. For example: All `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`. 
+This theme uses es6 modules which are converted to es5 using babel and bundled using webpack. For example: All `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
 
 The Class `classes/class-themeassets.php` enqueues them directly.
 
