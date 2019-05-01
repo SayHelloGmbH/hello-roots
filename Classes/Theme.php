@@ -86,6 +86,7 @@ class Theme
 
 		add_action('after_setup_theme', [ $this, 'addNavigations' ]);
 		add_action('after_setup_theme', [ $this, 'addThemeSupports' ]);
+		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 
 		add_action('wp_head', [ $this, 'noJsScript' ]);
 		add_action('wp_head', [ $this, 'browserOutdatedScript' ]);
@@ -148,6 +149,14 @@ class Theme
 				sht_theme()->{$class_set}->{$class_short}->run();
 			}
 		}
+	}
+
+	/**
+	 * Set the content width based on the theme's design and stylesheet
+	 */
+	public function contentWidth()
+	{
+		$GLOBALS['content_width'] = apply_filters('sht/content_width', 640);
 	}
 
 	/**
