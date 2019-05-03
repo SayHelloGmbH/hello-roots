@@ -15,7 +15,7 @@ if (! function_exists('sht_get_logo')) {
 
 		if ($custom_logo_id) {
 			$html = sprintf('<a href="%1$s" class="logo header__logo" rel="home" itemprop="url">', esc_url(home_url('/')));
-			if (sht_is_svg($custom_logo_id)) {
+			if (sht_theme()->Package->SVG->isSVG($custom_logo_id)) {
 				$atts = '';
 				foreach ($custom_logo_attr as $name => $value) {
 					$atts .= " $name=" . '"' . $value . '"';
