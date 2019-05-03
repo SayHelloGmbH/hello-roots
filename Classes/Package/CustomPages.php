@@ -13,7 +13,7 @@ class CustomPages
 		$this->special_pages = [
 			'contact'   => __('Kontakt', 'sha'),
 			'search'    => __('Suche', 'sha'),
-			'404_error' => __('404-Fehler', 'sha'),
+			'404-error' => __('404-Fehler', 'sha'),
 		];
 	}
 
@@ -109,7 +109,7 @@ class CustomPages
 								'id'    => '',
 							],
 							'post_type'         => [
-								'post'
+								'page'
 							],
 							'taxonomy'          => '',
 							'allow_null'        => 0,
@@ -163,7 +163,7 @@ class CustomPages
 							'id'    => '',
 						],
 						'post_type'         => [
-							'post'
+							'page'
 						],
 						'taxonomy'          => '',
 						'allow_null'        => 0,
@@ -183,13 +183,15 @@ class CustomPages
 			$items = array_merge($this->getPosttypeItems(), $this->getSpecialItems());
 
 			foreach ($items as $key => $name) {
-				$page_id = get_field("page_for_$key", 'options');
+				$page = get_field("page_for_$key", 'options');
 
-				if (intval($page_id) == $post->ID) {
-					if (get_post_type_object($key)) {
-						$post_states[] = sprintf(__('Archivseite für «%s»', 'sha'), $name);
-					} else {
-						$post_states[] = sprintf(__('Seite für «%s»', 'sha'), $name);
+				if (isset($page->ID)) {
+					if (intval($page->ID) == $post->ID) {
+						if (get_post_type_object($key)) {
+							$post_states[] = sprintf(__('Archivseite für «%s»', 'sha'), $name);
+						} else {
+							$post_states[] = sprintf(__('Seite für «%s»', 'sha'), $name);
+						}
 					}
 				}
 			}
@@ -204,16 +206,18 @@ class CustomPages
 			$items = array_merge($this->getPosttypeItems(), $this->getSpecialItems());
 
 			foreach ($items as $key => $name) {
-				$page_id = get_field("page_for_$key", 'options');
+				$page = get_field("page_for_$key", 'options');
 
-				if (intval($page_id) == get_the_ID()) {
-					if (get_post_type_object($key)) {
-						$class    = 'notice notice-warning';
-						$infotext = sprintf(
-							__('Du bearbeitest gerade die Seite, die als Übersicht über «%s» definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha'),
-							"<strong>{$name}</strong>"
-						);
-							printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $infotext);
+				if (isset($page->ID)) {
+					if (intval($page->ID) == get_the_ID()) {
+						if (get_post_type_object($key)) {
+							$class    = 'notice notice-warning';
+							$infotext = sprintf(
+								__('Du bearbeitest gerade die Seite, die als Übersicht über «%s» definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha'),
+								"<strong>{$name}</strong>"
+							);
+								printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $infotext);
+						}
 					}
 				}
 			}
@@ -347,8 +351,11 @@ class CustomPages
 		if (function_exists('get_field')) {
 			foreach (array_keys($this->getPosttypeItems()) as $key) {
 				$field = get_field("page_for_$key", 'options');
-				if ($field && $post_id == $field) {
-					return $key;
+
+				if (isset($field->ID)) {
+					if ($field->ID && $post_id == $field->ID) {
+						return $key;
+					}
 				}
 			}
 		}
@@ -374,9 +381,27 @@ class CustomPages
 	public function bodyClasses($classes)
 	{
 		if (function_exists('get_field')) {
-			foreach (array_keys($this->special_pages) as $key) {
-				if (is_singular() && get_field("page_for_$key", 'option') == get_the_id()) {
-					$classes[] = "page-special--$key";
+			$items = array_merge($this->getPosttypeItems(), $this->getSpecialItems());
+
+			foreach ($items as $key => $name) {
+				$page = get_field("page_for_$key", 'options');
+
+
+				if (isset($page->ID)) {
+					// if is singular page/post
+					if (is_singular() && intval($page->ID) == get_the_ID()) {
+						$classes[] = "page-special--$key";
+					}
+
+					// if is archive
+					if (is_archive()) {
+						$archive = get_page_by_title(get_the_archive_title());
+						if (isset($archive->ID)) {
+							if ($page->ID == $archive->ID) {
+								$classes[] = "page-special--$key";
+							}
+						}
+					}
 				}
 			}
 		}
