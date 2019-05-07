@@ -1,7 +1,6 @@
-.menutoggler {
+.c-menutoggler {
 	display: none;
-
-	@include mobile() {
+	@include desktop {
 		display: block;
 	}
 
@@ -33,7 +32,7 @@
 	}
 
 	&[aria-expanded="true"] {
-		.menutoggler__line {
+		.c-menutoggler__line {
 			&--1 {
 				top: 50%;
 				transform: translateY(-50%) rotate(45deg);

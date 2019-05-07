@@ -31,8 +31,6 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/______tools/mixins.ellipsis";
 @import "ui/______tools/mixins.breakpoints";
 @import "ui/______tools/mixins.spinner";
-@import "ui/______tools/mixins.grid";
-@import "ui/______tools/mixins.theme";
 @import "ui/______tools/mixins.typography";
 @import "ui/______tools/functions.color";
 /*
@@ -43,11 +41,10 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/_____generic/normalize";
 @import "ui/_____generic/resets";
 @import "ui/_____generic/button";
-@import "ui/_____generic/a11y";
 @import "ui/_____generic/keyframes.spinner";
 /*
 >> ELEMENTS
->> styling for bare HTML elements (like H1, A, etc.) 
+>> styling for bare HTML elements (like H1, A, etc.)
 */
 @import "ui/____elements/document";
 @import "ui/____elements/forms";
@@ -61,31 +58,22 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> OBJECTS
 >> class-based selectors which define undecorated design patterns, for example media object known from OOCSS
 */
-@import "ui/___objects/hidden";
 @import "ui/___objects/button";
 @import "ui/___objects/hello-icon";
-@import "ui/___objects/css-loaded";
-@import "ui/___objects/theme-dev";
-@import "ui/___objects/browser-check";
 @import "ui/___objects/lazyimage";
 /*
 >> COMPONENTS
 >> specific UI components
 */
+@import "ui/__components/browser-check";
 @import "ui/__components/header";
 @import "ui/__components/menu";
 @import "ui/__components/menutoggler";
-@import "ui/__components/page-section";
 @import "ui/__components/content-section";
 @import "ui/__components/footer";
-/*
->>> Templates
- */
-@import "ui/__components/wp-postcontent";
-@import "ui/__components/wp-gallery";
-@import "ui/__components/wp-images";
-
 /*
 >> TRUMPS
 >> utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
 */
+@import "ui/_trumps/a11y";
+@import "ui/_trumps/theme-dev";

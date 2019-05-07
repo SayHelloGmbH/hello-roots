@@ -219,7 +219,7 @@ class Theme
 	 */
 	public function noJsScript()
 	{
-		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+		echo "<script>(function(html){html.className = html.className.replace(/\bbrowser--no-js\b/,'js')})(document.documentElement);</script>\n";
 	}
 
 	/**
@@ -227,18 +227,18 @@ class Theme
 	 */
 	public function browserOutdatedScript()
 	{
-		echo "<script>(function(html){if(typeof document.createElement('div').style.grid !== 'string'){html.className = html.className + ' browser-outdated'}})(document.documentElement);</script>\n";
+		echo "<script>(function(html){if(typeof document.createElement('div').style.grid !== 'string'){html.className = html.className + ' browser--outdated'}})(document.documentElement);</script>\n";
 	}
 
 	public function browserRequirements()
 	{
 		printf(
 			'<noscript>
-			<div class="browser-check browser-check--noscript">
+			<div class="c-browser-check c-browser-check--noscript">
 				<p>%1$s</p>
 			</div>
 		</noscript>
-		<div class="browser-check browser-check--outdated">
+		<div class="c-browser-check c-browser-check--outdated">
 			<p>%2$s;</p>
 		</div>',
 			__('JavaScript seems to be disabled. Some functionalities might not work correctly.', 'sht'),

@@ -1,3 +1,7 @@
+/**
+ * Define the font sizes and line heights here.
+ * Other definitions will be ignored, so don't bother ;)
+ */
 .button.delete {
   color: #a00;
   background-color: transparent !important;

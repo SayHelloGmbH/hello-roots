@@ -97,7 +97,7 @@ class SVG
 		$path_min = get_template_directory() . "/assets/img/icons/$icon.min.svg";
 		$path     = get_template_directory() . "/assets/img/icons/$icon.svg";
 
-		$classes = array_merge([ 'hello-icon' ], $classes);
+		$classes = array_merge([ 'o-hello-icon' ], $classes);
 
 		if (file_exists($path_min)) {
 			return '<i class="' . implode(' ', $classes) . '">' . file_get_contents($path_min) . '</i>';

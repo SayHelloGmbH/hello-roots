@@ -63,52 +63,51 @@ $global-font-size: 16px !default;
 /// @return {Number} - Unitless number
 @function unitless-calc($value, $base: null) {
 
-  // If no base is defined, defer to the global font size
-  @if $base == null {
-    $base: $global-font-size;
-  }
+	// If no base is defined, defer to the global font size
+	@if $base == null {
+		$base: $global-font-size;
+	}
 
-  // First, lets convert our $base to pixels
+	// First, lets convert our $base to pixels
 
-  // If the base font size is a %, then multiply it by 16px
-  @if unit($base) == '%' {
-    $base: ($base / 100%) * 16px;
-  }
+	// If the base font size is a %, then multiply it by 16px
+	@if unit($base) == '%' {
+		$base: ($base / 100%) * 16px;
+	}
 
-  @if unit($base) == 'rem' {
-    $base: strip-unit($base) * 16px;
-  }
+	@if unit($base) == 'rem' {
+		$base: strip-unit($base) * 16px;
+	}
 
-  @if unit($base) == 'em' {
-    $base: strip-unit($base) * 16px;
-  }
+	@if unit($base) == 'em' {
+		$base: strip-unit($base) * 16px;
+	}
 
-  // Now let's convert our value to pixels too
-  @if unit($value) == '%' {
-    $value: ($value / 100%) * $base;
-  }
+	// Now let's convert our value to pixels too
+	@if unit($value) == '%' {
+		$value: ($value / 100%) * $base;
+	}
 
-  @if unit($value) == 'rem' {
-    $value: strip-unit($value) * $base;
-  }
+	@if unit($value) == 'rem' {
+		$value: strip-unit($value) * $base;
+	}
 
-  @if unit($value) == 'em' {
-    $value: strip-unit($value) * $base;
-  }
+	@if unit($value) == 'em' {
+		$value: strip-unit($value) * $base;
+	}
 
-  // 'px'
-  @if unit($value) == 'px' {
-    @return strip-unit($value) / strip-unit($base);
-  }
+	// 'px'
+	@if unit($value) == 'px' {
+		@return strip-unit($value) / strip-unit($base);
+	}
 
-  // assume that line-heights greater than 10 are meant to be absolute in 'px'
-  @if unitless($value) and ($value > 10) {
-    @return $value / strip-unit($base);
-  }
+	// assume that line-heights greater than 10 are meant to be absolute in 'px'
+	@if unitless($value) and ($value > 10) {
+		@return $value / strip-unit($base);
+	}
 
-  @return $value;
+	@return $value;
 }
-
 
 // AV letter spacing measurement convertor from Adobe applications
 // https://scotch.io/tutorials/converting-photoshop-letter-spacing-to-css
@@ -116,37 +115,35 @@ $global-font-size: 16px !default;
 	letter-spacing: ($size / 1000) * 1em;
 }
 
-
-@mixin typography-loop($elements){
+@mixin typography-loop($elements) {
 	@each $element, $element-defs in $elements {
-	    $font-size-temp: 1rem;
-	    #{$element} {
+		$font-size-temp: 1rem;
+		#{$element} {
 
-	      @if map-has-key($element-defs, font-size) {
-	        $font-size-temp: rem-calc(map-get($element-defs, font-size));
-	        font-size: $font-size-temp;
-	      } @else if map-has-key($element-defs, fs) {
-	        $font-size-temp: rem-calc(map-get($element-defs, fs));
-	        font-size: $font-size-temp;
-	      }
-	      @if map-has-key($element-defs, line-height) {
-	        line-height: unitless-calc(map-get($element-defs, line-height), $font-size-temp);
-	      } @else if map-has-key($element-defs, lh) {
-	        line-height: unitless-calc(map-get($element-defs, lh), $font-size-temp);
-	      }
-	    }
-	  }
+			@if map-has-key($element-defs, font-size) {
+				$font-size-temp: rem-calc(map-get($element-defs, font-size));
+				font-size: $font-size-temp;
+			} @else if map-has-key($element-defs, fs) {
+				$font-size-temp: rem-calc(map-get($element-defs, fs));
+				font-size: $font-size-temp;
+			}
+			@if map-has-key($element-defs, line-height) {
+				line-height: unitless-calc(map-get($element-defs, line-height), $font-size-temp);
+			} @else if map-has-key($element-defs, lh) {
+				line-height: unitless-calc(map-get($element-defs, lh), $font-size-temp);
+			}
+		}
+	}
 }
 
 /**
  * Mixin to calculate font size and line height (only) from the $typography-settings array
  */
-@mixin typography-build(){
+@mixin typography-build() {
 	@each $size, $elements in $typography-settings {
 		@if $size == default {
-		  @include typography-loop($elements);
-		}
-		@else {
+			@include typography-loop($elements);
+		} @else {
 			@include for-screen-min($size) {
 				@include typography-loop($elements);
 			}

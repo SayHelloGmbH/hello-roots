@@ -4,7 +4,7 @@ use SayHello\Theme\Package\NavWalker;
 
 ?>
 	<!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="browser--no-js">
 	<!-- Custom Design and Developement by -->
 	<!-- Say Hello GmbH - https://sayhello.ch -->
 	<head>

@@ -219,15 +219,15 @@ class LazyImage
 
 		$return = '';
 
-		$class = 'lazyimage';
+		$class = 'o-lazyimage';
 		if ($this->ls_transparent) {
-			$class .= ' lazyimage--transparent';
+			$class .= ' o-lazyimage--transparent';
 		}
 		if ($background) {
-			$class .= ' lazyimage--background';
+			$class .= ' o-lazyimage--background';
 		}
 		if ($this->is_svg) {
-			$class .= ' lazyimage--svg';
+			$class .= ' o-lazyimage--svg';
 		}
 		if ('' !== $this->wrapper_class) {
 			$class .= " {$this->wrapper_class}";
@@ -240,15 +240,15 @@ class LazyImage
 		$return .= "<figure class='{$class}' style='background-color: {$this->ls_background}'>";
 		if ($background) {
 			if (! $this->ls_transparent && ! $this->is_svg) {
-				$return .= "<div class='lazyimage__preview' style='background-image: url($this->image_pre_src);'></div>";
+				$return .= "<div class='o-lazyimage__preview' style='background-image: url($this->image_pre_src);'></div>";
 			}
-			$return .= "<div {$atts} class='lazyimage__image lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
+			$return .= "<div {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
 			$return .= "<noscript><div {$atts} style='background-image: url({$this->image_org[0]})'></div></noscript>";
 		} else {
 			if (! $this->ls_transparent && ! $this->is_svg) {
-				$return .= "<img class='lazyimage__preview' src='{$this->image_pre_src}'/>";
+				$return .= "<img class='o-lazyimage__preview' src='{$this->image_pre_src}'/>";
 			}
-			$return .= "<img {$atts} class='lazyimage__image lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
+			$return .= "<img {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
 			$return .= "<noscript><img {$atts} src='{$this->image_org[0]}' srcset='$srcset'/></noscript>";
 		}
 		$return .= '</figure>';
