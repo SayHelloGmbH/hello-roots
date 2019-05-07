@@ -1,11 +1,9 @@
 @charset "UTF-8";
 @import "../../../assets/settings.json";
-
 //Settings aus ITCSS
 @import "ui/_______settings/grid";
 @import "ui/_______settings/typography";
 @import "ui/_______settings/boxshadow";
 @import "ui/_______settings/transition";
 @import "ui/______tools/functions.color";
-
 @import "admin/button";

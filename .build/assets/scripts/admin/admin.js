@@ -1,8 +1,4 @@
-(function($, theme) {
-
-	$(function() {
-
-		console.log("Hello Theme init");
+(function ($, theme) {
+	$(function () {
 	});
-
 })(jQuery, SayHelloVars);

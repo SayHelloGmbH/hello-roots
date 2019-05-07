@@ -193,7 +193,7 @@ var theme = exports.theme = themeObject;
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = {"theme_colors":{"black":{"base":"#1d1d1b","dark":"#000","light":"#ddd"},"white":{"base":"#fff"},"blue":{"base":"#77adbf"}},"theme_breakpoints":{"phone":330,"tablet":600,"tablet_landscape":900,"desktop":1280},"easing_speed":200,"easing_speed_fast":100,"easing_speed_slow":400,"easing_bezier":[0.455,0.03,0.515,0.955],"theme_fontver":4}
+module.exports = {"theme_colors":{"primary":{"base":"#77adbf"},"black":{"base":"#1d1d1b","dark":"#000","light":"#ddd"},"white":{"base":"#fff"}},"theme_breakpoints":{"phone":330,"tablet":600,"tablet_landscape":900,"desktop":1280},"easing_speed":200,"easing_speed_fast":100,"easing_speed_slow":400,"easing_bezier":[0.455,0.03,0.515,0.955],"theme_fontver":4}
 
 /***/ }),
 /* 6 */
@@ -448,57 +448,57 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * Provided under the FreeBSD license: https://github.com/rdallasgray/bez/blob/master/LICENSE.txt
  */
 (function (factory) {
-    if (( false ? "undefined" : _typeof(exports)) === "object") {
-        factory(__webpack_require__(0));
-    } else if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+	if (( false ? "undefined" : _typeof(exports)) === "object") {
+		factory(__webpack_require__(0));
+	} else if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-    } else {
-        factory(jQuery);
-    }
+	} else {
+		factory(jQuery);
+	}
 })(function ($) {
-    $.extend({
-        bez: function bez(encodedFuncName, coOrdArray) {
-            if ($.isArray(encodedFuncName)) {
-                coOrdArray = encodedFuncName;
-                encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
-            }
-            if (typeof $.easing[encodedFuncName] !== "function") {
-                var polyBez = function polyBez(p1, p2) {
-                    var A = [null, null],
-                        B = [null, null],
-                        C = [null, null],
-                        bezCoOrd = function bezCoOrd(t, ax) {
-                        C[ax] = 3 * p1[ax], B[ax] = 3 * (p2[ax] - p1[ax]) - C[ax], A[ax] = 1 - C[ax] - B[ax];
-                        return t * (C[ax] + t * (B[ax] + t * A[ax]));
-                    },
-                        xDeriv = function xDeriv(t) {
-                        return C[0] + t * (2 * B[0] + 3 * A[0] * t);
-                    },
-                        xForT = function xForT(t) {
-                        var x = t,
-                            i = 0,
-                            z;
-                        while (++i < 14) {
-                            z = bezCoOrd(x, 0) - t;
-                            if (Math.abs(z) < 1e-3) break;
-                            x -= z / xDeriv(x);
-                        }
-                        return x;
-                    };
-                    return function (t) {
-                        return bezCoOrd(xForT(t), 1);
-                    };
-                };
-                $.easing[encodedFuncName] = function (x, t, b, c, d) {
-                    return c * polyBez([coOrdArray[0], coOrdArray[1]], [coOrdArray[2], coOrdArray[3]])(t / d) + b;
-                };
-            }
-            return encodedFuncName;
-        }
-    });
+	$.extend({
+		bez: function bez(encodedFuncName, coOrdArray) {
+			if ($.isArray(encodedFuncName)) {
+				coOrdArray = encodedFuncName;
+				encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
+			}
+			if (typeof $.easing[encodedFuncName] !== "function") {
+				var polyBez = function polyBez(p1, p2) {
+					var A = [null, null],
+					    B = [null, null],
+					    C = [null, null],
+					    bezCoOrd = function bezCoOrd(t, ax) {
+						C[ax] = 3 * p1[ax], B[ax] = 3 * (p2[ax] - p1[ax]) - C[ax], A[ax] = 1 - C[ax] - B[ax];
+						return t * (C[ax] + t * (B[ax] + t * A[ax]));
+					},
+					    xDeriv = function xDeriv(t) {
+						return C[0] + t * (2 * B[0] + 3 * A[0] * t);
+					},
+					    xForT = function xForT(t) {
+						var x = t,
+						    i = 0,
+						    z;
+						while (++i < 14) {
+							z = bezCoOrd(x, 0) - t;
+							if (Math.abs(z) < 1e-3) break;
+							x -= z / xDeriv(x);
+						}
+						return x;
+					};
+					return function (t) {
+						return bezCoOrd(xForT(t), 1);
+					};
+				};
+				$.easing[encodedFuncName] = function (x, t, b, c, d) {
+					return c * polyBez([coOrdArray[0], coOrdArray[1]], [coOrdArray[2], coOrdArray[3]])(t / d) + b;
+				};
+			}
+			return encodedFuncName;
+		}
+	});
 });
 
 /***/ }),

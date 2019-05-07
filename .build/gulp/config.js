@@ -28,8 +28,7 @@ export const config = {
 	scripts: {
 		subtasks: [
 			'ui',
-			'admin',
-			'tinymce'
+			'admin'
 		],
 		args: {
 			base: `${assetsDir}scripts/`,
