@@ -19,10 +19,10 @@ class NavWalker extends \Walker_Nav_Menu
 	public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output)
 	{
 
-		$id_field = $this->db_fields['id'];
+		$id_field = $this->db_fields[ 'id' ];
 
-		if (is_object($args[0])) {
-			$args[0]->has_children = ! empty($children_elements[ $element->$id_field ]);
+		if (is_object($args[ 0 ])) {
+			$args[ 0 ]->has_children = ! empty($children_elements[ $element->$id_field ]);
 		}
 
 		return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
@@ -39,7 +39,7 @@ class NavWalker extends \Walker_Nav_Menu
 			"{$prefix}",
 			"{$prefix}--level-{$real_depth}",
 		];
-		$output .= "\n" . $indent . '<ul class="' . implode(' ', $classes) . '">' . "\n";
+		$output  .= "\n" . $indent . '<ul class="' . implode(' ', $classes) . '">' . "\n";
 	}
 
 	// Add main/sub classes to li's and links
@@ -47,44 +47,44 @@ class NavWalker extends \Walker_Nav_Menu
 	public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
 	{
 
-		$indent = ( $depth > 0 ? str_repeat('    ', $depth) : '' );
+		$indent = ($depth > 0 ? str_repeat('    ', $depth) : '');
 		$prefix = $this->css_base;
 
 		/**
 		 * Item
 		 */
 
-		$item_classes               = [];
-		$item_classes['item_class'] = "{$prefix}__item";
+		$item_classes                 = [];
+		$item_classes[ 'item_class' ] = "{$prefix}__item";
 		if (is_object($args) && $args->has_children) {
-			$item_classes['parent_class'] = "{$prefix}__item--has-children";
+			$item_classes[ 'parent_class' ] = "{$prefix}__item--has-children";
 		}
 		if (isset($item->classes)) {
 			if (in_array('current-menu-item', $item->classes)) {
-				$item_classes['active_page_class'] = "{$prefix}__item--active";
+				$item_classes[ 'active_page_class' ] = "{$prefix}__item--active";
 			}
 			if (in_array('current-menu-parent', $item->classes)) {
-				$item_classes['active_parent_class'] = "{$prefix}__item--parent-active";
+				$item_classes[ 'active_parent_class' ] = "{$prefix}__item--parent-active";
 			}
 			if (in_array('current-menu-ancestor', $item->classes)) {
-				$item_classes['active_ancestor_class'] = "{$prefix}__item--ancestor-active";
+				$item_classes[ 'active_ancestor_class' ] = "{$prefix}__item--ancestor-active";
 			}
-			if ('' !== $item->classes[0]) {
-				$item_classes['user_class'] = $item->classes[0];
+			if ('' !== $item->classes[ 0 ]) {
+				$item_classes[ 'user_class' ] = $item->classes[ 0 ];
 			}
 		}
 
 		// Attributes
-		$item_attributes       = [];
-		$item_attributes['id'] = $prefix . '-item-' . $item->object_id;
+		$item_attributes         = [];
+		$item_attributes[ 'id' ] = $prefix . '-item-' . $item->object_id;
 		if (! empty($item_classes)) {
-			$item_attributes['class'] = implode(' ', $item_classes);
+			$item_attributes[ 'class' ] = implode(' ', $item_classes);
 		}
 
 		array_walk($item_attributes, 'esc_attr');
 
 		// Markup
-		$item_markup  = $indent;
+		$item_markup = $indent;
 		$item_markup .= '<li';
 		foreach ($item_attributes as $att => $value) {
 			$item_markup .= " $att='$value'";
@@ -101,19 +101,19 @@ class NavWalker extends \Walker_Nav_Menu
 		// Attributes
 		$link_attributes = [];
 		if (! empty($item->attr_title)) {
-			$link_attributes['title'] = $item->attr_title;
+			$link_attributes[ 'title' ] = $item->attr_title;
 		}
 		if (! empty($item->target)) {
-			$link_attributes['target'] = $item->target;
+			$link_attributes[ 'target' ] = $item->target;
 		}
 		if (! empty($item->xfn)) {
-			$link_attributes['rel'] = $item->xfn;
+			$link_attributes[ 'rel' ] = $item->xfn;
 		}
 		if (! empty($item->url)) {
-			$link_attributes['href'] = $item->url;
+			$link_attributes[ 'href' ] = $item->url;
 		}
 		if (! empty($link_classes)) {
-			$link_attributes['class'] = implode(' ', $link_classes);
+			$link_attributes[ 'class' ] = implode(' ', $link_classes);
 		}
 
 		array_walk($link_attributes, 'esc_attr');

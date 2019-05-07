@@ -11,8 +11,8 @@ class Assets
 {
 
 	public $font_version = '1.0';
-	public $theme_url    = '';
-	public $theme_path   = '';
+	public $theme_url = '';
+	public $theme_path = '';
 
 	public function __construct()
 	{
@@ -51,7 +51,7 @@ class Assets
 		$deps[] = 'fancybox';
 		wp_enqueue_style('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.css', [], '2.0.10');
 		$deps[] = 'flickity';
-		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ( $min ? '.min' : '' ) . '.css', $deps, $script_version);
+		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, $script_version);
 
 		/**
 		 * Javascript
@@ -70,7 +70,7 @@ class Assets
 		$deps[] = 'fancybox';
 		wp_enqueue_script('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true);
 		$deps[] = 'flickity';
-		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ( $min ? '.min' : '' ) . '.js', $deps, $script_version, true);
+		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js', $deps, $script_version, true);
 
 		/**
 		 * Footer JS
@@ -95,8 +95,8 @@ class Assets
 			wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true);
 		}
 
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.css', [], $script_version);
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . ( sht_theme()->debug ? '' : '.min' ) . '.js', [], $script_version, true);
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [], $script_version);
+		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], $script_version, true);
 
 		/**
 		 * Admin Footer JS
@@ -114,7 +114,7 @@ class Assets
 
 	public function editorStyle()
 	{
-		add_editor_style($this->theme_url . '/assets/styles/admin-editor' . ( sht_theme()->debug ? '' : '.min' ) . '.css');
+		add_editor_style($this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 	}
 
 	public function loadFonts()

@@ -41,11 +41,12 @@ class SVG
 	 * Adds the 'image/svg+xml' mime type to the list of allowed upload filetypes.
 	 *
 	 * @param  Array $mimeTypes Allowed mime types.
+	 *
 	 * @return Array             Allowed mime types with SVGs.
 	 */
 	public function allowSvgUpload($mimeTypes)
 	{
-		$mimeTypes['svg'] = 'image/svg+xml';
+		$mimeTypes[ 'svg' ] = 'image/svg+xml';
 
 		return $mimeTypes;
 	}
@@ -55,14 +56,16 @@ class SVG
 	 * This removes unallowed tags and scripts.
 	 *
 	 * @see    enshrined\svgSanitize\Sanitizer
+	 *
 	 * @param  Array $file Uploaded file.
+	 *
 	 * @return Array        Cleaned file if type is SVG.
 	 */
 	public function sanitizeSvg($file)
 	{
-		if ($file['type'] == 'image/svg+xml') {
+		if ($file[ 'type' ] == 'image/svg+xml') {
 			$sanitizer    = new Sanitizer();
-			$dirtySVG     = file_get_contents($file['tmp_name']);
+			$dirtySVG     = file_get_contents($file[ 'tmp_name' ]);
 			$sanitizedSvg = $sanitizer->sanitize($dirtySVG);
 
 			global $wp_filesystem;
@@ -72,7 +75,7 @@ class SVG
 			}
 
 			// Using the filesystem API provided by WordPress, we replace the contents of the temporary file and then let the process continue as normal.
-			$wp_filesystem->put_contents($file['tmp_name'], $sanitizedSvg, FS_CHMOD_FILE);
+			$wp_filesystem->put_contents($file[ 'tmp_name' ], $sanitizedSvg, FS_CHMOD_FILE);
 		}
 
 		return $file;
@@ -83,8 +86,8 @@ class SVG
 	 *
 	 * @since 0.0.1
 	 *
-	 * @param string $icon    icon filename or path
-	 * @param array  $classes array of classes that will be added
+	 * @param string $icon icon filename or path
+	 * @param array $classes array of classes that will be added
 	 *
 	 * @return string          <i ...><svg ...></svg></i>
 	 */
@@ -107,18 +110,18 @@ class SVG
 
 	public function fixWpGetAttachmentImageSvg($image, $attachment_id, $size)
 	{
-		if (is_array($image) && preg_match('/\.svg$/i', $image[0]) && $image[1] <= 1) {
+		if (is_array($image) && preg_match('/\.svg$/i', $image[ 0 ]) && $image[ 1 ] <= 1) {
 			if (is_array($size)) {
-				$image[1] = $size[0];
-				$image[2] = $size[1];
-			} elseif (( $xml = simplexml_load_file($image[0]) ) !== false) {
-				$attr     = $xml->attributes();
-				$viewbox  = explode(' ', $attr->viewBox);
-				$image[1] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int) $value[0] : ( count($viewbox) == 4 ? (int) $viewbox[2] : null );
-				$image[2] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int) $value[0] : ( count($viewbox) == 4 ? (int) $viewbox[3] : null );
+				$image[ 1 ] = $size[ 0 ];
+				$image[ 2 ] = $size[ 1 ];
+			} elseif (($xml = simplexml_load_file($image[ 0 ])) !== false) {
+				$attr       = $xml->attributes();
+				$viewbox    = explode(' ', $attr->viewBox);
+				$image[ 1 ] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int)$value[ 0 ] : (count($viewbox) == 4 ? (int)$viewbox[ 2 ] : null);
+				$image[ 2 ] = isset($attr->height) && preg_match('/\d+/', $attr->height, $value) ? (int)$value[ 0 ] : (count($viewbox) == 4 ? (int)$viewbox[ 3 ] : null);
 			} else {
-				$image[1] = null;
-				$image[2] = null;
+				$image[ 1 ] = null;
+				$image[ 2 ] = null;
 			}
 		}
 

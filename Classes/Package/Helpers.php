@@ -24,6 +24,7 @@ class Helpers
 	 * Convert a telephone number in the common Swiss number formats to a valid tel: link
 	 *
 	 * @param  string $number The legible phone number
+	 *
 	 * @return string         The usable tel: link
 	 */
 	public static function telephoneUrl($number)
@@ -40,6 +41,7 @@ class Helpers
 		$formattedNumber = str_replace('(0)', '', $formattedNumber);
 		$formattedNumber = preg_replace('~[^0-9\+]~', '', $formattedNumber);
 		$formattedNumber = trim($formattedNumber);
+
 		return $protocol . $formattedNumber;
 	}
 }

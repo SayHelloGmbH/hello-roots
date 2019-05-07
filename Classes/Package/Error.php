@@ -18,7 +18,8 @@ class Error
 
 	public function registerErrorLog($types)
 	{
-		$types['error'] = __('Error', 'sha');
+		$types[ 'error' ] = __('Error', 'sha');
+
 		return $types;
 	}
 
@@ -28,7 +29,7 @@ class Error
 	 * Usage: sht_theme()->Package->Error->get('Error text for developer');
 	 * Usage: sht_theme()->Package->Error->get('Error text for developer', 'Error text for user');
 	 *
-	 * @param string $error      detailed error description
+	 * @param string $error detailed error description
 	 * @param string $shown_text the error the not-logged-in user sees
 	 *
 	 * @return string             The error message

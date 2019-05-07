@@ -16,7 +16,7 @@ if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_
 		'admin_notices',
 		function () {
 			// translators: Admin notice for system requirements
-			echo '<div class="error"><p>' . sprintf(__('This Theme requires PHP %1$s (or newer) and WordPress %2$s (or newer) and the Plugin “Advanced Custom Fields” to function properly. Your site is using PHP %3$s and WordPress %4$s. Please upgrade. The Theme has been automatically deactivated.', 'sha'), '5.4', '4.6', PHP_VERSION, $GLOBALS['wp_version']) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf(__('This Theme requires PHP %1$s (or newer) and WordPress %2$s (or newer) and the Plugin “Advanced Custom Fields” to function properly. Your site is using PHP %3$s and WordPress %4$s. Please upgrade. The Theme has been automatically deactivated.', 'sha'), '5.4', '4.6', PHP_VERSION, $GLOBALS[ 'wp_version' ]) . '</p></div>';
 		}
 	);
 

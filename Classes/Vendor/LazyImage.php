@@ -5,28 +5,28 @@ namespace SayHello\Theme\Vendor;
 class LazyImage
 {
 
-	public $image_id             = 0;
-	public $wp_size              = '';
-	public $error                = false;
-	public $attributes           = [];
-	public $image_full           = [];
-	public $image_org            = [];
-	public $image_pre_src        = '';
-	protected $image_pre_width   = 30;
+	public $image_id = 0;
+	public $wp_size = '';
+	public $error = false;
+	public $attributes = [];
+	public $image_full = [];
+	public $image_org = [];
+	public $image_pre_src = '';
+	protected $image_pre_width = 30;
 	protected $image_pre_quality = 30;
-	public $image_aspect         = 0;
-	public $image_srcset         = [];
-	public $wrapper_class        = '';
-	public $is_svg               = false;
+	public $image_aspect = 0;
+	public $image_srcset = [];
+	public $wrapper_class = '';
+	public $is_svg = false;
 
 	public $ls_transparent = false;
-	public $ls_background  = 'transparent';
-	public $ls_sizes       = [];
+	public $ls_background = 'transparent';
+	public $ls_sizes = [];
 
 	public function __construct($image, $size)
 	{
 		if (is_array($image)) {
-			$image = (int) $image['id'];
+			$image = (int)$image[ 'id' ];
 		}
 
 		if (! $image) {
@@ -49,15 +49,15 @@ class LazyImage
 			]
 		);
 
-		$this->set_image_id($image);
-		$this->set_wp_size($size);
+		$this->setImageId($image);
+		$this->setWpSize($size);
 	}
 
 	/**
 	 * Setters
 	 */
 
-	private function set_image_id($image)
+	private function setImageId($image)
 	{
 		if ($this->error) {
 			return;
@@ -82,13 +82,13 @@ class LazyImage
 		$this->image_full = wp_get_attachment_image_src($this->image_id, 'full');
 	}
 
-	private function set_wp_size($size)
+	private function setWpSize($size)
 	{
 		if ($this->error) {
 			return;
 		}
 
-		$check = $this->check_image_size($size);
+		$check = $this->checkImageSize($size);
 		if ('' !== $check) {
 			$this->error = $check;
 
@@ -102,7 +102,7 @@ class LazyImage
 
 		if ($this->is_svg) {
 			$this->image_org     = $this->image_full;
-			$this->image_pre_src = $this->image_org[0];
+			$this->image_pre_src = $this->image_org[ 0 ];
 
 			return;
 		}
@@ -111,47 +111,47 @@ class LazyImage
 
 		if ('full' == $size) {
 			$this->image_org    = $this->image_full;
-			$this->image_aspect = $this->image_org[1] / $this->image_org[2];
+			$this->image_aspect = $this->image_org[ 1 ] / $this->image_org[ 2 ];
 		} else {
 			if (is_array($size)) {
-				$org_width  = $size[0];
-				$org_height = $size[1];
+				$org_width  = $size[ 0 ];
+				$org_height = $size[ 1 ];
 			} else {
-				$org_width  = $this->get_wp_image_sizes()[ $size ]['width'];
-				$org_height = $this->get_wp_image_sizes()[ $size ]['height'];
+				$org_width  = $this->getWpImageSizes()[ $size ][ 'width' ];
+				$org_height = $this->getWpImageSizes()[ $size ][ 'height' ];
 			}
 
 			$this->image_aspect = $org_width / $org_height;
 
-			if ($org_width > $this->image_full[1]) {
-				$org_width  = $this->image_full[1];
+			if ($org_width > $this->image_full[ 1 ]) {
+				$org_width  = $this->image_full[ 1 ];
 				$org_height = $org_width / $this->image_aspect;
 			}
-			if ($org_height > $this->image_full[2]) {
-				$org_height = $this->image_full[2];
-				$org_width  = $this->image_full[2] * $this->image_aspect;
+			if ($org_height > $this->image_full[ 2 ]) {
+				$org_height = $this->image_full[ 2 ];
+				$org_width  = $this->image_full[ 2 ] * $this->image_aspect;
 			}
 
-			$this->image_org = $this->generate_image($this->image_id, $org_width, $org_height, true);
+			$this->image_org = $this->generateImage($this->image_id, $org_width, $org_height, true);
 		}
 
 		/**
 		 * Srcset
 		 */
 
-		$this->image_srcset                        = [];
-		$this->image_srcset[ $this->image_org[1] ] = $this->image_org[0];
+		$this->image_srcset                          = [];
+		$this->image_srcset[ $this->image_org[ 1 ] ] = $this->image_org[ 0 ];
 
-		foreach ($this->get_ls_sizes() as $key => $width) {
-			if ($width > $this->image_org[1]) {
+		foreach ($this->getLsSizes() as $key => $width) {
+			if ($width > $this->image_org[ 1 ]) {
 				continue;
 			}
 
 			$image_width  = $width;
 			$image_height = $width / $this->image_aspect;
-			$new_image    = $this->generate_image($this->image_id, $image_width, $image_height, true);
+			$new_image    = $this->generateImage($this->image_id, $image_width, $image_height, true);
 
-			$this->image_srcset[ $width ] = $new_image[0];
+			$this->image_srcset[ $width ] = $new_image[ 0 ];
 		}
 
 		/**
@@ -162,16 +162,16 @@ class LazyImage
 		$prev_height = $prev_width / $this->image_aspect;
 
 		if ($this->ls_transparent) {
-			$gcd                 = $this->greatest_common_divisor($prev_width, $prev_height);
+			$gcd                 = $this->greatestCommonDivisor($prev_width, $prev_height);
 			$prev_width          = $prev_width / $gcd;
 			$prev_height         = $prev_height / $gcd;
-			$this->image_pre_src = $this->generate_placeholder_image($prev_width, $prev_height, 'transparent');
+			$this->image_pre_src = $this->generatePlaceholderImage($prev_width, $prev_height, 'transparent');
 		} else {
-			$this->image_pre_src = $this->generate_image($this->image_id, $prev_width, $prev_height, true, $this->image_pre_quality)[0];
+			$this->image_pre_src = $this->generateImage($this->image_id, $prev_width, $prev_height, true, $this->image_pre_quality)[ 0 ];
 		}
 	}
 
-	public function set_wrapper_class($class = '')
+	public function setWrapperClass($class = '')
 	{
 		if ($this->error) {
 			return;
@@ -180,7 +180,7 @@ class LazyImage
 		$this->wrapper_class = $class;
 	}
 
-	public function set_attributes($attributes)
+	public function setAttributes($attributes)
 	{
 		if ($this->error) {
 			return;
@@ -197,7 +197,7 @@ class LazyImage
 	 * Getters
 	 */
 
-	public function get_image($background = false)
+	public function getImage($background = false)
 	{
 		if ($this->error) {
 			return $this->error;
@@ -260,22 +260,22 @@ class LazyImage
 	 * Helpers
 	 */
 
-	private function check_image_size($size)
+	private function checkImageSize($size)
 	{
 		if ('full' == $size) {
 			return '';
 		} elseif (is_array($size) && 2 == count($size)) {
-			if (intval($size[0]) == 0 || intval($size[1]) == 0) {
+			if (intval($size[ 0 ]) == 0 || intval($size[ 1 ]) == 0) {
 				return "invalid width: '{$size[0]}' or height: '{$size[1]}''";
 			}
-		} elseif (! array_key_exists($size, $this->get_wp_image_sizes())) {
+		} elseif (! array_key_exists($size, $this->getWpImageSizes())) {
 			return "Invalid image size '$size'";
 		}
 
 		return '';
 	}
 
-	private function get_wp_image_sizes()
+	private function getWpImageSizes()
 	{
 		global $_wp_additional_image_sizes;
 
@@ -283,14 +283,14 @@ class LazyImage
 
 		foreach (get_intermediate_image_sizes() as $_size) {
 			if (in_array($_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ))) {
-				$sizes[ $_size ]['width']  = get_option("{$_size}_size_w");
-				$sizes[ $_size ]['height'] = get_option("{$_size}_size_h");
-				$sizes[ $_size ]['crop']   = (bool) get_option("{$_size}_crop");
+				$sizes[ $_size ][ 'width' ]  = get_option("{$_size}_size_w");
+				$sizes[ $_size ][ 'height' ] = get_option("{$_size}_size_h");
+				$sizes[ $_size ][ 'crop' ]   = (bool)get_option("{$_size}_crop");
 			} elseif (isset($_wp_additional_image_sizes[ $_size ])) {
 				$sizes[ $_size ] = array(
-					'width'  => $_wp_additional_image_sizes[ $_size ]['width'],
-					'height' => $_wp_additional_image_sizes[ $_size ]['height'],
-					'crop'   => $_wp_additional_image_sizes[ $_size ]['crop'],
+					'width'  => $_wp_additional_image_sizes[ $_size ][ 'width' ],
+					'height' => $_wp_additional_image_sizes[ $_size ][ 'height' ],
+					'crop'   => $_wp_additional_image_sizes[ $_size ][ 'crop' ],
 				);
 			}
 		}
@@ -298,7 +298,7 @@ class LazyImage
 		return $sizes;
 	}
 
-	private function get_ls_sizes()
+	private function getLsSizes()
 	{
 		$sizes = $this->ls_sizes;
 
@@ -315,7 +315,7 @@ class LazyImage
 		return $sizes;
 	}
 
-	private function generate_image($attach_id, $width, $height, $crop = false, $quality = false)
+	private function generateImage($attach_id, $width, $height, $crop = false, $quality = false)
 	{
 
 		/**
@@ -330,7 +330,7 @@ class LazyImage
 		$height = intval($height);
 
 		$src_img       = wp_get_attachment_image_src($attach_id, 'full');
-		$src_img_ratio = $src_img[1] / $src_img[2];
+		$src_img_ratio = $src_img[ 1 ] / $src_img[ 2 ];
 		$src_img_path  = get_attached_file($attach_id);
 
 		/**
@@ -372,7 +372,7 @@ class LazyImage
 		 * return the source image if the requested is bigger than the original image
 		 */
 
-		if ($new_width > $src_img[1] || $new_height > $src_img[2]) {
+		if ($new_width > $src_img[ 1 ] || $new_height > $src_img[ 2 ]) {
 			return $src_img;
 		}
 
@@ -421,7 +421,7 @@ class LazyImage
 		return false;
 	}
 
-	private function generate_placeholder_image($width = 1, $height = 1, $color = 'transparent')
+	private function generatePlaceholderImage($width = 1, $height = 1, $color = 'transparent')
 	{
 		$width  = intval($width);
 		$height = intval($height);
@@ -457,7 +457,7 @@ class LazyImage
 		return false;
 	}
 
-	private function greatest_common_divisor($num1, $num2)
+	private function greatestCommonDivisor($num1, $num2)
 	{
 		while (0 !== $num2) {
 			$t    = $num1 % $num2;
@@ -476,8 +476,8 @@ class LazyImage
 
 		$attr = array_merge(
 			[
-				'width'  => $this->image_org[1],
-				'height' => $this->image_org[2],
+				'width'  => $this->image_org[ 1 ],
+				'height' => $this->image_org[ 2 ],
 				'alt'    => trim(strip_tags(get_post_meta($this->image_id, '_wp_attachment_image_alt', true))),
 			],
 			$this->attributes

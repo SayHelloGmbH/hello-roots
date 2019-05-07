@@ -151,7 +151,7 @@ class LoginScreen
 	// Make sure that the value is a boolean
 	public function sanitizeCheckbox($checked)
 	{
-		return ( ( isset($checked) && true == $checked ) ? true : false );
+		return ((isset($checked) && true == $checked) ? true : false);
 	}
 
 	// Make sure that the value is an absolute integer
@@ -161,7 +161,7 @@ class LoginScreen
 		$number = absint($number);
 
 		// If the input is an absolute integer, return it; otherwise, return the default
-		return ( $number ? $number : $setting->default );
+		return ($number ? $number : $setting->default);
 	}
 
 	// Adds inline CSS to the login form page
@@ -171,21 +171,21 @@ class LoginScreen
 		$theme_mods = get_theme_mods();
 
 		$css = [];
-		if (isset($theme_mods['login_logo'])) {
-			$css[] = '.login h1 a {background: url(\'' . $theme_mods['login_logo'] . '\') center/contain no-repeat;}';
+		if (isset($theme_mods[ 'login_logo' ])) {
+			$css[] = '.login h1 a {background: url(\'' . $theme_mods[ 'login_logo' ] . '\') center/contain no-repeat;}';
 			$css[] = '.login h1 a {width: ' . get_theme_mod('login_logo_size', 320) . 'px}';
 		}
-		if (isset($theme_mods['login_background_colour'])) {
-			$css[] = 'body {background-color: ' . $theme_mods['login_background_colour'] . ';}';
+		if (isset($theme_mods[ 'login_background_colour' ])) {
+			$css[] = 'body {background-color: ' . $theme_mods[ 'login_background_colour' ] . ';}';
 		}
-		if (isset($theme_mods['login_button_colour'])) {
-			$css[] = '.login .button-primary {background-color: ' . $theme_mods['login_button_colour'] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
-			$css[] = '.login .button-primary:hover {background-color: ' . $theme_mods['login_button_colour'] . ';box-shadow: 0 0 .5rem ' . self::boxshadow($theme_mods['login_button_colour']) . '}';
+		if (isset($theme_mods[ 'login_button_colour' ])) {
+			$css[] = '.login .button-primary {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
+			$css[] = '.login .button-primary:hover {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';box-shadow: 0 0 .5rem ' . self::boxshadow($theme_mods[ 'login_button_colour' ]) . '}';
 		}
-		if (isset($theme_mods['login_link_colour'])) {
-			$css[] = '.login #backtoblog a, .login #backtoblog a:hover, .login #nav a, .login #nav a:hover {color: ' . $theme_mods['login_link_colour'] . ';transition:all 300ms ease-in-out}';
+		if (isset($theme_mods[ 'login_link_colour' ])) {
+			$css[] = '.login #backtoblog a, .login #backtoblog a:hover, .login #nav a, .login #nav a:hover {color: ' . $theme_mods[ 'login_link_colour' ] . ';transition:all 300ms ease-in-out}';
 			$css[] = '.login #backtoblog a:hover, .login #nav a:hover {opacity: .8}';
-			$css[] = '.login a, .login a:hover {color: ' . $theme_mods['login_link_colour'] . ';transition:all 300ms ease-in-out}';
+			$css[] = '.login a, .login a:hover {color: ' . $theme_mods[ 'login_link_colour' ] . ';transition:all 300ms ease-in-out}';
 			$css[] = '.login a:hover {opacity: .8}';
 		}
 		if (! empty($css)) {
@@ -236,6 +236,7 @@ class LoginScreen
 				break;
 		}
 		$rgba = array( $red, $green, $blue, $alpha );
+
 		return 'rgba(' . implode(', ', $rgba) . ')';
 	}
 }

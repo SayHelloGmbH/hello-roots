@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 class CustomPages
 {
 
-	public $prefix        = 'cp';
+	public $prefix = 'cp';
 	public $special_pages = '';
 
 	public function __construct()
@@ -216,7 +216,7 @@ class CustomPages
 								__('Du bearbeitest gerade die Seite, die als Übersicht über «%s» definiert wurde. Der Permalink wird deshalb automatisch überschrieben und die Inhalte können je nach Verwendung im Theme abweichen.', 'sha'),
 								"<strong>{$name}</strong>"
 							);
-								printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $infotext);
+							printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $infotext);
 						}
 					}
 				}
@@ -238,9 +238,9 @@ class CustomPages
 
 			$assoc_pt_ob = get_post_type_object($assoc_pt);
 
-			$slug = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
+			$slug = $assoc_pt_ob->rewrite[ 'slug' ] . '-alias-' . $post_id;
 			if (strpos($slug, '/') !== false) {
-				$slug = explode('/', $slug)[0];
+				$slug = explode('/', $slug)[ 0 ];
 			}
 
 			$this->changeslug($post_id, $slug);
@@ -253,7 +253,7 @@ class CustomPages
 	public function changePageslugToCptslugOnacf($post_id)
 	{
 
-		if (empty($_POST['acf'])) {
+		if (empty($_POST[ 'acf' ])) {
 			return;
 		}
 
@@ -264,14 +264,14 @@ class CustomPages
 		);
 
 		foreach ($posttypes as $pt) {
-			if (isset($_POST['acf'][ 'page_for_' . $pt ])) {
+			if (isset($_POST[ 'acf' ][ 'page_for_' . $pt ])) {
 				$assoc_pt_ob = get_post_type_object($pt);
-				$slug        = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
+				$slug        = $assoc_pt_ob->rewrite[ 'slug' ] . '-alias-' . $post_id;
 				if (strpos($slug, '/') !== false) {
-					$slug = explode('/', $slug)[0];
+					$slug = explode('/', $slug)[ 0 ];
 				}
 
-				$this->changeslug($_POST['acf'][ 'page_for_' . $pt ], $slug);
+				$this->changeslug($_POST[ 'acf' ][ 'page_for_' . $pt ], $slug);
 			}
 		}
 	}
@@ -287,8 +287,8 @@ class CustomPages
 	}
 
 	/**
-	* Helpers
-	*/
+	 * Helpers
+	 */
 
 	public function changeslug($post_id, $slug)
 	{
@@ -359,6 +359,7 @@ class CustomPages
 				}
 			}
 		}
+
 		return false;
 	}
 

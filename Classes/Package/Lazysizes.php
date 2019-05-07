@@ -79,9 +79,9 @@ class Lazysizes
 	public static function getLazyImage($image, $size, $class = '', $background = false, $attributes = [])
 	{
 		$image_object = new LazyImage($image, $size);
-		$image_object->set_wrapper_class($class);
-		$image_object->set_attributes($attributes);
+		$image_object->setWrapperClass($class);
+		$image_object->setAttributes($attributes);
 
-		return $image_object->get_image($background);
+		return $image_object->getImage($background);
 	}
 }

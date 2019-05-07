@@ -12,7 +12,7 @@ class ThemeOptions
 {
 
 
-	public $main_slug    = '';
+	public $main_slug = '';
 	public $general_slug = '';
 
 	public function __construct()
@@ -281,36 +281,36 @@ class ThemeOptions
 		foreach ($itemprops as $key => $itemprop) {
 			// add all options or just the one in $args
 			if (empty($args) || in_array($key, $args)) {
-				$prop  = isset($args[ $key ]['prop']) ? $args[ $key ]['prop'] : $itemprops[ $key ]['prop'];
-				$elem  = isset($args[ $key ]['elem']) ? $args[ $key ]['elem'] : $itemprops[ $key ]['elem'];
-				$attr  = isset($args[ $key ]['attr']) ? $args[ $key ]['attr'] : $itemprops[ $key ]['attr'];
-				$value = ( ! empty(get_field($field_key . $key, 'option')) ) ? get_field($field_key . $key, 'option') : false;
+				$prop  = isset($args[ $key ][ 'prop' ]) ? $args[ $key ][ 'prop' ] : $itemprops[ $key ][ 'prop' ];
+				$elem  = isset($args[ $key ][ 'elem' ]) ? $args[ $key ][ 'elem' ] : $itemprops[ $key ][ 'elem' ];
+				$attr  = isset($args[ $key ][ 'attr' ]) ? $args[ $key ][ 'attr' ] : $itemprops[ $key ][ 'attr' ];
+				$value = (! empty(get_field($field_key . $key, 'option'))) ? get_field($field_key . $key, 'option') : false;
 
 				// if is street add number if exists
 				if ('street' == $key) {
-					$value = ( ! empty(get_field($field_key . 'number', 'option')) ) ? $value . ' ' . get_field($field_key . 'number', 'option') : $value;
+					$value = (! empty(get_field($field_key . 'number', 'option'))) ? $value . ' ' . get_field($field_key . 'number', 'option') : $value;
 				}
 
 				// if $attr is string, set string to first item of $attr
 				if ('string' == gettype($attr)) {
-					  $attr = [ $attr ];
+					$attr = [ $attr ];
 				}
 
 				// // if classes are enabled, check $string and generate BEM class
 				if ($base_class) {
-					  // generate the bem class for the current item
-					  $bem_class = $base_class . '__' . $key;
+					// generate the bem class for the current item
+					$bem_class = $base_class . '__' . $key;
 
 					if (is_array($attr)) {
 						foreach ($attr as $name => $string) {
-							  //check if $string contains 'class'
+							//check if $string contains 'class'
 							if (strpos($string, 'class') !== false) {
 								preg_match_all('/"(.*?)"/', $string, $matches);
 
 								// get value in class=""
-								if (! empty($matches[1])) {
-										unset($attr[ $name ]);
-										$bem_class .= ' ' . $matches[1][0];
+								if (! empty($matches[ 1 ])) {
+									unset($attr[ $name ]);
+									$bem_class .= ' ' . $matches[ 1 ][ 0 ];
 								}
 
 								// remove class attribute in array
@@ -327,18 +327,18 @@ class ThemeOptions
 				}
 
 				if (! empty($value) && ! empty($elem)) {
-					  // check if this items of $attr has value in curly braces
+					// check if this items of $attr has value in curly braces
 					if (is_array($attr)) {
 						foreach ($attr as $name => $string) {
-							  //var_dump( $value );
-							  preg_match_all('/{(.*?)}/', $string, $matches);
+							//var_dump( $value );
+							preg_match_all('/{(.*?)}/', $string, $matches);
 
-							  // if has value in curly braces
-							if (! empty($matches[1])) {
+							// if has value in curly braces
+							if (! empty($matches[ 1 ])) {
 								// what to do for matches matching
-								switch ($matches[1][0]) {
+								switch ($matches[ 1 ][ 0 ]) {
 									case 'value':
-										$replace = str_replace('{' . $matches[1][0] . '}', $value, $attr[ $name ]);
+										$replace = str_replace('{' . $matches[ 1 ][ 0 ] . '}', $value, $attr[ $name ]);
 										//var_dump( $replace );
 										break;
 								}
@@ -351,19 +351,19 @@ class ThemeOptions
 						}
 					}
 
-					  $html = '<' . $elem . ' itemprop="' . $prop . '" ';
+					$html = '<' . $elem . ' itemprop="' . $prop . '" ';
 					if (! empty($attr)) {
 						$html .= implode(' ', $attr) . ' ';
 					}
-					  $html .= '>' . $value . '</' . $elem . '>';
+					$html .= '>' . $value . '</' . $elem . '>';
 
-					  $output[ $key ] = [
-						  'prop'  => ( $prop ) ? $prop : $itemprop['prop'],
-						  'elem'  => ( $elem ) ? $elem : $itemprop['elem'],
-						  'attr'  => ( $attr ) ? $attr : $itemprop['attr'],
-						  'value' => $value,
-						  'html'  => $html,
-					  ];
+					$output[ $key ] = [
+						'prop'  => ($prop) ? $prop : $itemprop[ 'prop' ],
+						'elem'  => ($elem) ? $elem : $itemprop[ 'elem' ],
+						'attr'  => ($attr) ? $attr : $itemprop[ 'attr' ],
+						'value' => $value,
+						'html'  => $html,
+					];
 				}
 			}
 		}
@@ -384,21 +384,21 @@ class ThemeOptions
 
 				// generate class string
 				if ($base_class) {
-					 $class = 'class="' . $base_class . '"';
+					$class = 'class="' . $base_class . '"';
 				} else {
-					 $class = '';
+					$class = '';
 				}
 
 				// QUESTION: this container is hardcoded. should it be customizable?
-				$html_output = ( $container ) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
+				$html_output = ($container) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
 
 				foreach ($output as $key => $value) {
-					 $html_output .= $value['html'];
+					$html_output .= $value[ 'html' ];
 				}
 
 				// if $container is set to true, end with wrapper
 				if ($container) {
-					 $html_output .= '</address>';
+					$html_output .= '</address>';
 				}
 
 				echo $html_output;

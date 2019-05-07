@@ -106,7 +106,7 @@ class Theme
 	 */
 	public static function getInstance()
 	{
-		if (! isset(self::$instance) && ! ( self::$instance instanceof Theme )) {
+		if (! isset(self::$instance) && ! (self::$instance instanceof Theme)) {
 			self::$instance = new Theme;
 
 			self::$instance->name    = self::$instance->theme->name;
@@ -115,7 +115,7 @@ class Theme
 			self::$instance->error   = __('An unexpected error occured.', 'sht');
 			self::$instance->debug   = true;
 
-			if (! isset($_SERVER['HTTP_HOST']) || strpos($_SERVER['HTTP_HOST'], '.hello') === false && ! in_array($_SERVER['REMOTE_ADDR'], [ '127.0.0.1', '::1' ])) {
+			if (! isset($_SERVER[ 'HTTP_HOST' ]) || strpos($_SERVER[ 'HTTP_HOST' ], '.hello') === false && ! in_array($_SERVER[ 'REMOTE_ADDR' ], [ '127.0.0.1', '::1' ])) {
 				self::$instance->debug = false;
 			}
 		}
@@ -156,7 +156,7 @@ class Theme
 	 */
 	public function contentWidth()
 	{
-		$GLOBALS['content_width'] = apply_filters('sht/content_width', 640);
+		$GLOBALS[ 'content_width' ] = apply_filters('sht/content_width', 640);
 	}
 
 	/**
