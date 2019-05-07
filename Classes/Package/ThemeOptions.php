@@ -11,7 +11,6 @@ namespace SayHello\Theme\Package;
 class ThemeOptions
 {
 
-
 	public $main_slug = '';
 	public $general_slug = '';
 

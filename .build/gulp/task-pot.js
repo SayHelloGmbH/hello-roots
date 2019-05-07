@@ -1,7 +1,7 @@
 import wpPot from 'gulp-wp-pot';
 
-module.exports = function(key, config, gulp, $, errorLog) {
-	return function() {
+module.exports = function (key, config, gulp, $, errorLog) {
+	return function () {
 		gulp.src(config.src)
 			.pipe(wpPot({
 				domain: config.domain,
