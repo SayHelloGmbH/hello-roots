@@ -1,3 +1,5 @@
+import gulp from 'gulp';
+
 import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
 import livereload from 'gulp-livereload';
@@ -7,16 +9,17 @@ import fs from "fs";
 
 import babelloader from 'babel-loader';
 
-module.exports = function (gulp, config) {
-	return function () {
+function getDirectories(path) {
+	return fs.readdirSync(path).filter(function (file) {
+		return fs.statSync(path + '/' + file).isDirectory();
+	});
+}
 
-		function getDirectories(path) {
-			return fs.readdirSync(path).filter(function (file) {
-				return fs.statSync(path + '/' + file).isDirectory();
-			});
-		}
-
-		getDirectories(`${config.assetsBuild}scripts/`).forEach(bundle => {
+export const task = config => {
+	return new Promise(resolve => {
+		const bundles = getDirectories(`${config.assetsBuild}scripts/`);
+		let loaded = 0;
+		bundles.forEach(bundle => {
 			gulp.src([
 				`${config.assetsBuild}scripts/${bundle}/*.js`
 			])
@@ -51,6 +54,10 @@ module.exports = function (gulp, config) {
 
 				//reload
 				.pipe(livereload());
+			loaded++;
+			if (loaded === bundles.length) {
+				resolve();
+			}
 		});
-	}
+	});
 };

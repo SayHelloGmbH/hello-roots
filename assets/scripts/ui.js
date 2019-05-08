@@ -80,124 +80,93 @@ module.exports = __webpack_require__(9);
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports) {
 
 (function ($) {
+  var CheckClass = 'no-outline';
+  var $body = $('body');
+  $(function () {
+    $body.addClass(CheckClass);
+    $(window).keydown(function (e) {
+      var code = e.keyCode ? e.keyCode : e.which;
 
-	var CheckClass = 'no-outline';
-	var $body = $('body');
-
-	$(function () {
-
-		$body.addClass(CheckClass);
-
-		$(window).keydown(function (e) {
-			var code = e.keyCode ? e.keyCode : e.which;
-			if (code === 9) {
-				$body.removeClass(CheckClass);
-			}
-		});
-
-		$(window).mousemove(function (e) {
-			$body.addClass(CheckClass);
-		});
-	});
+      if (code === 9) {
+        $body.removeClass(CheckClass);
+      }
+    });
+    $(window).mousemove(function (e) {
+      $body.addClass(CheckClass);
+    });
+  });
 })(jQuery);
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_settings_js__ = __webpack_require__(4);
 
-
-var _settings = __webpack_require__(4);
 
 (function ($) {
-	$(function () {
-
-		console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
-		console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
-		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-		console.log('');
-
-		console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
-		console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
-		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-		console.log('');
-
-		var prom = new Promise(function (resolve) {
-			window.setTimeout(function () {
-				resolve('loaded');
-			}, 2000);
-		});
-
-		prom.then(function (resp) {
-			return console.log(resp);
-		});
-	});
+  $(function () {
+    console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
+    console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
+    console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+    console.log('');
+    console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
+    console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
+    console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
+    console.log('');
+  });
 })(jQuery);
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export color */
+/* unused harmony export c */
+/* unused harmony export is_mobile */
+/* unused harmony export theme */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_settings_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_settings_json__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_easing__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_easing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery_easing__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jquery_bez_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jquery_bez_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__jquery_bez_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_verge__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_verge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_verge__);
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.theme = exports.is_mobile = exports.c = exports.color = undefined;
 
-var _settings = __webpack_require__(5);
 
-var settings = _interopRequireWildcard(_settings);
-
-__webpack_require__(6);
-
-__webpack_require__(7);
-
-var _verge = __webpack_require__(8);
-
-var _verge2 = _interopRequireDefault(_verge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-jQuery.easing.def = jQuery.bez(settings.easing_bezier);
+jQuery.easing.def = jQuery.bez(__WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_bezier"]);
 jQuery.fx.speeds = {
-	slow: settings.easing_speed_slow,
-	fast: settings.easing_speed_fast,
-	_default: settings.easing_speed
+  slow: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed_slow"],
+  fast: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed_fast"],
+  _default: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed"]
 };
-
-var color = exports.color = function color(mycolor) {
-	var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
-
-	return settings.theme_colors[mycolor][tone];
+var color = function color(mycolor) {
+  var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
+  return __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["theme_colors"][mycolor][tone];
 };
-
-var c = exports.c = function c(mycolor) {
-	var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
-
-	return color(mycolor, tone);
+var c = function c(mycolor) {
+  var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
+  return color(mycolor, tone);
 };
-
-var is_mobile = exports.is_mobile = function is_mobile() {
-	return _verge2.default.viewportW() <= settings.theme_breakpoints['tablet'];
+var is_mobile = function is_mobile() {
+  return __WEBPACK_IMPORTED_MODULE_3_verge___default.a.viewportW() <= __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["theme_breakpoints"]['tablet'];
 };
+var themeObject = __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__;
 
-var themeObject = settings;
 for (var attrname in ThemeJSVars) {
-	themeObject[attrname] = ThemeJSVars[attrname];
+  themeObject[attrname] = ThemeJSVars[attrname];
 }
 
-var theme = exports.theme = themeObject;
+var theme = themeObject;
 
 /***/ }),
 /* 5 */
@@ -440,10 +409,7 @@ return jQuery;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*!
  * Bez 1.0.11
@@ -458,57 +424,63 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * Provided under the FreeBSD license: https://github.com/rdallasgray/bez/blob/master/LICENSE.txt
  */
 (function (factory) {
-	if (( false ? "undefined" : _typeof(exports)) === "object") {
-		factory(__webpack_require__(0));
-	} else if (true) {
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+  if (( false ? "undefined" : _typeof(exports)) === "object") {
+    factory(__webpack_require__(0));
+  } else if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		factory(jQuery);
-	}
+  } else {
+    factory(jQuery);
+  }
 })(function ($) {
-	$.extend({
-		bez: function bez(encodedFuncName, coOrdArray) {
-			if ($.isArray(encodedFuncName)) {
-				coOrdArray = encodedFuncName;
-				encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
-			}
-			if (typeof $.easing[encodedFuncName] !== "function") {
-				var polyBez = function polyBez(p1, p2) {
-					var A = [null, null],
-					    B = [null, null],
-					    C = [null, null],
-					    bezCoOrd = function bezCoOrd(t, ax) {
-						C[ax] = 3 * p1[ax], B[ax] = 3 * (p2[ax] - p1[ax]) - C[ax], A[ax] = 1 - C[ax] - B[ax];
-						return t * (C[ax] + t * (B[ax] + t * A[ax]));
-					},
-					    xDeriv = function xDeriv(t) {
-						return C[0] + t * (2 * B[0] + 3 * A[0] * t);
-					},
-					    xForT = function xForT(t) {
-						var x = t,
-						    i = 0,
-						    z;
-						while (++i < 14) {
-							z = bezCoOrd(x, 0) - t;
-							if (Math.abs(z) < 1e-3) break;
-							x -= z / xDeriv(x);
-						}
-						return x;
-					};
-					return function (t) {
-						return bezCoOrd(xForT(t), 1);
-					};
-				};
-				$.easing[encodedFuncName] = function (x, t, b, c, d) {
-					return c * polyBez([coOrdArray[0], coOrdArray[1]], [coOrdArray[2], coOrdArray[3]])(t / d) + b;
-				};
-			}
-			return encodedFuncName;
-		}
-	});
+  $.extend({
+    bez: function bez(encodedFuncName, coOrdArray) {
+      if ($.isArray(encodedFuncName)) {
+        coOrdArray = encodedFuncName;
+        encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
+      }
+
+      if (typeof $.easing[encodedFuncName] !== "function") {
+        var polyBez = function polyBez(p1, p2) {
+          var A = [null, null],
+              B = [null, null],
+              C = [null, null],
+              bezCoOrd = function bezCoOrd(t, ax) {
+            C[ax] = 3 * p1[ax], B[ax] = 3 * (p2[ax] - p1[ax]) - C[ax], A[ax] = 1 - C[ax] - B[ax];
+            return t * (C[ax] + t * (B[ax] + t * A[ax]));
+          },
+              xDeriv = function xDeriv(t) {
+            return C[0] + t * (2 * B[0] + 3 * A[0] * t);
+          },
+              xForT = function xForT(t) {
+            var x = t,
+                i = 0,
+                z;
+
+            while (++i < 14) {
+              z = bezCoOrd(x, 0) - t;
+              if (Math.abs(z) < 1e-3) break;
+              x -= z / xDeriv(x);
+            }
+
+            return x;
+          };
+
+          return function (t) {
+            return bezCoOrd(xForT(t), 1);
+          };
+        };
+
+        $.easing[encodedFuncName] = function (x, t, b, c, d) {
+          return c * polyBez([coOrdArray[0], coOrdArray[1]], [coOrdArray[2], coOrdArray[3]])(t / d) + b;
+        };
+      }
+
+      return encodedFuncName;
+    }
+  });
 });
 
 /***/ }),
@@ -680,36 +652,30 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports) {
 
 (function ($) {
-	$(function () {
+  $(function () {
+    var $toggler = $('[aria-controls="primary-menu"]');
+    var navID = $toggler.attr('aria-controls');
+    var $nav = $("#".concat(navID));
+    $toggler.on('click', function () {
+      if (!$nav.length) {
+        console.log("navigation #".concat(navID, " not found"));
+        return;
+      }
 
-		var $toggler = $('[aria-controls="primary-menu"]');
-		var navID = $toggler.attr('aria-controls');
-		var $nav = $('#' + navID);
+      var open = $toggler.attr('aria-expanded') === 'true';
 
-		$toggler.on('click', function () {
-
-			if (!$nav.length) {
-				console.log('navigation #' + navID + ' not found');
-				return;
-			}
-
-			var open = $toggler.attr('aria-expanded') === 'true';
-
-			if (open) {
-				$toggler.attr('aria-expanded', 'false');
-				$nav.slideUp();
-			} else {
-				$toggler.attr('aria-expanded', 'true');
-				$nav.slideDown();
-			}
-		});
-	});
+      if (open) {
+        $toggler.attr('aria-expanded', 'false');
+        $nav.slideUp();
+      } else {
+        $toggler.attr('aria-expanded', 'true');
+        $nav.slideDown();
+      }
+    });
+  });
 })(jQuery);
 
 /***/ })

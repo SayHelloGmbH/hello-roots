@@ -1,6 +1,10 @@
+// this Task does no work yet
+
+import gulp from 'gulp';
+
 import browserSync from 'browser-sync';
 
-module.exports = function (gulp, config) {
+export const task = config => {
 	return function () {
 
 		const flags = process.argv;

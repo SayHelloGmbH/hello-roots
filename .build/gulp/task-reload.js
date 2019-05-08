@@ -1,3 +1,5 @@
+import gulp from 'gulp';
+
 import livereload from 'gulp-livereload';
 
 const src = [
@@ -5,9 +7,7 @@ const src = [
 	'{classes,inc,partials,templates,includes}/**/*.{php,html,twig}'
 ];
 
-module.exports = function (gulp, config) {
-	return function () {
-		gulp.src(src)
-			.pipe(livereload());
-	};
+export const task = config => {
+	return gulp.src(src)
+		.pipe(livereload());
 };

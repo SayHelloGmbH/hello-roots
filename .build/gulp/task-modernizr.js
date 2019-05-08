@@ -1,18 +1,21 @@
+import gulp from 'gulp';
+
 import modernizr from 'gulp-modernizr';
 import fs from "fs";
 import rename from "gulp-rename";
 import uglify from "gulp-uglify";
 
-module.exports = function (gulp, config) {
-	return function () {
+function getDirectories(path) {
+	return fs.readdirSync(path).filter(function (file) {
+		return fs.statSync(path + '/' + file).isDirectory();
+	});
+}
 
-		function getDirectories(path) {
-			return fs.readdirSync(path).filter(function (file) {
-				return fs.statSync(path + '/' + file).isDirectory();
-			});
-		}
-
-		getDirectories(`${config.assetsBuild}scripts/`).forEach(bundle => {
+export const task = config => {
+	return new Promise(resolve => {
+		const bundles = getDirectories(`${config.assetsBuild}scripts/`);
+		let loaded = 0;
+		bundles.forEach(bundle => {
 			gulp.src([
 				`${config.assetsDir}scripts/${bundle}.js`
 			])
@@ -24,8 +27,11 @@ module.exports = function (gulp, config) {
 					suffix: '.min'
 				}))
 				.on('error', config.errorLog)
-				.pipe(gulp.dest(config.assetsDir + 'scripts/modernizr/'))
-
+				.pipe(gulp.dest(config.assetsDir + 'scripts/modernizr/'));
+			loaded++;
+			if (loaded === bundles.length) {
+				resolve();
+			}
 		});
-	};
+	});
 };
