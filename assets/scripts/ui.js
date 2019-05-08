@@ -128,6 +128,16 @@ var _settings = __webpack_require__(4);
 		console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
 		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
 		console.log('');
+
+		var prom = new Promise(function (resolve) {
+			window.setTimeout(function () {
+				resolve('loaded');
+			}, 2000);
+		});
+
+		prom.then(function (resp) {
+			return console.log(resp);
+		});
 	});
 })(jQuery);
 

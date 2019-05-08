@@ -1,57 +1,48 @@
 {
-	"name": "hello-theme",
-	"version": "0.0.0",
-	"dependencies": {
-		"jquery-easing": "0.0.1",
-		"verge": "^1.9.1"
-	},
-	"devDependencies": {
-		"babel-core": "^6.26.3",
-		"babel-loader": "^7.1.5",
-		"babel-preset-env": "^1.7.0",
-		"babel-register": "^6.26.0",
-		"browser-sync": "^2.26.5",
-		"fs": "0.0.1-security",
-		"gulp": "^3.9.1",
-		"gulp-autoprefixer": "^6.1.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-debug": "^4.0.0",
-		"gulp-if": "^2.0.2",
-		"gulp-inline-fonts": "^1.1.0",
-		"gulp-json-modify": "^1.0.2",
-		"gulp-livereload": "^3.8.1",
-		"gulp-load-plugins": "^1.5.0",
-		"gulp-minify-css": "^1.2.4",
-		"gulp-modernizr": "^3.2.1",
-		"gulp-rename": "^1.4.0",
-		"gulp-sass": "^4.0.2",
-		"gulp-sass-import-json": "^1.0.2",
-		"gulp-svgmin": "^1.2.3",
-		"gulp-ttf2woff": "^1.1.1",
-		"gulp-ttf2woff2": "^2.0.2",
-		"gulp-uglify": "^2.0.1",
-		"gulp-util": "^3.0.8",
-		"gulp-watch": "^5.0.1",
-		"gulp-wp-pot": "^2.3.5",
-		"json-loader": "^0.5.7",
-		"merge-stream": "^1.0.1",
-		"mime": "^2.4.2",
-		"mocha": "^5.2.0",
-		"should": "^13.2.3",
-		"stream-assert": "^2.0.3",
-		"through2": "^2.0.5",
-		"webpack": "^3.12.0",
-		"webpack-stream": "^3.2.0",
-		"yargs": "^12.0.5"
-	},
-	"author": "Say Hello GmbH - https://sayhello.ch",
-	"license": "GNU General Public License v2 or later",
-	"scripts": {
-		"start": "gulp"
-	},
-	"babel": {
-		"presets": [
-			"env"
-		]
-	}
+  "name": "hello-theme",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery-easing": "0.0.1",
+    "verge": "^1.9.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "browser-sync": "^2.26.5",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-modernizr": "^3.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-import-json": "^1.0.2",
+    "gulp-svgmin": "^1.2.3",
+    "gulp-uglify": "^2.0.1",
+    "gulp-wp-pot": "^2.3.5",
+    "webpack": "^3.12.0",
+    "webpack-stream": "^3.2.0"
+  },
+  "author": "Say Hello GmbH - https://sayhello.ch",
+  "license": "GNU General Public License v2 or later",
+  "scripts": {
+    "start": "gulp"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "useBuiltIns": "entry"
+        }
+      ]
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "IE 11"
+  ]
 }

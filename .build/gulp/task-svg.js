@@ -1,12 +1,20 @@
-module.exports = function(key, config, gulp, $, errorLog) {
-	return function() {
-		gulp.src(config.src)
-			//.pipe($.debug({title: 'svg:'}))
-			.pipe($.svgmin())
-			.pipe($.rename({
+import rename from 'gulp-rename';
+import svgmin from 'gulp-svgmin';
+import livereload from "gulp-livereload";
+
+module.exports = function (gulp, config) {
+	return function () {
+		gulp.src([
+			config.assetsDir + '**/*.svg',
+			'!' + config.assetsDir + '**/*.min.svg'
+		])
+			.pipe(svgmin())
+			.pipe(rename({
 				suffix: '.min'
 			}))
-			.on('error', errorLog)
-			.pipe(gulp.dest(config.dest));
+			.on('error', config.errorLog)
+			.pipe(gulp.dest(config.assetsDir))
+			//reload
+			.pipe(livereload());
 	};
 };

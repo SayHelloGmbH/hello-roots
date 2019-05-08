@@ -1,12 +1,12 @@
 import wpPot from 'gulp-wp-pot';
 
-module.exports = function (key, config, gulp, $, errorLog) {
+module.exports = function (gulp, config) {
 	return function () {
-		gulp.src(config.src)
+		gulp.src(['**/*.php', '**/*.twig'])
 			.pipe(wpPot({
-				domain: config.domain,
-				package: config.package
+				domain: config.key,
+				package: config.name
 			}))
-			.pipe(gulp.dest(config.dest + '/' + config.domain + '.pot'));
+			.pipe(gulp.dest(`languages/${config.key}.pot`));
 	}
 };

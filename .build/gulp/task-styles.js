@@ -1,7 +1,30 @@
 import minify from 'gulp-minify-css';
-import sassImportJson from 'gulp-sass-import-json';
 import sass from 'gulp-sass';
+import sassImportJson from 'gulp-sass-import-json';
+import autoprefixer from 'gulp-autoprefixer';
+import rename from 'gulp-rename';
+import livereload from 'gulp-livereload';
 
+module.exports = function (gulp, config) {
+	return function () {
+		gulp.src(config.assetsBuild + 'styles/**/*.scss')
+			.pipe(sassImportJson({isScss: true}))
+			.pipe(sass().on('error', sass.logError))
+			.pipe(autoprefixer())
+			.pipe(gulp.dest(config.assetsDir + 'styles/'))
+			.on('error', config.errorLog)
+			// minify
+			.pipe(minify())
+			.pipe(rename({
+				suffix: '.min'
+			}))
+			.on('error', config.errorLog)
+			.pipe(gulp.dest(config.assetsDir + 'styles/'))
+			//reload
+			.pipe(livereload());
+	};
+};
+/*
 module.exports = function(key, config, gulp, $, errorLog) {
 	return function() {
 		gulp.src(config.src)
@@ -26,3 +49,4 @@ module.exports = function(key, config, gulp, $, errorLog) {
 			.pipe($.livereload());
 	};
 };
+*/

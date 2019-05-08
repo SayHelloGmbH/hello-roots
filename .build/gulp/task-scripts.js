@@ -1,44 +1,56 @@
 import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
+import livereload from 'gulp-livereload';
+import rename from 'gulp-rename';
+import uglify from 'gulp-uglify';
+import fs from "fs";
+
 import babelloader from 'babel-loader';
 
-module.exports = function(key, config, gulp, $, errorLog) {
-	return function() {
-		gulp.src([
-				`${config.build + key}/*.js`
+module.exports = function (gulp, config) {
+	return function () {
+
+		function getDirectories(path) {
+			return fs.readdirSync(path).filter(function (file) {
+				return fs.statSync(path + '/' + file).isDirectory();
+			});
+		}
+
+		getDirectories(`${config.assetsBuild}scripts/`).forEach(bundle => {
+			gulp.src([
+				`${config.assetsBuild}scripts/${bundle}/*.js`
 			])
-			//.pipe($.debug({title: 'scripts:'}))
-
 			// Webpack
-			.pipe(
-				gulpWebpack({
-					module: {
-						rules: [{
-							test: /\.js$/,
-							exclude: /node_modules/,
-							loader: "babel-loader"
-						}]
-					},
-					output: {
-						filename: `${key}.js`
-					},
-					externals: {
-						"jquery": "jQuery"
-					}
-				}, webpack)
-			)
-			.on('error', errorLog)
-			.pipe(gulp.dest(config.base))
+				.pipe(
+					gulpWebpack({
+						module: {
+							rules: [{
+								test: /\.js$/,
+								exclude: /node_modules/,
+								loader: "babel-loader"
+							}]
+						},
+						output: {
+							filename: `${bundle}.js`
+						},
+						externals: {
+							"jquery": "jQuery"
+						}
+					}, webpack)
+				)
+				.on('error', config.errorLog)
+				.pipe(gulp.dest(config.assetsDir + 'scripts/'))
 
-			// Minify
-			.pipe($.uglify())
-			.pipe($.rename({
-				suffix: '.min'
-			}))
-			.on('error', errorLog)
-			.pipe(gulp.dest(config.base))
+				// Minify
+				.pipe(uglify())
+				.pipe(rename({
+					suffix: '.min'
+				}))
+				.on('error', config.errorLog)
+				.pipe(gulp.dest(config.assetsDir + 'scripts/'))
 
-			//reload
-			.pipe($.livereload());
-	};
+				//reload
+				.pipe(livereload());
+		});
+	}
 };

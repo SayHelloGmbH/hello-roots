@@ -13,5 +13,13 @@ import {c, color, theme, is_mobile} from './modules/settings.js';
 		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
 		console.log('');
 
+		const prom = new Promise(resolve => {
+			window.setTimeout(() => {
+				resolve('loaded');
+			}, 2000);
+		});
+
+		prom.then(resp => console.log(resp));
+
 	});
 })(jQuery);

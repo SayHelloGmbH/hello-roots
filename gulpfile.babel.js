@@ -1,33 +1,41 @@
-import {config, assetsDir, assetsBuild} from './.build/gulp/config.js';
 import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import fs from 'fs';
 
-const $ = gulpLoadPlugins();
+const tasksDefault = [
+	'styles',
+	'scripts',
+	'reload',
+	'svg',
+	'watch'
+];
 
-const errorLog = function (error) {
-	console.log(error);
-	if (this.emit) {
-		this.emit('end');
+const tasks = tasksDefault.concat([
+	'modernizr',
+	'pot'
+]);
+
+const config = {
+	name: 'Hello Theme',
+	key: 'sht',
+	assetsDir: 'assets/',
+	gulpDir: './.build/gulp/',
+	assetsBuild: '.build/assets/',
+	errorLog: function (error) {
+		console.log('\x1b[31m%s\x1b[0m', error);
+		if (this.emit) {
+			this.emit('end');
+		}
 	}
 };
 
 function getTask(task) {
+	const path = `${config.gulpDir}task-${task}`;
 
-	task = task.split(':');
-	const mainTask = task[0];
-	let subTask = task[1];
-	if (undefined === subTask) {
-		subTask = '';
+	if (fs.existsSync(path + '.js')) {
+		return require(path)(gulp, config);
+	} else {
+		console.log('\x1b[31m%s\x1b[0m', `task "${task}" not found`);
 	}
-
-	let taskConfig = '';
-	for (let [key, values] of Object.entries(config)) {
-		if (key === mainTask) {
-			taskConfig = values.args;
-		}
-	}
-
-	return require('./.build/gulp/task-' + mainTask)(subTask, taskConfig, gulp, $, errorLog);
 }
 
 /**
@@ -35,26 +43,10 @@ function getTask(task) {
  * TASKS ----------
  * ----------------
  */
-for (let [task, values] of Object.entries(config)) {
 
-	if (values.subtasks !== undefined && Object.keys(values.subtasks).length !== 0) {
+tasks.forEach(file => {
+	const task = file.replace('task-', '').replace('.js', '');
+	gulp.task(task, getTask(task));
+});
 
-		let subTask = '';
-		const allTasks = [];
-
-		for (let key of values.subtasks) {
-
-			subTask = `${task}:${key}`;
-
-			allTasks.push(subTask);
-			gulp.task(subTask, getTask(subTask));
-		}
-
-		gulp.task(task, allTasks);
-
-	} else {
-		gulp.task(task, getTask(task));
-	}
-}
-
-gulp.task('default', ['styles', 'scripts', 'svg', 'watch']);
+gulp.task('default', tasksDefault);
