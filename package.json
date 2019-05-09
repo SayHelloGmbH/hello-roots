@@ -20,6 +20,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-import-json": "^1.0.2",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-svgmin": "^1.2.3",
     "gulp-uglify": "^2.0.1",
     "gulp-wp-pot": "^2.3.5",
