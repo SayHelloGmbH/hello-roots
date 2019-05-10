@@ -13,7 +13,7 @@ wp.blocks.registerBlockType('sht/test', {
 	},
 	save() {
 		return (
-			<p>Static block example built with JSX.</p>
+			<p>Not translated String (because in save function)</p>
 		);
 	},
 });
