@@ -35,6 +35,7 @@ export const watch = () => {
 
 	gulp.watch(config.assetsBuild + 'styles/**/*.scss', {interval: 500}, gulp.series(styles));
 	gulp.watch(config.assetsBuild + 'scripts/**/*.js', {interval: 500}, gulp.series(scripts));
+	gulp.watch(config.assetsBuild + 'gutenberg/**/*.{css,js,jsx}', {interval: 500}, gulp.series(gutenberg));
 	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], {interval: 500}, gulp.series(svg));
 	gulp.watch(['*.php', '{classes,inc,partials,templates,includes}/**/*.{php,html,twig}']).on('change', livereload.changed);
 };

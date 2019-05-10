@@ -1,5 +1,7 @@
 import "./teaser/block.jsx";
 
-window.shtDisabledBlocks.forEach(block => {
-	wp.blocks.unregisterBlockType(block);
-});
+window.onload = function () {
+	window.shtDisabledBlocks.forEach(block => {
+		wp.blocks.unregisterBlockType(block);
+	});
+};

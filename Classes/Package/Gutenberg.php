@@ -25,6 +25,7 @@ class Gutenberg
 		if (sht_theme()->debug && is_user_logged_in()) {
 			$this->min = false;
 		}
+		$this->min = false;
 		if (file_exists($this->theme_path . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.css')) {
 			$this->css = $this->theme_url . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.css';
 		}

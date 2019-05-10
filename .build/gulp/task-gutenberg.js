@@ -65,10 +65,12 @@ export const task = config => {
 		.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
 
 		// Minify
+		/*
 		.pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
 		}))
+		*/
 		.on('error', config.errorLog)
 		.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
 

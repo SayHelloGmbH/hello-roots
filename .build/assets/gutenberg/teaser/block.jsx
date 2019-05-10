@@ -1,15 +1,14 @@
 import "./block.scss";
 
 const {__} = wp.i18n;
-const {registerBlockType} = wp.blocks;
 
-registerBlockType('sht/test', {
-	title: __('Text'),
+wp.blocks.registerBlockType('sht/test', {
+	title: __('Test Block'),
 	icon: 'lock',
 	category: 'sht/blocks',
 	edit() {
 		return (
-			<p>Static block example built with JSX.</p>
+			<p className={"b-test-block"}>{__("Translated String", "sht")}</p>
 		);
 	},
 	save() {
