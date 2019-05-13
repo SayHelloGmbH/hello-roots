@@ -65,6 +65,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> COMPONENTS
 >> specific UI components
 */
+@import "ui/__components/wp-alignment";
 @import "ui/__components/browser-check";
 @import "ui/__components/header";
 @import "ui/__components/menu";
