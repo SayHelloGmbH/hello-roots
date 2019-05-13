@@ -60,7 +60,7 @@ class Gutenberg
 	public function enqueueBlockFrontendAssets()
 	{
 		if ($this->css) {
-			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-styles', $this->css, [ 'wp-edit-blocks' ], sht_theme()->version);
+			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-styles', $this->css, [], sht_theme()->version);
 		}
 	}
 
