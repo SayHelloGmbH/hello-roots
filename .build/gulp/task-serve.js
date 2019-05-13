@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import browserSync from 'browser-sync';
 
 export const task = config => {
-	return function () {
+	return function() {
 
 		const flags = process.argv;
 

@@ -9,7 +9,9 @@ import livereload from 'gulp-livereload';
 
 export const task = config => {
 	return gulp.src(config.assetsBuild + 'styles/**/*.scss')
-		.pipe(sassImportJson({isScss: true}))
+		.pipe(sassImportJson({
+			isScss: true
+		}))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(gulp.dest(config.assetsDir + 'styles/'))

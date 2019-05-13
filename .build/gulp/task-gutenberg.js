@@ -11,23 +11,22 @@ import uglify from 'gulp-uglify';
 
 export const task = config => {
 	return gulp.src([
-		`${config.assetsBuild}gutenberg/blocks.js`
-	])
-	// Webpack
+			`${config.assetsBuild}gutenberg/blocks.js`
+		])
+		// Webpack
 		.pipe(
 			gulpWebpack({
 				module: {
 					rules: [{
-						test: /\.(js|jsx)$/,
-						exclude: /(node_modules)/,
-						loader: 'babel-loader'
-					},
+							test: /\.(js|jsx)$/,
+							exclude: /(node_modules)/,
+							loader: 'babel-loader'
+						},
 						{
 							test: /\.(s*)css$/,
 							use: ExtractTextPlugin.extract({
 								fallback: 'style-loader',
-								use: [
-									{
+								use: [{
 										loader: 'css-loader',
 										options: {
 											url: false
