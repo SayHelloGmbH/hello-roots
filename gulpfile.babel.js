@@ -31,12 +31,15 @@ export const modernizr = () => taskModernizr(config);
 export const pot = () => taskPot(config);
 export const gutenberg = () => taskGutenberg(config);
 export const watch = () => {
+
+	const settings = {usePolling: true, interval: 500};
+
 	livereload.listen();
 
-	gulp.watch(config.assetsBuild + 'styles/**/*.scss', {interval: 500}, gulp.series(styles));
-	gulp.watch(config.assetsBuild + 'scripts/**/*.js', {interval: 500}, gulp.series(scripts));
-	gulp.watch(config.assetsBuild + 'gutenberg/**/*.{css,js,jsx}', {interval: 500}, gulp.series(gutenberg));
-	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], {interval: 500}, gulp.series(svg));
+	gulp.watch(config.assetsBuild + 'styles/**/*.scss', settings, gulp.series(styles));
+	gulp.watch(config.assetsBuild + 'scripts/**/*.js', settings, gulp.series(scripts));
+	gulp.watch(config.assetsBuild + 'gutenberg/**/*.{scss,js,jsx}', settings, gulp.series(gutenberg));
+	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], settings, gulp.series(svg));
 	gulp.watch(['*.php', '{classes,inc,partials,templates,includes}/**/*.{php,html,twig}']).on('change', livereload.changed);
 };
 
