@@ -4,8 +4,18 @@ $wp-block-column-gutter: 1rem !default;
 	@include for-screen-min(tablet) {
 		display: flex;
 		flex-flow: row wrap;
-		margin-left: auto;
-		margin-right: auto;
+		margin-left: -$wp-block-column-gutter/2;
+		margin-right: -$wp-block-column-gutter/2;
+
+		&.alignwide {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&.alignfull {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 
 	&.has-2-columns {

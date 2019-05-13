@@ -393,7 +393,8 @@ button {
 */
 html {
   overflow-y: scroll;
-  max-height: 100%; }
+  max-height: 100%;
+  line-height: 1.5; }
 
 body {
   overflow: hidden;
@@ -768,8 +769,14 @@ body.browser--outdated .c-browser-check--outdated {
   .c-wpblocks .wp-block-columns {
     display: flex;
     flex-flow: row wrap;
-    margin-left: auto;
-    margin-right: auto; } }
+    margin-left: -0.5rem;
+    margin-right: -0.5rem; }
+    .c-wpblocks .wp-block-columns.alignwide {
+      margin-left: 0;
+      margin-right: 0; }
+    .c-wpblocks .wp-block-columns.alignfull {
+      margin-left: 0;
+      margin-right: 0; } }
 
 @media (min-width: 600px) {
   .c-wpblocks .wp-block-columns.has-2-columns .wp-block-column {
@@ -955,99 +962,58 @@ body.browser--outdated .c-browser-check--outdated {
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery {
       display: flex;
-      flex-flow: row wrap; } }
+      flex-flow: row wrap;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem; }
+      .c-wpblocks .wp-block-gallery.alignwide {
+        margin-left: 0;
+        margin-right: 0; }
+      .c-wpblocks .wp-block-gallery.alignfull {
+        margin-left: 0;
+        margin-right: 0; } }
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery.columns-2 .blocks-gallery-item {
-      flex-basis: 50%; }
-      .c-wpblocks .wp-block-gallery.columns-2 .blocks-gallery-item:nth-child(odd) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-2 .blocks-gallery-item:nth-child(even) {
-        margin-right: -.5rem; } }
+      flex-basis: 50%; } }
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item {
       flex-basis: 50%; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(2n) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(2n+1) {
-        margin-right: -.5rem; }
       .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:first-of-type {
-        flex-basis: 100%;
-        margin-left: -.5rem;
-        margin-right: -.5rem; } }
+        flex-basis: 100%; } }
   @media (min-width: 900px) {
     .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item {
       flex-basis: 33.33333%; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(2n) {
-        margin-left: 0; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(2n+1) {
-        margin-right: 0; }
       .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:first-of-type {
-        flex-basis: 33.33333%; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(3n+1) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-3 .blocks-gallery-item:nth-child(3n) {
-        margin-right: -.5rem; } }
+        flex-basis: 33.33333%; } }
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item {
-      flex-basis: 50%; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(odd) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(even) {
-        margin-right: -.5rem; } }
+      flex-basis: 50%; } }
   @media (min-width: 1280px) {
     .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item {
-      flex-basis: 25%; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(odd) {
-        margin-left: 0; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(even) {
-        margin-right: 0; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(4n+1) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-4 .blocks-gallery-item:nth-child(4n) {
-        margin-right: -.5rem; } }
+      flex-basis: 25%; } }
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item {
       flex-basis: 50%; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(2n) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(2n+1) {
-        margin-right: -.5rem; }
       .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:first-of-type {
-        flex-basis: 100%;
-        margin-left: -.5rem;
-        margin-right: -.5rem; } }
+        flex-basis: 100%; } }
   @media (min-width: 1280px) {
     .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item {
       flex-basis: 20%; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(2n) {
-        margin-left: 0; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(2n+1) {
-        margin-right: 0; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(5n+1) {
-        margin-left: -.5rem; }
-      .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:nth-child(5n) {
-        margin-right: -.5rem; }
       .c-wpblocks .wp-block-gallery.columns-5 .blocks-gallery-item:first-of-type {
         flex-basis: 20%; } }
   @media (min-width: 600px) {
     .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item {
-      flex-basis: 50%; }
-      .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item:first-of-type {
-        flex-basis: 100%; } }
+      flex-basis: 50%; } }
   @media (min-width: 900px) {
     .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item {
-      flex-basis: 33.33333%; }
-      .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item:first-of-type {
-        flex-basis: 33.33333%; } }
+      flex-basis: 33.33333%; } }
   @media (min-width: 1280px) {
     .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item {
-      flex-basis: 16.66667%; }
-      .c-wpblocks .wp-block-gallery.columns-6 .blocks-gallery-item:first-of-type {
-        flex-basis: 16.66667%; } }
+      flex-basis: 16.66667%; } }
 
 .c-wpblocks .blocks-gallery-item {
   flex: 1 100%;
-  margin: 0.5rem 0; }
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem; }
   @media (min-width: 600px) {
     .c-wpblocks .blocks-gallery-item {
       padding-left: 0.5rem;
