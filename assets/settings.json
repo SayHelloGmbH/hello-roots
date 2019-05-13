@@ -1,31 +1,39 @@
 {
-	"theme_colors": {
-		"primary": {
-			"base": "#77adbf"
-		},
-		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000",
-			"light": "#ddd"
-		},
-		"white": {
-			"base": "#fff"
-		}
-	},
-	"theme_breakpoints": {
-		"phone": 330,
-		"tablet": 600,
-		"tablet_landscape": 900,
-		"desktop": 1280
-	},
-	"easing_speed": 200,
-	"easing_speed_fast": 100,
-	"easing_speed_slow": 400,
-	"easing_bezier": [
-		0.455,
-		0.03,
-		0.515,
-		0.955
-	],
-	"theme_fontver": 4
+  "theme_colors": {
+    "primary": {
+      "base": "#77adbf",
+      "dark": "#4b8a9f"
+    },
+    "black": {
+      "base": "#1d1d1b",
+      "dark": "#000",
+      "light": "#ddd"
+    },
+    "white": {
+      "base": "#fff"
+    },
+    "gray": {
+      "base": "#999",
+      "light": "#f0f0f0"
+    },
+    "brown": {
+      "base": "#930"
+    }
+  },
+  "theme_breakpoints": {
+    "phone": 330,
+    "tablet": 600,
+    "tablet_landscape": 900,
+    "desktop": 1280
+  },
+  "easing_speed": 200,
+  "easing_speed_fast": 100,
+  "easing_speed_slow": 400,
+  "easing_bezier": [
+    0.455,
+    0.03,
+    0.515,
+    0.955
+  ],
+  "theme_fontver": 1
 }

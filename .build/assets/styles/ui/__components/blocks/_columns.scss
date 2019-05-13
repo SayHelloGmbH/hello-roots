@@ -1,0 +1,102 @@
+$wp-block-column-gutter: 1rem !default;
+
+.wp-block-columns {
+	@include for-screen-min(tablet) {
+		display: flex;
+		flex-flow: row wrap;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.has-2-columns {
+		.wp-block-column {
+			@include for-screen-min(tablet) {
+				flex-basis: percentage(1/2);
+			}
+		}
+	}
+
+	&.has-3-columns {
+		.wp-block-column {
+			@include for-screen-min(tablet) {
+				flex-basis: percentage(1/2);
+
+				&:first-of-type {
+					flex-basis: percentage(1/1);
+				}
+			}
+			@include for-screen-min(tablet_landscape) {
+				flex-basis: percentage(1/3);
+
+				&:first-of-type {
+					flex-basis: percentage(1/3);
+				}
+			}
+		}
+	}
+
+	&.has-4-columns {
+		.wp-block-column {
+			@include for-screen-min(tablet) {
+				flex-basis: percentage(1/2);
+			}
+			@include for-screen-min(desktop) {
+				flex-basis: percentage(1/4);
+			}
+		}
+	}
+
+	&.has-5-columns {
+		.wp-block-column {
+			@include for-screen-min(tablet) {
+				flex-basis: percentage(1/2);
+
+				&:first-of-type {
+					flex-basis: percentage(1/1);
+				}
+			}
+			@include for-screen-min(desktop) {
+				flex-basis: percentage(1/5);
+
+				&:first-of-type {
+					flex-basis: percentage(1/5);
+				}
+			}
+		}
+	}
+
+	&.has-6-columns {
+		.wp-block-column {
+			@include for-screen-min(tablet) {
+				flex-basis: percentage(1/2);
+
+				&:first-of-type {
+					flex-basis: percentage(1/1);
+				}
+			}
+			@include for-screen-min(tablet_landscape) {
+				flex-basis: percentage(1/3);
+
+				&:first-of-type {
+					flex-basis: percentage(1/3);
+				}
+			}
+			@include for-screen-min(desktop) {
+				flex-basis: percentage(1/6);
+
+				&:first-of-type {
+					flex-basis: percentage(1/6);
+				}
+			}
+		}
+	}
+}
+
+.wp-block-column {
+	flex: 1 auto;
+	margin: $wp-block-column-gutter 0;
+	@include for-screen-min(tablet) {
+		padding-left: $wp-block-column-gutter/2;
+		padding-right: $wp-block-column-gutter/2;
+	}
+}

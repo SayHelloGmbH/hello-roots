@@ -25,9 +25,9 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 */
 @import "ui/______tools/mixins.transition";
 @import "ui/______tools/mixins.box-shadow";
-@import "ui/______tools/mixins.box-shadow";
 @import "ui/______tools/functions.breakpoints";
 @import "ui/______tools/mixins.clearfix";
+@import "ui/______tools/mixins.elements";
 @import "ui/______tools/mixins.ellipsis";
 @import "ui/______tools/mixins.breakpoints";
 @import "ui/______tools/mixins.spinner";
@@ -71,6 +71,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/__components/menutoggler";
 @import "ui/__components/content-section";
 @import "ui/__components/footer";
+@import "ui/__components/wp-blocks";
 /*
 >> TRUMPS
 >> utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class

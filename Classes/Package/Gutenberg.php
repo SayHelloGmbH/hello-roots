@@ -39,11 +39,15 @@ class Gutenberg
 		if (! function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
+		add_action('wp_print_styles', [ $this, 'removeCoreBlockCSS' ], 100);
 		add_action('enqueue_block_editor_assets', [ $this, 'enqueueBlockAssets' ]);
 		add_action('wp_enqueue_scripts', [ $this, 'enqueueBlockFrontendAssets' ]);
 		add_filter('block_categories', [ $this, 'blockCategories' ], 10, 1);
 		add_filter('sht_disabled_blocks', [ $this, 'disabledBlockTypes' ]);
 		add_action('after_setup_theme', [ $this, 'themeSupports' ]);
+	}
+
+
 	/**
 	 * Allow the Theme to use additional core features
 	 * See https://github.com/SayHelloGmbH/hello-roots/wiki/Gutenberg#theme-colours for information on how to
@@ -56,6 +60,9 @@ class Gutenberg
 		add_theme_support('disable-custom-colors'); // Disable the custom colour palette
 	}
 
+	public function removeCoreBlockCSS()
+	{
+		wp_deregister_style('wp-block-library');
 	}
 
 	public function enqueueBlockAssets()
@@ -90,7 +97,14 @@ class Gutenberg
 		);
 	}
 
-	public function disabledBlockTypes($blockTypes)
+	/**
+	 * Pass an array of disallowed Block types to the Gutenberg JavaScript
+	 * @param  array  $blockTypes The pre-defined array of allowed block types
+	 * @return array             The potentially modified array of allowed block types
+	 *
+	 * @todo: Filter by current post type: e.g. Cover allowed on page but not Post. mhm 13.5.2019
+	 */
+	public function disabledBlockTypes(array $blockTypes)
 	{
 		$toDisable = [
 			'core/quote',
@@ -155,6 +169,6 @@ class Gutenberg
 			'core-embed/speaker-deck',
 		];
 
-		return is_array($blockTypes) ? array_merge($blockTypes, $toDisable) : $toDisable;
+		return array_merge($blockTypes, $toDisable);
 	}
 }
