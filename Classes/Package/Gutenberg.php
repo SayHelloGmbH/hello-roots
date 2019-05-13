@@ -43,6 +43,19 @@ class Gutenberg
 		add_action('wp_enqueue_scripts', [ $this, 'enqueueBlockFrontendAssets' ]);
 		add_filter('block_categories', [ $this, 'blockCategories' ], 10, 1);
 		add_filter('sht_disabled_blocks', [ $this, 'disabledBlockTypes' ]);
+		add_action('after_setup_theme', [ $this, 'themeSupports' ]);
+	/**
+	 * Allow the Theme to use additional core features
+	 * See https://github.com/SayHelloGmbH/hello-roots/wiki/Gutenberg#theme-colours for information on how to
+	 * load the colours from your settings.json into Gutenberg
+	 */
+	public function themeSupports()
+	{
+		add_theme_support('align-wide');
+		add_theme_support('editor-color-palette'); // Disable the standard colour palette
+		add_theme_support('disable-custom-colors'); // Disable the custom colour palette
+	}
+
 	}
 
 	public function enqueueBlockAssets()
