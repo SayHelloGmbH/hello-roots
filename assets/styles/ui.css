@@ -503,6 +503,9 @@ img {
   max-width: 100% !important;
   height: auto; }
 
+video {
+  max-width: 100%; }
+
 /*
 >> OBJECTS
 >> class-based selectors which define undecorated design patterns, for example media object known from OOCSS
@@ -626,6 +629,46 @@ img {
 >> COMPONENTS
 >> specific UI components
 */
+/**
+ * WordPress alignment classes
+ */
+.alignleft,
+.alignright {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem; }
+
+.alignleft {
+  float: left;
+  margin-right: 1rem; }
+
+.alignright {
+  float: right;
+  margin-left: 1rem; }
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.aligncenter a,
+.aligncenter img,
+.alignleft a,
+.alignleft img,
+.alignnone a,
+.alignnone img,
+.alignright a,
+.alignright img {
+  margin: 0;
+  display: block; }
+
+figure.alignleft,
+figure.alignright,
+img.alignleft,
+img.alignright {
+  max-width: 50%; }
+
 .c-browser-check {
   position: fixed;
   left: 0;
@@ -1101,6 +1144,12 @@ body.browser--outdated .c-browser-check--outdated {
       text-align: center;
       top: 50%;
       transform: translateY(-50%); }
+
+.c-wpblocks .wp-block-video {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+  .c-wpblocks .wp-block-video video {
+    width: 100%; }
 
 /*
 >> TRUMPS
