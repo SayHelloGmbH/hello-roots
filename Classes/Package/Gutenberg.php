@@ -142,6 +142,6 @@ class Gutenberg
 			'core-embed/speaker-deck',
 		];
 
-		return array_merge($blockTypes, $toDisable);
+		return is_array($blockTypes) ? array_merge($blockTypes, $toDisable) : $toDisable;
 	}
 }
