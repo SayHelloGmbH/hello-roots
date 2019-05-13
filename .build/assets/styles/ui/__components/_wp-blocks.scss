@@ -1,4 +1,7 @@
 .c-wpblocks {
+	max-width: 640px;
+	margin: auto;
+
 	[class*='wp-block'] {
 		&.alignfull,
 		&.alignwide {
@@ -45,4 +48,5 @@
 	@import 'blocks/preformatted';
 	@import 'blocks/pullquote';
 	@import 'blocks/separator';
+	@import 'blocks/video';
 }
