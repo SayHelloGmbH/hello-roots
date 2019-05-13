@@ -41,7 +41,7 @@ class Gutenberg
 		}
 		add_action('enqueue_block_editor_assets', [ $this, 'enqueueBlockAssets' ]);
 		add_action('wp_enqueue_scripts', [ $this, 'enqueueBlockFrontendAssets' ]);
-		add_filter('block_categories', [ $this, 'blockCategories' ], 10, 2);
+		add_filter('block_categories', [ $this, 'blockCategories' ], 10, 1);
 		add_filter('sht_disabled_blocks', [ $this, 'disabledBlockTypes' ]);
 	}
 
@@ -64,7 +64,7 @@ class Gutenberg
 		}
 	}
 
-	public function blockCategories($categories, $post)
+	public function blockCategories($categories)
 	{
 		return array_merge(
 			$categories,
