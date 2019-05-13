@@ -42,7 +42,7 @@ class Gutenberg
 		add_action('wp_print_styles', [ $this, 'removeCoreBlockCSS' ], 100);
 		add_action('enqueue_block_editor_assets', [ $this, 'enqueueBlockAssets' ]);
 		add_action('wp_enqueue_scripts', [ $this, 'enqueueBlockFrontendAssets' ]);
-		add_filter('block_categories', [ $this, 'blockCategories' ], 10, 1);
+		add_filter('block_categories', [ $this, 'blockCategories' ]);
 		add_filter('sht_disabled_blocks', [ $this, 'disabledBlockTypes' ]);
 		add_action('after_setup_theme', [ $this, 'themeSupports' ]);
 	}
@@ -104,55 +104,56 @@ class Gutenberg
 	 *
 	 * @todo: Filter by current post type: e.g. Cover allowed on page but not Post. mhm 13.5.2019
 	 */
-	public function disabledBlockTypes(array $blockTypes)
+	public function disabledBlockTypes(array $allowed_types)
 	{
-		$toDisable = [
-			'core/quote',
-			'core/embed',
+		$disallowed_types = [
 			'core/audio',
+			'core/code',
 			'core/cover',
+			'core/embed',
 			'core/file',
+			'core/html',
+			'core/quote',
+			'core/rss',
+			'core/search',
+			'core/table',
 			'core/video',
 			// Formatting
-			'core/preformatted',
 			'core/freeform',
+			'core/preformatted',
 			'core/verse',
 			// Layout
-			'core/pullquote',
 			'core/button',
 			'core/columns',
 			'core/media-text',
 			'core/more',
 			'core/nextpage',
+			'core/pullquote',
 			'core/separator',
 			'core/spacer',
 			// Widgets
 			'core/archives',
+			'core/calendar',
 			'core/categories',
 			'core/latest-comments',
 			'core/latest-posts',
+			'core/tag-cloud',
 			// Embeds
-			'core-embed/twitter',
-			'core-embed/youtube',
-			'core-embed/facebook',
-			'core-embed/instagram',
-			'core-embed/wordpress',
-			'core-embed/soundcloud',
-			'core-embed/spotify',
-			'core-embed/flickr',
-			'core-embed/vimeo',
+			'core-embed/amazon-kindle',
 			'core-embed/animoto',
 			'core-embed/cloudup',
 			'core-embed/collegehumor',
+			'core-embed/crowdsignal',
 			'core-embed/dailymotion',
-			'core-embed/funnyordie',
+			'core-embed/facebook',
+			'core-embed/flickr',
 			'core-embed/hulu',
 			'core-embed/imgur',
+			'core-embed/instagram',
 			'core-embed/issuu',
 			'core-embed/kickstarter',
 			'core-embed/meetup-com',
 			'core-embed/mixcloud',
-			'core-embed/photobucket',
 			'core-embed/polldaddy',
 			'core-embed/reddit',
 			'core-embed/reverbnation',
@@ -160,15 +161,20 @@ class Gutenberg
 			'core-embed/scribd',
 			'core-embed/slideshare',
 			'core-embed/smugmug',
+			'core-embed/soundcloud',
 			'core-embed/speaker',
+			'core-embed/speaker-deck',
+			'core-embed/spotify',
 			'core-embed/ted',
 			'core-embed/tumblr',
+			'core-embed/twitter',
 			'core-embed/videopress',
+			'core-embed/vimeo',
+			'core-embed/wordpress',
 			'core-embed/wordpress-tv',
-			'core-embed/crowdsignal',
-			'core-embed/speaker-deck',
+			'core-embed/youtube',
 		];
 
-		return array_merge($blockTypes, $toDisable);
+		return array_merge($allowed_types, $disallowed_types);
 	}
 }
