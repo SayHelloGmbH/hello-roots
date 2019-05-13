@@ -65,47 +65,14 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__teaser_block_jsx__ = __webpack_require__(1);
-
-
+// import "./teaser/block.jsx";
 window.onload = function () {
   window.shtDisabledBlocks.forEach(function (block) {
     wp.blocks.unregisterBlockType(block);
   });
 };
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_scss__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__block_scss__);
-
-var __ = wp.i18n.__;
-wp.blocks.registerBlockType('sht/test', {
-  title: __('Test Block'),
-  icon: 'lock',
-  category: 'sht/blocks',
-  edit: function edit() {
-    return React.createElement("p", {
-      className: "b-test-block"
-    }, __("Translated String", "sht"));
-  },
-  save: function save() {
-    return React.createElement("p", null, "Static block example built with JSX.");
-  }
-});
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
