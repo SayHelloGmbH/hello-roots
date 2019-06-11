@@ -133,7 +133,7 @@ class Theme
 		foreach ($classes as $class) {
 			$class_parts = explode('\\', $class);
 			$class_short = end($class_parts);
-			$class_set   = $class_parts[ count($class_parts) - 2 ];
+			$class_set   = $class_parts[ count($class_parts) - 1 ];
 
 			if (! isset(sht_theme()->{$class_set}) || ! is_object(sht_theme()->{$class_set})) {
 				sht_theme()->{$class_set} = new \stdClass();
