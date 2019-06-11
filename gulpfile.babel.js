@@ -12,7 +12,11 @@ const config = {
 		if (this.emit) {
 			this.emit('end');
 		}
-	}
+	},
+	reload: [
+		'*.php',
+		'{Classes,inc,partials,templates,includes}/**/*.{php,html,twig}'
+	]
 };
 
 import {task as taskStyles} from './.build/gulp/task-styles';
@@ -34,7 +38,7 @@ export const watch = () => {
 	gulp.watch(config.assetsBuild + 'styles/**/*.scss', {interval: 500}, gulp.series(styles));
 	gulp.watch(config.assetsBuild + 'scripts/**/*.js', {interval: 500}, gulp.series(scripts));
 	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], {interval: 500}, gulp.series(svg));
-	gulp.watch(['*.php', '{classes,inc,partials,templates,includes}/**/*.{php,html,twig}']).on('change', livereload.changed);
+	gulp.watch(config.reload).on('change', livereload.changed);
 };
 
 export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
