@@ -42,7 +42,7 @@ class Lazysizes
 
 	public function svgFilter()
 	{
-		echo '<svg class="lazysizes-svgfilter">
+		echo '<svg class="o-lazysizes-svgfilter">
 				<filter id="ls-sharp-blur">
 					<feGaussianBlur stdDeviation="10"></feGaussianBlur>
 					<feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0"></feColorMatrix>
@@ -56,9 +56,9 @@ class Lazysizes
 		wp_enqueue_script('lazysizes', get_template_directory_uri() . '/assets/scripts/lazysizes.min.js', [], '3.0.0', true);
 		$data  = '';
 		$data .= 'window.lazySizesConfig = window.lazySizesConfig || {};';
-		$data .= "window.lazySizesConfig.lazyClass = 'lazyimage__image--lazyload';\n";
-		$data .= "window.lazySizesConfig.loadingClass = 'lazyimage__image--lazyloading';\n";
-		$data .= "window.lazySizesConfig.loadedClass = 'lazyimage__image--lazyloaded';\n";
+		$data .= "window.lazySizesConfig.lazyClass = 'o-lazyimage__image--lazyload';\n";
+		$data .= "window.lazySizesConfig.loadingClass = 'o-lazyimage__image--lazyloading';\n";
+		$data .= "window.lazySizesConfig.loadedClass = 'o-lazyimage__image--lazyloaded';\n";
 		//$data .= "document.addEventListener('lazyloaded', function(e){console.log(lazySizesFindParent(e.target).classList.add('lazyimage--loaded'))});\n";
 		//$data .= "function lazySizesFindParent (el) { while ((el = el.parentElement) && !el.classList.contains('lazyimage')); return el;}\n";
 

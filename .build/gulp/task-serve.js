@@ -1,11 +1,9 @@
-// this Task does no work yet
-
 import gulp from 'gulp';
 
 import browserSync from 'browser-sync';
 
 export const task = config => {
-	return function() {
+	return new Promise(resolve => {
 
 		const flags = process.argv;
 
@@ -19,8 +17,8 @@ export const task = config => {
 			console.log('\nSuccess: ====> ' + url + ' will be served!)\n');
 
 			const files = [
-				'js/**/*.js',
-				'css/**/*.css',
+				'assets/**/*.js',
+				'assets/**/*.css',
 				'**/*.php',
 				'**/*.{png,jpg,gif}'
 			];
@@ -32,6 +30,10 @@ export const task = config => {
 					target: url
 				}
 			});
+
 		}
-	}
+
+		resolve();
+
+	});
 };

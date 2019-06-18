@@ -6,7 +6,7 @@ class NavWalker extends \Walker_Nav_Menu
 {
 
 
-	public $css_base = 'menu';
+	public $css_base = 'c-menu';
 
 	public function __construct($base = '')
 	{
