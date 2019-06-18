@@ -12,6 +12,7 @@
     "@babel/register": "^7.4.0",
     "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.7",
+    "css-vars-ponyfill": "^2.0.2",
     "fs": "0.0.1-security",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.1.0",

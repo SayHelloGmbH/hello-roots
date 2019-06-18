@@ -1,3 +1,7 @@
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
+
 /**
  * Define the font sizes and line heights here.
  * Other definitions will be ignored, so don't bother ;)
@@ -10,4 +14,4 @@
   .button.delete:hover {
     color: red; }
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIiwidWkvX19fX19fX3NldHRpbmdzL19ncmlkLnNjc3MiLCJ1aS9fX19fX19fc2V0dGluZ3MvX3R5cG9ncmFwaHkuc2NzcyIsInVpL19fX19fX19zZXR0aW5ncy9fYm94c2hhZG93LnNjc3MiLCJ1aS9fX19fX19fc2V0dGluZ3MvX3RyYW5zaXRpb24uc2NzcyIsInVpL19fX19fX3Rvb2xzL19mdW5jdGlvbnMuY29sb3Iuc2NzcyIsImFkbWluL19idXR0b24uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUVPQTs7O0dBR0c7QUlWSCxBQUFBLE9BQU8sQUFBQSxPQUFPLENBQUM7RUFDZCxLQUFLLEVBQUUsSUFBSTtFQUtYLGdCQUFnQixFQUFFLHNCQUFzQjtFQUN4QyxZQUFZLEVBQUUsc0JBQXNCO0VBQ3BDLFVBQVUsRUFBRSxlQUFlLEdBQzNCO0VBVEQsQUFHQyxPQUhNLEFBQUEsT0FBTyxBQUdaLE1BQU0sQ0FBQztJQUNQLEtBQUssRUFBRSxHQUFHLEdBQ1YifQ== */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIiwidWkvX19fX19fX3NldHRpbmdzL19ncmlkLnNjc3MiLCJ1aS9fX19fX19fc2V0dGluZ3MvX3R5cG9ncmFwaHkuc2NzcyIsInVpL19fX19fX19zZXR0aW5ncy9fYm94c2hhZG93LnNjc3MiLCJ1aS9fX19fX19fc2V0dGluZ3MvX3RyYW5zaXRpb24uc2NzcyIsInVpL19fX19fX3Rvb2xzL19mdW5jdGlvbnMuY29sb3Iuc2NzcyIsImFkbWluL19idXR0b24uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUVBQSxBQUFBLEtBQUssQ0FBQztFQUNMLE1BQU0sQ0FBQSxrSkFBQztFQUNQLGNBQWMsQ0FBQSxrSkFBQyxHQUNmOztBQVFEOzs7R0FHRztBSWRILEFBQUEsT0FBTyxBQUFBLE9BQU8sQ0FBQztFQUNkLEtBQUssRUFBRSxJQUFJO0VBS1gsZ0JBQWdCLEVBQUUsc0JBQXNCO0VBQ3hDLFlBQVksRUFBRSxzQkFBc0I7RUFDcEMsVUFBVSxFQUFFLGVBQWUsR0FDM0I7RUFURCxBQUdDLE9BSE0sQUFBQSxPQUFPLEFBR1osTUFBTSxDQUFDO0lBQ1AsS0FBSyxFQUFFLEdBQUcsR0FDViJ9 */

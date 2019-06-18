@@ -1,3 +1,15 @@
+:root {
+	@each $colour, $colourSet in $theme_colors {
+		@each $variant, $value in $colourSet {
+			@if $variant == 'base' {
+				--#{$colour}: #{$value};
+			} @else {
+				--#{$colour}-#{$variant}: #{$value};
+			}
+		}
+	}
+}
+
 html {
 	overflow-y: scroll;
 	max-height: 100%;
