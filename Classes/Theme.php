@@ -73,6 +73,7 @@ class Theme
 				\SayHello\Theme\Package\BodyClass::class,
 				\SayHello\Theme\Package\CustomPages::class,
 				\SayHello\Theme\Package\Error::class,
+				\SayHello\Theme\Package\Gutenberg::class,
 				\SayHello\Theme\Package\Language::class,
 				\SayHello\Theme\Package\Lazysizes::class,
 				\SayHello\Theme\Package\LoginScreen::class,
@@ -81,7 +82,6 @@ class Theme
 				\SayHello\Theme\Package\Sidebars::class,
 				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
-				\SayHello\Theme\Package\Gutenberg::class,
 			]
 		);
 

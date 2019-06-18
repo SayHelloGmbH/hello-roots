@@ -12,7 +12,6 @@ class Gutenberg
 	public $theme_url = '';
 	public $theme_path = '';
 	public $min = false;
-	public $css = false;
 	public $js = false;
 	public $allowedCoreBlocks = [
 		'core/paragraph',
@@ -30,9 +29,6 @@ class Gutenberg
 			$this->min = true;
 		}
 
-		if (file_exists($this->theme_path . '/assets/styles/gutenberg' . ($this->min ? '.min' : '') . '.css')) {
-			$this->css = $this->theme_url . '/assets/styles/gutenberg' . ($this->min ? '.min' : '') . '.css';
-		}
 		if (file_exists($this->theme_path . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
 			$this->js = $this->theme_url . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
 		}
@@ -45,7 +41,6 @@ class Gutenberg
 		}
 		add_action('wp_print_styles', [$this, 'removeCoreBlockCSS'], 100);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
-		add_action('wp_enqueue_scripts', [$this, 'enqueueBlockFrontendAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
 		add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
@@ -74,16 +69,6 @@ class Gutenberg
 			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script', $this->js, ['wp-blocks', 'wp-element', 'wp-edit-post', 'lodash'], sht_theme()->version);
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
-		}
-		if ($this->css) {
-			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-styles', $this->css, ['wp-edit-blocks'], sht_theme()->version);
-		}
-	}
-
-	public function enqueueBlockFrontendAssets()
-	{
-		if ($this->css) {
-			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-styles', $this->css, [], sht_theme()->version);
 		}
 	}
 

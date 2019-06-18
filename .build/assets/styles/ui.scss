@@ -14,25 +14,8 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> variables used inside Sass
 >> no output expected
 */
-@import "ui/_______settings/grid";
-@import "ui/_______settings/typography";
-@import "ui/_______settings/boxshadow";
-@import "ui/_______settings/transition";
-/*
->> TOOLS
->> Mixins and Functions used inside Sass
->> no output expected
-*/
-@import "ui/______tools/mixins.transition";
-@import "ui/______tools/mixins.box-shadow";
-@import "ui/______tools/functions.breakpoints";
-@import "ui/______tools/mixins.clearfix";
-@import "ui/______tools/mixins.elements";
-@import "ui/______tools/mixins.ellipsis";
-@import "ui/______tools/mixins.breakpoints";
-@import "ui/______tools/mixins.spinner";
-@import "ui/______tools/mixins.typography";
-@import "ui/______tools/functions.color";
+$block-mode: 'frontend';
+@import "settings";
 /*
 >> GENERIC
 >> reset and/or normalize styles, box-sizing definition, etc.
@@ -73,7 +56,11 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/__components/menutoggler";
 @import "ui/__components/content-section";
 @import "ui/__components/footer";
-@import "ui/__components/wp-blocks";
+/*
+>> GUTENBERG
+>> CSS for Gutenberg Blocks
+*/
+@import "blocks/all.blocks";
 /*
 >> TRUMPS
 >> utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class

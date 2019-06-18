@@ -1,3 +1,8 @@
+@charset "UTF-8";
+/*
+>> GLOBAL
+>> styling for all blocks
+*/
 .alignfull,
 .alignwide {
 	position: relative;
@@ -30,19 +35,20 @@
 		background-position-x: 50vw;
 	}
 }
-
-.c-wpblocks {
-	@import 'blocks/audio';
-	@import 'blocks/block-quote';
-	@import 'blocks/button';
-	@import 'blocks/columns';
-	@import 'blocks/cover';
-	@import 'blocks/embed';
-	@import 'blocks/gallery';
-	@import 'blocks/image';
-	@import 'blocks/latest-posts';
-	@import 'blocks/preformatted';
-	@import 'blocks/pullquote';
-	@import 'blocks/separator';
-	@import 'blocks/video';
-}
+/*
+>> BLOCKS
+>> styling for individual block types
+*/
+@import 'audio';
+@import 'block-quote';
+@import 'button';
+@import 'columns';
+@import 'cover';
+@import 'embed';
+@import 'gallery';
+@import 'image';
+@import 'latest-posts';
+@import 'preformatted';
+@import 'pullquote';
+@import 'separator';
+@import 'video';

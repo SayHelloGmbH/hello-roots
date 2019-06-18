@@ -1,8 +1,15 @@
 @charset "UTF-8";
-@import "../../../assets/settings.json"; //Settings aus ITCSS
-@import "ui/_______settings/grid";
-@import "ui/_______settings/typography";
-@import "ui/_______settings/boxshadow";
-@import "ui/_______settings/transition";
-@import "ui/______tools/functions.color";
+@import "../../../assets/settings.json";
+/*
+>> SETTINGS
+>> variables used inside Sass
+>> no output expected
+*/
+$block-mode: 'backend';
+@import "settings";
 @import "admin/button";
+/*
+>> GUTENBERG
+>> CSS for Gutenberg Blocks
+*/
+@import "blocks/all.blocks";
