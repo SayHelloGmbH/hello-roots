@@ -61,11 +61,15 @@ The Package Class `Assets` enqueues them directly.
 - admin.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin.scss_.
 - ui.min.css is loaded in the backend. This file is generated from _.build/assets/styles/ui.scss_.
 
+#### CSS Variables
+
+The CSS will be generated with [CSS Variables](https://dev.to/sarah_chima/an-introduction-to-css-variables-cmj) in the generated stylesheets. The (JavaScript-based) Ponyfill `css-vars-ponyfill` ([source](https://github.com/jhildenbiddle/css-vars-ponyfill)) is included for IE11 support in the frontend. (_Not_ in the admin area!.)
+
 #### Gutenberg Blocks
 
 The Theme is provided with built-in SCSS support for Gutenberg blocks. There is a specific `Gutenberg` Package for some functionality.
 
-The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropriate to each context, so that the mixins _blocks-frontend_ and _blocks-backend_ can generate the CSS appropriately for the current context. For example:
+The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropriate to each context, so that the mixins `blocks-frontend` and `blocks-backend` can generate the CSS appropriately for the current context. For example:
 
 ```scss
 .wp-block-image {
