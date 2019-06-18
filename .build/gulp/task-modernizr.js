@@ -1,29 +1,37 @@
-import { config as main } from './config.js';
+import gulp from 'gulp';
+
 import modernizr from 'gulp-modernizr';
+import fs from "fs";
+import rename from "gulp-rename";
+import uglify from "gulp-uglify";
 
-module.exports = function(key, config, gulp, $, errorLog) {
-	return function() {
+function getDirectories(path) {
+	return fs.readdirSync(path).filter(function (file) {
+		return fs.statSync(path + '/' + file).isDirectory();
+	});
+}
 
-		const mainConfig = main;
-		//console.log(mainConfig.scripts);
-
-		for (let i = 0; i < mainConfig.scripts.subtasks.length; i++) {
-
-			const key = mainConfig.scripts.subtasks[i];
-
+export const task = config => {
+	return new Promise(resolve => {
+		const bundles = getDirectories(`${config.assetsBuild}scripts/`);
+		let loaded = 0;
+		bundles.forEach(bundle => {
 			gulp.src([
-					`${config.build + key}/*.js`
-				])
-				.pipe(modernizr(`${key}-modernizr.js`))
+				`${config.assetsDir}scripts/${bundle}.js`
+			])
+				.pipe(modernizr(`${bundle}-modernizr.js`))
 
 				// Minify
-				.pipe($.uglify())
-				.pipe($.rename({
+				.pipe(uglify())
+				.pipe(rename({
 					suffix: '.min'
 				}))
-				.on('error', errorLog)
-				.pipe(gulp.dest(config.dest));
-
-		}
-	};
+				.on('error', config.errorLog)
+				.pipe(gulp.dest(config.assetsDir + 'scripts/modernizr/'));
+			loaded++;
+			if (loaded === bundles.length) {
+				resolve();
+			}
+		});
+	});
 };

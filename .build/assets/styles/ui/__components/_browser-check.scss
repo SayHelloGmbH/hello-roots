@@ -1,4 +1,4 @@
-.browser-check {
+.c-browser-check {
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -21,14 +21,14 @@
 	}
 }
 
-body.no-js {
-	.browser-check--noscript {
+body.browser--no-js {
+	.c-browser-check--noscript {
 		display: block;
 	}
 }
 
-body.browser-outdated {
-	.browser-check--outdated {
+body.browser--outdated {
+	.c-browser-check--outdated {
 		display: block;
 	}
 }

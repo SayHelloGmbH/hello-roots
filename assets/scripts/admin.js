@@ -65,17 +65,10 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+/***/ (function(module, exports) {
 
 (function ($, theme) {
-
-	$(function () {
-
-		console.log("Hello Theme init");
-	});
+  $(function () {});
 })(jQuery, SayHelloVars);
 
 /***/ })

@@ -1,11 +1,11 @@
-(function($) {
-	$(function() {
+(function ($) {
+	$(function () {
 
 		const $toggler = $('[aria-controls="primary-menu"]');
 		const navID = $toggler.attr('aria-controls');
 		const $nav = $(`#${navID}`);
 
-		$toggler.on('click', function() {
+		$toggler.on('click', function () {
 
 			if (!$nav.length) {
 				console.log(`navigation #${navID} not found`);

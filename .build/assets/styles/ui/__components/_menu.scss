@@ -1,19 +1,17 @@
-.menu {
+.c-menu {
 
 	list-style: none;
 	text-align: center;
 
 	&--primary {
-		@include mobile() {
-			display: none;
+		display: none;
 
-			.menu__item {
-				display: block;
-			}
+		.c-menu__item {
+			display: block;
 		}
 
-		@include desktop() {
-			display: block !important;
+		@include desktop {
+			display: block;
 		}
 	}
 

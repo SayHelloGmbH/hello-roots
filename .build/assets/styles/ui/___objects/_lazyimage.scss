@@ -1,4 +1,4 @@
-.lazyimage {
+.o-lazyimage {
 	display: inline-block;
 	position: relative;
 
@@ -14,7 +14,7 @@
 	}
 
 	&--svg {
-		.lazyimage__image {
+		.o-lazyimage__image {
 			opacity: 1;
 		}
 	}
@@ -34,8 +34,8 @@
 		left: 0;
 		top: 0;
 
-		.lazyimage__image,
-		.lazyimage__preview {
+		.o-lazyimage__image,
+		.o-lazyimage__preview {
 			position: absolute;
 			bottom: 0;
 			right: 0;
@@ -47,7 +47,7 @@
 	}
 }
 
-.lazyimage--transparent:before {
+.o-lazyimage--transparent:before {
 	$size: 40px;
 	content: '';
 	@include spinner(5px solid #fff, #{$size});
@@ -58,7 +58,7 @@
 	left: 50%;
 }
 
-.lazysizes-svgfilter {
+.o-lazysizes-svgfilter {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;

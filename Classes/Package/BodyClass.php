@@ -23,6 +23,7 @@ class Bodyclass
 		if (sht_theme()->debug) {
 			$classes[] = 'theme-dev';
 		}
+
 		return $classes;
 	}
 }

@@ -13,23 +13,70 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: offline.php:6
-msgid "Offliner"
+#: Classes/Package/CustomPages.php:45
+msgid "Custom Pages"
 msgstr ""
 
-#: offline.php:10
-msgid "You're offline."
+#: Classes/Package/Error.php:55
+msgid "ErrorCode"
 msgstr ""
 
-#: Classes/Theme.php:103
+#: Classes/Package/LoginScreen.php:43
+msgctxt "The section title in the WordPress Customizer"
+msgid "Loginseite"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:62
+msgctxt "Field description title in Customizer"
+msgid "Logo"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:83
+msgctxt "Field label in Customizer"
+msgid "Hintergrundfarbe"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:103
+msgctxt "Field label in Customizer"
+msgid "Buttonfarbe"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:123
+msgctxt "Field label in Customizer"
+msgid "Farbe für Links"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:144
+msgctxt "Field label in Customizer"
+msgid "Breite des Logos"
+msgstr ""
+
+#: Classes/Package/LoginScreen.php:145
+msgctxt "Field label in Customizer"
+msgid "(Pixelgrösse)"
+msgstr ""
+
+#: Classes/Package/Sidebars.php:20
+msgid "Main sidebar"
+msgstr ""
+
+#: Classes/Package/Sidebars.php:22
+msgid "Widget area"
+msgstr ""
+
+#: Classes/Theme.php:115
 msgid "An unexpected error occured."
 msgstr ""
 
-#: Classes/Theme.php:196
+#: Classes/Theme.php:143
+msgid "A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be assigned to the “%2$s” object in the Theme."
+msgstr ""
+
+#: Classes/Theme.php:244
 msgid "JavaScript seems to be disabled. Some functionalities might not work correctly."
 msgstr ""
 
-#: Classes/Theme.php:197
+#: Classes/Theme.php:245
 msgctxt "translators: %s = Link to browsehappy.org"
 msgid "You are using an outdated browser. Please update your browser to view this website correctly: %s"
 msgstr ""
@@ -49,55 +96,4 @@ msgstr ""
 
 #: partials/singular-404.php:8
 msgid "Die Seite konnte nicht gefunden werden."
-msgstr ""
-
-#: Classes/Package/CustomPages.php:43
-msgid "Custom Pages"
-msgstr ""
-
-#: Classes/Package/Error.php:50
-msgid "ErrorCode"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:36
-msgctxt "The section title in the WordPress Customizer"
-msgid "Loginseite"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:53
-msgctxt "Field description title in Customizer"
-msgid "Logo"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:71
-msgctxt "Field label in Customizer"
-msgid "Hintergrundfarbe"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:88
-msgctxt "Field label in Customizer"
-msgid "Buttonfarbe"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:105
-msgctxt "Field label in Customizer"
-msgid "Farbe für Links"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:121
-msgctxt "Field label in Customizer"
-msgid "Breite des Logos"
-msgstr ""
-
-#: Classes/Package/LoginScreen.php:122
-msgctxt "Field label in Customizer"
-msgid "(Pixelgrösse)"
-msgstr ""
-
-#: Classes/Package/Sidebars.php:17
-msgid "Main sidebar"
-msgstr ""
-
-#: Classes/Package/Sidebars.php:19
-msgid "Widget area"
 msgstr ""

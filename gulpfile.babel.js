@@ -1,60 +1,47 @@
-import {config, assetsDir, assetsBuild} from './.build/gulp/config.js';
 import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import livereload from 'gulp-livereload';
 
-const $ = gulpLoadPlugins();
-
-const errorLog = function (error) {
-	console.log(error);
-	if (this.emit) {
-		this.emit('end');
-	}
+const config = {
+	name: 'Hello Theme',
+	key: 'sht',
+	assetsDir: 'assets/',
+	gulpDir: './.build/gulp/',
+	assetsBuild: '.build/assets/',
+	errorLog: function (error) {
+		console.log('\x1b[31m%s\x1b[0m', error);
+		if (this.emit) {
+			this.emit('end');
+		}
+	},
+	reload: [
+		'*.php',
+		'{Classes,inc,partials,templates,includes}/**/*.{php,html,twig}'
+	]
 };
 
-function getTask(task) {
+import {task as taskStyles} from './.build/gulp/task-styles';
+import {task as taskScripts} from './.build/gulp/task-scripts';
+import {task as taskReload} from './.build/gulp/task-reload';
+import {task as taskSvg} from './.build/gulp/task-svg';
+import {task as taskModernizr} from './.build/gulp/task-modernizr';
+import {task as taskPot} from './.build/gulp/task-pot';
+import {task as taskServe} from './.build/gulp/task-serve';
 
-	task = task.split(':');
-	const mainTask = task[0];
-	let subTask = task[1];
-	if (undefined === subTask) {
-		subTask = '';
-	}
+export const styles = () => taskStyles(config);
+export const scripts = () => taskScripts(config);
+export const reload = () => taskReload(config);
+export const svg = () => taskSvg(config);
+export const modernizr = () => taskModernizr(config);
+export const pot = () => taskPot(config);
+export const serve = () => taskServe(config);
+export const watch = () => {
+	livereload.listen();
 
-	let taskConfig = '';
-	for (let [key, values] of Object.entries(config)) {
-		if (key === mainTask) {
-			taskConfig = values.args;
-		}
-	}
+	gulp.watch(config.assetsBuild + 'styles/**/*.scss', {interval: 500}, gulp.series(styles));
+	gulp.watch(config.assetsBuild + 'scripts/**/*.js', {interval: 500}, gulp.series(scripts));
+	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], {interval: 500}, gulp.series(svg));
+	gulp.watch(config.reload).on('change', livereload.changed);
+};
 
-	return require('./.build/gulp/task-' + mainTask)(subTask, taskConfig, gulp, $, errorLog);
-}
-
-/**
- * ----------------
- * TASKS ----------
- * ----------------
- */
-for (let [task, values] of Object.entries(config)) {
-
-	if (values.subtasks !== undefined && Object.keys(values.subtasks).length !== 0) {
-
-		let subTask = '';
-		const allTasks = [];
-
-		for (let key of values.subtasks) {
-
-			subTask = `${task}:${key}`;
-
-			allTasks.push(subTask);
-			gulp.task(subTask, getTask(subTask));
-		}
-
-		gulp.task(task, allTasks);
-
-	} else {
-		gulp.task(task, getTask(task));
-	}
-}
-
-gulp.task('default', ['styles', 'scripts', 'svg', 'watch']);
+export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
+export default taskDefault;
