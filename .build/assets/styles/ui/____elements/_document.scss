@@ -1,14 +1,27 @@
+:root {
+	@each $colour, $colourSet in $theme_colors {
+		@each $variant, $value in $colourSet {
+			@if $variant == 'base' {
+				--#{$colour}: #{$value};
+			} @else {
+				--#{$colour}-#{$variant}: #{$value};
+			}
+		}
+	}
+}
+
 html {
 	overflow-y: scroll;
 	max-height: 100%;
+	line-height: 1.5;
 }
 
 body {
 	overflow: hidden;
-	background-color: #fff;
+	background-color: c(white);
 }
 
 ::selection {
 	background: c(black);
-	color: #fff;
+	color: c(white);
 }

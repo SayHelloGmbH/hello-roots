@@ -6,9 +6,9 @@ import livereload from "gulp-livereload";
 
 export const task = config => {
 	return gulp.src([
-		config.assetsDir + '**/*.svg',
-		'!' + config.assetsDir + '**/*.min.svg'
-	])
+			config.assetsDir + '**/*.svg',
+			'!' + config.assetsDir + '**/*.min.svg'
+		])
 		.pipe(svgmin())
 		.pipe(rename({
 			suffix: '.min'

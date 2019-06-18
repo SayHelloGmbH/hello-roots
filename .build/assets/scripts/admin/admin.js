@@ -1,4 +1,3 @@
-(function ($, theme) {
-	$(function () {
-	});
+(function($, theme) {
+	$(function() {});
 })(jQuery, SayHelloVars);

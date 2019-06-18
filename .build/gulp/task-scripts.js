@@ -10,7 +10,7 @@ import fs from "fs";
 import babelloader from 'babel-loader';
 
 function getDirectories(path) {
-	return fs.readdirSync(path).filter(function (file) {
+	return fs.readdirSync(path).filter(function(file) {
 		return fs.statSync(path + '/' + file).isDirectory();
 	});
 }
@@ -21,9 +21,9 @@ export const task = config => {
 		let loaded = 0;
 		bundles.forEach(bundle => {
 			gulp.src([
-				`${config.assetsBuild}scripts/${bundle}/*.js`
-			])
-			// Webpack
+					`${config.assetsBuild}scripts/${bundle}/*.js`
+				])
+				// Webpack
 				.pipe(
 					gulpWebpack({
 						module: {
