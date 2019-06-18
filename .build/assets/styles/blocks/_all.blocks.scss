@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/*
+>> GLOBAL
+>> styling for all blocks
+*/
+.alignfull,
+.alignwide {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.alignwide {
+	@include for-screen-min(tablet) {
+		max-width: 90vw;
+
+		&.has-parallax {
+			background-position-x: 45vw;
+		}
+	}
+	@include for-screen-min(desktop) {
+		max-width: rem-calc(1280px);
+
+		&.has-parallax {
+			background-position-x: rem-calc(640px);
+		}
+	}
+}
+
+.alignfull {
+	max-width: 100vw;
+
+	&.has-parallax {
+		background-position-x: 50vw;
+	}
+}
+/*
+>> BLOCKS
+>> styling for individual block types
+*/
+@import 'audio';
+@import 'block-quote';
+@import 'button';
+@import 'columns';
+@import 'cover';
+@import 'embed';
+@import 'gallery';
+@import 'image';
+@import 'latest-posts';
+@import 'preformatted';
+@import 'pullquote';
+@import 'separator';
+@import 'video';

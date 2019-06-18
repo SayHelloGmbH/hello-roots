@@ -26,6 +26,7 @@ import {task as taskSvg} from './.build/gulp/task-svg';
 import {task as taskModernizr} from './.build/gulp/task-modernizr';
 import {task as taskPot} from './.build/gulp/task-pot';
 import {task as taskServe} from './.build/gulp/task-serve';
+import {task as taskGutenberg} from './.build/gulp/task-gutenberg';
 
 export const styles = () => taskStyles(config);
 export const scripts = () => taskScripts(config);
@@ -33,15 +34,21 @@ export const reload = () => taskReload(config);
 export const svg = () => taskSvg(config);
 export const modernizr = () => taskModernizr(config);
 export const pot = () => taskPot(config);
+export const gutenberg = () => taskGutenberg(config);
 export const serve = () => taskServe(config);
 export const watch = () => {
+
+	const settings = {usePolling: true, interval: 500};
+
 	livereload.listen();
 
-	gulp.watch(config.assetsBuild + 'styles/**/*.scss', {interval: 500}, gulp.series(styles));
-	gulp.watch(config.assetsBuild + 'scripts/**/*.js', {interval: 500}, gulp.series(scripts));
-	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], {interval: 500}, gulp.series(svg));
+	gulp.watch(config.assetsBuild + 'styles/**/*.scss', settings, gulp.series(styles));
+	gulp.watch(config.assetsBuild + 'scripts/**/*.js', settings, gulp.series(scripts));
+	gulp.watch(config.assetsBuild + 'gutenberg/**/*.{scss,js,jsx}', settings, gulp.series(gutenberg));
+	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], settings, gulp.series(svg));
 	gulp.watch(config.reload).on('change', livereload.changed);
 };
+
 
 export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
 export default taskDefault;

@@ -1,0 +1,31 @@
+.wp-block-embed {
+	margin: 1rem 0;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	&.wp-has-aspect-ratio {
+		position: relative;
+
+		.wp-block-embed__wrapper {
+			@include flood;
+			height: 100%;
+
+			> iframe {
+				@include flood;
+				height: 100%;
+			}
+		}
+	}
+
+	&.wp-embed-aspect-4-3 {
+		height: 0;
+		padding-bottom: percentage(3/4);
+	}
+
+	&.wp-embed-aspect-16-9 {
+		height: 0;
+		padding-bottom: percentage(9/16);
+	}
+}

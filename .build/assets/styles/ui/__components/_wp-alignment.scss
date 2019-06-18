@@ -1,0 +1,46 @@
+/**
+ * WordPress alignment classes
+ */
+$alignment-spacing: 1rem !default;
+
+.alignleft,
+.alignright {
+	position: relative;
+	z-index: 1;
+	margin-bottom: $alignment-spacing;
+}
+
+.alignleft {
+	float: left;
+	margin-right: $alignment-spacing;
+}
+
+.alignright {
+	float: right;
+	margin-left: $alignment-spacing;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.aligncenter,
+.alignleft,
+.alignnone,
+.alignright {
+	a,
+	img {
+		margin: 0;
+		display: block;
+	}
+}
+
+figure.alignleft,
+figure.alignright,
+img.alignleft,
+img.alignright {
+	max-width: 50%;
+}

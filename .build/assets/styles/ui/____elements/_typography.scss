@@ -3,26 +3,28 @@ html {
 	font-family: $font;
 	font-weight: normal;
 }
-
 @include typography-build;
 
-a, button {
+a,
+button {
 	color: c(primary);
 	text-decoration: none;
 	@include transition();
 }
 
-p, tr, li, input {
-
+input,
+li,
+p,
+tr {
 	color: c();
-	margin: 0 0 0 0;
+	margin: 0;
 
 	em {
 		font-style: italic;
 	}
 
-	strong,
-	b {
+	b,
+	strong {
 		font-weight: bold;
 	}
 
@@ -31,11 +33,13 @@ p, tr, li, input {
 		display: inline-block;
 	}
 
-	&.big, .big {
+	&.big,
+	.big {
 		font-size: $font-size-larger;
 	}
 
-	sub, sup {
+	sub,
+	sup {
 		font-size: $font-size-smaller;
 		line-height: 0;
 		position: relative;
@@ -51,6 +55,11 @@ p, tr, li, input {
 	}
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	color: c(black, dark);
 }

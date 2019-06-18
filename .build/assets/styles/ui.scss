@@ -3,8 +3,8 @@
 /*! Created by Say Hello GmbH (Switzerland), hello@sayhello.ch */
 /*
 
-This stylesheet was generated using Sass (http://sass-lang.com) and Compass (http://compass-style.org/).
-Original files can be found inside the /.bulid/assets/styles/ Folder inside the main folder of this project.
+This stylesheet was generated using Sass (http://sass-lang.com).
+Original files can be found inside the /.build/assets/styles/ folder inside the main folder of this project.
 
 The structure follows the principles of ITCSS (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)
 
@@ -14,25 +14,8 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> variables used inside Sass
 >> no output expected
 */
-@import "ui/_______settings/grid";
-@import "ui/_______settings/typography";
-@import "ui/_______settings/boxshadow";
-@import "ui/_______settings/transition";
-/*
->> TOOLS
->> Mixins and Functions used inside Sass
->> no output expected
-*/
-@import "ui/______tools/mixins.transition";
-@import "ui/______tools/mixins.box-shadow";
-@import "ui/______tools/mixins.box-shadow";
-@import "ui/______tools/functions.breakpoints";
-@import "ui/______tools/mixins.clearfix";
-@import "ui/______tools/mixins.ellipsis";
-@import "ui/______tools/mixins.breakpoints";
-@import "ui/______tools/mixins.spinner";
-@import "ui/______tools/mixins.typography";
-@import "ui/______tools/functions.color";
+$block-mode: 'frontend';
+@import "settings";
 /*
 >> GENERIC
 >> reset and/or normalize styles, box-sizing definition, etc.
@@ -52,6 +35,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 @import "ui/____elements/iframe";
 @import "ui/____elements/table";
 @import "ui/____elements/img";
+@import "ui/____elements/video";
 @import "ui/____elements/modules/fancybox.custom";
 @import "ui/____elements/modules/flickity.custom";
 /*
@@ -65,12 +49,18 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 >> COMPONENTS
 >> specific UI components
 */
+@import "ui/__components/wp-alignment";
 @import "ui/__components/browser-check";
 @import "ui/__components/header";
 @import "ui/__components/menu";
 @import "ui/__components/menutoggler";
 @import "ui/__components/content-section";
 @import "ui/__components/footer";
+/*
+>> GUTENBERG
+>> CSS for Gutenberg Blocks
+*/
+@import "blocks/all.blocks";
 /*
 >> TRUMPS
 >> utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
