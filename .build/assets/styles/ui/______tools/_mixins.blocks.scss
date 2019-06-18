@@ -1,0 +1,14 @@
+@mixin blocks-backend() {
+	@if $block-mode == backend {
+		.edit-post-visual-editor {
+			@content;
+		}
+	}
+}
+@mixin blocks-frontend() {
+	@if $block-mode == frontend {
+		.c-blocks {
+			@content;
+		}
+	}
+}

@@ -1,416 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
-
-module.exports = jQuery;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(2);
-__webpack_require__(3);
-module.exports = __webpack_require__(9);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-(function ($) {
-  var CheckClass = 'no-outline';
-  var $body = $('body');
-  $(function () {
-    $body.addClass(CheckClass);
-    $(window).keydown(function (e) {
-      var code = e.keyCode ? e.keyCode : e.which;
-
-      if (code === 9) {
-        $body.removeClass(CheckClass);
-      }
-    });
-    $(window).mousemove(function (e) {
-      $body.addClass(CheckClass);
-    });
-  });
-})(jQuery);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_settings_js__ = __webpack_require__(4);
-
-
-(function ($) {
-  $(function () {
-    console.log("%cDesigned by", "font-style: italic; font-size: 12px;");
-    console.log("%csome cool agency", "font-weight: bold; color: #000; font-size: 16px;");
-    console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-    console.log('');
-    console.log("%cDeveloped by", "font-style: italic; font-size: 12px;");
-    console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
-    console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
-    console.log('');
-  });
-})(jQuery);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export color */
-/* unused harmony export c */
-/* unused harmony export is_mobile */
-/* unused harmony export theme */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_settings_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_settings_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_easing__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery_easing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery_easing__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jquery_bez_js__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__jquery_bez_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__jquery_bez_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_verge__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_verge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_verge__);
-
-
-
-
-jQuery.easing.def = jQuery.bez(__WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_bezier"]);
-jQuery.fx.speeds = {
-  slow: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed_slow"],
-  fast: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed_fast"],
-  _default: __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["easing_speed"]
-};
-var color = function color(mycolor) {
-  var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
-  return __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["theme_colors"][mycolor][tone];
-};
-var c = function c(mycolor) {
-  var tone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'base';
-  return color(mycolor, tone);
-};
-var is_mobile = function is_mobile() {
-  return __WEBPACK_IMPORTED_MODULE_3_verge___default.a.viewportW() <= __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__["theme_breakpoints"]['tablet'];
-};
-var themeObject = __WEBPACK_IMPORTED_MODULE_0__assets_settings_json__;
-
-for (var attrname in ThemeJSVars) {
-  themeObject[attrname] = ThemeJSVars[attrname];
-}
-
-var theme = themeObject;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = {"theme_colors":{"primary":{"base":"#77adbf"},"black":{"base":"#1d1d1b","dark":"#000","light":"#ddd"},"white":{"base":"#fff"}},"theme_breakpoints":{"phone":330,"tablet":600,"tablet_landscape":900,"desktop":1280},"easing_speed":200,"easing_speed_fast":100,"easing_speed_slow":400,"easing_bezier":[0.455,0.03,0.515,0.955],"theme_fontver":4}
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
-  if (true) {
-    // AMD. Register as an anonymous module unless amdModuleId is set
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_RESULT__ = (function (a0) {
-      return (root['jQuery'] = factory(a0));
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else if (typeof exports === 'object') {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory(require("jquery"));
-  } else {
-    root['jQuery'] = factory(jQuery);
-  }
-}(this, function (jQuery) {
-
-/*
- * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
- *
- * Uses the built in easing capabilities added In jQuery 1.1
- * to offer multiple easing options
- *
- * TERMS OF USE - jQuery Easing
- * 
- * Open source under the BSD License. 
- * 
- * Copyright © 2008 George McGinley Smith
- * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
- * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
- * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
- * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
- *
-*/
-
-// t: current time, b: begInnIng value, c: change In value, d: duration
-jQuery.easing['jswing'] = jQuery.easing['swing'];
-
-jQuery.extend( jQuery.easing,
-{
-	def: 'easeOutQuad',
-	swing: function (x, t, b, c, d) {
-		//alert(jQuery.easing.default);
-		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
-	},
-	easeInQuad: function (x, t, b, c, d) {
-		return c*(t/=d)*t + b;
-	},
-	easeOutQuad: function (x, t, b, c, d) {
-		return -c *(t/=d)*(t-2) + b;
-	},
-	easeInOutQuad: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t + b;
-		return -c/2 * ((--t)*(t-2) - 1) + b;
-	},
-	easeInCubic: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t + b;
-	},
-	easeOutCubic: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t + 1) + b;
-	},
-	easeInOutCubic: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t + b;
-		return c/2*((t-=2)*t*t + 2) + b;
-	},
-	easeInQuart: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t + b;
-	},
-	easeOutQuart: function (x, t, b, c, d) {
-		return -c * ((t=t/d-1)*t*t*t - 1) + b;
-	},
-	easeInOutQuart: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-		return -c/2 * ((t-=2)*t*t*t - 2) + b;
-	},
-	easeInQuint: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t*t + b;
-	},
-	easeOutQuint: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t*t*t + 1) + b;
-	},
-	easeInOutQuint: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-		return c/2*((t-=2)*t*t*t*t + 2) + b;
-	},
-	easeInSine: function (x, t, b, c, d) {
-		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
-	},
-	easeOutSine: function (x, t, b, c, d) {
-		return c * Math.sin(t/d * (Math.PI/2)) + b;
-	},
-	easeInOutSine: function (x, t, b, c, d) {
-		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
-	},
-	easeInExpo: function (x, t, b, c, d) {
-		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
-	},
-	easeOutExpo: function (x, t, b, c, d) {
-		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
-	},
-	easeInOutExpo: function (x, t, b, c, d) {
-		if (t==0) return b;
-		if (t==d) return b+c;
-		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
-	},
-	easeInCirc: function (x, t, b, c, d) {
-		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
-	},
-	easeOutCirc: function (x, t, b, c, d) {
-		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
-	},
-	easeInOutCirc: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
-		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
-	},
-	easeInElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
-	},
-	easeOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
-	},
-	easeInOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
-		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
-	},
-	easeInBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*(t/=d)*t*((s+1)*t - s) + b;
-	},
-	easeOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
-	},
-	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158; 
-		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
-		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
-	},
-	easeInBounce: function (x, t, b, c, d) {
-		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
-	},
-	easeOutBounce: function (x, t, b, c, d) {
-		if ((t/=d) < (1/2.75)) {
-			return c*(7.5625*t*t) + b;
-		} else if (t < (2/2.75)) {
-			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-		} else if (t < (2.5/2.75)) {
-			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-		} else {
-			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-		}
-	},
-	easeInOutBounce: function (x, t, b, c, d) {
-		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
-		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
-	}
-});
-
-/*
- *
- * TERMS OF USE - EASING EQUATIONS
- * 
- * Open source under the BSD License. 
- * 
- * Copyright © 2001 Robert Penner
- * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
- * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
- * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
- * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
- *
- */
-return jQuery;
-
-}));
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=3)}([function(e){e.exports={theme_colors:{primary:{base:"#77adbf",dark:"#4b8a9f"},black:{base:"#1d1d1b",dark:"#000",light:"#ddd"},white:{base:"#fff"},gray:{base:"#999",light:"#f0f0f0"},brown:{base:"#930"}},theme_breakpoints:{phone:330,tablet:600,tablet_landscape:900,desktop:1280},easing_speed:200,easing_speed_fast:100,easing_speed_slow:400,easing_bezier:[.455,.03,.515,.955],theme_fontver:1}},function(e,t){e.exports=jQuery},function(e,t,n){var r,o;r=this,o=function(){var e={},t="undefined"!=typeof window&&window,n="undefined"!=typeof document&&document,r=n&&n.documentElement,o=t.matchMedia||t.msMatchMedia,a=o?function(e){return!!o.call(t,e).matches}:function(){return!1},s=e.viewportW=function(){var e=r.clientWidth,n=t.innerWidth;return e<n?n:e},i=e.viewportH=function(){var e=r.clientHeight,n=t.innerHeight;return e<n?n:e};function u(){return{width:s(),height:i()}}function c(e,t){return!(!(e=e&&!e.nodeType?e[0]:e)||1!==e.nodeType)&&function(e,t){var n={};return t=+t||0,n.width=(n.right=e.right+t)-(n.left=e.left-t),n.height=(n.bottom=e.bottom+t)-(n.top=e.top-t),n}(e.getBoundingClientRect(),t)}return e.mq=a,e.matchMedia=o?function(){return o.apply(t,arguments)}:function(){return{}},e.viewport=u,e.scrollX=function(){return t.pageXOffset||r.scrollLeft},e.scrollY=function(){return t.pageYOffset||r.scrollTop},e.rectangle=c,e.aspect=function(e){var t=(e=null==e?u():1===e.nodeType?c(e):e).height,n=e.width;return t="function"==typeof t?t.call(e):t,(n="function"==typeof n?n.call(e):n)/t},e.inX=function(e,t){var n=c(e,t);return!!n&&n.right>=0&&n.left<=s()},e.inY=function(e,t){var n=c(e,t);return!!n&&n.bottom>=0&&n.top<=i()},e.inViewport=function(e,t){var n=c(e,t);return!!n&&n.bottom>=0&&n.right>=0&&n.top<=i()&&n.left<=s()},e},e.exports?e.exports=o():r.verge=o()},function(e,t,n){n(4),n(8),n(9),e.exports=n(7)},function(e,t){var n,r;n=jQuery,r=n("body"),n(function(){r.addClass("no-outline"),n(window).keydown(function(e){9===(e.keyCode?e.keyCode:e.which)&&r.removeClass("no-outline")}),n(window).mousemove(function(e){r.addClass("no-outline")})})},function(e,t,n){var r,o,a;a=this,r=[n(1)],void 0===(o=function(e){return a.jQuery=function(e){return e.easing.jswing=e.easing.swing,e.extend(e.easing,{def:"easeOutQuad",swing:function(t,n,r,o,a){return e.easing[e.easing.def](t,n,r,o,a)},easeInQuad:function(e,t,n,r,o){return r*(t/=o)*t+n},easeOutQuad:function(e,t,n,r,o){return-r*(t/=o)*(t-2)+n},easeInOutQuad:function(e,t,n,r,o){return(t/=o/2)<1?r/2*t*t+n:-r/2*(--t*(t-2)-1)+n},easeInCubic:function(e,t,n,r,o){return r*(t/=o)*t*t+n},easeOutCubic:function(e,t,n,r,o){return r*((t=t/o-1)*t*t+1)+n},easeInOutCubic:function(e,t,n,r,o){return(t/=o/2)<1?r/2*t*t*t+n:r/2*((t-=2)*t*t+2)+n},easeInQuart:function(e,t,n,r,o){return r*(t/=o)*t*t*t+n},easeOutQuart:function(e,t,n,r,o){return-r*((t=t/o-1)*t*t*t-1)+n},easeInOutQuart:function(e,t,n,r,o){return(t/=o/2)<1?r/2*t*t*t*t+n:-r/2*((t-=2)*t*t*t-2)+n},easeInQuint:function(e,t,n,r,o){return r*(t/=o)*t*t*t*t+n},easeOutQuint:function(e,t,n,r,o){return r*((t=t/o-1)*t*t*t*t+1)+n},easeInOutQuint:function(e,t,n,r,o){return(t/=o/2)<1?r/2*t*t*t*t*t+n:r/2*((t-=2)*t*t*t*t+2)+n},easeInSine:function(e,t,n,r,o){return-r*Math.cos(t/o*(Math.PI/2))+r+n},easeOutSine:function(e,t,n,r,o){return r*Math.sin(t/o*(Math.PI/2))+n},easeInOutSine:function(e,t,n,r,o){return-r/2*(Math.cos(Math.PI*t/o)-1)+n},easeInExpo:function(e,t,n,r,o){return 0==t?n:r*Math.pow(2,10*(t/o-1))+n},easeOutExpo:function(e,t,n,r,o){return t==o?n+r:r*(1-Math.pow(2,-10*t/o))+n},easeInOutExpo:function(e,t,n,r,o){return 0==t?n:t==o?n+r:(t/=o/2)<1?r/2*Math.pow(2,10*(t-1))+n:r/2*(2-Math.pow(2,-10*--t))+n},easeInCirc:function(e,t,n,r,o){return-r*(Math.sqrt(1-(t/=o)*t)-1)+n},easeOutCirc:function(e,t,n,r,o){return r*Math.sqrt(1-(t=t/o-1)*t)+n},easeInOutCirc:function(e,t,n,r,o){return(t/=o/2)<1?-r/2*(Math.sqrt(1-t*t)-1)+n:r/2*(Math.sqrt(1-(t-=2)*t)+1)+n},easeInElastic:function(e,t,n,r,o){var a=1.70158,s=0,i=r;return 0==t?n:1==(t/=o)?n+r:(s||(s=.3*o),i<Math.abs(r)?(i=r,a=s/4):a=s/(2*Math.PI)*Math.asin(r/i),-i*Math.pow(2,10*(t-=1))*Math.sin((t*o-a)*(2*Math.PI)/s)+n)},easeOutElastic:function(e,t,n,r,o){var a=1.70158,s=0,i=r;return 0==t?n:1==(t/=o)?n+r:(s||(s=.3*o),i<Math.abs(r)?(i=r,a=s/4):a=s/(2*Math.PI)*Math.asin(r/i),i*Math.pow(2,-10*t)*Math.sin((t*o-a)*(2*Math.PI)/s)+r+n)},easeInOutElastic:function(e,t,n,r,o){var a=1.70158,s=0,i=r;return 0==t?n:2==(t/=o/2)?n+r:(s||(s=o*(.3*1.5)),i<Math.abs(r)?(i=r,a=s/4):a=s/(2*Math.PI)*Math.asin(r/i),t<1?i*Math.pow(2,10*(t-=1))*Math.sin((t*o-a)*(2*Math.PI)/s)*-.5+n:i*Math.pow(2,-10*(t-=1))*Math.sin((t*o-a)*(2*Math.PI)/s)*.5+r+n)},easeInBack:function(e,t,n,r,o,a){return null==a&&(a=1.70158),r*(t/=o)*t*((a+1)*t-a)+n},easeOutBack:function(e,t,n,r,o,a){return null==a&&(a=1.70158),r*((t=t/o-1)*t*((a+1)*t+a)+1)+n},easeInOutBack:function(e,t,n,r,o,a){return null==a&&(a=1.70158),(t/=o/2)<1?r/2*(t*t*((1+(a*=1.525))*t-a))+n:r/2*((t-=2)*t*((1+(a*=1.525))*t+a)+2)+n},easeInBounce:function(t,n,r,o,a){return o-e.easing.easeOutBounce(t,a-n,0,o,a)+r},easeOutBounce:function(e,t,n,r,o){return(t/=o)<1/2.75?r*(7.5625*t*t)+n:t<2/2.75?r*(7.5625*(t-=1.5/2.75)*t+.75)+n:t<2.5/2.75?r*(7.5625*(t-=2.25/2.75)*t+.9375)+n:r*(7.5625*(t-=2.625/2.75)*t+.984375)+n},easeInOutBounce:function(t,n,r,o,a){return n<a/2?.5*e.easing.easeInBounce(t,2*n,0,o,a)+r:.5*e.easing.easeOutBounce(t,2*n-a,0,o,a)+.5*o+r}}),e}(e)}.apply(t,r))||(e.exports=o)},function(e,t,n){var r,o,a,s;function i(e){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}
 /*!
  * Bez 1.0.11
  * http://github.com/rdallasgray/bez
@@ -423,260 +11,178 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
  * Copyright 2016 Robert Dallas Gray. All rights reserved.
  * Provided under the FreeBSD license: https://github.com/rdallasgray/bez/blob/master/LICENSE.txt
  */
-(function (factory) {
-  if (( false ? "undefined" : _typeof(exports)) === "object") {
-    factory(__webpack_require__(0));
-  } else if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else {
-    factory(jQuery);
-  }
-})(function ($) {
-  $.extend({
-    bez: function bez(encodedFuncName, coOrdArray) {
-      if ($.isArray(encodedFuncName)) {
-        coOrdArray = encodedFuncName;
-        encodedFuncName = 'bez_' + coOrdArray.join('_').replace(/\./g, 'p');
-      }
-
-      if (typeof $.easing[encodedFuncName] !== "function") {
-        var polyBez = function polyBez(p1, p2) {
-          var A = [null, null],
-              B = [null, null],
-              C = [null, null],
-              bezCoOrd = function bezCoOrd(t, ax) {
-            C[ax] = 3 * p1[ax], B[ax] = 3 * (p2[ax] - p1[ax]) - C[ax], A[ax] = 1 - C[ax] - B[ax];
-            return t * (C[ax] + t * (B[ax] + t * A[ax]));
-          },
-              xDeriv = function xDeriv(t) {
-            return C[0] + t * (2 * B[0] + 3 * A[0] * t);
-          },
-              xForT = function xForT(t) {
-            var x = t,
-                i = 0,
-                z;
-
-            while (++i < 14) {
-              z = bezCoOrd(x, 0) - t;
-              if (Math.abs(z) < 1e-3) break;
-              x -= z / xDeriv(x);
-            }
-
-            return x;
-          };
-
-          return function (t) {
-            return bezCoOrd(xForT(t), 1);
-          };
-        };
-
-        $.easing[encodedFuncName] = function (x, t, b, c, d) {
-          return c * polyBez([coOrdArray[0], coOrdArray[1]], [coOrdArray[2], coOrdArray[3]])(t / d) + b;
-        };
-      }
-
-      return encodedFuncName;
-    }
-  });
-});
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
 /*!
- * verge 1.10.2+201705300050
- * http://npm.im/verge
- * MIT Ryan Van Etten
+ * Bez 1.0.11
+ * http://github.com/rdallasgray/bez
+ *
+ * A plugin to convert CSS3 cubic-bezier co-ordinates to jQuery-compatible easing functions
+ *
+ * With thanks to Nikolay Nemshilov for clarification on the cubic-bezier maths
+ * See http://st-on-it.blogspot.com/2011/05/calculating-cubic-bezier-function.html
+ *
+ * Copyright 2016 Robert Dallas Gray. All rights reserved.
+ * Provided under the FreeBSD license: https://github.com/rdallasgray/bez/blob/master/LICENSE.txt
  */
-
-!function(root, name, make) {
-  if (typeof module != 'undefined' && module['exports']) module['exports'] = make();
-  else root[name] = make();
-}(this, 'verge', function() {
-
-  var xports = {}
-    , win = typeof window != 'undefined' && window
-    , doc = typeof document != 'undefined' && document
-    , docElem = doc && doc.documentElement
-    , matchMedia = win['matchMedia'] || win['msMatchMedia']
-    , mq = matchMedia ? function(q) {
-        return !!matchMedia.call(win, q).matches;
-      } : function() {
-        return false;
-      }
-    , viewportW = xports['viewportW'] = function() {
-        var a = docElem['clientWidth'], b = win['innerWidth'];
-        return a < b ? b : a;
-      }
-    , viewportH = xports['viewportH'] = function() {
-        var a = docElem['clientHeight'], b = win['innerHeight'];
-        return a < b ? b : a;
-      };
-
-  /**
-   * Test if a media query is active. Like Modernizr.mq
-   * @since 1.6.0
-   * @return {boolean}
-   */
-  xports['mq'] = mq;
-
-  /**
-   * Normalized matchMedia
-   * @since 1.6.0
-   * @return {MediaQueryList|Object}
-   */
-  xports['matchMedia'] = matchMedia ? function() {
-    // matchMedia must be binded to window
-    return matchMedia.apply(win, arguments);
-  } : function() {
-    // Gracefully degrade to plain object
-    return {};
-  };
-
-  /**
-   * @since 1.8.0
-   * @return {{width:number, height:number}}
-   */
-  function viewport() {
-    return {'width':viewportW(), 'height':viewportH()};
-  }
-  xports['viewport'] = viewport;
-
-  /**
-   * Cross-browser window.scrollX
-   * @since 1.0.0
-   * @return {number}
-   */
-  xports['scrollX'] = function() {
-    return win.pageXOffset || docElem.scrollLeft;
-  };
-
-  /**
-   * Cross-browser window.scrollY
-   * @since 1.0.0
-   * @return {number}
-   */
-  xports['scrollY'] = function() {
-    return win.pageYOffset || docElem.scrollTop;
-  };
-
-  /**
-   * @param {{top:number, right:number, bottom:number, left:number}} coords
-   * @param {number=} cushion adjustment
-   * @return {Object}
-   */
-  function calibrate(coords, cushion) {
-    var o = {};
-    cushion = +cushion || 0;
-    o['width'] = (o['right'] = coords['right'] + cushion) - (o['left'] = coords['left'] - cushion);
-    o['height'] = (o['bottom'] = coords['bottom'] + cushion) - (o['top'] = coords['top'] - cushion);
-    return o;
-  }
-
-  /**
-   * Cross-browser element.getBoundingClientRect plus optional cushion.
-   * Coords are relative to the top-left corner of the viewport.
-   * @since 1.0.0
-   * @param {Element|Object} el element or stack (uses first item)
-   * @param {number=} cushion +/- pixel adjustment amount
-   * @return {Object|boolean}
-   */
-  function rectangle(el, cushion) {
-    el = el && !el.nodeType ? el[0] : el;
-    if (!el || 1 !== el.nodeType) return false;
-    return calibrate(el.getBoundingClientRect(), cushion);
-  }
-  xports['rectangle'] = rectangle;
-
-  /**
-   * Get the viewport aspect ratio (or the aspect ratio of an object or element)
-   * @since 1.7.0
-   * @param {(Element|Object)=} o optional object with width/height props or methods
-   * @return {number}
-   * @link http://w3.org/TR/css3-mediaqueries/#orientation
-   */
-  function aspect(o) {
-    o = null == o ? viewport() : 1 === o.nodeType ? rectangle(o) : o;
-    var h = o['height'], w = o['width'];
-    h = typeof h == 'function' ? h.call(o) : h;
-    w = typeof w == 'function' ? w.call(o) : w;
-    return w/h;
-  }
-  xports['aspect'] = aspect;
-
-  /**
-   * Test if an element is in the same x-axis section as the viewport.
-   * @since 1.0.0
-   * @param {Element|Object} el
-   * @param {number=} cushion
-   * @return {boolean}
-   */
-  xports['inX'] = function(el, cushion) {
-    var r = rectangle(el, cushion);
-    return !!r && r.right >= 0 && r.left <= viewportW();
-  };
-
-  /**
-   * Test if an element is in the same y-axis section as the viewport.
-   * @since 1.0.0
-   * @param {Element|Object} el
-   * @param {number=} cushion
-   * @return {boolean}
-   */
-  xports['inY'] = function(el, cushion) {
-    var r = rectangle(el, cushion);
-    return !!r && r.bottom >= 0 && r.top <= viewportH();
-  };
-
-  /**
-   * Test if an element is in the viewport.
-   * @since 1.0.0
-   * @param {Element|Object} el
-   * @param {number=} cushion
-   * @return {boolean}
-   */
-  xports['inViewport'] = function(el, cushion) {
-    // Equiv to `inX(el, cushion) && inY(el, cushion)` but just manually do both
-    // to avoid calling rectangle() twice. It gzips just as small like this.
-    var r = rectangle(el, cushion);
-    return !!r && r.bottom >= 0 && r.right >= 0 && r.top <= viewportH() && r.left <= viewportW();
-  };
-
-  return xports;
-});
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-(function ($) {
-  $(function () {
-    var $toggler = $('[aria-controls="primary-menu"]');
-    var navID = $toggler.attr('aria-controls');
-    var $nav = $("#".concat(navID));
-    $toggler.on('click', function () {
-      if (!$nav.length) {
-        console.log("navigation #".concat(navID, " not found"));
-        return;
-      }
-
-      var open = $toggler.attr('aria-expanded') === 'true';
-
-      if (open) {
-        $toggler.attr('aria-expanded', 'false');
-        $nav.slideUp();
-      } else {
-        $toggler.attr('aria-expanded', 'true');
-        $nav.slideDown();
-      }
-    });
-  });
-})(jQuery);
-
-/***/ })
-/******/ ]);
+s=function(e){e.extend({bez:function(t,n){if(e.isArray(t)&&(t="bez_"+(n=t).join("_").replace(/\./g,"p")),"function"!=typeof e.easing[t]){var r=function(e,t){var n=[null,null],r=[null,null],o=[null,null],a=function(a,s){return o[s]=3*e[s],r[s]=3*(t[s]-e[s])-o[s],n[s]=1-o[s]-r[s],a*(o[s]+a*(r[s]+a*n[s]))},s=function(e){return o[0]+e*(2*r[0]+3*n[0]*e)};return function(e){return a(function(e){for(var t,n=e,r=0;++r<14&&(t=a(n,0)-e,!(Math.abs(t)<.001));)n-=t/s(n);return n}(e),1)}};e.easing[t]=function(e,t,o,a,s){return a*r([n[0],n[1]],[n[2],n[3]])(t/s)+o}}return t}})},"object"===i(t)?s(n(1)):(o=[n(1)],void 0===(a="function"==typeof(r=s)?r.apply(t,o):r)||(e.exports=a))},function(e,t){var n;(n=jQuery)(function(){var e=n('[aria-controls="primary-menu"]'),t=e.attr("aria-controls"),r=n("#".concat(t));e.on("click",function(){r.length?"true"===e.attr("aria-expanded")?(e.attr("aria-expanded","false"),r.slideUp()):(e.attr("aria-expanded","true"),r.slideDown()):console.log("navigation #".concat(t," not found"))})})},function(e,t,n){"use strict";
+/*!
+ * css-vars-ponyfill
+ * v2.0.2
+ * https://jhildenbiddle.github.io/css-vars-ponyfill/
+ * (c) 2018-2019 John Hildenbiddle <http://hildenbiddle.com>
+ * MIT license
+ */
+function r(){return(r=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}function o(e){return function(e){if(Array.isArray(e)){for(var t=0,n=new Array(e.length);t<e.length;t++)n[t]=e[t];return n}}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance")}
+/*!
+ * get-css-data
+ * v1.6.3
+ * https://github.com/jhildenbiddle/get-css-data
+ * (c) 2018-2019 John Hildenbiddle <http://hildenbiddle.com>
+ * MIT license
+ */()}function a(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n={mimeType:t.mimeType||null,onBeforeSend:t.onBeforeSend||Function.prototype,onSuccess:t.onSuccess||Function.prototype,onError:t.onError||Function.prototype,onComplete:t.onComplete||Function.prototype},r=Array.isArray(e)?e:[e],o=Array.apply(null,Array(r.length)).map(function(e){return null});function a(){return!("<"===(arguments.length>0&&void 0!==arguments[0]?arguments[0]:"").trim().charAt(0))}function s(e,t){n.onError(e,r[t],t)}function i(e,t){var a=n.onSuccess(e,r[t],t);e=!1===a?"":a||e,o[t]=e,-1===o.indexOf(null)&&n.onComplete(o)}var u=document.createElement("a");r.forEach(function(e,t){if(u.setAttribute("href",e),u.href=String(u.href),Boolean(document.all&&!window.atob)&&u.host.split(":")[0]!==location.host.split(":")[0]){if(u.protocol===location.protocol){var r=new XDomainRequest;r.open("GET",e),r.timeout=0,r.onprogress=Function.prototype,r.ontimeout=Function.prototype,r.onload=function(){a(r.responseText)?i(r.responseText,t):s(r,t)},r.onerror=function(e){s(r,t)},setTimeout(function(){r.send()},0)}else console.warn("Internet Explorer 9 Cross-Origin (CORS) requests must use the same protocol (".concat(e,")")),s(null,t)}else{var o=new XMLHttpRequest;o.open("GET",e),n.mimeType&&o.overrideMimeType&&o.overrideMimeType(n.mimeType),n.onBeforeSend(o,e,t),o.onreadystatechange=function(){4===o.readyState&&(200===o.status&&a(o.responseText)?i(o.responseText,t):s(o,t))},o.send()}})}
+/**
+ * Gets CSS data from <style> and <link> nodes (including @imports), then
+ * returns data in order processed by DOM. Allows specifying nodes to
+ * include/exclude and filtering CSS data using RegEx.
+ *
+ * @preserve
+ * @param {object}   [options] The options object
+ * @param {object}   [options.rootElement=document] Root element to traverse for
+ *                   <link> and <style> nodes.
+ * @param {string}   [options.include] CSS selector matching <link> and <style>
+ *                   nodes to include
+ * @param {string}   [options.exclude] CSS selector matching <link> and <style>
+ *                   nodes to exclude
+ * @param {object}   [options.filter] Regular expression used to filter node CSS
+ *                   data. Each block of CSS data is tested against the filter,
+ *                   and only matching data is included.
+ * @param {object}   [options.useCSSOM=false] Determines if CSS data will be
+ *                   collected from a stylesheet's runtime values instead of its
+ *                   text content. This is required to get accurate CSS data
+ *                   when a stylesheet has been modified using the deleteRule()
+ *                   or insertRule() methods because these modifications will
+ *                   not be reflected in the stylesheet's text content.
+ * @param {function} [options.onBeforeSend] Callback before XHR is sent. Passes
+ *                   1) the XHR object, 2) source node reference, and 3) the
+ *                   source URL as arguments.
+ * @param {function} [options.onSuccess] Callback on each CSS node read. Passes
+ *                   1) CSS text, 2) source node reference, and 3) the source
+ *                   URL as arguments.
+ * @param {function} [options.onError] Callback on each error. Passes 1) the XHR
+ *                   object for inspection, 2) soure node reference, and 3) the
+ *                   source URL that failed (either a <link> href or an @import)
+ *                   as arguments
+ * @param {function} [options.onComplete] Callback after all nodes have been
+ *                   processed. Passes 1) concatenated CSS text, 2) an array of
+ *                   CSS text in DOM order, and 3) an array of nodes in DOM
+ *                   order as arguments.
+ *
+ * @example
+ *
+ *   getCssData({
+ *     rootElement: document,
+ *     include    : 'style,link[rel="stylesheet"]',
+ *     exclude    : '[href="skip.css"]',
+ *     filter     : /red/,
+ *     useCSSOM   : false,
+ *     onBeforeSend(xhr, node, url) {
+ *       // ...
+ *     }
+ *     onSuccess(cssText, node, url) {
+ *       // ...
+ *     }
+ *     onError(xhr, node, url) {
+ *       // ...
+ *     },
+ *     onComplete(cssText, cssArray, nodeArray) {
+ *       // ...
+ *     }
+ *   });
+ */function s(e){var t={cssComments:/\/\*[\s\S]+?\*\//g,cssImports:/(?:@import\s*)(?:url\(\s*)?(?:['"])([^'"]*)(?:['"])(?:\s*\))?(?:[^;]*;)/g},n={rootElement:e.rootElement||document,include:e.include||'style,link[rel="stylesheet"]',exclude:e.exclude||null,filter:e.filter||null,useCSSOM:e.useCSSOM||!1,onBeforeSend:e.onBeforeSend||Function.prototype,onSuccess:e.onSuccess||Function.prototype,onError:e.onError||Function.prototype,onComplete:e.onComplete||Function.prototype},r=Array.apply(null,n.rootElement.querySelectorAll(n.include)).filter(function(e){return t=e,r=n.exclude,!(t.matches||t.matchesSelector||t.webkitMatchesSelector||t.mozMatchesSelector||t.msMatchesSelector||t.oMatchesSelector).call(t,r);var t,r}),o=Array.apply(null,Array(r.length)).map(function(e){return null});function s(){if(-1===o.indexOf(null)){var e=o.join("");n.onComplete(e,o,r)}}function u(e,t,r,i){var u=n.onSuccess(e,r,i);(function e(t,r,o,s){var i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:[];var u=arguments.length>5&&void 0!==arguments[5]?arguments[5]:[];var l=c(t,o,u);l.rules.length?a(l.absoluteUrls,{onBeforeSend:function(e,t,o){n.onBeforeSend(e,r,t)},onSuccess:function(e,t,o){var a=n.onSuccess(e,r,t),s=c(e=!1===a?"":a||e,t,u);return s.rules.forEach(function(t,n){e=e.replace(t,s.absoluteRules[n])}),e},onError:function(n,a,c){i.push({xhr:n,url:a}),u.push(l.rules[c]),e(t,r,o,s,i,u)},onComplete:function(n){n.forEach(function(e,n){t=t.replace(l.rules[n],e)}),e(t,r,o,s,i,u)}}):s(t,i)})(e=void 0!==u&&!1===Boolean(u)?"":u||e,r,i,function(e,a){null===o[t]&&(a.forEach(function(e){return n.onError(e.xhr,r,e.url)}),!n.filter||n.filter.test(e)?o[t]=e:o[t]="",s())})}function c(e,n){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[],o={};return o.rules=(e.replace(t.cssComments,"").match(t.cssImports)||[]).filter(function(e){return-1===r.indexOf(e)}),o.urls=o.rules.map(function(e){return e.replace(t.cssImports,"$1")}),o.absoluteUrls=o.urls.map(function(e){return i(e,n)}),o.absoluteRules=o.rules.map(function(e,t){var r=o.urls[t],a=i(o.absoluteUrls[t],n);return e.replace(r,a)}),o}r.length?r.forEach(function(e,t){var r=e.getAttribute("href"),c=e.getAttribute("rel"),l="LINK"===e.nodeName&&r&&c&&"stylesheet"===c.toLowerCase(),f="STYLE"===e.nodeName;if(l)a(r,{mimeType:"text/css",onBeforeSend:function(t,r,o){n.onBeforeSend(t,e,r)},onSuccess:function(n,o,a){var s=i(r,location.href);u(n,t,e,s)},onError:function(r,a,i){o[t]="",n.onError(r,e,a),s()}});else if(f){var d=e.textContent;n.useCSSOM&&(d=Array.apply(null,e.sheet.cssRules).map(function(e){return e.cssText}).join("")),u(d,t,e,location.href)}else o[t]="",s()}):n.onComplete("",[])}function i(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:location.href,n=document.implementation.createHTMLDocument(""),r=n.createElement("base"),o=n.createElement("a");return n.head.appendChild(r),n.body.appendChild(o),r.href=t,o.href=e,o.href}n.r(t);var u=c;function c(e,t,n){e instanceof RegExp&&(e=l(e,n)),t instanceof RegExp&&(t=l(t,n));var r=f(e,t,n);return r&&{start:r[0],end:r[1],pre:n.slice(0,r[0]),body:n.slice(r[0]+e.length,r[1]),post:n.slice(r[1]+t.length)}}function l(e,t){var n=t.match(e);return n?n[0]:null}function f(e,t,n){var r,o,a,s,i,u=n.indexOf(e),c=n.indexOf(t,u+1),l=u;if(u>=0&&c>0){for(r=[],a=n.length;l>=0&&!i;)l==u?(r.push(l),u=n.indexOf(e,l+1)):1==r.length?i=[r.pop(),c]:((o=r.pop())<a&&(a=o,s=c),c=n.indexOf(t,l+1)),l=u<c&&u>=0?u:c;r.length&&(i=[a,s])}return i}function d(e){var t=r({},{preserveStatic:!0,removeComments:!1},arguments.length>1&&void 0!==arguments[1]?arguments[1]:{});function n(e){throw new Error("CSS parse error: ".concat(e))}function o(t){var n=t.exec(e);if(n)return e=e.slice(n[0].length),n}function a(){return o(/^{\s*/)}function s(){return o(/^}/)}function i(){o(/^\s*/)}function c(){if(i(),"/"===e[0]&&"*"===e[1]){for(var t=2;e[t]&&("*"!==e[t]||"/"!==e[t+1]);)t++;if(!e[t])return n("end of comment is missing");var r=e.slice(2,t);return e=e.slice(t+2),{type:"comment",comment:r}}}function l(){for(var e,n=[];e=c();)n.push(e);return t.removeComments?[]:n}function f(){for(i();"}"===e[0];)n("extra closing bracket");var t=o(/^(("(?:\\"|[^"])*"|'(?:\\'|[^'])*'|[^{])+)/);if(t)return t[0].trim().replace(/\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*\/+/g,"").replace(/"(?:\\"|[^"])*"|'(?:\\'|[^'])*'/g,function(e){return e.replace(/,/g,"‌")}).split(/\s*(?![^(]*\)),\s*/).map(function(e){return e.replace(/\u200C/g,",")})}function d(){o(/^([;\s]*)+/);var e=/\/\*[^*]*\*+([^\/*][^*]*\*+)*\//g,t=o(/^(\*?[-#\/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/);if(t){if(t=t[0].trim(),!o(/^:\s*/))return n("property missing ':'");var r=o(/^((?:\/\*.*?\*\/|'(?:\\'|.)*?'|"(?:\\"|.)*?"|\((\s*'(?:\\'|.)*?'|"(?:\\"|.)*?"|[^)]*?)\s*\)|[^};])+)/),a={type:"declaration",property:t.replace(e,""),value:r?r[0].replace(e,"").trim():""};return o(/^[;\s]*/),a}}function p(){if(!a())return n("missing '{'");for(var e,t=l();e=d();)t.push(e),t=t.concat(l());return s()?t:n("missing '}'")}function m(){i();for(var e,t=[];e=o(/^((\d+\.\d+|\.\d+|\d+)%?|[a-z]+)\s*/);)t.push(e[1]),o(/^,\s*/);if(t.length)return{type:"keyframe",values:t,declarations:p()}}function v(){if(i(),"@"===e[0]){var r=function(){var e=o(/^@([-\w]+)?keyframes\s*/);if(e){var t=e[1];if(!(e=o(/^([-\w]+)\s*/)))return n("@keyframes missing name");var r,i=e[1];if(!a())return n("@keyframes missing '{'");for(var u=l();r=m();)u.push(r),u=u.concat(l());return s()?{type:"keyframes",name:i,vendor:t,keyframes:u}:n("@keyframes missing '}'")}}()||function(){var e=o(/^@supports *([^{]+)/);if(e)return{type:"supports",supports:e[1].trim(),rules:y()}}()||function(){if(o(/^@host\s*/))return{type:"host",rules:y()}}()||function(){var e=o(/^@media *([^{]+)/);if(e)return{type:"media",media:e[1].trim(),rules:y()}}()||function(){var e=o(/^@custom-media\s+(--[^\s]+)\s*([^{;]+);/);if(e)return{type:"custom-media",name:e[1].trim(),media:e[2].trim()}}()||function(){if(o(/^@page */))return{type:"page",selectors:f()||[],declarations:p()}}()||function(){var e=o(/^@([-\w]+)?document *([^{]+)/);if(e)return{type:"document",document:e[2].trim(),vendor:e[1]?e[1].trim():null,rules:y()}}()||function(){if(o(/^@font-face\s*/))return{type:"font-face",declarations:p()}}()||function(){var e=o(/^@(import|charset|namespace)\s*([^;]+);/);if(e)return{type:e[1],name:e[2].trim()}}();if(r&&!t.preserveStatic){var u=!1;if(r.declarations)u=r.declarations.some(function(e){return/var\(/.test(e.value)});else u=(r.keyframes||r.rules||[]).some(function(e){return(e.declarations||[]).some(function(e){return/var\(/.test(e.value)})});return u?r:{}}return r}}function h(){if(!t.preserveStatic){var r=u("{","}",e);if(r){var o=-1!==r.pre.indexOf(":root")&&/--\S*\s*:/.test(r.body),a=/var\(/.test(r.body);if(!o&&!a)return e=e.slice(r.end+1),{}}}var s=f()||[],i=t.preserveStatic?p():p().filter(function(e){var t=s.some(function(e){return-1!==e.indexOf(":root")})&&/^--\S/.test(e.property),n=/var\(/.test(e.value);return t||n});return s.length||n("selector missing"),{type:"rule",selectors:s,declarations:i}}function y(t){if(!t&&!a())return n("missing '{'");for(var r,o=l();e.length&&(t||"}"!==e[0])&&(r=v()||h());)r.type&&o.push(r),o=o.concat(l());return t||s()?o:n("missing '}'")}return{type:"stylesheet",stylesheet:{rules:y(!0),errors:[]}}}function p(e){var t=r({},{store:{},onWarning:function(){}},arguments.length>1&&void 0!==arguments[1]?arguments[1]:{});return"string"==typeof e&&(e=d(e,t)),e.stylesheet.rules.forEach(function(e){"rule"===e.type&&1===e.selectors.length&&":root"===e.selectors[0]&&e.declarations.forEach(function(e,n){var r=e.property,o=e.value;r&&0===r.indexOf("--")&&(t.store[r]=o)})}),t.store}function m(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"",n=arguments.length>2?arguments[2]:void 0,r={charset:function(e){return"@charset "+e.name+";"},comment:function(e){return 0===e.comment.indexOf("__CSSVARSPONYFILL")?"/*"+e.comment+"*/":""},"custom-media":function(e){return"@custom-media "+e.name+" "+e.media+";"},declaration:function(e){return e.property+":"+e.value+";"},document:function(e){return"@"+(e.vendor||"")+"document "+e.document+"{"+o(e.rules)+"}"},"font-face":function(e){return"@font-face{"+o(e.declarations)+"}"},host:function(e){return"@host{"+o(e.rules)+"}"},import:function(e){return"@import "+e.name+";"},keyframe:function(e){return e.values.join(",")+"{"+o(e.declarations)+"}"},keyframes:function(e){return"@"+(e.vendor||"")+"keyframes "+e.name+"{"+o(e.keyframes)+"}"},media:function(e){return"@media "+e.media+"{"+o(e.rules)+"}"},namespace:function(e){return"@namespace "+e.name+";"},page:function(e){return"@page "+(e.selectors.length?e.selectors.join(", "):"")+"{"+o(e.declarations)+"}"},rule:function(e){var t=e.declarations;if(t.length)return e.selectors.join(",")+"{"+o(t)+"}"},supports:function(e){return"@supports "+e.supports+"{"+o(e.rules)+"}"}};function o(e){for(var o="",a=0;a<e.length;a++){var s=e[a];n&&n(s);var i=r[s.type](s);i&&(o+=i,i.length&&s.selectors&&(o+=t))}return o}return o(e.stylesheet.rules)}c.range=f;var v="--",h="var";function y(e){var t=r({},{preserveStatic:!0,preserveVars:!1,variables:{},onWarning:function(){}},arguments.length>1&&void 0!==arguments[1]?arguments[1]:{});return"string"==typeof e&&(e=d(e,t)),function e(t,n){t.rules.forEach(function(r){r.rules?e(r,n):r.keyframes?r.keyframes.forEach(function(e){"keyframe"===e.type&&n(e.declarations,r)}):r.declarations&&n(r.declarations,t)})}(e.stylesheet,function(e,n){for(var r=0;r<e.length;r++){var o=e[r],a=o.type,s=o.property,i=o.value;if("declaration"===a)if(t.preserveVars||!s||0!==s.indexOf(v)){if(-1!==i.indexOf(h+"(")){var u=b(i,t);u!==o.value&&(u=g(u),t.preserveVars?(e.splice(r,0,{type:a,property:s,value:u}),r++):o.value=u)}}else e.splice(r,1),r--}}),m(e)}function g(e){return(e.match(/calc\(([^)]+)\)/g)||[]).forEach(function(t){var n="calc".concat(t.split("calc").join(""));e=e.replace(t,n)}),e}function b(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n=arguments.length>2?arguments[2]:void 0;if(-1===e.indexOf("var("))return e;var r=u("(",")",e);return r?"var"===r.pre.slice(-3)?0===r.body.trim().length?(t.onWarning("var() must contain a non-whitespace string"),e):r.pre.slice(0,-3)+function(e){var r=e.split(",")[0].replace(/[\s\n\t]/g,""),o=(e.match(/(?:\s*,\s*){1}(.*)?/)||[])[1],a=t.variables.hasOwnProperty(r)?String(t.variables[r]):void 0,s=a||(o?String(o):void 0),i=n||e;return a||t.onWarning('variable "'.concat(r,'" is undefined')),s&&"undefined"!==s&&s.length>0?b(s,t,i):"var(".concat(i,")")}(r.body)+b(r.post,t):r.pre+"(".concat(b(r.body,t),")")+b(r.post,t):(-1!==e.indexOf("var(")&&t.onWarning('missing closing ")" in the value "'.concat(e,'"')),e)}var S="undefined"!=typeof window,w=S&&window.CSS&&window.CSS.supports&&window.CSS.supports("(--a: 0)"),E={group:0,job:0},O={rootElement:S?document:null,shadowDOM:!1,include:"style,link[rel=stylesheet]",exclude:"",variables:{},onlyLegacy:!0,preserveStatic:!0,preserveVars:!1,silent:!1,updateDOM:!0,updateURLs:!0,watch:null,onBeforeSend:function(){},onWarning:function(){},onError:function(){},onSuccess:function(){},onComplete:function(){}},x={cssComments:/\/\*[\s\S]+?\*\//g,cssKeyframes:/@(?:-\w*-)?keyframes/,cssMediaQueries:/@media[^{]+\{([\s\S]+?})\s*}/g,cssRootRules:/(?::root\s*{\s*[^}]*})/g,cssUrls:/url\((?!['"]?(?:data|http|\/\/):)['"]?([^'")]*)['"]?\)/g,cssVarDecls:/(?:[\s;]*)(-{2}\w[\w-]*)(?:\s*:\s*)([^;]*);/g,cssVarFunc:/var\(\s*--[\w-]/,cssVars:/(?:(?::root\s*{\s*[^;]*;*\s*)|(?:var\(\s*))(--[^:)]+)(?:\s*[:)])/},M={dom:{},job:{},user:{}},C=!1,_=null,A=0,j=null,k=!1;
+/**
+ * Fetches, parses, and transforms CSS custom properties from specified
+ * <style> and <link> elements into static values, then appends a new <style>
+ * element with static values to the DOM to provide CSS custom property
+ * compatibility for legacy browsers. Also provides a single interface for
+ * live updates of runtime values in both modern and legacy browsers.
+ *
+ * @preserve
+ * @param {object}   [options] Options object
+ * @param {object}   [options.rootElement=document] Root element to traverse for
+ *                   <link> and <style> nodes
+ * @param {boolean}  [options.shadowDOM=false] Determines if shadow DOM <link>
+ *                   and <style> nodes will be processed.
+ * @param {string}   [options.include="style,link[rel=stylesheet]"] CSS selector
+ *                   matching <link re="stylesheet"> and <style> nodes to
+ *                   process
+ * @param {string}   [options.exclude] CSS selector matching <link
+ *                   rel="stylehseet"> and <style> nodes to exclude from those
+ *                   matches by options.include
+ * @param {object}   [options.variables] A map of custom property name/value
+ *                   pairs. Property names can omit or include the leading
+ *                   double-hyphen (—), and values specified will override
+ *                   previous values
+ * @param {boolean}  [options.onlyLegacy=true] Determines if the ponyfill will
+ *                   only generate legacy-compatible CSS in browsers that lack
+ *                   native support (i.e., legacy browsers)
+ * @param {boolean}  [options.preserveStatic=true] Determines if CSS
+ *                   declarations that do not reference a custom property will
+ *                   be preserved in the transformed CSS
+ * @param {boolean}  [options.preserveVars=false] Determines if CSS custom
+ *                   property declarations will be preserved in the transformed
+ *                   CSS
+ * @param {boolean}  [options.silent=false] Determines if warning and error
+ *                   messages will be displayed on the console
+ * @param {boolean}  [options.updateDOM=true] Determines if the ponyfill will
+ *                   update the DOM after processing CSS custom properties
+ * @param {boolean}  [options.updateURLs=true] Determines if the ponyfill will
+ *                   convert relative url() paths to absolute urls
+ * @param {boolean}  [options.watch=false] Determines if a MutationObserver will
+ *                   be created that will execute the ponyfill when a <link> or
+ *                   <style> DOM mutation is observed
+ * @param {function} [options.onBeforeSend] Callback before XHR is sent. Passes
+ *                   1) the XHR object, 2) source node reference, and 3) the
+ *                   source URL as arguments
+ * @param {function} [options.onWarning] Callback after each CSS parsing warning
+ *                   has occurred. Passes 1) a warning message as an argument.
+ * @param {function} [options.onError] Callback after a CSS parsing error has
+ *                   occurred or an XHR request has failed. Passes 1) an error
+ *                   message, and 2) source node reference, 3) xhr, and 4 url as
+ *                   arguments.
+ * @param {function} [options.onSuccess] Callback after CSS data has been
+ *                   collected from each node and before CSS custom properties
+ *                   have been transformed. Allows modifying the CSS data before
+ *                   it is transformed by returning any string value (or false
+ *                   to skip). Passes 1) CSS text, 2) source node reference, and
+ *                   3) the source URL as arguments.
+ * @param {function} [options.onComplete] Callback after all CSS has been
+ *                   processed, legacy-compatible CSS has been generated, and
+ *                   (optionally) the DOM has been updated. Passes 1) a CSS
+ *                   string with CSS variable values resolved, 2) an array of
+ *                   output <style> node references that have been appended to
+ *                   the DOM, 3) an object containing all custom properies names
+ *                   and values, and 4) the ponyfill execution time in
+ *                   milliseconds.
+ *
+ * @example
+ *
+ *   cssVars({
+ *     rootElement   : document,
+ *     shadowDOM     : false,
+ *     include       : 'style,link[rel="stylesheet"]',
+ *     exclude       : '',
+ *     variables     : {},
+ *     onlyLegacy    : true,
+ *     preserveStatic: true,
+ *     preserveVars  : false,
+ *     silent        : false,
+ *     updateDOM     : true,
+ *     updateURLs    : true,
+ *     watch         : false,
+ *     onBeforeSend(xhr, node, url) {},
+ *     onWarning(message) {},
+ *     onError(message, node, xhr, url) {},
+ *     onSuccess(cssText, node, url) {},
+ *     onComplete(cssText, styleNode, cssVariables, benchmark) {}
+ *   });
+ */
+function I(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t="cssVars(): ",n=r({},O,e);function a(e,r,o,a){!n.silent&&window.console&&console.error("".concat(t).concat(e,"\n"),r),n.onError(e,r,o,a)}function i(e){!n.silent&&window.console&&console.warn("".concat(t).concat(e)),n.onWarning(e)}if(S){if(n.watch)return n.watch=O.watch,function(e){function t(e){var t="LINK"===e.tagName&&-1!==(e.getAttribute("rel")||"").indexOf("stylesheet");return t&&!e.disabled}if(!window.MutationObserver)return;_&&(_.disconnect(),_=null);(_=new MutationObserver(function(n){var r=n.some(function(n){var r,o=!1;return"attributes"===n.type?o=t(n.target):"childList"===n.type&&(r=n.addedNodes,o=Array.apply(null,r).some(function(e){var n=1===e.nodeType,r=n&&e.hasAttribute("data-cssvars"),o=function(e){return"STYLE"===e.tagName&&!e.disabled}(e)&&x.cssVars.test(e.textContent),a=!r&&(t(e)||o);return a})||function(t){return Array.apply(null,t).some(function(t){var n=1===t.nodeType,r=n&&"out"===t.getAttribute("data-cssvars"),o=n&&"src"===t.getAttribute("data-cssvars"),a=o;if(o||r){var s=t.getAttribute("data-cssvars-group"),i=e.rootElement.querySelector('[data-cssvars-group="'.concat(s,'"]'));o&&(R(e.rootElement),M.dom={}),i&&i.parentNode.removeChild(i)}return a})}(n.removedNodes)),o});r&&I(e)})).observe(document.documentElement,{attributes:!0,attributeFilter:["disabled","href"],childList:!0,subtree:!0})}(n),void I(n);if(!1===n.watch&&_&&(_.disconnect(),_=null),!n.__benchmark){if(C===n.rootElement)return void function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:100;clearTimeout(j),j=setTimeout(function(){e.__benchmark=null,I(e)},t)}(e);if(n.__benchmark=B(),n.exclude=[_?'[data-cssvars]:not([data-cssvars=""])':'[data-cssvars="out"]',n.exclude].filter(function(e){return e}).join(","),n.variables=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=/^-{2}/;return Object.keys(e).reduce(function(n,r){var o=t.test(r)?r:"--".concat(r.replace(/^-+/,""));return n[o]=e[r],n},{})}(n.variables),!_)if(Array.apply(null,n.rootElement.querySelectorAll('[data-cssvars="out"]')).forEach(function(e){var t=e.getAttribute("data-cssvars-group");(t?n.rootElement.querySelector('[data-cssvars="src"][data-cssvars-group="'.concat(t,'"]')):null)||e.parentNode.removeChild(e)}),A){var u=n.rootElement.querySelectorAll('[data-cssvars]:not([data-cssvars="out"])');u.length<A&&(A=u.length,M.dom={})}}if("loading"!==document.readyState){var c=n.shadowDOM||n.rootElement.shadowRoot||n.rootElement.host;if(w&&n.onlyLegacy){if(n.updateDOM){var l=n.rootElement.host||(n.rootElement===document?document.documentElement:n.rootElement);Object.keys(n.variables).forEach(function(e){l.style.setProperty(e,n.variables[e])})}}else c&&!k?s({rootElement:O.rootElement,include:O.include,exclude:n.exclude,onSuccess:function(e,t,n){return(e=((e=e.replace(x.cssComments,"").replace(x.cssMediaQueries,"")).match(x.cssRootRules)||[]).join(""))||!1},onComplete:function(e,t,r){p(e,{store:M.dom,onWarning:i}),k=!0,I(n)}}):(C=n.rootElement,s({rootElement:n.rootElement,include:n.include,exclude:n.exclude,onBeforeSend:n.onBeforeSend,onError:function(e,t,n){var r=e.responseURL||T(n,location.href),o=e.statusText?"(".concat(e.statusText,")"):"Unspecified Error"+(0===e.status?" (possibly CORS related)":"");a("CSS XHR Error: ".concat(r," ").concat(e.status," ").concat(o),t,e,r)},onSuccess:function(e,t,r){var o=n.onSuccess(e,t,r);return e=void 0!==o&&!1===Boolean(o)?"":o||e,n.updateURLs&&(e=function(e,t){return(e.replace(x.cssComments,"").match(x.cssUrls)||[]).forEach(function(n){var r=n.replace(x.cssUrls,"$1"),o=T(r,t);e=e.replace(n,n.replace(r,o))}),e}(e,r)),e},onComplete:function(e,t){var s,u=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[],c={},l=n.updateDOM?M.dom:Object.keys(M.job).length?M.job:M.job=JSON.parse(JSON.stringify(M.dom));if(u.forEach(function(e,r){if(x.cssVars.test(t[r]))try{var o=d(t[r],{preserveStatic:n.preserveStatic,removeComments:!0});p(o,{store:c,onWarning:i}),e.__cssVars={tree:o}}catch(t){a(t.message,e)}}),n.updateDOM&&r(M.user,n.variables),r(c,n.variables),s=Boolean((document.querySelector("[data-cssvars]")||Object.keys(M.dom).length)&&Object.keys(c).some(function(e){return c[e]!==l[e]})),r(l,M.user,c),s)R(n.rootElement),I(n);else{var f=[],v=[],h=!1;if(M.job={},n.updateDOM&&E.job++,u.forEach(function(e){var t=!e.__cssVars;if(e.__cssVars)try{y(e.__cssVars.tree,r({},n,{variables:l,onWarning:i}));var o=m(e.__cssVars.tree);if(n.updateDOM){if(e.getAttribute("data-cssvars")||e.setAttribute("data-cssvars","src"),o.length){var s=e.getAttribute("data-cssvars-group")||++E.group,u=o.replace(/\s/g,""),c=n.rootElement.querySelector('[data-cssvars="out"][data-cssvars-group="'.concat(s,'"]'))||document.createElement("style");h=h||x.cssKeyframes.test(o),c.hasAttribute("data-cssvars")||c.setAttribute("data-cssvars","out"),u===e.textContent.replace(/\s/g,"")?(t=!0,c&&c.parentNode&&(e.removeAttribute("data-cssvars-group"),c.parentNode.removeChild(c))):u!==c.textContent.replace(/\s/g,"")&&([e,c].forEach(function(e){e.setAttribute("data-cssvars-job",E.job),e.setAttribute("data-cssvars-group",s)}),c.textContent=o,f.push(o),v.push(c),c.parentNode||e.parentNode.insertBefore(c,e.nextSibling))}}else e.textContent.replace(/\s/g,"")!==o&&f.push(o)}catch(t){a(t.message,e)}t&&e.setAttribute("data-cssvars","skip"),e.hasAttribute("data-cssvars-job")||e.setAttribute("data-cssvars-job",E.job)}),A=n.rootElement.querySelectorAll('[data-cssvars]:not([data-cssvars="out"])').length,n.shadowDOM)for(var g,b=[n.rootElement].concat(o(n.rootElement.querySelectorAll("*"))),S=0;g=b[S];++S){if(g.shadowRoot&&g.shadowRoot.querySelector("style"))I(r({},n,{rootElement:g.shadowRoot,variables:M.dom}))}n.updateDOM&&h&&function(e){var t=["animation-name","-moz-animation-name","-webkit-animation-name"].filter(function(e){return getComputedStyle(document.body)[e]})[0];if(t){for(var n=e.getElementsByTagName("*"),r=[],o=0,a=n.length;o<a;o++){var s=n[o],i=getComputedStyle(s)[t];"none"!==i&&(s.style[t]+="__CSSVARSPONYFILL-KEYFRAMES__",r.push(s))}document.body.offsetHeight;for(var u=0,c=r.length;u<c;u++){var l=r[u].style;l[t]=l[t].replace("__CSSVARSPONYFILL-KEYFRAMES__","")}}}(n.rootElement),C=!1,n.onComplete(f.join(""),v,JSON.parse(JSON.stringify(l)),B()-n.__benchmark)}}}))}else document.addEventListener("DOMContentLoaded",function t(n){I(e),document.removeEventListener("DOMContentLoaded",t)})}}function T(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:location.href,n=document.implementation.createHTMLDocument(""),r=n.createElement("base"),o=n.createElement("a");return n.head.appendChild(r),n.body.appendChild(o),r.href=t,o.href=e,o.href}function B(){return S&&(window.performance||{}).now?window.performance.now():(new Date).getTime()}function R(e){Array.apply(null,e.querySelectorAll('[data-cssvars="skip"],[data-cssvars="src"]')).forEach(function(e){return e.setAttribute("data-cssvars","")})}I.reset=function(){for(var e in C=!1,_&&(_.disconnect(),_=null),A=0,j=null,k=!1,M)M[e]={}},I()},function(e,t,n){"use strict";n.r(t);var r=n(0),o=n.t(r,2);n(5),n(6),n(2);jQuery.easing.def=jQuery.bez(r.easing_bezier),jQuery.fx.speeds={slow:r.easing_speed_slow,fast:r.easing_speed_fast,_default:r.easing_speed};var a=o;for(var s in ThemeJSVars)a[s]=ThemeJSVars[s];jQuery(function(){console.log("%cDesigned by","font-style: italic; font-size: 12px;"),console.log("%csome cool agency","font-weight: bold; color: #000; font-size: 16px;"),console.log("%chttps://sayhello.ch","color: #000; font-size: 12px;"),console.log(""),console.log("%cDeveloped by","font-style: italic; font-size: 12px;"),console.log("%cSay Hello GmbH","font-weight: bold; color: #000; font-size: 16px;"),console.log("%chttps://sayhello.ch","color: #000; font-size: 12px;"),console.log("")})}]);

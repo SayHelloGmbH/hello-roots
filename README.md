@@ -4,7 +4,7 @@ This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It ha
 
 # Getting started
 
-It is distributed under the GNU General Public License v3.0. Or in short: **It's open source**.  
+It is distributed under the GNU General Public License v3.0. Or in short: **It's open source**.
 You are free to use this starter theme or only parts of it for personal and commercial use!
 
 Just clone this repository and run a search for the following values and replace them with the values for your project.
@@ -54,15 +54,42 @@ There are shared settings between css and js Files which are stored inside `asse
 
 ### Styles
 
-This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) together with the [BEM naming convention](http://getbem.com/). All `.build/assets/styles/*.scss`-Files will be converted to inside `assets/styles/{$name}.css`-Files.  
+This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) together with the [BEM naming convention](http://getbem.com/). All `.build/assets/styles/*.scss`-Files will be converted to inside `assets/styles/{$name}.css`-Files.
 
-The Class `classes/class-themeassets.php` enqueues them directly.
+The Package Class `Assets` enqueues them directly.
+
+- admin.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin.scss_.
+- ui.min.css is loaded in the backend. This file is generated from _.build/assets/styles/ui.scss_.
+
+#### CSS Variables
+
+The CSS will be generated with [CSS Variables](https://dev.to/sarah_chima/an-introduction-to-css-variables-cmj) in the generated stylesheets. The (JavaScript-based) Ponyfill `css-vars-ponyfill` ([source](https://github.com/jhildenbiddle/css-vars-ponyfill)) is included for IE11 support in the frontend. (_Not_ in the admin area!.)
+
+#### Gutenberg Blocks
+
+The Theme is provided with built-in SCSS support for Gutenberg blocks. There is a specific `Gutenberg` Package for some functionality.
+
+The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropriate to each context, so that the mixins `blocks-frontend` and `blocks-backend` can generate the CSS appropriately for the current context. For example:
+
+```scss
+.wp-block-image {
+	vertical-align: middle;
+}
+@include blocks-frontend() {
+	.wp-block-image {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+```
+
+**Note** that the call to `@include blocks-frontend()` may not be defined _within_ the `.wp-block-image` definition, but must be included as a separate section. This is because it wraps the CSS with a parent CSS class: `.edit-post-visual-editor` in the backend context and `.c-blocks` in the frontend context.
 
 ### Scripts
 
 This theme uses es6 modules which are converted to es5 using babel and bundled using webpack. For example: All `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
 
-The Class `classes/class-themeassets.php` enqueues them directly.
+The Package Class `Assets` enqueues them directly.
 
 ### Fonts
 
@@ -70,7 +97,7 @@ There is a built in Font loading process using base64 encoded woff/woff2 fonts, 
 
 ### LiveReload
 
-It also uses [LiveReload](http://livereload.com/) to refresh your browser on every change you make.  
+It also uses [LiveReload](http://livereload.com/) to refresh your browser on every change you make.
 
 If you are using Google Chrome there is a pretty helpful extension: [chrome LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
