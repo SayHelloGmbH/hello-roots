@@ -11,14 +11,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.0",
     "babel-loader": "^8.0.5",
-<<<<<<< HEAD
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "browser-sync": "^2.26.5",
-    "css-loader": "^2.1.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-=======
     "browser-sync": "^2.26.7",
->>>>>>> develop
     "fs": "0.0.1-security",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.1.0",
@@ -33,18 +26,11 @@
     "gulp-svgmin": "^2.2.0",
     "gulp-uglify": "^2.0.1",
     "gulp-wp-pot": "^2.3.5",
-<<<<<<< HEAD
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "webpack": "^3.12.0",
-=======
     "webpack": "^4.33.0",
->>>>>>> develop
     "webpack-stream": "^3.2.0"
   },
   "author": "Say Hello GmbH - https://sayhello.ch",
-  "license": "GNU General Public License v2 or later",
+  "license": "hello@sayhello.ch",
   "scripts": {
     "start": "gulp"
   },
@@ -56,6 +42,6 @@
   },
   "browserslist": [
     "> 1%",
-    "IE 6"
+    "IE 11"
   ]
 }

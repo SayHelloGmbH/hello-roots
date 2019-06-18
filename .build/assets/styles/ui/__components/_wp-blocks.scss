@@ -1,38 +1,37 @@
-.c-wpblocks {
-	[class*='wp-block'] {
-		&.alignfull,
-		&.alignwide {
-			position: relative;
-			width: 100vw;
-			left: 50%;
-			transform: translateX(-50%);
-		}
+.alignfull,
+.alignwide {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
-		&.alignwide {
-			@include for-screen-min(tablet) {
-				max-width: 90vw;
+.alignwide {
+	@include for-screen-min(tablet) {
+		max-width: 90vw;
 
-				&.has-parallax {
-					background-position-x: 45vw;
-				}
-			}
-			@include for-screen-min(desktop) {
-				max-width: rem-calc(1280px);
-
-				&.has-parallax {
-					background-position-x: rem-calc(640px);
-				}
-			}
-		}
-
-		&.alignfull {
-			max-width: 100vw;
-
-			&.has-parallax {
-				background-position-x: 50vw;
-			}
+		&.has-parallax {
+			background-position-x: 45vw;
 		}
 	}
+	@include for-screen-min(desktop) {
+		max-width: rem-calc(1280px);
+
+		&.has-parallax {
+			background-position-x: rem-calc(640px);
+		}
+	}
+}
+
+.alignfull {
+	max-width: 100vw;
+
+	&.has-parallax {
+		background-position-x: 50vw;
+	}
+}
+
+.c-wpblocks {
 	@import 'blocks/audio';
 	@import 'blocks/block-quote';
 	@import 'blocks/button';

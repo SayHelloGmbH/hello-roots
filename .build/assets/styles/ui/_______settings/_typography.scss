@@ -1,26 +1,14 @@
 $font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
 $global-font-size: 16px;
-
 $font-size-small: small;
 $font-size-large: large;
 $font-size-smaller: smaller;
 $font-size-larger: larger;
-
 /**
  * Define the font sizes and line heights here.
  * Other definitions will be ignored, so don't bother ;)
  */
 $typography-settings: (
-  default: (
-  	'h1, h2, h3, h4, h5, h6': ('line-height': 1.2),
-    'h1': ('font-size': 32),
-    'h2': ('font-size': 24),
-    'h3': ('font-size': 20),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 16),
-    'h6': ('font-size': 14),
-    'p, th, td, li, input, select, textarea, dl': ('line-height': 1.5)
-  ),
+	default: ('h1, h2, h3, h4, h5, h6': ('line-height': 1.2), 'h1': ('font-size': 32), 'h2': ('font-size': 24), 'h3': ('font-size': 20), 'h4': ('font-size': 18), 'h5': ('font-size': 16), 'h6': ('font-size': 14), 'p, th, td, li, input, select, textarea, dl': ('line-height': 1.5)),
 );

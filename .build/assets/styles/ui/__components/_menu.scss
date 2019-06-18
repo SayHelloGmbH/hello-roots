@@ -1,5 +1,4 @@
 .c-menu {
-
 	list-style: none;
 	text-align: center;
 
@@ -9,7 +8,6 @@
 		.c-menu__item {
 			display: block;
 		}
-
 		@include desktop {
 			display: block;
 		}
@@ -20,6 +18,6 @@
 	}
 
 	&__link {
-		padding: .5em 1em;
+		padding: 0.5em 1em;
 	}
 }
