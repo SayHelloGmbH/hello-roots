@@ -43,7 +43,7 @@ if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_
 		$prefix = 'SayHello\\Theme\\';
 
 		// base directory for the namespace prefix
-		$base_dir = __DIR__ . '/Classes/';
+		$base_dir = __DIR__ . '/src/';
 
 		// does the class use the namespace prefix?
 		$len = strlen($prefix);
