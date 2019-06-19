@@ -7,7 +7,7 @@ const config = {
 	assetsDir: 'assets/',
 	gulpDir: './.build/gulp/',
 	assetsBuild: '.build/assets/',
-	errorLog: function (error) {
+	errorLog: function(error) {
 		console.log('\x1b[31m%s\x1b[0m', error);
 		if (this.emit) {
 			this.emit('end');
@@ -19,14 +19,14 @@ const config = {
 	]
 };
 
-import {task as taskStyles} from './.build/gulp/task-styles';
-import {task as taskScripts} from './.build/gulp/task-scripts';
-import {task as taskReload} from './.build/gulp/task-reload';
-import {task as taskSvg} from './.build/gulp/task-svg';
-import {task as taskModernizr} from './.build/gulp/task-modernizr';
-import {task as taskPot} from './.build/gulp/task-pot';
-import {task as taskServe} from './.build/gulp/task-serve';
-import {task as taskGutenberg} from './.build/gulp/task-gutenberg';
+import { task as taskStyles } from './.build/gulp/task-styles';
+import { task as taskScripts } from './.build/gulp/task-scripts';
+import { task as taskReload } from './.build/gulp/task-reload';
+import { task as taskSvg } from './.build/gulp/task-svg';
+import { task as taskModernizr } from './.build/gulp/task-modernizr';
+import { task as taskPot } from './.build/gulp/task-pot';
+import { task as taskServe } from './.build/gulp/task-serve';
+import { task as taskGutenberg } from './.build/gulp/task-gutenberg';
 
 export const styles = () => taskStyles(config);
 export const scripts = () => taskScripts(config);
@@ -38,7 +38,7 @@ export const gutenberg = () => taskGutenberg(config);
 export const serve = () => taskServe(config);
 export const watch = () => {
 
-	const settings = {usePolling: true, interval: 500};
+	const settings = { usePolling: true, interval: 500 };
 
 	livereload.listen();
 

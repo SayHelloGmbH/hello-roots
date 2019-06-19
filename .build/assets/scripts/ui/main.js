@@ -1,9 +1,4 @@
-import {
-	c,
-	color,
-	theme,
-	is_mobile
-} from './modules/settings.js';
+import { c, color, theme, is_mobile } from './modules/settings.js';
 
 (function($) {
 	$(function() {
