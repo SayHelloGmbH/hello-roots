@@ -87,9 +87,8 @@ The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropr
 
 ### Scripts
 
-This theme uses es6 modules which are converted to es5 using babel and bundled using webpack. For example: All `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
+This theme uses ES6 modules which are converted to ES5 using Babel and bundled using Webpack. The Package Class `Assets` enqueues the resultant fidirectly. For example: all `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
 
-The Package Class `Assets` enqueues them directly.
 
 ### Fonts
 

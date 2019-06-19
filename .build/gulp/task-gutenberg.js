@@ -12,9 +12,10 @@ export const task = config => {
 	return gulp.src([
 		`${config.assetsBuild}gutenberg/blocks.js`
 	])
-	// Webpack
+		// Webpack
 		.pipe(
 			gulpWebpack({
+				mode: 'production',
 				module: {
 					rules: [{
 						test: /\.(js|jsx)$/,

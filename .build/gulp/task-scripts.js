@@ -26,6 +26,7 @@ export const task = config => {
 				// Webpack
 				.pipe(
 					gulpWebpack({
+						mode: 'production',
 						module: {
 							rules: [{
 								test: /\.js$/,
