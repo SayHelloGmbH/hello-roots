@@ -1,6 +1,21 @@
 {
   "name": "hello-theme",
   "version": "0.0.0",
+  "description": "This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It has an object oriented php architecture and comes with some very handy build workflows.",
+  "main": "gulpfile.babel.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayHelloGmbH/hello-roots.git"
+  },
+  "keywords": [
+    "hello",
+    "sayhello",
+    "theme"
+  ],
+  "bugs": {
+    "url": "https://github.com/SayHelloGmbH/hello-roots/issues"
+  },
+  "homepage": "https://github.com/SayHelloGmbH/hello-roots#readme",
   "dependencies": {
     "jquery-easing": "0.0.1",
     "verge": "^1.9.1"
@@ -15,9 +30,9 @@
     "css-vars-ponyfill": "^2.0.2",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.2.0",
     "gulp-filter": "^6.0.0",
     "gulp-livereload": "^4.0.1",
-    "gulp-minify-css": "^1.2.4",
     "gulp-modernizr": "^3.2.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
@@ -30,7 +45,7 @@
     "webpack-stream": "^3.2.0"
   },
   "author": "Say Hello GmbH - https://sayhello.ch",
-  "license": "hello@sayhello.ch",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "start": "gulp"
   },
