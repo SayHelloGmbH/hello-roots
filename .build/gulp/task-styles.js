@@ -20,7 +20,7 @@ export const task = config => {
 		.pipe(sourcemaps.write('.'))
 		.on('error', config.errorLog)
 		// minify
-		.pipe(cleanCSS({ compatibility: 'ie11' }))
+		.pipe(cleanCSS())
 		.pipe(rename({
 			suffix: '.min'
 		}))

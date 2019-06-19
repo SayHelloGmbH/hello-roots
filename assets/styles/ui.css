@@ -1039,8 +1039,7 @@ body.browser--outdated .c-browser-check--outdated {
     width: 100%;
     height: 100%;
     z-index: 0;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    object-fit: cover; }
 
 .wp-block-embed {
   margin: 1rem 0; }
