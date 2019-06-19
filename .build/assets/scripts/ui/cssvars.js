@@ -1,3 +1,3 @@
-import cssVars from 'css-vars-ponyfill';
+import { cssVars } from 'css-vars-ponyfill';
 
 cssVars();
