@@ -1,6 +1,6 @@
 @mixin blocks-backend() {
 	@if $block-mode == backend {
-		.edit-post-visual-editor {
+		.editor-styles-wrapper {
 			@content;
 		}
 	}
