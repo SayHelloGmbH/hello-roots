@@ -117,7 +117,7 @@ class LazyImage
 				$org_width  = $size[ 0 ];
 				$org_height = $size[ 1 ];
 			} else {
-				if ((int)$this->getWpImageSizes()[ $size ][ 'height' ] === 9999) {
+				if ((int)$this->getWpImageSizes()[ $size ][ 'height' ] === 9999 || (int)$this->getWpImageSizes()[ $size ][ 'width' ] === 9999) {
 					$source_file = wp_get_attachment_metadata((int)$this->image_id);
 					$org_width  = $source_file['width'];
 					$org_height = $source_file['height'];
