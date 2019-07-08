@@ -117,8 +117,14 @@ class LazyImage
 				$org_width  = $size[ 0 ];
 				$org_height = $size[ 1 ];
 			} else {
-				$org_width  = $this->getWpImageSizes()[ $size ][ 'width' ];
-				$org_height = $this->getWpImageSizes()[ $size ][ 'height' ];
+				if ((int)$this->getWpImageSizes()[ $size ][ 'height' ] === 9999) {
+					$source_file = wp_get_attachment_metadata((int)$this->image_id);
+					$org_width  = $source_file['width'];
+					$org_height = $source_file['height'];
+				} else {
+					$org_width  = $this->getWpImageSizes()[ $size ][ 'width' ];
+					$org_height = $this->getWpImageSizes()[ $size ][ 'height' ];
+				}
 			}
 
 			$this->image_aspect = $org_width / $org_height;
