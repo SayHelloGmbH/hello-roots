@@ -12,7 +12,9 @@ export const task = config => {
 	return gulp.src(config.assetsBuild + 'styles/**/*.scss')
 		.pipe(sassImportJson({ isScss: true }))
 		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({
+			includePaths: ['./node_modules/']
+		}).on('error', sass.logError))
 		.pipe(sourcemaps.write({ includeContent: false }))
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(autoprefixer())
