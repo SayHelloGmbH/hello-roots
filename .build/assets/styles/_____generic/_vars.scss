@@ -1,0 +1,21 @@
+:root {
+	--color-button-primary-background: c(primary);
+	--color-button-primary-hover: c(white);
+	--color-button-primary: c(white);
+	--constraint-narrow: #{rem-calc(640px)};
+	--constraint-wide: #{rem-calc(1280px)};
+	--font-size: #{$font-size};
+	--font-size-small: #{$font-size-small};
+	--font-size-xsmall: #{$font-size-xsmall};
+	--font-size-large: #{$font-size-large};
+	--font-size-xlarge: #{$font-size-xlarge};
+	--unit-xxsmall: calc(var(--unit) / 8);
+	--unit-xsmall: calc(var(--unit) / 4);
+	--unit-small: calc(var(--unit) / 2);
+	--unit-medium: calc(var(--unit) * 2);
+	--unit-large: calc(var(--unit) * 3);
+	--unit-xlarge: calc(var(--unit) * 4);
+	--unit-xxlarge: calc(var(--unit) * 8);
+	--unit-xxxlarge: calc(var(--unit) * 10);
+	--unit: 1rem;
+}
