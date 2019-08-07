@@ -23,7 +23,7 @@ class LoginScreen
 		add_action('login_head', [ $this, 'customizeLoginForm' ]);
 		add_action('password_protected_login_head', [ $this, 'customizeLoginForm' ]);
 		add_filter('login_headerurl', [ $this, 'loginLogoUrl' ]);
-		add_filter('login_headertitle', [ $this, 'loginLogoTitle' ]);
+		add_filter('login_headertext', [ $this, 'loginLogoTitle' ]);
 	}
 
 	/**
