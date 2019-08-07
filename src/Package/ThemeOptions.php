@@ -17,46 +17,30 @@ class ThemeOptions
 	public function __construct()
 	{
 		$this->main_slug    = sht_theme()->prefix . '-settings';
-		$this->general_slug = $this->main_slug . '-general';
 	}
 
 	public function run()
 	{
-		add_action('acf/init', [ $this, 'pageMain' ], 1);
-		add_action('acf/init', [ $this, 'pageGeneral' ]);
-		add_action('acf/init', [ $this, 'optionsGeneral' ]);
+		add_action('acf/init', [ $this, 'page' ], 1);
+		add_action('acf/init', [ $this, 'options' ]);
 	}
 
-	public function pageMain()
-	{
-
-		if (function_exists('acf_add_options_page')) {
-			acf_add_options_page(
-				[
-					'menu_title' => __('Theme Settings', 'sha'),
-					'menu_slug'  => $this->main_slug,
-					'position'   => 30,
-				]
-			);
-		}
-	}
-
-	public function pageGeneral()
+	public function page()
 	{
 		if (function_exists('acf_add_options_sub_page')) {
 			acf_add_options_sub_page(
 				[
-					'page_title'  => __('General Settings', 'sha'),
-					'menu_title'  => __('General', 'sha'),
-					'menu_slug'   => $this->general_slug,
-					'parent_slug' => $this->main_slug,
+					'page_title'  => __('Theme-Optionen', 'sha'),
+					'menu_title'  => __('Theme-Optionen', 'sha'),
+					'menu_slug'   => $this->main_slug,
+					'parent_slug' => 'themes.php',
 					'capability'  => 'edit_theme_options',
 				]
 			);
 		}
 	}
 
-	public function optionsGeneral()
+	public function options()
 	{
 
 		/**
@@ -68,36 +52,36 @@ class ThemeOptions
 
 			acf_add_local_field_group(
 				[
-					'key'      => "$prefix-contact-group",
+					'key'      => "{$prefix}-contact-group",
 					'title'    => __('Kontakt', 'sha'),
 					'fields'   => [
 						[
-							'key'   => "field_$prefix-contact-tel",
-							'name'  => "$prefix-contact-tel",
+							'key'   => "field_{$prefix}-contact-tel",
+							'name'  => "{$prefix}-contact-tel",
 							'label' => __('Telefon', 'sha'),
 							'type'  => 'text',
 						],
 						[
-							'key'   => "field_$prefix-contact-fax",
-							'name'  => "$prefix-contact-fax",
+							'key'   => "field_{$prefix}-contact-fax",
+							'name'  => "{$prefix}-contact-fax",
 							'label' => __('Fax', 'sha'),
 							'type'  => 'text',
 						],
 						[
-							'key'   => "field_$prefix-contact-email",
-							'name'  => "$prefix-contact-email",
-							'label' => __('Email', 'sha'),
+							'key'   => "field_{$prefix}-contact-email",
+							'name'  => "{$prefix}-contact-email",
+							'label' => __('E-Mail-Adresse', 'sha'),
 							'type'  => 'email',
 						],
 						[
-							'key'   => "field_$prefix-contact-name",
-							'name'  => "$prefix-contact-name",
+							'key'   => "field_{$prefix}-contact-name",
+							'name'  => "{$prefix}-contact-name",
 							'label' => __('Name', 'sha'),
 							'type'  => 'text',
 						],
 						[
-							'key'     => "field_$prefix-contact-street",
-							'name'    => "$prefix-contact-street",
+							'key'     => "field_{$prefix}-contact-street",
+							'name'    => "{$prefix}-contact-street",
 							'label'   => __('Strasse', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -105,8 +89,8 @@ class ThemeOptions
 							],
 						],
 						[
-							'key'     => "field_$prefix-contact-number",
-							'name'    => "$prefix-contact-number",
+							'key'     => "field_{$prefix}-contact-number",
+							'name'    => "{$prefix}-contact-number",
 							'label'   => __('Nummer', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -114,8 +98,8 @@ class ThemeOptions
 							],
 						],
 						[
-							'key'     => "field_$prefix-contact-zip",
-							'name'    => "$prefix-contact-zip",
+							'key'     => "field_{$prefix}-contact-zip",
+							'name'    => "{$prefix}-contact-zip",
 							'label'   => __('PLZ', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -123,8 +107,8 @@ class ThemeOptions
 							],
 						],
 						[
-							'key'     => "field_$prefix-contact-city",
-							'name'    => "$prefix-contact-city",
+							'key'     => "field_{$prefix}-contact-city",
+							'name'    => "{$prefix}-contact-city",
 							'label'   => __('Ort', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -132,8 +116,8 @@ class ThemeOptions
 							],
 						],
 						[
-							'key'     => "field_$prefix-contact-state",
-							'name'    => "$prefix-contact-state",
+							'key'     => "field_{$prefix}-contact-state",
+							'name'    => "{$prefix}-contact-state",
 							'label'   => __('Kanton', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -141,8 +125,8 @@ class ThemeOptions
 							],
 						],
 						[
-							'key'     => "field_$prefix-contact-country",
-							'name'    => "$prefix-contact-country",
+							'key'     => "field_{$prefix}-contact-country",
+							'name'    => "{$prefix}-contact-country",
 							'label'   => __('Land', 'sha'),
 							'type'    => 'text',
 							'wrapper' => [
@@ -155,7 +139,7 @@ class ThemeOptions
 							[
 								'param'    => 'options_page',
 								'operator' => '==',
-								'value'    => $this->general_slug,
+								'value'    => $this->main_slug,
 							],
 						],
 					],
@@ -168,13 +152,13 @@ class ThemeOptions
 
 			acf_add_local_field_group(
 				[
-					'key'        => "$prefix-analytics-group",
+					'key'        => "{$prefix}-analytics-group",
 					'title'      => __('Analytics Tracking', 'sha'),
 					'fields'     => [
 						[
-							'key'   => "field_$prefix-analytics-track-id",
-							'name'  => "$prefix-analytics-track-id",
-							'label' => __('Google Analytics / Tag Manger ID', 'sha'),
+							'key'   => "field_{$prefix}-analytics-track-id",
+							'name'  => "{$prefix}-analytics-track-id",
+							'label' => __('Google Analytics / Tag Manager ID', 'sha'),
 							'type'  => 'text',
 						],
 					],
@@ -183,7 +167,7 @@ class ThemeOptions
 							[
 								'param'    => 'options_page',
 								'operator' => '==',
-								'value'    => $this->general_slug,
+								'value'    => $this->main_slug,
 							],
 						],
 					],

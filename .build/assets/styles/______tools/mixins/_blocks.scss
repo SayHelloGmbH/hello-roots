@@ -1,14 +1,11 @@
 @mixin blocks-backend() {
 	@if $block-mode == backend {
-		.editor-styles-wrapper {
-			@content;
-		}
+		@content;
 	}
 }
+
 @mixin blocks-frontend() {
 	@if $block-mode == frontend {
-		.c-blocks {
-			@content;
-		}
+		@content;
 	}
 }

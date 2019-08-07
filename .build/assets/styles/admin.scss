@@ -1,24 +1,10 @@
-@charset "UTF-8";
-@import "../../../assets/settings.json";
-/*! Created by Say Hello GmbH (Switzerland), hello@sayhello.ch */
-/*
+.acf-hl {
+	li:before {
+		content: '';
+		display: none;
+	}
+}
 
-This stylesheet was generated using Sass (http://sass-lang.com).
-Original files can be found inside the /.build/assets/styles/ folder inside the main folder of this project.
-
-The structure follows the principles of ITCSS (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)
-
-*/
-/*
->> SETTINGS
->> variables used inside Sass
->> no output expected
-*/
-$block-mode: 'backend';
-@import "settings";
-@import "admin/button";
-/*
->> GUTENBERG
->> CSS for Gutenberg Blocks
-*/
-@import "blocks/all.blocks";
+.editor-post-title__block .editor-post-title__input {
+	font-family: var(--font-heading);
+}

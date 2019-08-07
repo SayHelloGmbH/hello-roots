@@ -2,9 +2,9 @@
 	@each $colour, $colourSet in $theme_colors {
 		@each $variant, $value in $colourSet {
 			@if $variant == 'base' {
-				--#{$colour}: #{$value};
+				--color-#{$colour}: #{$value};
 			} @else {
-				--#{$colour}-#{$variant}: #{$value};
+				--color-#{$colour}-#{$variant}: #{$value};
 			}
 		}
 	}

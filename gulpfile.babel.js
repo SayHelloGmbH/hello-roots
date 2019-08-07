@@ -38,7 +38,7 @@ export const gutenberg = () => taskGutenberg(config);
 export const serve = () => taskServe(config);
 export const watch = () => {
 
-	const settings = { usePolling: true, interval: 500 };
+	const settings = { usePolling: true, interval: 100 };
 
 	livereload.listen();
 

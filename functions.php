@@ -11,6 +11,8 @@
  * Check if WordPress 4.6 and PHP 5.3 or newer and ACF is active
  */
 
+define('DISALLOW_FILE_EDIT', true);
+
 if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_VERSION, '5.4', '<') || ! class_exists('acf')) {
 	add_action(
 		'admin_notices',

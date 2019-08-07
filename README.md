@@ -22,7 +22,7 @@ Prefix:      sht
 
 PHP dependencies (but not WordPress dependencies like plugins) are loaded using [Composer](https://getcomposer.org/). Use `composer install` when first starting work on the theme, and `composer update` thereafter.
 
-### nodeJS
+### NodeJS
 
 `node` and node package manager `npm` are required to run the build commands.
 
@@ -37,7 +37,7 @@ You can install the packages using `npm install`.
 $ cd path/to/your/project/
 $ npm install
 ```
-Afterwards you can use `start`-command to start the default gulp tasks.
+Afterwards you can use the following command to start the default gulp tasks.
 ```
 $ npm start
 ```
@@ -50,14 +50,15 @@ WordPress loads content at an appropriate size - e.g. responsive images or exter
 
 ### settings.json
 
-There are shared settings between css and js Files which are stored inside `assets/settings.json`. You can import them into any js module (`import * as settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
+There are shared settings between CSS and JavaScript files which are stored inside `assets/settings.json`. You can import them into any JavaScript module (`import * as settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
 
 ### Styles
 
-This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) together with the [BEM naming convention](http://getbem.com/). All `.build/assets/styles/*.scss`-Files will be converted to inside `assets/styles/{$name}.css`-Files.
+This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) together with the [BEM naming convention](http://getbem.com/). All `.build/assets/styles/*.scss` files will be converted to inside `assets/styles/{$name}.css` files.
 
 The Package Class `Assets` enqueues them directly.
 
+- admin-editor.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin-editor.scss_.
 - admin.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin.scss_.
 - ui.min.css is loaded in the backend. This file is generated from _.build/assets/styles/ui.scss_.
 
@@ -69,7 +70,7 @@ The CSS will be generated with [CSS Variables](https://dev.to/sarah_chima/an-int
 
 The Theme is provided with built-in SCSS support for Gutenberg blocks. There is a specific `Gutenberg` Package for some functionality.
 
-The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropriate to each context, so that the mixins `blocks-frontend` and `blocks-backend` can generate the CSS appropriately for the current context. For example:
+The SCSS variable `$block-mode` is defined in _admin-editor.scss_ and _ui.scss_ appropriate to each context, so that the mixins `blocks-frontend` and `blocks-backend` can generate the CSS appropriately for the current context. For example:
 
 ```scss
 .wp-block-image {
@@ -83,11 +84,15 @@ The SCSS variable `$block-mode` is defined in _admin.scss_ and _ui.scss_ appropr
 }
 ```
 
-**Note** that the call to `@include blocks-frontend()` may not be defined _within_ the `.wp-block-image` definition, but must be included as a separate section. This is because it wraps the CSS with a parent CSS class: `.edit-post-visual-editor` in the backend context and `.c-blocks` in the frontend context.
+**Note** that the call to `@include blocks-frontend()` may not be defined _within_ the `.wp-block-image` definition, but must be included as a separate section due to the CSS namespacing which occurs in the `gulp-editor-styles` process.
+
+#### gulp-editor-styles
+
+Gulp uses the [gulp-editor-styles](https://www.npmjs.com/package/gulp-editor-styles) Node Module to automatically parse and wrap the CSS in an appropriate scope (`.editor-styles-wrapper`) for the Gutenberg editor.
 
 ### Scripts
 
-This theme uses ES6 modules which are converted to ES5 using Babel and bundled using Webpack. The Package Class `Assets` enqueues the resultant fidirectly. For example: all `.build/assets/scripts/ui/*.js`-Files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
+This theme uses ES6 modules which are converted to ES5 using Babel and bundled using Webpack. The Package Class `Assets` enqueues the resultant fidirectly. For example: all `.build/assets/scripts/ui/*.js` files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
 
 
 ### Fonts
