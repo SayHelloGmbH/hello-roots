@@ -31,6 +31,7 @@
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-clean-css": "^4.2.0",
+    "gulp-editor-styles": "^1.0.1",
     "gulp-filter": "^6.0.0",
     "gulp-livereload": "^4.0.1",
     "gulp-modernizr": "^3.2.1",
