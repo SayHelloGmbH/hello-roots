@@ -58,7 +58,7 @@ class Assets
 		 */
 		$deps = [];
 		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', true);
+		wp_enqueue_script('jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', false);
 		$deps[] = 'jquery';
 
 		if (file_exists($this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js')) {
