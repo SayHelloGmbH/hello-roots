@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
 >> GLOBAL
 >> styling for all blocks
@@ -35,20 +36,21 @@
 		background-position-x: 50vw;
 	}
 }
+
 /*
 >> BLOCKS
 >> styling for individual block types
 */
-@import 'audio';
-@import 'block-quote';
-@import 'button';
-@import 'columns';
-@import 'cover';
-@import 'embed';
-@import 'gallery';
-@import 'image';
-@import 'latest-posts';
-@import 'preformatted';
-@import 'pullquote';
-@import 'separator';
-@import 'video';
+@import 'core/audio';
+@import 'core/block-quote';
+@import 'core/button';
+@import 'core/columns';
+@import 'core/cover';
+@import 'core/embed';
+@import 'core/gallery';
+@import 'core/image';
+@import 'core/latest-posts';
+@import 'core/preformatted';
+@import 'core/pullquote';
+@import 'core/separator';
+@import 'core/video';
