@@ -2,4 +2,7 @@
   content: '';
   display: none; }
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEFBQ0MsT0FETSxDQUNOLEVBQUUsQUFBQSxPQUFPLENBQUM7RUFDVCxPQUFPLEVBQUUsRUFBRTtFQUNYLE9BQU8sRUFBRSxJQUFJLEdBQ2IifQ== */
+.editor-post-title__block .editor-post-title__input {
+  font-family: var(--font-heading); }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEFBQ0MsT0FETSxDQUNOLEVBQUUsQUFBQSxPQUFPLENBQUM7RUFDVCxPQUFPLEVBQUUsRUFBRTtFQUNYLE9BQU8sRUFBRSxJQUFJLEdBQ2I7O0FBR0YsQUFBQSx5QkFBeUIsQ0FBQyx5QkFBeUIsQ0FBQztFQUNuRCxXQUFXLEVBQUUsbUJBQW1CLEdBQ2hDIn0= */

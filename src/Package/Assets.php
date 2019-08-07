@@ -36,7 +36,7 @@ class Assets
 			wp_deregister_style('dashicons');
 		}
 
-		$script_version = sht_theme()->version;
+		$theme_version = sht_theme()->version;
 
 		$min = true;
 		if (sht_theme()->debug && is_user_logged_in()) {
@@ -51,7 +51,7 @@ class Assets
 		$deps[] = 'fancybox';
 		wp_enqueue_style('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.css', [], '2.0.10');
 		$deps[] = 'flickity';
-		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, $script_version);
+		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, $theme_version);
 
 		/**
 		 * Javascript
@@ -62,7 +62,7 @@ class Assets
 		$deps[] = 'jquery';
 
 		if (file_exists($this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js')) {
-			wp_enqueue_script('ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $script_version, true);
+			wp_enqueue_script('ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], $theme_version, true);
 			$deps[] = 'ui-modernizr';
 		}
 
@@ -70,7 +70,7 @@ class Assets
 		$deps[] = 'fancybox';
 		wp_enqueue_script('flickity', $this->theme_url . '/assets/plugins/flickity/flickity.min.js', [ 'jquery' ], '3.2.1', true);
 		$deps[] = 'flickity';
-		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js', $deps, $script_version, true);
+		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js', $deps, $theme_version, true);
 
 		/**
 		 * Footer JS
@@ -89,16 +89,16 @@ class Assets
 	public function registerAdminAssets()
 	{
 
-		$script_version = sht_theme()->version;
+		$theme_version = sht_theme()->version;
 
 		if (file_exists($this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js')) {
-			wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $script_version, true);
+			wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], $theme_version, true);
 		}
 
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', $this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], $script_version);
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style'], $script_version);
+		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', $this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], $theme_version);
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], $theme_version);
 
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], $script_version, true);
+		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], $theme_version, true);
 
 		/**
 		 * Admin Footer JS

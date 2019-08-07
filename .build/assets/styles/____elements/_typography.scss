@@ -3,6 +3,11 @@ html {
 	font-family: $font;
 	font-weight: normal;
 }
+
+body {
+	font-size: 1rem;
+}
+
 @include typography-build;
 
 a,
@@ -18,6 +23,7 @@ p,
 tr {
 	color: c();
 	margin: 0;
+	font-size: 1em;
 
 	em {
 		font-style: italic;
