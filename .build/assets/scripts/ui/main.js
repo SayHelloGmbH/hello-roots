@@ -1,4 +1,5 @@
 import { c, color, theme, is_mobile } from './modules/settings.js';
+import '@sayhellogmbh/maybe-set-link-target';
 
 (function($) {
 	$(function() {
@@ -12,6 +13,8 @@ import { c, color, theme, is_mobile } from './modules/settings.js';
 		console.log("%cSay Hello GmbH", "font-weight: bold; color: #000; font-size: 16px;");
 		console.log("%chttps://sayhello.ch", "color: #000; font-size: 12px;");
 		console.log('');
+
+		$('a').maybeSetLinkTarget();
 
 	});
 })(jQuery);
