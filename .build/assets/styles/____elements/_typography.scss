@@ -13,8 +13,11 @@ body {
 a,
 button {
 	color: c(primary);
-	text-decoration: none;
 	@include transition();
+}
+
+button {
+	text-decoration: none;
 }
 
 input,
