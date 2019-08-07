@@ -2,9 +2,9 @@
 	@if map-has-key($theme_colors, $color) {
 		@if map-has-key(map-get($theme_colors, $color), $tone) {
 			@if $tone == 'base' {
-				@return var(--#{$color});
+				@return var(--color-#{$color});
 			} @else {
-				@return var(--#{$color}-#{$tone});
+				@return var(--color-#{$color}-#{$tone});
 			}
 		}
 		@warn "Unknown tone `#{$tone}` of #{$color}.";
