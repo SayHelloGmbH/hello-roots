@@ -35,18 +35,18 @@ tr {
 	}
 
 	small {
-		font-size: $font-size-smaller;
+		font-size: $font-size-xsmall;
 		display: inline-block;
 	}
 
 	&.big,
 	.big {
-		font-size: $font-size-larger;
+		font-size: $font-size-xlarge;
 	}
 
 	sub,
 	sup {
-		font-size: $font-size-smaller;
+		font-size: $font-size-xsmall;
 		line-height: 0;
 		position: relative;
 		vertical-align: baseline;
