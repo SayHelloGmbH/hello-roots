@@ -10,7 +10,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 
 */
 
-$block-mode: 'frontend';
+$context: 'view';
 @import '_______settings/all';
 @import '______tools/all';
 @import '_____generic/all';
