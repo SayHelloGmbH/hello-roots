@@ -3,7 +3,7 @@
 	<header class="content-section content-section--title">
 		<h1><?php the_title(); ?></h1>
 	</header>
-	<div class="content-section post-content c-wpblocks">
+	<div class="content-section post-content c-gutenberg c-stack">
 		<?php the_content(); ?>
 	</div>
 	<?php do_action('sht_after_content'); ?>
