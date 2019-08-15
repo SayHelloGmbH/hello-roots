@@ -21,10 +21,10 @@
 		}
 	}
 	@include for-screen-min(desktop) {
-		max-width: rem-calc(1280px);
+		max-width: var(--constraint-wide);
 
 		&.has-parallax {
-			background-position-x: rem-calc(640px);
+			background-position-x: calc(var(--constraint-wide) / 2);
 		}
 	}
 }
@@ -41,16 +41,5 @@
 >> BLOCKS
 >> styling for individual block types
 */
-@import 'core/audio';
-@import 'core/block-quote';
-@import 'core/button';
-@import 'core/columns';
-@import 'core/cover';
-@import 'core/embed';
-@import 'core/gallery';
-@import 'core/image';
-@import 'core/latest-posts';
-@import 'core/preformatted';
-@import 'core/pullquote';
-@import 'core/separator';
-@import 'core/video';
+@import 'embed';
+@import 'image';
