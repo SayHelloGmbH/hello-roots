@@ -14,6 +14,7 @@
 	}
 	transition: $string;
 }
+
 @function transition-get-duration($speed:normal) {
 	$duration: $easing_speed + 0ms;
 	@if $speed==fast {

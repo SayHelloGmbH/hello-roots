@@ -1,14 +1,21 @@
-/* fonts */
+:root {
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	--font-size: #{$font-size};
+	--font-size-small: #{$font-size-small};
+	--font-size-xsmall: #{$font-size-xsmall};
+	--font-size-large: #{$font-size-large};
+	--font-size-xlarge: #{$font-size-xlarge};
+}
+
 html {
-	font-family: $font;
+	font-family: var(--font-family);
 	font-weight: normal;
 }
 
 body {
 	font-size: 1rem;
 }
-
-@include typography-build;
 
 a,
 button {
@@ -70,5 +77,6 @@ h3,
 h4,
 h5,
 h6 {
+	font-family: var(--font-family-heading);
 	color: c(black, dark);
 }

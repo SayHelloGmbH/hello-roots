@@ -1,11 +1,11 @@
-@mixin blocks-backend() {
-	@if $block-mode == backend {
+@mixin context-edit() {
+	@if $context == edit {
 		@content;
 	}
 }
 
-@mixin blocks-frontend() {
-	@if $block-mode == frontend {
+@mixin context-view() {
+	@if $context == view {
 		@content;
 	}
 }

@@ -92,6 +92,7 @@
 	box-sizing: border-box;
 	animation: spinner $duration infinite linear;
 }
+
 @function isValidBorder($border) {
 	$validBorderTypes: color string number;
 	$borderStyles: solid dotted dashed double;
@@ -115,6 +116,7 @@
 	}
 	@return $validBorder;
 }
+
 @function hasIdenticalValues($arr1, $arr2) {
 	$id: false;
 	@each $val in $arr1 {
@@ -126,6 +128,7 @@
 	}
 	@return $id;
 }
+
 @function isIn($arr1, $val) {
 	$hasVal: false;
 	@each $item in $arr1 {
