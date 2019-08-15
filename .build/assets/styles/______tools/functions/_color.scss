@@ -13,6 +13,7 @@
 	@warn "Unknown `#{$color}` in $colors.";
 	@return null;
 }
+
 @function c($color: black, $tone: 'base') {
 	@return color($color, $tone);
 }

@@ -8,6 +8,7 @@
 		@content;
 	}
 }
+
 @mixin for-screen-max($name, $sizes: $breakpoints) {
 	$max: device-breakpoints-max($name, $sizes);
 	@if $max {
@@ -18,6 +19,7 @@
 		@content;
 	}
 }
+
 @mixin for-screen($name, $sizes: $breakpoints) {
 	@include for-screen-min($name, $sizes) {
 		@include for-screen-max($name, $sizes) {
@@ -25,11 +27,13 @@
 		}
 	}
 }
+
 @mixin mobile() {
 	@include for-screen-max(tablet) {
 		@content;
 	}
 }
+
 @mixin desktop() {
 	@include for-screen-min(tablet_landscape) {
 		@content;
