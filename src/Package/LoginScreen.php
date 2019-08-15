@@ -2,8 +2,8 @@
 
 namespace SayHello\Theme\Package;
 
-use \WP_Customize_Color_Control;
-use \WP_Customize_Upload_Control;
+use WP_Customize_Color_Control;
+use WP_Customize_Cropped_Image_Control;
 
 /**
  * Configuration for the Customizer in the admin area.
@@ -53,16 +53,19 @@ class LoginScreen
 	{
 		if ($this->wp_customize) {
 			// Company logo for the website
-			$this->wp_customize->add_setting('login_logo');
+			$this->wp_customize->add_setting('sht_login_logo', [
+				'capability' => 'edit_theme_options',
+			]);
 			$this->wp_customize->add_control(
-				new WP_Customize_Upload_Control(
+				new WP_Customize_Cropped_Image_Control(
 					$this->wp_customize,
-					'login_logo',
+					'sht_login_logo',
 					[
 						'label'    => _x('Logo', 'Field description title in Customizer', 'sht'),
 						'section'  => 'theme_mods_loginpage',
-						'settings' => 'login_logo',
-						'priority' => 60,
+						'width' => 320,
+						'flex_width' => true,
+						'flex_height' => true
 					]
 				)
 			);
@@ -129,7 +132,7 @@ class LoginScreen
 
 			// Login logo size
 			$this->wp_customize->add_setting(
-				'login_logo_size',
+				'sht_login_logo_size',
 				[
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => [ $this, 'sanitizeAbsint' ],
@@ -137,7 +140,7 @@ class LoginScreen
 				]
 			);
 			$this->wp_customize->add_control(
-				'login_logo_size',
+				'sht_login_logo_size',
 				[
 					'type'        => 'number',
 					'section'     => 'theme_mods_loginpage',
@@ -171,9 +174,10 @@ class LoginScreen
 		$theme_mods = get_theme_mods();
 
 		$css = [];
-		if (isset($theme_mods[ 'login_logo' ])) {
-			$css[] = '.login h1 a {background: url(\'' . $theme_mods[ 'login_logo' ] . '\') center/contain no-repeat;}';
-			$css[] = '.login h1 a {width: ' . get_theme_mod('login_logo_size', 320) . 'px}';
+		if (isset($theme_mods[ 'sht_login_logo' ])) {
+			$theme_mods[ 'sht_login_logo' ] = wp_get_attachment_url($theme_mods[ 'sht_login_logo' ]);
+			$css[] = '.login h1 a {background: url(\'' . $theme_mods[ 'sht_login_logo' ] . '\') center/contain no-repeat;}';
+			$css[] = '.login h1 a {width: ' . get_theme_mod('sht_login_logo_size', 320) . 'px}';
 		}
 		if (isset($theme_mods[ 'login_background_colour' ])) {
 			$css[] = 'body {background-color: ' . $theme_mods[ 'login_background_colour' ] . ';}';
