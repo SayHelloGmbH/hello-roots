@@ -10,12 +10,12 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 
 */
 
-$block-mode: 'frontend';
-@import '_______settings/all';
-@import '______tools/all';
-@import '_____generic/all';
-@import '____elements/all';
-@import '___objects/all';
-@import '__components/all';
-@import '__blocks/all';
-@import '_trumps/all';
+$context: 'view';
+@import '_______settings/__all.settings';
+@import '______tools/__all.tools';
+@import '_____generic/__all.generic';
+@import '____elements/__all.elements';
+@import '___objects/__all.objects';
+@import '__components/__all.components';
+@import '__blocks/__all.blocks';
+@import '_trumps/__all.trumps';
