@@ -266,6 +266,22 @@ class LazyImage
 		return $return;
 	}
 
+	public function getSrcs()
+	{
+		if ($this->error) {
+			return $this->error;
+		}
+
+		return [
+			'id'         => $this->image_id,
+			'svg'        => $this->is_svg,
+			'org'        => $this->image_org,
+			'pre'        => $this->image_pre_src,
+			'srcset'     => $this->image_srcset,
+			'attributes' => $this->attributes()
+		];
+	}
+
 	/**
 	 * Helpers
 	 */
