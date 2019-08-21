@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Dynamic image generation script
+ * https://github.com/SayHelloGmbH/hello-roots/wiki/LazyImage
+ * @author Nico Martin <nico@sayhello.ch>
+ */
+
 namespace SayHello\Theme\Vendor;
 
 class LazyImage
@@ -17,6 +23,7 @@ class LazyImage
 	public $image_aspect = 0;
 	public $image_srcset = [];
 	public $wrapper_class = '';
+	public $image_class = '';
 	public $is_svg = false;
 
 	public $ls_transparent = false;
@@ -187,6 +194,15 @@ class LazyImage
 		$this->wrapper_class = $class;
 	}
 
+	public function setImageClass($class = '')
+	{
+		if ($this->error) {
+			return;
+		}
+
+		$this->image_class = $class;
+	}
+
 	public function setAttributes($attributes)
 	{
 		if ($this->error) {
@@ -226,7 +242,14 @@ class LazyImage
 
 		$return = '';
 
+		$image_class = '';
+
+		if ('' !== $this->image_class) {
+			$image_class .= " {$this->image_class}";
+		}
+
 		$class = 'o-lazyimage';
+
 		if ($this->ls_transparent) {
 			$class .= ' o-lazyimage--transparent';
 		}
@@ -252,13 +275,13 @@ class LazyImage
 			if (! $this->ls_transparent && ! $this->is_svg) {
 				$return .= "<div class='o-lazyimage__preview' style='background-image: url($this->image_pre_src);'></div>";
 			}
-			$return .= "<div {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
+			$return .= "<div {$atts} class='{$image_class} o-lazyimage__image o-lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
 			$return .= "<noscript><div {$atts} style='background-image: url({$this->image_org[0]})'></div></noscript>";
 		} else {
 			if (! $this->ls_transparent && ! $this->is_svg) {
-				$return .= "<img class='o-lazyimage__preview' src='{$this->image_pre_src}'/>";
+				$return .= "<img class='{$image_class} o-lazyimage__preview' src='{$this->image_pre_src}'/>";
 			}
-			$return .= "<img {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
+			$return .= "<img {$atts} class='{$image_class} o-lazyimage__image o-lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
 			$return .= "<noscript><img {$atts} src='{$this->image_org[0]}' srcset='$srcset'/></noscript>";
 		}
 		$return .= '</figure>';
