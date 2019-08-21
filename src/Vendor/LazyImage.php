@@ -493,6 +493,13 @@ class LazyImage
 			$this->attributes
 		);
 
-		return apply_filters('wp_get_attachment_image_attributes', $attr, $this->image_id, $this->wp_size);
+		$atts = apply_filters('wp_get_attachment_image_attributes', $atts, $this->image_id, $this->wp_size);
+		foreach ($atts as $key => $val) {
+			$key        = sanitize_title($key);
+			$val        = esc_attr($val);
+			$atts[$key] = $val;
+		}
+
+		return $atts;
 	}
 }
