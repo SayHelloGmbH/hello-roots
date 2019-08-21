@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Dynamic image generation script
+ * https://github.com/SayHelloGmbH/hello-roots/wiki/LazyImage
+ * @author Nico Martin <nico@sayhello.ch>
+ */
+
 namespace SayHello\Theme\Vendor;
 
 class LazyImage
@@ -17,6 +23,7 @@ class LazyImage
 	public $image_aspect = 0;
 	public $image_srcset = [];
 	public $wrapper_class = '';
+	public $image_class = '';
 	public $is_svg = false;
 
 	public $ls_transparent = false;
@@ -26,7 +33,7 @@ class LazyImage
 	public function __construct($image, $size)
 	{
 		if (is_array($image)) {
-			$image = (int)$image[ 'id' ];
+			$image = (int)$image['id'];
 		}
 
 		if (! $image) {
@@ -102,7 +109,7 @@ class LazyImage
 
 		if ($this->is_svg) {
 			$this->image_org     = $this->image_full;
-			$this->image_pre_src = $this->image_org[ 0 ];
+			$this->image_pre_src = $this->image_org[0];
 
 			return;
 		}
@@ -111,31 +118,32 @@ class LazyImage
 
 		if ('full' == $size) {
 			$this->image_org    = $this->image_full;
-			$this->image_aspect = $this->image_org[ 1 ] / $this->image_org[ 2 ];
+			$this->image_aspect = $this->image_org[1] / $this->image_org[2];
 		} else {
 			if (is_array($size)) {
-				$org_width  = $size[ 0 ];
-				$org_height = $size[ 1 ];
+				$org_width  = $size[0];
+				$org_height = $size[1];
 			} else {
-				if ((int)$this->getWpImageSizes()[ $size ][ 'height' ] === 9999 || (int)$this->getWpImageSizes()[ $size ][ 'width' ] === 9999) {
+				$wp_image_sizes = $this->getWpImageSizes();
+				if ((int)$wp_image_sizes[ $size ][ 'width' ] === 9999 || (int)$wp_image_sizes[ $size ][ 'height' ] === 9999) {
 					$source_file = wp_get_attachment_metadata((int)$this->image_id);
 					$org_width  = $source_file['width'];
 					$org_height = $source_file['height'];
 				} else {
-					$org_width  = $this->getWpImageSizes()[ $size ][ 'width' ];
-					$org_height = $this->getWpImageSizes()[ $size ][ 'height' ];
+					$org_width  = $wp_image_sizes[ $size ][ 'width' ];
+					$org_height = $wp_image_sizes[ $size ][ 'height' ];
 				}
 			}
 
 			$this->image_aspect = $org_width / $org_height;
 
-			if ($org_width > $this->image_full[ 1 ]) {
-				$org_width  = $this->image_full[ 1 ];
+			if ($org_width > $this->image_full[1]) {
+				$org_width  = $this->image_full[1];
 				$org_height = $org_width / $this->image_aspect;
 			}
-			if ($org_height > $this->image_full[ 2 ]) {
-				$org_height = $this->image_full[ 2 ];
-				$org_width  = $this->image_full[ 2 ] * $this->image_aspect;
+			if ($org_height > $this->image_full[2]) {
+				$org_height = $this->image_full[2];
+				$org_width  = $this->image_full[2] * $this->image_aspect;
 			}
 
 			$this->image_org = $this->generateImage($this->image_id, $org_width, $org_height, true);
@@ -186,6 +194,15 @@ class LazyImage
 		$this->wrapper_class = $class;
 	}
 
+	public function setImageClass($class = '')
+	{
+		if ($this->error) {
+			return;
+		}
+
+		$this->image_class = $class;
+	}
+
 	public function setAttributes($attributes)
 	{
 		if ($this->error) {
@@ -225,16 +242,26 @@ class LazyImage
 
 		$return = '';
 
+		$image_class = '';
+
+		if ('' !== $this->image_class) {
+			$image_class .= " {$this->image_class}";
+		}
+
 		$class = 'o-lazyimage';
+
 		if ($this->ls_transparent) {
 			$class .= ' o-lazyimage--transparent';
 		}
+
 		if ($background) {
 			$class .= ' o-lazyimage--background';
 		}
+
 		if ($this->is_svg) {
 			$class .= ' o-lazyimage--svg';
 		}
+
 		if ('' !== $this->wrapper_class) {
 			$class .= " {$this->wrapper_class}";
 		}
@@ -248,18 +275,34 @@ class LazyImage
 			if (! $this->ls_transparent && ! $this->is_svg) {
 				$return .= "<div class='o-lazyimage__preview' style='background-image: url($this->image_pre_src);'></div>";
 			}
-			$return .= "<div {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
+			$return .= "<div {$atts} class='{$image_class} o-lazyimage__image o-lazyimage__image--lazyload' style='background-image: url($this->image_pre_src);' data-bgset='{$srcset}'></div>";
 			$return .= "<noscript><div {$atts} style='background-image: url({$this->image_org[0]})'></div></noscript>";
 		} else {
 			if (! $this->ls_transparent && ! $this->is_svg) {
-				$return .= "<img class='o-lazyimage__preview' src='{$this->image_pre_src}'/>";
+				$return .= "<img class='{$image_class} o-lazyimage__preview' src='{$this->image_pre_src}'/>";
 			}
-			$return .= "<img {$atts} class='o-lazyimage__image o-lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
+			$return .= "<img {$atts} class='{$image_class} o-lazyimage__image o-lazyimage__image--lazyload' data-sizes='auto' src='{$this->image_pre_src}' data-srcset='$srcset'/>";
 			$return .= "<noscript><img {$atts} src='{$this->image_org[0]}' srcset='$srcset'/></noscript>";
 		}
 		$return .= '</figure>';
 
 		return $return;
+	}
+
+	public function getSrcs()
+	{
+		if ($this->error) {
+			return $this->error;
+		}
+
+		return [
+			'id'         => $this->image_id,
+			'svg'        => $this->is_svg,
+			'org'        => $this->image_org,
+			'pre'        => $this->image_pre_src,
+			'srcset'     => $this->image_srcset,
+			'attributes' => $this->attributes()
+		];
 	}
 
 	/**
@@ -480,7 +523,7 @@ class LazyImage
 			return [];
 		}
 
-		$attr = array_merge(
+		$atts = array_merge(
 			[
 				'width'  => $this->image_org[ 1 ],
 				'height' => $this->image_org[ 2 ],
@@ -489,6 +532,13 @@ class LazyImage
 			$this->attributes
 		);
 
-		return apply_filters('wp_get_attachment_image_attributes', $attr, $this->image_id, $this->wp_size);
+		$atts = apply_filters('wp_get_attachment_image_attributes', $atts, $this->image_id, $this->wp_size);
+		foreach ($atts as $key => $val) {
+			$key        = sanitize_title($key);
+			$val        = esc_attr($val);
+			$atts[$key] = $val;
+		}
+
+		return $atts;
 	}
 }

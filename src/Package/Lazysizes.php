@@ -70,18 +70,23 @@ class Lazysizes
 	 *
 	 * @param int|WP_Post  $image      post_object or post_id of an attachment
 	 * @param string|array $size       Image size. Accepts any valid image size, or an array of width and height values in pixels (in that order).
-	 * @param string       $class      classes
+	 * @param string       $wrapper_class      classes for the containing (e.g. figure) tag
+	 * @param string       $image_class      classes for the IMG tag
 	 * @param boolean      $background if true, a div containing a background image will be reurned instead of the <img>
 	 * @param array        $attributes an array of additional attributes for the image
 	 *
 	 * @return string                image or background-image ready to be loaded via lazysizes
 	 */
-	public static function getLazyImage($image, $size, $class = '', $background = false, $attributes = [])
+	public static function getLazyImage($image, $size, $wrapper_class = '', $image_class = '', $background = false, $attributes = [])
 	{
 		$image_object = new LazyImage($image, $size);
-		$image_object->setWrapperClass($class);
 		$image_object->setAttributes($attributes);
-
+		if (!empty($wrapper_class)) {
+			$image_object->setWrapperClass($wrapper_class);
+		}
+		if (!empty($image_class)) {
+			$image_object->setImageClass($image_class);
+		}
 		return $image_object->getImage($background);
 	}
 }
