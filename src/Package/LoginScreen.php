@@ -183,7 +183,7 @@ class LoginScreen
 			$css[] = 'body {background-color: ' . $theme_mods[ 'login_background_colour' ] . ';}';
 		}
 		if (isset($theme_mods[ 'login_button_colour' ])) {
-			$css[] = '.login .button-primary {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
+			$css[] = '.login .button-primary, .login .button-primary:active, .login .button-primary:focus {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
 			$css[] = '.login .button-primary:hover {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';box-shadow: 0 0 .5rem ' . self::boxshadow($theme_mods[ 'login_button_colour' ]) . '}';
 		}
 		if (isset($theme_mods[ 'login_link_colour' ])) {
