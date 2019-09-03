@@ -97,7 +97,11 @@ This theme uses ES6 modules which are converted to ES5 using Babel and bundled u
 
 ### Fonts
 
-There is a built in Font loading process using base64 encoded woff/woff2 fonts, which are stored inside the local storage of the browser. You can read more here: [https://github.com/SayHelloGmbH/hello-roots/tree/master/.build/assets/fonts](https://github.com/SayHelloGmbH/hello-roots/tree/master/.build/assets/fonts)
+There is a built in Font loading process using base64 encoded woff/woff2 fonts, which are stored inside the local storage of the browser. This avoids the FOUT problem.
+
+Assuming that the fonts you're using are licensed for use in this way, convert the fonts to base64-encoded WOFF and WOFF2 CSS files using [Transfonter](https://transfonter.org/) and then add the code to the files in the [assets/fonts](https://github.com/SayHelloGmbH/hello-roots/tree/master/assets/fonts) folder.
+
+These files are then loaded [by JavaScript](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Package/Assets.php#L124) and stored in the browser's [LocalStorage](https://javascript.info/localstorage). The script checks the asset version number; if you need to force a new version of the files, then update the [`theme_fontver`](https://github.com/SayHelloGmbH/hello-roots/blob/master/assets/settings.json#L38) in the Assets' JSON configuration file.
 
 ### LiveReload
 
@@ -107,6 +111,6 @@ If you are using Google Chrome there is a pretty helpful extension: [chrome Live
 
 # Authors
 - [Nico Martin](https://github.com/nico-martin)
+- [Mark Howells-Mead](https://github.com/markhowellsmead/)
 - [Joel Stüdle](https://github.com/joel-st)
 - [Dimitri Suter](https://github.com/gnochi/)
-- [Mark Howells-Mead](https://github.com/markhowellsmead/)
