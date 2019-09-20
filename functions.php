@@ -29,7 +29,6 @@ if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_
 		}
 	);
 } else {
-	require_once 'inc/funcs-basic.php';
 	require_once 'vendor/autoload.php';
 
 	/*
