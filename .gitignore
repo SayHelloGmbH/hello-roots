@@ -1,6 +1,5 @@
 node_modules/
 .sass-cache/
-/vendor
 .DS_Store
 .env
 *.map
