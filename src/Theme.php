@@ -94,7 +94,6 @@ class Theme
 		add_action('wp_footer', [ $this, 'browserRequirements' ], 100);
 
 		$this->cleanHead();
-		$this->setTimezone();
 	}
 
 	/**
@@ -204,13 +203,6 @@ class Theme
 	public function humansTxt()
 	{
 		echo '<link type="text/plain" rel="author" href="' . trailingslashit(get_template_directory_uri()) . 'humans.txt" />';
-	}
-
-	public function setTimezone()
-	{
-		if (get_option('timezone_string') !== '') {
-			date_default_timezone_set(get_option('timezone_string'));
-		}
 	}
 
 	/**
