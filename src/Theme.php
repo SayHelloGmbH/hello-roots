@@ -65,7 +65,6 @@ class Theme
 		$this->loadClasses(
 			[
 				\SayHello\Theme\Package\Helpers::class,
-				\SayHello\Theme\Package\Adminbar::class,
 				\SayHello\Theme\Package\Assets::class,
 				\SayHello\Theme\Package\Ajax::class,
 				\SayHello\Theme\Package\BodyClass::class,
@@ -76,10 +75,11 @@ class Theme
 				\SayHello\Theme\Package\Lazysizes::class,
 				\SayHello\Theme\Package\LoginScreen::class,
 				\SayHello\Theme\Package\Media::class,
-				\SayHello\Theme\Package\NavWalker::class,
+				\SayHello\Theme\Package\Navigation::class,
 				\SayHello\Theme\Package\Sidebars::class,
 				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
+				\SayHello\Theme\Package\View::class,
 			]
 		);
 
@@ -88,10 +88,8 @@ class Theme
 		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 
 		add_action('wp_head', [ $this, 'noJsScript' ]);
-		add_action('wp_head', [ $this, 'browserOutdatedScript' ]);
+		add_action('wp_head', [ $this, 'setResolutionCookie' ]);
 		add_action('wp_head', [ $this, 'humansTxt' ]);
-
-		add_action('wp_footer', [ $this, 'browserRequirements' ], 100);
 
 		$this->cleanHead();
 	}
@@ -205,35 +203,18 @@ class Theme
 		echo '<link type="text/plain" rel="author" href="' . trailingslashit(get_template_directory_uri()) . 'humans.txt" />';
 	}
 
+	public function setResolutionCookie()
+	{
+		echo '<script>
+			document.cookie="resolution="+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+"; path=/";
+		</script>';
+	}
+
 	/**
 	 * Adds a JS script to the head that removes 'no-js' from the html class list
 	 */
 	public function noJsScript()
 	{
-		echo "<script>(function(html){html.className = html.className.replace(/\bbrowser--no-js\b/,'js')})(document.documentElement);</script>\n";
-	}
-
-	/**
-	 * Checks if the browser supports css grid and adds "browser-outdated"-class to the html
-	 */
-	public function browserOutdatedScript()
-	{
-		echo "<script>(function(html){if(typeof document.createElement('div').style.grid !== 'string'){html.className = html.className + ' browser--outdated'}})(document.documentElement);</script>\n";
-	}
-
-	public function browserRequirements()
-	{
-		printf(
-			'<noscript>
-			<div class="c-browser-check c-browser-check--noscript">
-				<p>%1$s</p>
-			</div>
-		</noscript>
-		<div class="c-browser-check c-browser-check--outdated">
-			<p>%2$s;</p>
-		</div>',
-			__('JavaScript seems to be disabled. Some functionalities might not work correctly.', 'sht'),
-			sprintf(_x('You are using an outdated browser. Please update your browser to view this website correctly: %s', 'translators: %s = Link to browsehappy.org', 'sht'), '<a href="https://browsehappy.com/">https://browsehappy.com/</a>')
-		);
+		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>".chr(10);
 	}
 }

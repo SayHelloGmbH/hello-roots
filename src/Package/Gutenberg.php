@@ -13,13 +13,6 @@ class Gutenberg
 	public $theme_path = '';
 	public $min = false;
 	public $js = false;
-	public $allowedCoreBlocks = [
-		'core/paragraph',
-		'core/image',
-		'core/heading',
-		'core/list',
-		'core/shortcode',
-	];
 
 	public function __construct()
 	{
@@ -39,11 +32,10 @@ class Gutenberg
 		if (!function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
-		add_action('wp_print_styles', [$this, 'removeCoreBlockCSS'], 100);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
-		add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
+		add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 	}
 
@@ -55,13 +47,28 @@ class Gutenberg
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
-		add_theme_support('editor-color-palette'); // Disable the standard colour palette
-		add_theme_support('disable-custom-colors'); // Disable the custom colour palette
-	}
-
-	public function removeCoreBlockCSS()
-	{
-		wp_deregister_style('wp-block-library');
+		add_theme_support('automatic-feed-links');
+		add_theme_support('custom-logo');
+		add_theme_support('html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ]);
+		add_theme_support('menu');
+		add_theme_support('post-thumbnails', [ 'post', 'page' ]);
+		add_theme_support('title-tag');
+		add_theme_support('disable-custom-colors');
+		add_theme_support(
+			'editor-color-palette',
+			[
+				[
+					'name'  => esc_html__('Black', 'sht'),
+					'slug' => 'black',
+					'color' => '#000',
+				],
+				[
+					'name'  => esc_html__('White', 'sht'),
+					'slug' => 'white',
+					'color' => '#fff',
+				]
+			]
+		);
 	}
 
 	/**
