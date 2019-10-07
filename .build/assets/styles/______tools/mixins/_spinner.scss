@@ -13,7 +13,7 @@
 	$border-style: solid;
 	$border-color: #1277c2;
 	$border: $border-width $border-style $border-color;
-	$duration: 0.65s;
+	$duration: .65s;
 	$background: transparent; //
 	// Parse arguments:
 	@if $args {

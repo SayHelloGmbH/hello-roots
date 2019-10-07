@@ -1,0 +1,11 @@
+.wp-block-quote {
+	border-left: .25em solid c(gray, mid);
+	background-color: c(gray, light);
+	padding: var(--unit);
+	font-style: italic;
+
+	cite {
+		font-size: var(--font-size-small);
+		font-style: normal;
+	}
+}

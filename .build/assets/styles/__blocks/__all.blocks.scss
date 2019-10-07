@@ -5,6 +5,7 @@
 >> styling for all blocks
 */
 .alignfull,
+.alignmedium,
 .alignwide {
 	position: relative;
 	width: 100vw;
@@ -12,9 +13,19 @@
 	transform: translateX(-50%);
 }
 
-.alignwide {
+.alignmedium {
 	@include for-screen-min(tablet) {
 		max-width: 90vw;
+	}
+	@include for-screen-min(desktop) {
+		width: 100vw;
+		max-width: var(--constraint-medium);
+	}
+}
+
+.alignwide {
+	@include for-screen-min(laptop) {
+		max-width: calc(100vw - (var(--unit) * 4));
 
 		&.has-parallax {
 			background-position-x: 45vw;
@@ -41,5 +52,9 @@
 >> BLOCKS
 >> styling for individual block types
 */
+@import 'code';
+@import 'columns';
+@import 'cover';
 @import 'embed';
 @import 'image';
+@import 'quote';

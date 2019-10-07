@@ -3,11 +3,11 @@
 
 	&__logo {
 		display: inline-block;
-		margin: $space-item 0;
+		margin: var(--unit) 0;
 		width: 200px;
 	}
 
 	&__menutoggler {
-		margin: $space-item auto;
+		margin: var(--unit) auto;
 	}
 }

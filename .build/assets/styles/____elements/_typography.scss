@@ -6,11 +6,14 @@
 	--font-size-xsmall: #{$font-size-xsmall};
 	--font-size-large: #{$font-size-large};
 	--font-size-xlarge: #{$font-size-xlarge};
+	--line-height: 1.5;
+	--line-height-heading: 1.2;
 }
 
 html {
 	font-family: var(--font-family);
-	font-weight: normal;
+	font-weight: 400;
+	line-height: var(--line-height);
 }
 
 body {
@@ -21,42 +24,79 @@ a,
 button {
 	color: c(primary);
 	@include transition();
+
+	&:active,
+	&:hover {
+		color: c(primary, dark);
+	}
 }
 
 button {
 	text-decoration: none;
 }
 
+blockquote {
+	margin: 0;
+	@extend .c-stack;
+}
+
+button {
+	text-decoration: none;
+}
+
+cite {
+	display: block;
+}
+
+code {
+	color: c(brown);
+	background-color: c(gray, light);
+	display: inline-block;
+	padding: .0625em .25em;
+}
+
+figure,
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+img {
+	outline: 1px solid c(gray, light);
+}
+
+figure {
+	margin: 0;
+
+	> a {
+		border-bottom: none;
+	}
+}
+
+figcaption {
+	font-size: var(--font-size-small);
+}
+
+nav {
+	li,
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+}
+
 input,
 li,
 p,
 tr {
-	color: c();
-	margin: 0;
+
 	font-size: 1em;
-
-	em {
-		font-style: italic;
-	}
-
-	b,
-	strong {
-		font-weight: bold;
-	}
-
-	small {
-		font-size: $font-size-xsmall;
-		display: inline-block;
-	}
-
-	&.big,
-	.big {
-		font-size: $font-size-xlarge;
-	}
 
 	sub,
 	sup {
-		font-size: $font-size-xsmall;
+		font-size: var(--font-size-small);
 		line-height: 0;
 		position: relative;
 		vertical-align: baseline;
@@ -78,5 +118,31 @@ h4,
 h5,
 h6 {
 	font-family: var(--font-family-heading);
-	color: c(black, dark);
+	line-height: var(--line-height-heading);
+	margin: 0;
+
+	a,
+	a:active,
+	a:hover {
+		text-decoration: none;
+		color: currentColor;
+	}
+}
+
+@include context-edit {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family-heading);
+
+		a,
+		a:active,
+		a:hover {
+			color: currentColor !important;
+			border: none !important;
+		}
+	}
 }
