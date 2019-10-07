@@ -1,3 +1,9 @@
+:root {
+	--color-button-primary-background: #{c(primary)};
+	--color-button-primary-hover: #{c(white)};
+	--color-button-primary: #{c(white)};
+}
+
 .o-button {
 	&--size-small {
 		font-size: $font-size-small;

@@ -1,0 +1,21 @@
+.c-postthumbnail {
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+
+	.o-body--widethumbnail & {
+		@extend .alignwide;
+	}
+
+	&__figure {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&__image {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

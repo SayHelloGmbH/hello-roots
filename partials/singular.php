@@ -1,10 +1,20 @@
-<article class="page-section page-section--content" id="content" role="main">
-	<?php do_action('sht_before_content'); ?>
-	<header class="content-section content-section--title">
-		<h1><?php the_title(); ?></h1>
+<article <?php post_class('c-article'); ?>>
+
+	<header class="c-article__header">
+		<h1 class="c-article__title"><?php the_title(); ?></h1>
+		<time class="c-article__date" datetime="<?php echo get_the_date('c'); ?>"><?php printf(_x('Published on %s', 'sht'), get_the_date()); ?></time>
 	</header>
-	<div class="content-section post-content c-gutenberg c-stack">
+
+	<?php
+	echo sht_theme()->Package->View->thumbnail('large', 'c-article__thumbnail');
+	?>
+
+	<div class="c-content__content">
 		<?php the_content(); ?>
 	</div>
-	<?php do_action('sht_after_content'); ?>
+
+	<?php
+		get_template_part('partials/meta', 'post_tag');
+	?>
+
 </article>

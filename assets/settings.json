@@ -14,21 +14,26 @@
     },
     "gray": {
       "base": "#999",
+      "mid": "#aaa",
       "light": "#f0f0f0"
     },
     "brown": {
       "base": "#930"
+    },
+    "yellow": {
+      "base": "#ffc"
     }
   },
   "theme_breakpoints": {
     "phone": 330,
-    "tablet": 600,
-    "tablet_landscape": 900,
-    "desktop": 1280
+    "tablet": 768,
+    "tablet_landscape": 1024,
+    "laptop": 1280,
+    "desktop": 1440
   },
-  "easing_speed": 200,
-  "easing_speed_fast": 100,
-  "easing_speed_slow": 400,
+  "easing_speed": 300,
+  "easing_speed_fast": 150,
+  "easing_speed_slow": 450,
   "easing_bezier": [
     0.455,
     0.03,

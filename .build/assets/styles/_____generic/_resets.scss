@@ -1,26 +1,26 @@
-// A very simple reset that sits on top of Normalize.css.
-
-blockquote,
-body,
-dd,
-dl,
-fieldset,
-figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-legend,
-ol,
-p,
-pre,
-ul {
-	margin: 0;
-	padding: 0;
-}
+// // A very simple reset that sits on top of Normalize.css.
+//
+// blockquote,
+// body,
+// dd,
+// dl,
+// fieldset,
+// figure,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// hr,
+// legend,
+// ol,
+// p,
+// pre,
+// ul {
+// 	margin: 0;
+// 	padding: 0;
+// }
 
 // Remove trailing margins from nested lists.
 li > {
@@ -28,10 +28,4 @@ li > {
 	ul {
 		margin-bottom: 0;
 	}
-}
-
-//  Remove default table spacing.
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }

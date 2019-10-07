@@ -1,18 +1,11 @@
 /*
  * https://every-layout.dev/layouts/stack/
  */
-:root {
-	--stack-margin: var(--unit);
-}
 
 .c-stack {
-	&--compact {
-		--stack-margin: var(--unit-small);
-	}
-
 	> * {
-		margin-top: var(--stack-margin);
-		margin-bottom: var(--stack-margin);
+		margin-top: var(--unit);
+		margin-bottom: var(--unit);
 
 		&:first-child {
 			margin-top: 0;
@@ -23,4 +16,53 @@
 		}
 
 	}
+
+	&--small {
+		> * {
+			margin-top: var(--unit-small);
+			margin-bottom: var(--unit-small);
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+		}
+	}
+
+	&--medium {
+		> * {
+			margin-top: var(--unit-medium);
+			margin-bottom: var(--unit-medium);
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+		}
+	}
+
+	&--large {
+		> * {
+			margin-top: var(--unit-large);
+			margin-bottom: var(--unit-large);
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+		}
+	}
+
 }

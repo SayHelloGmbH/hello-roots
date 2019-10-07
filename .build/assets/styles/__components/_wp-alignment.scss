@@ -1,23 +1,23 @@
 /**
  * WordPress alignment classes
+ * For alignwide and alignfull: see _all.blocks.scss
  */
-$alignment-spacing: 1rem !default;
 
 .alignleft,
 .alignright {
 	position: relative;
 	z-index: 1;
-	margin-bottom: $alignment-spacing;
+	margin-bottom: var(--unit);
 }
 
 .alignleft {
 	float: left;
-	margin-right: $alignment-spacing;
+	margin-right: var(--unit);
 }
 
 .alignright {
 	float: right;
-	margin-left: $alignment-spacing;
+	margin-left: var(--unit);
 }
 
 .aligncenter {

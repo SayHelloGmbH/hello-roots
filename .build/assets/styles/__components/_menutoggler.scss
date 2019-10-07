@@ -1,7 +1,7 @@
 .c-menutoggler {
-	display: none;
-	@include desktop {
-		display: block;
+	display: block;
+	@include laptop {
+		display: none;
 	}
 	height: 3rem;
 	width: 4rem;
@@ -14,7 +14,7 @@
 		top: 50%;
 		left: 0;
 		right: 0;
-		height: 0.5rem;
+		height: .5rem;
 		transform: translateY(-50%);
 		background-color: currentColor;
 		display: block;
