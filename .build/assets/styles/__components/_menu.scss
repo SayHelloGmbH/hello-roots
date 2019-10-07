@@ -1,23 +1,35 @@
 .c-menu {
 	list-style: none;
 	text-align: center;
+	margin: 0;
+	padding: 0;
 
 	&--primary {
 		display: none;
 
+		@include laptop {
+			display: block;
+		}
+
 		.c-menu__item {
 			display: block;
 		}
-		@include desktop {
-			display: block;
+	}
+
+	&__entries {
+		&--primary {
+			@include laptop {
+				@include flex-row;
+			}
 		}
 	}
 
-	&__item {
+	&__entry {
 		display: inline-block;
 	}
 
-	&__link {
-		padding: 0.5em 1em;
+	&__entrylink {
+		display: block;
+		padding: .5em 1em;
 	}
 }

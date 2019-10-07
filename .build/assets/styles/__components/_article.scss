@@ -1,0 +1,34 @@
+.c-article {
+
+	max-width: var(--constraint-narrow);
+	margin-left: auto;
+	margin-right: auto;
+	@extend .c-stack--medium;
+
+	&__date {
+		display: block;
+		font-size: var(--font-size-small);
+	}
+
+	&__header {
+		@extend .c-stack;
+	}
+
+	&__thumbnail {
+		@extend .alignmedium;
+	}
+
+	&__video {
+		@extend .alignwide;
+
+		&__figure {
+			margin: 0;
+
+			html.single-format-video & {
+				order: -1;
+				@extend .alignwide;
+			}
+		}
+
+	}
+}

@@ -1,9 +1,10 @@
-<section class="page-section page-section--archive" id="content" role="main">
-	<?php do_action('sht_before_content'); ?>
-	<div class="content-section content-section--title">
-		<?php the_archive_title('<h1>', '</h1>'); ?>
+<section class="c-archive">
+
+	<header class="c-archive__header">
+		<?php the_archive_title('<h1 class="c-archive__title">', '</h1>'); ?>
 	</div>
-	<div class="content-section">
+
+	<div class="c-archive__content">
 		<?php
 		if (have_posts()) {
 			while (have_posts()) {
@@ -13,13 +14,14 @@
 		}
 		?>
 	</div>
+
 	<?php
 	$paginate = paginate_links();
 	if ('' != $paginate) {
-		echo '<div class="content-section content-section--pagination pagination">';
-		echo "<p class='pagination__container'>$paginate</p>";
+		echo '<div class="c-pagination">';
+		echo '<div class="c-pagination__content">' .$paginate. '</div>';
 		echo '</div>';
 	}
 	?>
-	<?php do_action('sht_after_content'); ?>
+
 </section>

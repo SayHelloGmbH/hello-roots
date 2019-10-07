@@ -10,16 +10,15 @@ namespace SayHello\Theme\Package;
 class Sidebars
 {
 
-
 	private $sidebars;
 
 	public function __construct()
 	{
 		$this->sidebars = [
 			[
-				'name'          => __('Main sidebar', 'sht'),
+				'name'          => __('Main sidebar', 'sha'),
 				'id'            => 'sidebar_main',
-				'description'   => __('Widget area', 'sht'),
+				'description'   => __('Widget area', 'sha'),
 				'before_widget' => '<div class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<p class="widget-title">',

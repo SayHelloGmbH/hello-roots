@@ -34,6 +34,18 @@
 	}
 }
 
+@mixin tablet() {
+	@include for-screen-min(tablet) {
+		@content;
+	}
+}
+
+@mixin laptop() {
+	@include for-screen-min(laptop) {
+		@content;
+	}
+}
+
 @mixin desktop() {
 	@include for-screen-min(tablet_landscape) {
 		@content;
