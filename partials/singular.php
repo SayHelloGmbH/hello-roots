@@ -1,4 +1,4 @@
-<article <?php post_class('c-article'); ?>>
+<article <?php post_class('c-article c-article--'.get_post_type()); ?>>
 
 	<header class="c-article__header">
 		<h1 class="c-article__title"><?php the_title(); ?></h1>
