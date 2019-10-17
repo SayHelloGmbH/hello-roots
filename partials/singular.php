@@ -14,6 +14,7 @@
 	</div>
 
 	<?php
+		get_template_part('partials/navigation/pagelinks');
 		get_template_part('partials/meta', 'post_tag');
 	?>
 
