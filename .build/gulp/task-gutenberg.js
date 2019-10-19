@@ -10,8 +10,8 @@ import uglify from 'gulp-uglify';
 
 export const task = config => {
 	return gulp.src([
-		`${config.assetsBuild}gutenberg/blocks.js`
-	])
+			`${config.assetsBuild}gutenberg/blocks.js`
+		])
 		// Webpack
 		.pipe(
 			gulpWebpack({

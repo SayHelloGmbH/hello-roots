@@ -19,8 +19,7 @@
 	$duration: $easing_speed + 0ms;
 	@if $speed==fast {
 		$duration: $easing_speed_fast + 0ms;
-	} @else 
-	if $speed==slow {
+	} @else if $speed==slow {
 		$duration: $easing_speed_slow + 0ms;
 	}
 	@return $duration;

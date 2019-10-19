@@ -23,7 +23,7 @@ export const is_mobile = () => {
 };
 
 const themeObject = settings;
-for (const attrname in ThemeJSVars) {
+for(const attrname in ThemeJSVars) {
 	themeObject[attrname] = ThemeJSVars[attrname];
 }
 
