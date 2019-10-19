@@ -6,7 +6,7 @@ import rename from "gulp-rename";
 import uglify from "gulp-uglify";
 
 function getDirectories(path) {
-	return fs.readdirSync(path).filter(function(file) {
+	return fs.readdirSync(path).filter(function (file) {
 		return fs.statSync(path + '/' + file).isDirectory();
 	});
 }
@@ -29,7 +29,7 @@ export const task = config => {
 				.on('error', config.errorLog)
 				.pipe(gulp.dest(config.assetsDir + 'scripts/modernizr/'));
 			loaded++;
-			if (loaded === bundles.length) {
+			if(loaded === bundles.length) {
 				resolve();
 			}
 		});

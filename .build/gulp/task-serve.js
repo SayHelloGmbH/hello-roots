@@ -7,9 +7,9 @@ export const task = config => {
 
 		const flags = process.argv;
 
-		if (flags.length > 4) {
+		if(flags.length > 4) {
 			console.log('\nLOG: ====> to many flags (gulp server --localsiteurltoserve.com)\n');
-		} else if (flags.length < 4) {
+		} else if(flags.length < 4) {
 			console.log('\nLOG: ====> specify local site url to serve (gulp server --localsiteurltoserve.com)\n');
 		} else {
 
