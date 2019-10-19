@@ -76,6 +76,7 @@ class Theme
 				\SayHello\Theme\Package\LoginScreen::class,
 				\SayHello\Theme\Package\Media::class,
 				\SayHello\Theme\Package\Navigation::class,
+				\SayHello\Theme\Package\Shyify::class,
 				\SayHello\Theme\Package\Sidebars::class,
 				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
@@ -83,7 +84,6 @@ class Theme
 			]
 		);
 
-		add_action('after_setup_theme', [ $this, 'addNavigations' ]);
 		add_action('after_setup_theme', [ $this, 'addThemeSupports' ]);
 		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 
@@ -174,19 +174,6 @@ class Theme
 		add_theme_support('menu');
 		add_theme_support('post-thumbnails', [ 'post' ]);
 		add_theme_support('title-tag');
-	}
-
-	/**
-	 * Add navigations
-	 */
-	public function addNavigations()
-	{
-		register_nav_menus(
-			[
-				'primary' => __('Primary Menu', 'sha'),
-				'footer'  => __('Footer Menu', 'sha'),
-			]
-		);
 	}
 
 	public function cleanHead()
