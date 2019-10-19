@@ -13,7 +13,7 @@
 	$border-style: solid;
 	$border-color: #1277c2;
 	$border: $border-width $border-style $border-color;
-	$duration: 0.65s;
+	$duration: .65s;
 	$background: transparent; //
 	// Parse arguments:
 	@if $args {
@@ -23,8 +23,7 @@
 					@if unit($arg) != "" {
 						@if unit($arg)== 's' {
 							$duration: $arg;
-						} @else 
-						if isIn($dimensional-units, unit($arg)) {
+						} @else if isIn($dimensional-units, unit($arg)) {
 							$size: $arg;
 						} @else {
 							@warn "Spinner: \"#{$arg}\" is not a valid size or duration declaration!";
@@ -33,8 +32,7 @@
 						@warn "Spinner: \"#{$arg}\" is not a valid size or duration declaration!";
 					}
 				}
-			} @else 
-			if length($arg)==2 {
+			} @else if length($arg)==2 {
 				$prop: nth($arg, 1);
 				$val: nth($arg, 2);
 				@if isIn($border-props, $prop) {
@@ -44,23 +42,20 @@
 						} @else {
 							@warn "Spinner: \"#{unit($val)}\" is not a valid border-width! Using default border-width.";
 						}
-					} @else 
-					if $prop=='border-style' {
+					} @else if $prop=='border-style' {
 						@if isIn($border-styles, $val) {
 							$border-style: $val;
 						} @else {
 							@warn "Spinner: \"#{$val}\" is not a valid border-style! Using default border-style.";
 						}
-					} @else 
-					if $prop=='border-color' {
+					} @else if $prop=='border-color' {
 						@if type-of($val)==color {
 							$border-color: $val;
 						} @else {
 							@warn "Spinner: \"#{$val}\" is not a valid border-color! Using default border-color.";
 						}
 					}
-				} @else 
-				if $prop=='background' {
+				} @else if $prop=='background' {
 					@if type-of($val)==color {
 						$background: $val;
 					} @else {
@@ -70,8 +65,7 @@
 					@warn "Spinner: \"#{nth($arg, 1)}\" is not a valid border property! Using default border.";
 				}
 				$border: $border-width $border-style $border-color;
-			} @else 
-			if length($arg)==3 {
+			} @else if length($arg)==3 {
 				@if isValidBorder($arg) {
 					$border: $arg;
 				} @else {
@@ -104,8 +98,7 @@
 				@if unit($val)== "" {
 					@return false;
 				}
-			} @else 
-			if type-of($val)==string {
+			} @else if type-of($val)==string {
 				@if not isIn($borderStyles, $val) {
 					@return false;
 				}

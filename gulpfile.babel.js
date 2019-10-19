@@ -7,9 +7,9 @@ const config = {
 	assetsDir: 'assets/',
 	gulpDir: './.build/gulp/',
 	assetsBuild: '.build/assets/',
-	errorLog: function(error) {
+	errorLog: function (error) {
 		console.log('\x1b[31m%s\x1b[0m', error);
-		if (this.emit) {
+		if(this.emit) {
 			this.emit('end');
 		}
 	},

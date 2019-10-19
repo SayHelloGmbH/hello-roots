@@ -5,7 +5,7 @@
 
 @function device-breakpoints-max($name, $sizes: $breakpoints) {
 	$next: device-breakpoints-next($name, $sizes);
-	@return if($next, device-breakpoints-min($next, $sizes) - 0.1, null);
+	@return if($next, device-breakpoints-min($next, $sizes) - .1, null);
 }
 
 @function device-breakpoints-next($name, $sizes, $breakpoint-names: map-keys($breakpoints)) {

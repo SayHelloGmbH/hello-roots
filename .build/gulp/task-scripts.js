@@ -10,7 +10,7 @@ import fs from "fs";
 import babelloader from 'babel-loader';
 
 function getDirectories(path) {
-	return fs.readdirSync(path).filter(function(file) {
+	return fs.readdirSync(path).filter(function (file) {
 		return fs.statSync(path + '/' + file).isDirectory();
 	});
 }
@@ -56,7 +56,7 @@ export const task = config => {
 				//reload
 				.pipe(livereload());
 			loaded++;
-			if (loaded === bundles.length) {
+			if(loaded === bundles.length) {
 				resolve();
 			}
 		});
