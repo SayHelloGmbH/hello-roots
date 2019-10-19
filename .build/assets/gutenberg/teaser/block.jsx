@@ -1,9 +1,9 @@
 import "./block.scss";
 
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 
-wp.blocks.registerBlockType('sht/test', {
-	title: __('Test Block'),
+wp.blocks.registerBlockType( 'sht/test', {
+	title: __( 'Test Block' ),
 	icon: 'lock',
 	category: 'sht/blocks',
 	edit() {
@@ -16,4 +16,4 @@ wp.blocks.registerBlockType('sht/test', {
 			<p>Not translated String (because in save function)</p>
 		);
 	},
-});
+} );
