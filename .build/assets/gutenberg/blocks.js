@@ -1,6 +1,6 @@
 // import "./teaser/block.jsx";
 
-window.onload = function() {
+window.onload = function () {
 	window.shtDisabledBlocks.forEach(block => {
 		wp.blocks.unregisterBlockType(block);
 	});
@@ -12,11 +12,11 @@ wp.domReady(() => {
 	// Only add once per block type!
 	// mhm 15.6.2019
 	var el = wp.element.createElement;
-	var allowColumnStyle = wp.compose.createHigherOrderComponent(function(BlockEdit) {
-		return function(props) {
+	var allowColumnStyle = wp.compose.createHigherOrderComponent(function (BlockEdit) {
+		return function (props) {
 			var content = el(BlockEdit, props);
 
-			if (props.name === 'core/cover' && typeof props.insertBlocksAfter === 'undefined') {
+			if(props.name === 'core/cover' && typeof props.insertBlocksAfter === 'undefined') {
 				content = el('div', {});
 			}
 
