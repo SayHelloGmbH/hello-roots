@@ -26,7 +26,8 @@
   },
   "theme_breakpoints": {
     "phone": 330,
-    "tablet": 768,
+	"narrow": 640,
+	"tablet": 768,
     "tablet_landscape": 1024,
     "laptop": 1280,
     "desktop": 1440
