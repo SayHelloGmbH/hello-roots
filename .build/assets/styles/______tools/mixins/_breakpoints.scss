@@ -34,6 +34,12 @@
 	}
 }
 
+@mixin narrow() {
+	@include for-screen-min(narrow) {
+		@content;
+	}
+}
+
 @mixin tablet() {
 	@include for-screen-min(tablet) {
 		@content;
@@ -47,7 +53,7 @@
 }
 
 @mixin desktop() {
-	@include for-screen-min(tablet_landscape) {
+	@include for-screen-min(desktop) {
 		@content;
 	}
 }
