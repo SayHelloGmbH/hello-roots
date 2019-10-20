@@ -27,10 +27,10 @@
 		);
 		?>
 
-		<button class="c-menutoggler" aria-controls="primary-menu" aria-expanded="false">
-			<span class="c-menutoggler__line"></span>
-			<span class="c-menutoggler__line"></span>
-			<span class="c-menutoggler__line"></span>
+		<button class="o-menutoggler" aria-controls="primary-menu" aria-expanded="false">
+			<span class="o-menutoggler__line"></span>
+			<span class="o-menutoggler__line"></span>
+			<span class="o-menutoggler__line"></span>
 		</button>
 
 	</header>
