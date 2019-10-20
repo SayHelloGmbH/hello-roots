@@ -1,0 +1,21 @@
+.c-archive {
+	@extend .c-stack;
+	max-width: var(--constraint-narrow);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--unit);
+	padding-right: var(--unit);
+
+	@include narrow {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&__content {
+		@extend .c-stack--medium;
+	}
+
+	&__header {
+		padding-bottom: var(--unit-medium);
+	}
+}
