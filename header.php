@@ -9,7 +9,7 @@
 <body <?php body_class(); ?>>
 
 <section class="c-page__section" id="header">
-	<header class="c-page__header" role="banner">
+	<header class="c-page__header c-masthead" role="banner">
 
 		<h1 class="c-site__title">
 			<a class="c-site__titlelink" href="<?php echo get_home_url();?>"><?php echo get_bloginfo('name');?></a>
@@ -27,7 +27,7 @@
 		);
 		?>
 
-		<button class="o-menutoggler" aria-controls="primary-menu" aria-expanded="false">
+		<button class="c-masthead__toggler o-menutoggler" aria-controls="mobile-menu" aria-expanded="false">
 			<span class="o-menutoggler__line"></span>
 			<span class="o-menutoggler__line"></span>
 			<span class="o-menutoggler__line"></span>
