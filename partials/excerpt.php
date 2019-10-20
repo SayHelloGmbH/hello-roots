@@ -6,23 +6,13 @@
 				<?php the_title(); ?>
 			</a>
 		</h2>
+		<time class="c-excerpt__date" datetime="<?php echo get_the_date('c'); ?>"><?php printf(_x('Published on %s', 'sht'), get_the_date()); ?></time>
 	</header>
 
 	<div class="c-excerpt__content">
 		<?php the_excerpt(); ?>
 	</div>
 
-	<footer class="c-excerpt__footer">
-		<p>
-			<?php
-			// translators: published at %1$1s and by %2$2s
-			printf(
-				__('Published at %1$1s by %2$2s', 'sht'),
-				get_the_date(),
-				'<a href="' . get_author_posts_url(get_the_author_meta('ID')) . '">' . get_the_author() . '</a>'
-			);
-			?>
-		</p>
-	</footer>
+	<a class="c-excerpt__more" href="<?php the_permalink(); ?>"><?php _ex('Read more', 'Excerpt read more link', 'sht')?></a>
 
 </article>
