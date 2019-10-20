@@ -1,0 +1,26 @@
+.c-nav {
+	&--mobile {
+		background-color: c(white);
+		position: fixed;
+		top: var(--masthead-height);
+		bottom: 0;
+		right: 0;
+		transform: translateX(100vw);
+		opacity: 0;
+		z-index: 2;
+		width: 100vw;
+		transition: opacity 300ms ease;
+		@include laptop {
+			// display: none;
+		}
+
+		&[aria-expanded="true"] {
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+		.admin-bar & {
+			top: calc(var(--masthead-height) + var(--adminbar-height));
+		}
+	}
+}

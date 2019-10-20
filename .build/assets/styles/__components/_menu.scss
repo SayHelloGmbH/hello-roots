@@ -22,10 +22,28 @@
 				@include flex-row;
 			}
 		}
+		&--mobile {
+			@extend .c-stack;
+			margin-left: auto;
+			margin-right: auto;
+			padding-left: var(--unit);
+			padding-right: var(--unit);
+			max-width: var(--constraint-narrow);
+			@include tablet {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 	}
 
 	&__entry {
 		display: inline-block;
+		&--mobile {
+			display: block;
+			.c-menu__entrylink {
+				padding: 0;
+			}
+		}
 	}
 
 	&__entrylink {

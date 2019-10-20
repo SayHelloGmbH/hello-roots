@@ -1,0 +1,14 @@
+:root {
+	--masthead-height: #{rem-calc(85px)};
+	@include laptop {
+		--masthead-height: #{rem-calc(104px)};
+	}
+}
+
+.c-masthead {
+	&__toggler {
+		@include laptop {
+			display: none;
+		}
+	}
+}

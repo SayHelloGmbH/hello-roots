@@ -2,10 +2,16 @@
 
 get_header();
 if (have_posts()) {
-	while (have_posts()) {
-		the_post();
-		get_template_part('partials/singular', get_post_type());
-	}
+	?>
+	<div class="c-archive">
+		<?php
+		while (have_posts()) {
+			the_post();
+			get_template_part('partials/excerpt', get_post_type());
+		}
+		?>
+	</div>
+	<?php
 } else {
 	get_template_part('partials/singular', 'none');
 }
