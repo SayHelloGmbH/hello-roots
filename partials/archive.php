@@ -2,7 +2,7 @@
 
 	<header class="c-archive__header">
 		<?php the_archive_title('<h1 class="c-archive__title">', '</h1>'); ?>
-	</div>
+	</header>
 
 	<div class="c-archive__content">
 		<?php
