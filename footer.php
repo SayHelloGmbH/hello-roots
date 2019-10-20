@@ -1,6 +1,7 @@
 <?php
 do_action('sht_before_footer');
 ?>
+
 <section class="c-page__section" id="footer">
 	<footer class="c-footer" role="contentinfo">
 		<?php
@@ -16,6 +17,19 @@ do_action('sht_before_footer');
 		?>
 	</footer>
 </section>
+
+<?php
+wp_nav_menu(
+	[
+		'theme_location' => 'mobile',
+		'container'      => 'nav',
+		'container_class' => 'c-nav c-nav--mobile',
+		'container_id'        => 'mobile-menu',
+		'menu_class'     => 'c-menu c-menu--mobile',
+	]
+);
+?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

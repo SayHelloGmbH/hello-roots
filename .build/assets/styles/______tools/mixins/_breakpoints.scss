@@ -34,6 +34,12 @@
 	}
 }
 
+@mixin narrow() {
+	@include for-screen-min(narrow) {
+		@content;
+	}
+}
+
 @mixin tablet() {
 	@include for-screen-min(tablet) {
 		@content;
@@ -47,7 +53,19 @@
 }
 
 @mixin desktop() {
-	@include for-screen-min(tablet_landscape) {
+	@include for-screen-min(desktop) {
+		@content;
+	}
+}
+
+@mixin wordpress_small() {
+	@include for-screen-min(wordpress_small) {
+		@content;
+	}
+}
+
+@mixin wordpress_medium() {
+	@include for-screen-min(wordpress_medium) {
 		@content;
 	}
 }

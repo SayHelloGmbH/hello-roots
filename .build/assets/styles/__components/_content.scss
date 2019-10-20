@@ -1,5 +1,12 @@
 .c-content {
 	&__content {
 		@extend .c-stack;
+		padding-left: var(--unit);
+		padding-right: var(--unit);
+
+		@include narrow {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
