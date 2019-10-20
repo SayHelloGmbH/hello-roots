@@ -57,3 +57,15 @@
 		@content;
 	}
 }
+
+@mixin wordpress_small() {
+	@include for-screen-min(wordpress_small) {
+		@content;
+	}
+}
+
+@mixin wordpress_medium() {
+	@include for-screen-min(wordpress_medium) {
+		@content;
+	}
+}

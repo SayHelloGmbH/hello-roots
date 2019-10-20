@@ -4,13 +4,6 @@
 	max-width: var(--constraint-narrow);
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: var(--unit);
-	padding-right: var(--unit);
-
-	@include narrow {
-		padding-left: 0;
-		padding-right: 0;
-	}
 
 	&__date {
 		display: block;

@@ -14,7 +14,7 @@
 }
 
 .alignwide {
-	max-width: calc(100vw - (var(--unit) * 4));
+	max-width: calc(100vw - (var(--unit) * 2));
 	&.has-parallax {
 		background-position-x: 45vw;
 	}
