@@ -1,7 +1,7 @@
 (function ($) {
 	$(function () {
 
-		const $toggler = $('[aria-controls="primary-menu"]');
+		const $toggler = $('[aria-controls="mobile-menu"]');
 		const navID = $toggler.attr('aria-controls');
 		const $nav = $(`#${navID}`);
 
@@ -16,10 +16,10 @@
 
 			if(open) {
 				$toggler.attr('aria-expanded', 'false');
-				$nav.slideUp();
+				$nav.attr('aria-expanded', 'false');
 			} else {
 				$toggler.attr('aria-expanded', 'true');
-				$nav.slideDown();
+				$nav.attr('aria-expanded', 'true');
 			}
 		});
 	});

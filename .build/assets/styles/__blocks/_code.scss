@@ -1,5 +1,9 @@
 .wp-block-code {
-	border: 1px solid c(gray, mid);
-	padding: var(--unit);
-	overflow-x: auto;
+	border: 1px solid c(gray, light);
+	code {
+		vertical-align: middle;
+		max-width: 100%;
+		padding: var(--unit);
+		overflow-x: auto;
+	}
 }

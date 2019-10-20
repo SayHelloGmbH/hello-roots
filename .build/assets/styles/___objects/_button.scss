@@ -6,18 +6,18 @@
 
 .o-button {
 	&--size-small {
-		font-size: $font-size-small;
+		font-size: var(--font-size-small);
 	}
 
 	&--size-large {
-		font-size: $font-size-large;
+		font-size: var(--font-size-large);
 	}
 
 	&--size-smaller {
-		font-size: $font-size-xsmall;
+		font-size: var(--font-size-xsmall);
 	}
 
 	&--size-larger {
-		font-size: $font-size-xlarge;
+		font-size: var(--font-size-larger);
 	}
 }

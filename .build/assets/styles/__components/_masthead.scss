@@ -1,0 +1,34 @@
+:root {
+	--masthead-height: #{rem-calc(85px)};
+	@include laptop {
+		--masthead-height: #{rem-calc(104px)};
+	}
+}
+
+.c-masthead {
+
+	&__toggler {
+		@include laptop {
+			display: none;
+		}
+	}
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: var(--constraint-narrow);
+		margin-left: auto;
+		margin-right: auto;
+		padding: var(--unit-medium) var(--unit);
+
+		@include narrow {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		@include laptop {
+			max-width: var(--constraint-medium);
+		}
+	}
+}

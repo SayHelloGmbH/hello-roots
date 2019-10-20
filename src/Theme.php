@@ -66,7 +66,7 @@ class Theme
 			[
 				\SayHello\Theme\Package\Helpers::class,
 				\SayHello\Theme\Package\Assets::class,
-				\SayHello\Theme\Package\Ajax::class,
+				\SayHello\Theme\Package\Archives::class,
 				\SayHello\Theme\Package\BodyClass::class,
 				\SayHello\Theme\Package\CustomPages::class,
 				\SayHello\Theme\Package\Error::class,

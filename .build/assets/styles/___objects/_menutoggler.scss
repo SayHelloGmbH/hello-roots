@@ -1,0 +1,79 @@
+:root {
+	--menutoggler-color: currentColor;
+	--menutoggler-color-open: currentColor;
+	--menutoggler-width: #{rem-calc(26px)};
+	--menutoggler-height: #{rem-calc(21px)}; // needs to be an odd number
+	--menutoggler-width-closer: #{rem-calc(21px)};
+	--menutoggler-height-closer: #{rem-calc(21px)};
+}
+
+.o-menutoggler {
+	position: relative;
+	cursor: pointer;
+	color: var(--menutoggler-color);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
+	flex: 0 0 var(--menutoggler-width);
+	width: var(--menutoggler-width);
+	height: var(--menutoggler-height);
+	transition: none;
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+
+	&:active,
+	&:hover {
+		color: var(--menutoggler-color-open);
+		outline: none;
+	}
+
+	@include desktop {
+		display: none;
+	}
+
+	&__line {
+		display: block;
+		will-change: transform;
+		position: absolute;
+		width: var(--menutoggler-width);
+		height: 3px;
+		transform: translateY(-50%);
+		background-color: currentColor;
+		@include transition;
+		&:nth-child(1) {
+			top: 0;
+		}
+		&:nth-child(2) {
+			top: 50%;
+		}
+		&:nth-child(3) {
+			top: 100%;
+		}
+	}
+
+	&__text {
+		font-size: rem-calc(12px);
+		@include av(66.667);
+		line-height: 1;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&[aria-expanded="true"] {
+		.o-menutoggler__line {
+			&:nth-child(1) {
+				transform: rotate(45deg);
+				top: 50%;
+			}
+			&:nth-child(2) {
+				opacity: 0;
+			}
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+				top: 50%;
+			}
+		}
+	}
+}

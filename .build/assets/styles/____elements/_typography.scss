@@ -2,10 +2,10 @@
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-size: #{$font-size};
-	--font-size-small: #{$font-size-small};
-	--font-size-xsmall: #{$font-size-xsmall};
-	--font-size-large: #{$font-size-large};
-	--font-size-xlarge: #{$font-size-xlarge};
+	--font-size-small: #{rem-calc(14px)};
+	--font-size-xsmall: #{rem-calc(12px)};
+	--font-size-large: #{rem-calc(18px)};
+	--font-size-xlarge: #{rem-calc(21px)};
 	--line-height: 1.5;
 	--line-height-heading: 1.2;
 }
@@ -49,7 +49,7 @@ cite {
 }
 
 code {
-	color: c(brown);
+	// color: c(brown);
 	background-color: c(gray, light);
 	display: inline-block;
 	padding: .0625em .25em;
@@ -76,6 +76,7 @@ figure {
 
 figcaption {
 	font-size: var(--font-size-small);
+	color: c(gray, dark);
 }
 
 nav {
@@ -84,6 +85,9 @@ nav {
 		list-style: none;
 		padding: 0;
 		margin: 0;
+	}
+	a {
+		text-decoration: none;
 	}
 }
 
