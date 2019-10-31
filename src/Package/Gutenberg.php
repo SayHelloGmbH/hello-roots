@@ -54,12 +54,6 @@ class Gutenberg
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
-		add_theme_support('automatic-feed-links');
-		add_theme_support('custom-logo');
-		add_theme_support('html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ]);
-		add_theme_support('menu');
-		add_theme_support('post-thumbnails', [ 'post', 'page' ]);
-		add_theme_support('title-tag');
 		add_theme_support('disable-custom-colors');
 		add_theme_support(
 			'editor-color-palette',
