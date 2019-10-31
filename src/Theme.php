@@ -84,7 +84,7 @@ class Theme
 			]
 		);
 
-		add_action('after_setup_theme', [ $this, 'addThemeSupports' ]);
+		add_action('after_setup_theme', [ $this, 'themeSupports' ]);
 		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 
 		add_action('wp_head', [ $this, 'noJsScript' ]);
@@ -158,22 +158,13 @@ class Theme
 	/**
 	 * Allow the Theme to use additional core features
 	 */
-	public function addThemeSupports()
+	public function themeSupports()
 	{
-		add_theme_support('automatic-feed-links');
-		add_theme_support(
-			'custom-logo',
-			[
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			]
-		);
-		add_theme_support('html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ]);
-		add_theme_support('menu');
-		add_theme_support('post-thumbnails', [ 'post' ]);
 		add_theme_support('title-tag');
+		add_theme_support('automatic-feed-links');
+		add_theme_support('custom-logo');
+		add_theme_support('html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ]);
+		add_theme_support('post-thumbnails', [ 'post' ]);
 	}
 
 	public function cleanHead()
