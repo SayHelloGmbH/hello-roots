@@ -55,21 +55,9 @@ class Gutenberg
 	{
 		add_theme_support('align-wide');
 		add_theme_support('disable-custom-colors');
-		add_theme_support(
-			'editor-color-palette',
-			[
-				[
-					'name'  => esc_html__('Black', 'sht'),
-					'slug' => 'black',
-					'color' => '#000',
-				],
-				[
-					'name'  => esc_html__('White', 'sht'),
-					'slug' => 'white',
-					'color' => '#fff',
-				]
-			]
-		);
+		add_theme_support('editor-color-palette', []);
+		add_theme_support('disable-custom-font-sizes');
+		add_theme_support('editor-font-sizes', []);
 	}
 
 	/**
