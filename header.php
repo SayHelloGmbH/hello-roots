@@ -17,7 +17,6 @@ use SayHello\Theme\Package\NavWalker;
 <?php do_action('sht_after_body_open'); ?>
 	<section class="page-section" id="header">
 		<header class="header" role="banner">
-			<?php sht_logo(); ?>
 			<button class="header__menutoggler menutoggler menutoggler--primary" aria-controls="primary-menu"
 					aria-expanded="false">
 				<?php
