@@ -25,6 +25,7 @@
 		left: 0;
 		top: 0;
 		width: 100%;
+		@include transition(opacity);
 	}
 
 	&--background {
@@ -43,6 +44,12 @@
 			top: 0;
 			background: center center no-repeat;
 			background-size: cover;
+		}
+	}
+
+	&--loaded {
+		.o-lazyimage__preview[src$=".png"] {
+			opacity: 0;
 		}
 	}
 }
