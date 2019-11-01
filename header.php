@@ -1,6 +1,7 @@
 <?php
 
 use SayHello\Theme\Package\NavWalker;
+use SayHello\Theme\Vendor\LazyImage;
 
 ?>
 	<!DOCTYPE html>
@@ -17,8 +18,7 @@ use SayHello\Theme\Package\NavWalker;
 <?php do_action('sht_after_body_open'); ?>
 	<section class="page-section" id="header">
 		<header class="header" role="banner">
-			<button class="header__menutoggler menutoggler menutoggler--primary" aria-controls="primary-menu"
-					aria-expanded="false">
+			<button class="header__menutoggler menutoggler menutoggler--primary" aria-controls="primary-menu" aria-expanded="false">
 				<?php
 				for ($i = 1; $i <= 3; $i++) {
 					echo "<span class='menutoggler__line menutoggler__line--$i'></span>";
@@ -39,4 +39,3 @@ use SayHello\Theme\Package\NavWalker;
 		</header>
 	</section>
 <?php
-do_action('sht_after_header');
