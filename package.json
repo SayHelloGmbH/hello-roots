@@ -43,7 +43,6 @@
     "gulp-svgmin": "^2.2.0",
     "gulp-uglify": "^2.0.1",
     "gulp-wp-pot": "^2.3.5",
-    "webpack": "^4.33.0",
     "webpack-stream": "^5.2.1"
   },
   "author": "Say Hello GmbH - https://sayhello.ch",
