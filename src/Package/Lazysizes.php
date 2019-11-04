@@ -80,10 +80,10 @@ class Lazysizes
 	{
 		$image_object = new LazyImage($image, $size);
 		$image_object->setAttributes($attributes);
-		if (! empty($wrapper_class)) {
+		if (!empty($wrapper_class)) {
 			$image_object->setWrapperClass($wrapper_class);
 		}
-		if (! empty($image_class)) {
+		if (!empty($image_class)) {
 			$image_object->setImageClass($image_class);
 		}
 
