@@ -1,6 +1,6 @@
 .c-article {
 
-	@extend .c-stack--medium;
+	@extend .h-stack--medium;
 	max-width: var(--constraint-narrow);
 	margin-left: auto;
 	margin-right: auto;
@@ -11,7 +11,7 @@
 	}
 
 	&__header {
-		@extend .c-stack;
+		@extend .h-stack;
 	}
 
 	&__thumbnail {

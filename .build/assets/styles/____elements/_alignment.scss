@@ -1,0 +1,30 @@
+.alignfull,
+.alignmedium,
+.alignwide {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.alignwide {
+	max-width: calc(100vw - (var(--unit) * 2));
+	&.has-parallax {
+		background-position-x: 45vw;
+	}
+	@include desktop {
+		max-width: var(--constraint-wide);
+
+		&.has-parallax {
+			background-position-x: calc(var(--constraint-wide) / 2);
+		}
+	}
+}
+
+.alignfull {
+	max-width: 100vw;
+
+	&.has-parallax {
+		background-position-x: 50vw;
+	}
+}
