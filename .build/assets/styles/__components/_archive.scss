@@ -1,11 +1,11 @@
 .c-archive {
-	@extend .c-stack;
+	@extend .h-stack;
 	max-width: var(--constraint-narrow);
 	margin-left: auto;
 	margin-right: auto;
 
 	&__content {
-		@extend .c-stack--medium;
+		@extend .h-stack--medium;
 	}
 
 	&__header {
