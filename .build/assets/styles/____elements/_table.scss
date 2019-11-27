@@ -6,3 +6,9 @@
 		min-width: 600px;
 	}
 }
+
+// Typographic detail to ensure correct numeric alignment
+// https://www.robinrendle.com/notes/the-smallest-difference
+table {
+	font-variant-numeric: tabular-name;
+}
