@@ -12,7 +12,6 @@ use enshrined\svgSanitize\Sanitizer;
 class SVG
 {
 
-
 	/**
 	 * Hooks the upload_mimes and wp_handle_upload_prefilter filter.
 	 * Hooks the admin_enqueue_scripts action.

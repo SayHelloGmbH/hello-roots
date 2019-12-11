@@ -1,0 +1,10 @@
+@mixin constrain-wide() {
+	max-width: var(--constraint-wide);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin flex-row {
+	display: flex;
+	flex-flow: row wrap;
+}

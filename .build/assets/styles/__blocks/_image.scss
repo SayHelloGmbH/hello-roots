@@ -1,18 +1,7 @@
-/*
- * WordPress Core block
- */
-
 .wp-block-image {
 	figcaption {
 		max-width: var(--constraint-narrow);
 		margin-left: auto;
 		margin-right: auto;
-	}
-}
-
-@include context-view() {
-	.wp-block-image {
-		margin-top: var(--unit);
-		margin-bottom: var(--unit);
 	}
 }

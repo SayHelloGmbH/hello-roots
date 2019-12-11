@@ -55,11 +55,11 @@
 }
 
 .o-lazyimage--transparent:before {
-	$size: 40px;
+	$size: 2.5rem;
 	content: '';
-	@include spinner(5px solid #fff, #{$size});
-	margin-top: -#{$size/2};
-	margin-left: -#{$size/2};
+	@include spinner(5px solid #fff, 2.5rem);
+	margin-top: -1.25rem;
+	margin-left: -1.25rem;
 	position: absolute;
 	top: 50%;
 	left: 50%;

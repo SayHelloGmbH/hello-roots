@@ -1,45 +1,6 @@
-@charset "UTF-8";
-
-/*
->> GLOBAL
->> styling for all blocks
-*/
-.alignfull,
-.alignwide {
-	position: relative;
-	width: 100vw;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.alignwide {
-	@include for-screen-min(tablet) {
-		max-width: 90vw;
-
-		&.has-parallax {
-			background-position-x: 45vw;
-		}
-	}
-	@include for-screen-min(desktop) {
-		max-width: var(--constraint-wide);
-
-		&.has-parallax {
-			background-position-x: calc(var(--constraint-wide) / 2);
-		}
-	}
-}
-
-.alignfull {
-	max-width: 100vw;
-
-	&.has-parallax {
-		background-position-x: 50vw;
-	}
-}
-
-/*
->> BLOCKS
->> styling for individual block types
-*/
+@import 'code';
+@import 'columns';
+@import 'cover';
 @import 'embed';
 @import 'image';
+@import 'quote';

@@ -2,15 +2,18 @@
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-size: #{$font-size};
-	--font-size-small: #{$font-size-small};
-	--font-size-xsmall: #{$font-size-xsmall};
-	--font-size-large: #{$font-size-large};
-	--font-size-xlarge: #{$font-size-xlarge};
+	--font-size-small: #{rem-calc(14px)};
+	--font-size-xsmall: #{rem-calc(12px)};
+	--font-size-large: #{rem-calc(18px)};
+	--font-size-xlarge: #{rem-calc(21px)};
+	--line-height: 1.5;
+	--line-height-heading: 1.2;
 }
 
 html {
 	font-family: var(--font-family);
-	font-weight: normal;
+	font-weight: 400;
+	line-height: var(--line-height);
 }
 
 body {
@@ -21,42 +24,83 @@ a,
 button {
 	color: c(primary);
 	@include transition();
+
+	&:active,
+	&:hover {
+		color: c(primary, dark);
+	}
 }
 
 button {
 	text-decoration: none;
 }
 
+blockquote {
+	margin: 0;
+	@extend .h-stack;
+}
+
+button {
+	text-decoration: none;
+}
+
+cite {
+	display: block;
+}
+
+code {
+	// color: c(brown);
+	background-color: c(gray, light);
+	display: inline-block;
+	padding: .0625em .25em;
+}
+
+figure,
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+img {
+	outline: 1px solid c(gray, light);
+}
+
+figure {
+	margin: 0;
+
+	> a {
+		border-bottom: none;
+	}
+}
+
+figcaption {
+	font-size: var(--font-size-small);
+	color: c(gray, dark);
+}
+
+nav {
+	li,
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
+}
+
 input,
 li,
 p,
 tr {
-	color: c();
-	margin: 0;
+
 	font-size: 1em;
-
-	em {
-		font-style: italic;
-	}
-
-	b,
-	strong {
-		font-weight: bold;
-	}
-
-	small {
-		font-size: $font-size-xsmall;
-		display: inline-block;
-	}
-
-	&.big,
-	.big {
-		font-size: $font-size-xlarge;
-	}
 
 	sub,
 	sup {
-		font-size: $font-size-xsmall;
+		font-size: var(--font-size-small);
 		line-height: 0;
 		position: relative;
 		vertical-align: baseline;
@@ -78,5 +122,31 @@ h4,
 h5,
 h6 {
 	font-family: var(--font-family-heading);
-	color: c(black, dark);
+	line-height: var(--line-height-heading);
+	margin: 0;
+
+	a,
+	a:active,
+	a:hover {
+		text-decoration: none;
+		color: currentColor;
+	}
+}
+
+@include context-edit {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-family-heading);
+
+		a,
+		a:active,
+		a:hover {
+			color: currentColor !important;
+			border: none !important;
+		}
+	}
 }

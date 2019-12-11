@@ -1,6 +1,6 @@
 (function ($) {
 
-	const CheckClass = 'no-outline';
+	const CheckClass = 'c-body--no-outline';
 	const $body = $('body');
 
 	$(function () {

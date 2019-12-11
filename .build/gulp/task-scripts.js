@@ -20,15 +20,15 @@ export const task = config => {
 		const entry = {};
 		bundles.forEach(bundle => {
 			const filePath = `${config.assetsBuild}scripts/${bundle}/index.js`;
-			if (fs.existsSync(filePath)) {
+			if(fs.existsSync(filePath)) {
 				entry[bundle] = './' + filePath;
 			}
 		});
 
 		gulp.src([
-			`${config.assetsBuild}scripts/*`
-		])
-		// Webpack
+				`${config.assetsBuild}scripts/*`
+			])
+			// Webpack
 			.pipe(
 				gulpWebpack({
 					entry,
