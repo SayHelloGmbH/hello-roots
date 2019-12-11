@@ -1,0 +1,14 @@
+.c-archive {
+	@extend .h-stack;
+	max-width: var(--constraint-narrow);
+	margin-left: auto;
+	margin-right: auto;
+
+	&__content {
+		@extend .h-stack--medium;
+	}
+
+	&__header {
+		padding-bottom: var(--unit-medium);
+	}
+}

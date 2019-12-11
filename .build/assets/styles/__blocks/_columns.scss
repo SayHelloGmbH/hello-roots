@@ -1,0 +1,11 @@
+.wp-block-column {
+	@extend .h-stack;
+	@include wordpress_small {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.wp-block-columns {
+	@extend .h-stack--medium;
+}

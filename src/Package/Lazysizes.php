@@ -26,8 +26,6 @@ class Lazysizes
 		add_action('wp_head', [$this, 'noscriptCSS'], 50);
 		add_action('sht_after_body_open', [$this, 'svgFilter'], 50000);
 		add_action('wp_enqueue_scripts', [$this, 'addAssets']);
-		add_action('rest_api_init', [$this, 'registerRoute']);
-		add_filter('lazy_sizes_size', [$this, 'customLazySizes'], 10, 0);
 	}
 
 	public function noscriptCSS()
@@ -82,54 +80,13 @@ class Lazysizes
 	{
 		$image_object = new LazyImage($image, $size);
 		$image_object->setAttributes($attributes);
-		if (! empty($wrapper_class)) {
+		if (!empty($wrapper_class)) {
 			$image_object->setWrapperClass($wrapper_class);
 		}
-		if (! empty($image_class)) {
+		if (!empty($image_class)) {
 			$image_object->setImageClass($image_class);
 		}
 
-		return $image_object->getImage($background);
-	}
-
-	public function registerRoute()
-	{
-		register_rest_route('hello-roots/v1', '/lazy-image/(?P<id>\d+)', [
-			'methods'  => 'GET',
-			'callback' => function ($data) {
-
-				$size = 'full';
-				if (array_key_exists('size', $_GET)) {
-					$size = $_GET['size'];
-				}
-
-				$image_object = new LazyImage($data['id'], $size);
-
-				$srcs = $image_object->getSrcs();
-				if (is_string($srcs)) {
-					return new WP_Error('request_failed', $srcs, [
-						'status' => 404,
-					]);
-				}
-
-				return $srcs;
-			},
-			'args' => [
-				'id',
-			],
-		]);
-	}
-
-	public function customLazySizes()
-	{
-		return [
-			'window' => 2560,
-			'page' => 1376,
-			'large' => 1280,
-			'medium' => 330,
-			'smallsquare' => 180,
-			'small' => 160,
-		];
 		return $image_object->getImage($background);
 	}
 }

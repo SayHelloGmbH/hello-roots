@@ -39,11 +39,10 @@ class Gutenberg
 		if (!function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
-		add_action('wp_print_styles', [$this, 'removeCoreBlockCSS'], 100);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
-		add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
+		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 	}
 
@@ -55,13 +54,10 @@ class Gutenberg
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
-		add_theme_support('editor-color-palette'); // Disable the standard colour palette
-		add_theme_support('disable-custom-colors'); // Disable the custom colour palette
-	}
-
-	public function removeCoreBlockCSS()
-	{
-		wp_deregister_style('wp-block-library');
+		add_theme_support('disable-custom-colors');
+		add_theme_support('editor-color-palette', []);
+		add_theme_support('disable-custom-font-sizes');
+		add_theme_support('editor-font-sizes', []);
 	}
 
 	/**
@@ -235,5 +231,10 @@ class Gutenberg
 		}
 
 		return array_merge($allowed_types, $disallowed_types);
+	}
+
+	public function isContextEdit()
+	{
+		return array_key_exists('context', $_GET) && $_GET['context'] === 'edit';
 	}
 }

@@ -11,15 +11,6 @@ use SayHello\Theme\Vendor\LazyImage;
  */
 class Helpers
 {
-
-	public static function dump($var, $exit = false)
-	{
-		echo '<pre>' . print_r($var, true) . '</pre>';
-		if ($exit) {
-			exit;
-		}
-	}
-
 	/**
 	 * Convert a telephone number in the common Swiss number formats to a valid tel: link
 	 *

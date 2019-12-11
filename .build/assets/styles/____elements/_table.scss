@@ -1,3 +1,9 @@
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-variant-numeric: tabular-name;
+}
+
 .responsive-table {
 	max-width: 100%;
 	overflow-x: auto;
@@ -5,10 +11,4 @@
 	table {
 		min-width: 600px;
 	}
-}
-
-// Typographic detail to ensure correct numeric alignment
-// https://www.robinrendle.com/notes/the-smallest-difference
-table {
-	font-variant-numeric: tabular-name;
 }

@@ -1,23 +1,54 @@
 .c-menu {
 	list-style: none;
 	text-align: center;
+	margin: 0;
+	padding: 0;
 
 	&--primary {
 		display: none;
+		font-size: var(--font-size-small);
+
+		@include laptop {
+			display: block;
+		}
 
 		.c-menu__item {
 			display: block;
 		}
-		@include desktop {
-			display: block;
+	}
+
+	&__entries {
+		&--primary {
+			@include laptop {
+				@include flex-row;
+			}
+		}
+		&--mobile {
+			@extend .h-stack;
+			margin-left: auto;
+			margin-right: auto;
+			padding-left: var(--unit);
+			padding-right: var(--unit);
+			max-width: var(--constraint-narrow);
+			@include tablet {
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
 
-	&__item {
+	&__entry {
 		display: inline-block;
+		&--mobile {
+			display: block;
+			.c-menu__entrylink {
+				padding: 0;
+			}
+		}
 	}
 
-	&__link {
+	&__entrylink {
+		display: block;
 		padding: .5em 1em;
 	}
 }

@@ -21,7 +21,7 @@ class Bodyclass
 	public function bodyClasses(array $classes)
 	{
 		if (sht_theme()->debug) {
-			$classes[] = 'theme-dev';
+			$classes[] = 'c-body--themedev';
 		}
 
 		return $classes;
