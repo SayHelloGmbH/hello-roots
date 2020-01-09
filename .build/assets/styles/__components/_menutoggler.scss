@@ -1,0 +1,51 @@
+.c-menutoggler {
+	display: none;
+	@include desktop {
+		display: block;
+	}
+	height: 3rem;
+	width: 4rem;
+	position: relative;
+	cursor: pointer;
+	color: c(primary);
+
+	&__line {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: .5rem;
+		transform: translateY(-50%);
+		background-color: currentColor;
+		display: block;
+		@include transition();
+		will-change: transform;
+
+		&--1 {
+			top: 0;
+		}
+
+		&--3 {
+			top: 100%;
+		}
+	}
+
+	&[aria-expanded="true"] {
+		.c-menutoggler__line {
+			&--1 {
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg);
+			}
+
+			&--2 {
+				left: 50%;
+				right: 50%;
+			}
+
+			&--3 {
+				top: 50%;
+				transform: translateY(-50%) rotate(-45deg);
+			}
+		}
+	}
+}
