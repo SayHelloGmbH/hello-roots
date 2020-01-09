@@ -43,11 +43,6 @@ class Gutenberg
 		add_filter('block_categories', [$this, 'blockCategories']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
 		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
-		
-		// https://github.com/WordPress/gutenberg/issues/18213
-		add_theme_support( '__experimental-editor-gradient-presets', []);
-		add_theme_support( '__experimental-disable-custom-gradients', true );
-		
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 	}
 
@@ -61,6 +56,11 @@ class Gutenberg
 		add_theme_support('align-wide');
 		add_theme_support('disable-custom-colors');
 		add_theme_support('editor-color-palette', []);
+
+		// https://github.com/WordPress/gutenberg/issues/18213
+		add_theme_support( '__experimental-editor-gradient-presets', []);
+		add_theme_support( '__experimental-disable-custom-gradients', true );
+
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
 	}
