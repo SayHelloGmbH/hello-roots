@@ -1,10 +1,24 @@
 :root {
 	--color-button-primary-background: #{c(primary)};
+	--color-button-primary-background-hover: #{c(primary, dark)};
 	--color-button-primary-hover: #{c(white)};
 	--color-button-primary: #{c(white)};
 }
 
 .o-button {
+
+	display: inline-block;
+	text-decoration: none;
+	border: none;
+	padding: .5em;
+	background-color: var(--color-button-primary-background);
+	color: var(--color-button-primary);
+	&:active,
+	&:hover {
+		background-color: var(--color-button-primary-background-hover);
+		color: var(--color-button-primary-hover);
+	}
+
 	&--size-small {
 		font-size: var(--font-size-small);
 	}
