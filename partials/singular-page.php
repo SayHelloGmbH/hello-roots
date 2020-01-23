@@ -14,6 +14,7 @@
 
 	<?php
 		get_template_part('partials/navigation/pagelinks');
+		get_template_part('partials/comments/template');
 	?>
 
 </article>
