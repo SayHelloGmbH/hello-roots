@@ -23,6 +23,26 @@
 		},
 		"yellow": {
 			"base": "#ffc"
+		},
+		"success": {
+			"base": "#489324",
+			"background": "#dff0d8",
+			"border": "#34cf7a"
+		},
+		"info": {
+			"base": "#333333",
+			"background": "#eaeaea",
+			"border": "#989898"
+		},
+		"warning": {
+			"base": "#E2912A",
+			"background": "#EFD7B9",
+			"border": "#F3DF5D"
+		},
+		"danger": {
+			"base": "#FF0000",
+			"background": "#FFE9E9",
+			"border": "#A01E32"
 		}
 	},
 	"theme_breakpoints": {
