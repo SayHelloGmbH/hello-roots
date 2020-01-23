@@ -1,6 +1,5 @@
 {
   "name": "hello-theme",
-  "version": "0.0.0",
   "description": "This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It has an object oriented php architecture and comes with some very handy build workflows.",
   "main": "gulpfile.babel.js",
   "repository": {

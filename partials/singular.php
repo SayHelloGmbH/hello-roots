@@ -18,6 +18,7 @@
 		get_template_part('partials/navigation/pagelinks');
 		get_template_part('partials/meta/category');
 		get_template_part('partials/meta/post_tag');
+		get_template_part('partials/comments/template');
 	?>
 
 </article>

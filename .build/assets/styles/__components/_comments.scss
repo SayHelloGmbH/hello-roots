@@ -1,0 +1,94 @@
+.c-comments {
+
+	padding-left: var(--unit);
+	padding-right: var(--unit);
+
+	@include tablet {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.children {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.comment,
+	.pingback,
+	.trackback {
+		padding: var(--unit);
+		border: 1px solid c(gray, light);
+		@extend .h-stack;
+
+		&[class*="depth"] {
+			padding-left: var(--unit);
+			padding-right: var(--unit);
+		}
+
+		&.even {
+			background: c(gray, light);
+		}
+
+		&.odd {
+			background-color: c(white);
+		}
+	}
+
+	.comment-body,
+	.comment-content {
+		@extend .h-stack;
+		pre {
+			padding: 0;
+			overflow-x: auto;
+		}
+	}
+
+	.comment-edit-link {
+		@extend .o-button;
+	}
+
+	.commentlist {
+		padding-left: 0;
+		list-style: none;
+	}
+
+	.comment-meta {
+		@extend .h-stack--small;
+		@include tablet {
+			display: flex;
+			justify-content: space-between;
+			> * {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.comment-metadata {
+		font-size: var(--font-size-xsmall);
+		text-align: right;
+		@include tablet {
+			flex: 0 0 40%;
+			margin-left: var(--unit);
+		}
+	}
+
+	.comment-respond {
+		padding-top: var(--unit);
+		padding-bottom: var(--unit);
+		border-top: 1px solid c(gray);
+	}
+
+	.edit-link {
+		margin-left: var(--unit-small);
+	}
+
+	#cancel-comment-reply-link {
+		font-weight: normal;
+		color: c(primary);
+		text-decoration: underline;
+		&:active,
+		&:hover {
+			color: c(primary, dark);
+		}
+	}
+}
