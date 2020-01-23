@@ -32,6 +32,19 @@
 		&.odd {
 			background-color: c(white);
 		}
+
+		// Only if inside an existing comment (so as a specific reply)
+		.comment-respond {
+			padding-top: var(--unit);
+			padding-bottom: var(--unit);
+			border-top: 1px solid c(gray);
+		}
+
+	}
+
+	.comment-awaiting-moderation {
+		flex: 0 0 100%;
+		opacity: .65;
 	}
 
 	.comment-body,
@@ -57,6 +70,7 @@
 		@include tablet {
 			display: flex;
 			justify-content: space-between;
+			flex-wrap: wrap;
 			> * {
 				margin-top: 0;
 			}
@@ -73,13 +87,15 @@
 	}
 
 	.comment-respond {
-		padding-top: var(--unit);
-		padding-bottom: var(--unit);
-		border-top: 1px solid c(gray);
+		clear: both;
 	}
 
 	.edit-link {
 		margin-left: var(--unit-small);
+	}
+
+	.navigation {
+		@include clearfix;
 	}
 
 	#cancel-comment-reply-link {
