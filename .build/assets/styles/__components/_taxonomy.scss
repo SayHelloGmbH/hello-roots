@@ -2,5 +2,9 @@
 	.single & {
 		padding-left: var(--unit);
 		padding-right: var(--unit);
+		@include tablet {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 }
