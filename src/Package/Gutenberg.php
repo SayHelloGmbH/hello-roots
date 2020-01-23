@@ -57,10 +57,11 @@ class Gutenberg
 		add_theme_support('disable-custom-colors');
 		add_theme_support('editor-color-palette', []);
 
-    // https://github.com/WordPress/gutenberg/issues/18213
-		add_theme_support( '__experimental-editor-gradient-presets', []);
-		add_theme_support( '__experimental-disable-custom-gradients', true );
+		// https://github.com/WordPress/gutenberg/issues/18213
+		add_theme_support('__experimental-editor-gradient-presets', []);
+		add_theme_support('__experimental-disable-custom-gradients', true);
 
+		// Don't disable these if you're using Media and Text, otherwise you can't reset the text size.
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
 	}
