@@ -8,6 +8,17 @@ import uglify from 'gulp-uglify';
 
 //import babelloader from 'babel-loader';
 
+const wplib = [
+	'blocks',
+	'components',
+	'date',
+	'editor',
+	'element',
+	'i18n',
+	'utils',
+	'data',
+];
+
 export const task = config => {
 	return gulp.src([
 			`${config.assetsBuild}gutenberg/blocks.js`
@@ -28,8 +39,16 @@ export const task = config => {
 					ignored: /node_modules/
 				},
 				output: {
-					filename: 'blocks.js'
-				}
+					filename: 'blocks.js',
+					library: ['wp', 'i18n'],
+					libraryTarget: 'window'
+				},
+				externals: wplib.reduce((externals, lib) => {
+					externals[`wp.${lib}`] = {
+						window: ['wp', lib],
+					};
+					return externals;
+				}, {}),
 			}, webpack)
 		)
 		.on('error', config.errorLog)

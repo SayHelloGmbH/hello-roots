@@ -45,6 +45,8 @@ class Gutenberg
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
 		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
+
+		add_action('init', [$this, 'setScriptTranslations']);
 	}
 
 	/**
@@ -86,7 +88,7 @@ class Gutenberg
 			wp_register_script(
 				sht_theme()->prefix . '-gutenberg-script',
 				$this->js,
-				['wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n', 'lodash'],
+				['wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n'],
 				sht_theme()->version
 			);
 		}
@@ -99,6 +101,20 @@ class Gutenberg
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
 		}
+	}
+
+	/**
+	 * https://github.com/SayHelloGmbH/hello-roots/wiki/Translation-in-JavaScript
+	 *
+	 * Make sure that the JSON files are at e.g.
+	 * 'languages/sht-de_DE_formal-739d784e82179214dfd2a6c345374e30.json' or
+	 * 'languages/sht-fr_FR-739d784e82179214dfd2a6c345374e30.json'
+	 *
+	 * mhm 28.1.2020
+	 */
+	public function setScriptTranslations()
+	{
+		wp_set_script_translations(sht_theme()->prefix . '-gutenberg-script', 'sht', get_template_directory() . '/languages');
 	}
 
 	public function blockCategories($categories)
