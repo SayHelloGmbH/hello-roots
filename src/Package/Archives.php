@@ -34,7 +34,7 @@ class Archives
 			$title = sprintf(_x('Beiträge aus %s', 'Archive title month/year', 'sht'), get_the_date(_x('F Y', 'monthly archives date format', 'sht')));
 		} elseif (is_day()) {
 			/* translators: Daily archive title. %s: Date */
-			$title = sprintf(_x('Posts from %s', 'Archive title day month year', 'sht'), get_the_date(_x('j. F Y', 'daily archives date format', 'sht')));
+			$title = sprintf(_x('Beiträge aus %s', 'Archive title day month year', 'sht'), get_the_date(_x('j. F Y', 'daily archives date format', 'sht')));
 		} elseif (is_tax('post_format')) {
 			// if (is_tax('post_format', 'post-format-aside')) {
 			// 	$title = _x('Asides', 'post format archive title', 'sht');
@@ -57,7 +57,7 @@ class Archives
 			// }
 		} elseif (is_post_type_archive()) {
 			/* translators: Post type archive title. %s: Post type name */
-			$title = sprintf(_x('%s Archives', 'Archive title post type archive', 'sht'), post_type_archive_title('', false));
+			$title = sprintf(_x('%s Archiv', 'Archive title post type archive', 'sht'), post_type_archive_title('', false));
 		} elseif (is_tax()) {
 			$tax = get_taxonomy(get_queried_object()->taxonomy);
 			/* translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term */

@@ -39,6 +39,7 @@ class Gutenberg
 		if (!function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
+		add_action('init', [$this, 'registerBlockAssets']);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
@@ -79,10 +80,22 @@ class Gutenberg
 		return $editor_settings;
 	}
 
+	public function registerBlockAssets()
+	{
+		if ($this->js) {
+			wp_register_script(
+				sht_theme()->prefix . '-gutenberg-script',
+				$this->js,
+				['wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n', 'lodash'],
+				sht_theme()->version
+			);
+		}
+	}
+
 	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
-			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script', $this->js, ['wp-blocks', 'wp-element', 'wp-edit-post', 'lodash'], sht_theme()->version);
+			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script');
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
 		}
@@ -93,7 +106,7 @@ class Gutenberg
 		return array_merge($categories, [
 			[
 				'slug'  => 'sht/blocks',
-				'title' => __('Blocks by Say Hello', 'sha'),
+				'title' => _x('Blöcke von Hello', 'Custom block category name', 'sha'),
 			],
 		]);
 	}
