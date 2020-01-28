@@ -20,6 +20,11 @@ body {
 	font-size: 1rem;
 }
 
+abbr,
+acronym {
+	cursor: help;
+}
+
 a,
 button {
 	color: c(primary);
@@ -53,6 +58,14 @@ code {
 	background-color: c(gray, light);
 	display: inline-block;
 	padding: .0625em .25em;
+}
+
+dd + dt {
+	margin-top: var(--unit);
+}
+
+dt {
+	font-weight: 700;
 }
 
 figure,
@@ -91,28 +104,31 @@ nav {
 	}
 }
 
+q {
+	font-style: italic;
+}
+
+sub,
+sup {
+	font-size: var(--font-size-xsmall);
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
 input,
 li,
 p,
 tr {
-
 	font-size: 1em;
-
-	sub,
-	sup {
-		font-size: var(--font-size-small);
-		line-height: 0;
-		position: relative;
-		vertical-align: baseline;
-	}
-
-	sup {
-		top: -0.5em;
-	}
-
-	sub {
-		bottom: -0.25em;
-	}
 }
 
 h1,

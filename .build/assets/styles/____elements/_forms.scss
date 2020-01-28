@@ -1,1 +1,288 @@
-form {}
+:root {
+	--checkbox-size: calc(var(--unit) * 1.5);
+	--checkbox-size-small: var(--unit); // used in other SCSS files, not here
+}
+
+::placeholder {
+	color: c(gray, mid);
+}
+
+form {
+	font-size: 1rem;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+input {
+	&[disabled] {
+		opacity: .75;
+	}
+
+	&[type=button],
+	&[type=submit] {
+		@extend .o-button;
+	}
+
+	&[type=date],
+	&[type=datetime-local],
+	&[type=datetime],
+	&[type=email],
+	&[type=month],
+	&[type=number],
+	&[type=password],
+	&[type=search],
+	&[type=tel],
+	&[type=text],
+	&[type=time],
+	&[type=url],
+	&[type=week] {
+		-webkit-appearance: none; // remove inner shadow
+		border: 1px solid c(gray, mid);
+		border-radius: var(--radius);
+		padding: var(--unit-small);
+		display: block;
+		width: 100%;
+
+		&.medium {
+			@include tablet {
+				width: calc(50% - var(--unit));
+			}
+		}
+
+		&.small {
+			width: calc(25% - var(--unit));
+		}
+	}
+}
+
+[type="radio"],
+[type="checkbox"] {
+	position: absolute;
+	transform: scale(0);
+	z-index: -1;
+	width: 0;
+	height: 0;
+	margin: 0 !important;
+	opacity: 0;
+	overflow: hidden;
+	pointer-events: none;
+
+	~ label {
+		display: flex !important;
+		align-items: center;
+
+		&:before {
+			@include transition;
+			content: '';
+			display: inline-block;
+			width: var(--checkbox-size);
+			height: var(--checkbox-size);
+			flex: 0 0 var(--checkbox-size);
+			margin-right: .5em;
+			background: url('../img/icons/checkbox-active.min.svg') center no-repeat;
+			background-color: c(white);
+			background-size: 0;
+			border: 1px solid c(gray, mid);
+			border-radius: 2px;
+			vertical-align: baseline;
+		}
+
+		a {
+			display: inline-block;
+			margin-right: .25em;
+		}
+	}
+
+	&:checked ~ label:before {
+		background-color: c(primary);
+		border-color: c(primary);
+		background-size: contain;
+	}
+}
+
+[type="checkbox"] ~ label:before {
+	border-radius: var(--radius);
+}
+
+[type="radio"] ~ label:before {
+	border-radius: 50%;
+}
+
+textarea {
+	-webkit-appearance: none; // remove inner shadow
+	resize: vertical;
+	border: 1px solid c(gray, mid);
+	border-radius: var(--radius);
+	padding: var(--unit-small);
+	display: block;
+	width: 100%;
+
+	&.medium {
+		@include tablet {
+			width: calc(50% - var(--unit));
+		}
+	}
+
+	&.small {
+		width: calc(25% - var(--unit));
+	}
+}
+
+.gform {
+	&_confirmation_message {
+		border: 1px solid c(success, border);
+		background-color: c(success, background);
+		color: c(success);
+		padding: var(--unit);
+	}
+
+	&_fields {
+		margin: 0;
+	}
+
+	&_wrapper {
+		li {
+			text-indent: 0;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		.gfield {
+			margin-top: var(--unit);
+			margin-bottom: var(--unit);
+			padding-right: 0 !important;
+			text-indent: 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			@include tablet {
+				display: grid;
+				grid-template-columns: 35% auto;
+				grid-column-gap: var(--unit);
+			}
+
+			&::before {
+				display: none;
+			}
+
+			&_description {
+				@include tablet {
+					@supports (display: grid) {
+						grid-column: 2/3;
+					}
+				}
+			}
+
+			&_error {
+				input,
+				select,
+				textarea {
+					border-color: c(danger, border);
+					outline-color: c(danger, border);
+				}
+			}
+
+			&_label {
+				font-weight: var(--font-regular) !important;
+				padding-top: calc(var(--unit) * .8125);
+			}
+
+			&_required {
+				color: c(danger);
+			}
+
+			&--checkbox,
+			&--radio {
+				grid-template-rows: 1fr;
+				align-items: center;
+
+				.gfield_label {
+					padding: 0;
+				}
+
+				.ginput_container {
+					margin-top: var(--unit-xsmall) !important;
+				}
+
+				li label {
+					margin-left: 0;
+				}
+			}
+
+			&--textarea {
+				.gfield_label {
+					padding-top: var(--unit);
+				}
+			}
+		}
+
+		.gform {
+			&_footer {
+				margin-top: var(--unit);
+				padding-left: calc(35% + var(--unit));
+			}
+
+			&_heading {
+				display: none;
+				margin: 0;
+			}
+
+		}
+
+		.ginput_container {
+			@include tablet {
+				@supports(display: grid) {
+					grid-row: 1/4;
+					grid-column: 2/3;
+				}
+			}
+		}
+
+		.validation_error,
+		.validation_message {
+			color: c(danger);
+		}
+
+		.validation_message {
+			grid-column: 2;
+			font-size: var(--font-size-small);
+			margin: var(--unit-xsmall) 0 0;
+
+		}
+
+	}
+
+	&_ajax_spinner {
+		border: var(--unit-xsmall) solid c(gray, mid);
+		border-left: var(--unit-xsmall) solid c(primary);
+		animation: gf_ajaxspinner 1.1s infinite linear;
+		border-radius: 50%;
+		width: var(--unit-medium);
+		height: var(--unit-medium);
+		margin-left: var(--unit);
+		padding: 0;
+	}
+
+}
+
+label.error {
+	color: c(danger);
+	font-size: var(--font-size-small);
+}
+
+.input.error {
+	border-color: c(danger, border);
+	outline-color: c(danger, border);
+}

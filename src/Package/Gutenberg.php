@@ -39,11 +39,14 @@ class Gutenberg
 		if (!function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
+		add_action('init', [$this, 'registerBlockAssets']);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
 		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
+
+		add_action('init', [$this, 'setScriptTranslations']);
 	}
 
 	/**
@@ -57,10 +60,11 @@ class Gutenberg
 		add_theme_support('disable-custom-colors');
 		add_theme_support('editor-color-palette', []);
 
-    // https://github.com/WordPress/gutenberg/issues/18213
-		add_theme_support( '__experimental-editor-gradient-presets', []);
-		add_theme_support( '__experimental-disable-custom-gradients', true );
+		// https://github.com/WordPress/gutenberg/issues/18213
+		add_theme_support('__experimental-editor-gradient-presets', []);
+		add_theme_support('__experimental-disable-custom-gradients', true);
 
+		// Don't disable these if you're using Media and Text, otherwise you can't reset the text size.
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
 	}
@@ -78,13 +82,39 @@ class Gutenberg
 		return $editor_settings;
 	}
 
+	public function registerBlockAssets()
+	{
+		if ($this->js) {
+			wp_register_script(
+				sht_theme()->prefix . '-gutenberg-script',
+				$this->js,
+				['wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n'],
+				sht_theme()->version
+			);
+		}
+	}
+
 	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
-			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script', $this->js, ['wp-blocks', 'wp-element', 'wp-edit-post', 'lodash'], sht_theme()->version);
+			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script');
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
 		}
+	}
+
+	/**
+	 * https://github.com/SayHelloGmbH/hello-roots/wiki/Translation-in-JavaScript
+	 *
+	 * Make sure that the JSON files are at e.g.
+	 * 'languages/sht-de_DE_formal-739d784e82179214dfd2a6c345374e30.json' or
+	 * 'languages/sht-fr_FR-739d784e82179214dfd2a6c345374e30.json'
+	 *
+	 * mhm 28.1.2020
+	 */
+	public function setScriptTranslations()
+	{
+		wp_set_script_translations(sht_theme()->prefix . '-gutenberg-script', 'sht', get_template_directory() . '/languages');
 	}
 
 	public function blockCategories($categories)
@@ -92,7 +122,7 @@ class Gutenberg
 		return array_merge($categories, [
 			[
 				'slug'  => 'sht/blocks',
-				'title' => __('Blocks by Say Hello', 'sha'),
+				'title' => _x('Blöcke von Hello', 'Custom block category name', 'sha'),
 			],
 		]);
 	}
