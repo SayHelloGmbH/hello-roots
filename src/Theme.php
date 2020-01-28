@@ -109,10 +109,10 @@ class Theme
 			self::$instance->name    = self::$instance->theme->name;
 			self::$instance->version = self::$instance->theme->version;
 			self::$instance->prefix  = 'sht';
-			self::$instance->error   = __('An unexpected error occured.', 'sht');
+			self::$instance->error   = _x('Ein unerwarteter Fehler ist geschehen.', 'Theme instance unexpected error', 'sht');
 			self::$instance->debug   = true;
 
-			if (! isset($_SERVER[ 'HTTP_HOST' ]) || strpos($_SERVER[ 'HTTP_HOST' ], '.hello') === false && ! in_array($_SERVER[ 'REMOTE_ADDR' ], [ '127.0.0.1', '::1' ])) {
+			if (! isset($_SERVER[ 'HTTP_HOST' ]) || (strpos($_SERVER[ 'HTTP_HOST' ], '.hello') === false && strpos($_SERVER[ 'HTTP_HOST' ], '.local') === false) && ! in_array($_SERVER[ 'REMOTE_ADDR' ], [ '127.0.0.1', '::1' ])) {
 				self::$instance->debug = false;
 			}
 		}
@@ -137,7 +137,7 @@ class Theme
 			}
 
 			if (property_exists(sht_theme()->{$class_set}, $class_short)) {
-				wp_die(sprintf(__('A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be assigned to the “%2$s” object in the Theme.', 'sht'), $class_short, $class_set), 500);
+				wp_die(sprintf(_x('Ein Problem ist geschehen im Theme. Nur eine PHP-Klasse namens «%1$s» darf dem Theme-Objekt «%2$s» zugewiesen werden.', 'Duplicate PHP class assignmment in Theme', 'sht'), $class_short, $class_set), 500);
 			}
 
 			sht_theme()->{$class_set}->{$class_short} = new $class();

@@ -13,6 +13,6 @@
 		<?php the_excerpt(); ?>
 	</div>
 
-	<a class="c-excerpt__more" href="<?php the_permalink(); ?>"><?php _ex('Read more', 'Excerpt read more link', 'sht')?></a>
+	<a class="c-excerpt__more" href="<?php the_permalink(); ?>"><?php _ex('Weiterlesen', 'Excerpt read more link', 'sht')?></a>
 
 </article>

@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/SayHelloGmbH/hello-roots#readme",
   "dependencies": {
+    "@wordpress/i18n": "^3.8.0",
     "jquery-easing": "0.0.1",
     "verge": "^1.9.1"
   },

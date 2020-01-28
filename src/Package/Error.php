@@ -52,7 +52,7 @@ class Error
 		if (function_exists('hellolog_register_log')) {
 			$code = hellolog_register_log('error', $error, debug_backtrace());
 
-			return $return_text . ' (' . __('ErrorCode', 'sht') . ': ' . $code . ')';
+			return $return_text . ' (' . _x('ErrorCode', 'Error class code output', 'sht') . ': ' . $code . ')';
 		} else {
 			return $return_text;
 		}

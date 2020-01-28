@@ -8,17 +8,17 @@
  * Namespace:   HelloTheme
  * Prefix:      sht
  *
- * Check if WordPress 4.6 and PHP 5.3 or newer and ACF is active
+ * Check if WordPress 5.0 and PHP 7.0 or newer and ACF is active
  */
 
 define('DISALLOW_FILE_EDIT', true);
 
-if (version_compare(get_bloginfo('version'), '4.6', '<') || version_compare(PHP_VERSION, '5.4', '<') || ! class_exists('acf')) {
+if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_VERSION, '7.0', '<') || ! class_exists('acf')) {
 	add_action(
 		'admin_notices',
 		function () {
 			// translators: Admin notice for system requirements
-			echo '<div class="error"><p>' . sprintf(__('This Theme requires PHP %1$s (or newer) and WordPress %2$s (or newer) and the Plugin “Advanced Custom Fields” to function properly. Your site is using PHP %3$s and WordPress %4$s. Please upgrade. The Theme has been automatically deactivated.', 'sha'), '5.4', '4.6', PHP_VERSION, $GLOBALS[ 'wp_version' ]) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf(__('Dieses Theme benötigt PHP %1$s (oder neuer), WordPress %2$s (oder neuer) und das Plugin «Advanced Custom Fields». Ihre Website verfügt über PHP %3$s und WordPress %4$s. Bitte aktualisieren Sie die Abhängigkeiten. Das Theme wurde automatisch deaktiviert.', 'sha'), '7.0', '5.0', PHP_VERSION, $GLOBALS[ 'wp_version' ]) . '</p></div>';
 		}
 	);
 

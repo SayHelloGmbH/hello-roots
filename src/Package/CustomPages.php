@@ -42,7 +42,7 @@ class CustomPages
 	{
 		if (function_exists('acf_add_local_field') && function_exists('acf_add_options_sub_page') && function_exists('acf_add_local_field_group')) {
 			$options_slug  = $this->prefix . '-settings';
-			$options_title = __('Custom Pages', 'sht');
+			$options_title = _x('Custom Pages', 'ACF group title', 'sha');
 
 			acf_add_options_sub_page(
 				[
@@ -85,7 +85,7 @@ class CustomPages
 						[
 							'key'    => 'field_page_for_x_title',
 							'name'   => 'page_for_x_title',
-							'label'  => __('Post Type Archives', 'sha'),
+							'label'  => __('Beitragstyp-Archiv', 'sha'),
 							'type'   => 'tab',
 							'parent' => $this->prefix . '-cp-group',
 						]
