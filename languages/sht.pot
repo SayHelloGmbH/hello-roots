@@ -1,5 +1,6 @@
 # Copyright (C) 2019 Hello Theme
 # This file is distributed under the same license as the Hello Theme package.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hello Theme\n"
@@ -7,93 +8,217 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
+"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2020-01-28 10:54+0000\n"
+"Language: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Loco https://localise.biz/"
 
-#: Classes/Package/CustomPages.php:45
+#: partials/excerpt.php:16
+msgctxt "Excerpt read more link"
+msgid "Read more"
+msgstr ""
+
+#: partials/singular-404.php:4
+msgid "Page or file not found"
+msgstr ""
+
+#: partials/singular-404.php:9
+msgid "404 - page not found."
+msgstr ""
+
+#: partials/singular-404.php:10
+msgid "The requested page or file could not be found."
+msgstr ""
+
+#: src/Theme.php:112
+msgctxt "Theme instance unexpected error"
+msgid "Ein unerwarteter Fehler ist geschehen."
+msgstr ""
+
+#: src/Theme.php:140
+#, php-format
+msgctxt "Duplicate PHP class assignmment in Theme"
+msgid ""
+"A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be "
+"assigned to the “%2$s” object in the Theme."
+msgstr ""
+
+#: partials/navigation/pagelinks.php:4
+msgctxt "Page links navigation title"
+msgid "Seiten"
+msgstr ""
+
+#: partials/navigation/pagelinks.php:7
+msgctxt "Page number link"
+msgid "Next"
+msgstr ""
+
+#: partials/navigation/pagelinks.php:8
+msgctxt "Page number link"
+msgid "Previous"
+msgstr ""
+
+#: partials/meta/category.php:5
+msgctxt "Taxonomy title (singular view)"
+msgid "Categories"
+msgstr ""
+
+#: partials/meta/post_tag.php:5
+msgctxt "Taxonomy title (singular view)"
+msgid "Tags"
+msgstr ""
+
+#. Category archive title. %s: Category name
+#: src/Package/Archives.php:22
+#, php-format
+msgctxt "Archive title category"
+msgid "Beiträge aus der Kategorie «%s»"
+msgstr ""
+
+#. Tag archive title. %s: Tag name
+#: src/Package/Archives.php:25
+#, php-format
+msgctxt "Archive title tag"
+msgid "Beiträge mit dem Schlagwort «%s»"
+msgstr ""
+
+#. Author archive title. %s: Author name
+#: src/Package/Archives.php:28
+#, php-format
+msgctxt "Archive title author"
+msgid "Beiträge von %s"
+msgstr ""
+
+#. Yearly archive title. %s: Year
+#: src/Package/Archives.php:31
+#, php-format
+msgctxt "Archive title year"
+msgid "Beiträge aus %s"
+msgstr ""
+
+#: src/Package/Archives.php:31
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#. Monthly archive title. %s: Month name and year
+#: src/Package/Archives.php:34
+#, php-format
+msgctxt "Archive title month/year"
+msgid "Beiträge aus %s"
+msgstr ""
+
+#: src/Package/Archives.php:34
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#. Daily archive title. %s: Date
+#: src/Package/Archives.php:37
+#, php-format
+msgctxt "Archive title day month year"
+msgid "Posts from %s"
+msgstr ""
+
+#: src/Package/Archives.php:37
+msgctxt "daily archives date format"
+msgid "j. F Y"
+msgstr ""
+
+#. Post type archive title. %s: Post type name
+#: src/Package/Archives.php:60
+#, php-format
+msgctxt "Archive title post type archive"
+msgid "%s Archives"
+msgstr ""
+
+#. Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term
+#: src/Package/Archives.php:64
+#, php-format
+msgctxt "Archive title taxonomy archive"
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: src/Package/Archives.php:66
+msgctxt "Archive title default"
+msgid "Archiv"
+msgstr ""
+
+#: src/Package/CustomPages.php:45
 msgid "Custom Pages"
 msgstr ""
 
-#: Classes/Package/Error.php:55
+#: src/Package/Error.php:55
+msgctxt "Error class code output"
 msgid "ErrorCode"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:43
+#: src/Package/LoginScreen.php:43
 msgctxt "The section title in the WordPress Customizer"
 msgid "Loginseite"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:62
+#: src/Package/LoginScreen.php:64
 msgctxt "Field description title in Customizer"
 msgid "Logo"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:83
+#: src/Package/LoginScreen.php:86
 msgctxt "Field label in Customizer"
 msgid "Hintergrundfarbe"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:103
+#: src/Package/LoginScreen.php:106
 msgctxt "Field label in Customizer"
 msgid "Buttonfarbe"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:123
+#: src/Package/LoginScreen.php:126
 msgctxt "Field label in Customizer"
 msgid "Farbe für Links"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:144
+#: src/Package/LoginScreen.php:147
 msgctxt "Field label in Customizer"
 msgid "Breite des Logos"
 msgstr ""
 
-#: Classes/Package/LoginScreen.php:145
+#: src/Package/LoginScreen.php:148
 msgctxt "Field label in Customizer"
 msgid "(Pixelgrösse)"
 msgstr ""
 
-#: Classes/Package/Sidebars.php:20
-msgid "Main sidebar"
+#: src/Package/Media.php:27
+msgid "Gutenberg wide"
 msgstr ""
 
-#: Classes/Package/Sidebars.php:22
-msgid "Widget area"
+#: src/Package/Media.php:28
+msgid "Gutenberg full"
 msgstr ""
 
-#: Classes/Theme.php:115
-msgid "An unexpected error occured."
+#. Name of the theme
+msgid "Hello Theme"
 msgstr ""
 
-#: Classes/Theme.php:143
-msgid "A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be assigned to the “%2$s” object in the Theme."
+#. Description of the theme
+msgid "A starter theme by Say Hello"
 msgstr ""
 
-#: Classes/Theme.php:244
-msgid "JavaScript seems to be disabled. Some functionalities might not work correctly."
+#. URI of the theme
+msgid "https://github.com/SayHelloGmbH/hello-roots"
 msgstr ""
 
-#: Classes/Theme.php:245
-msgctxt "translators: %s = Link to browsehappy.org"
-msgid "You are using an outdated browser. Please update your browser to view this website correctly: %s"
+#. Author of the theme
+msgid "Say Hello GmbH"
 msgstr ""
 
-#. translators: published at %1$1s and by %2$2s
-#: partials/excerpt.php:16
-msgid "published at %1$1s by %2$2s"
-msgstr ""
-
-#: partials/singular-404.php:3
-msgid "404 error"
-msgstr ""
-
-#: partials/singular-404.php:7
-msgid "404 - page not found."
-msgstr ""
-
-#: partials/singular-404.php:8
-msgid "Die Seite konnte nicht gefunden werden."
+#. Author URI of the theme
+msgid "https://sayhello.ch"
 msgstr ""
