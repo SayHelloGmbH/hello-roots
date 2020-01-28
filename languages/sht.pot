@@ -15,26 +15,29 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"POT-Creation-Date: 2020-01-28 10:54+0000\n"
+"POT-Creation-Date: 2020-01-28 11:12+0000\n"
 "Language: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/"
 
 #: partials/excerpt.php:16
 msgctxt "Excerpt read more link"
-msgid "Read more"
+msgid "Weiterlesen"
 msgstr ""
 
 #: partials/singular-404.php:4
-msgid "Page or file not found"
+msgctxt "404 page title"
+msgid "Seite nicht gefunden"
 msgstr ""
 
 #: partials/singular-404.php:9
-msgid "404 - page not found."
+msgctxt "404 page content"
+msgid "404 - Seite nicht gefunden."
 msgstr ""
 
 #: partials/singular-404.php:10
-msgid "The requested page or file could not be found."
+msgctxt "404 page content"
+msgid "Die gewünschte Seite konnte nicht gefunden werden."
 msgstr ""
 
 #: src/Theme.php:112
@@ -46,8 +49,8 @@ msgstr ""
 #, php-format
 msgctxt "Duplicate PHP class assignmment in Theme"
 msgid ""
-"A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be "
-"assigned to the “%2$s” object in the Theme."
+"Ein Problem ist geschehen im Theme. Nur eine PHP-Klasse namens «%1$s» darf "
+"dem Theme-Objekt «%2$s» zugewiesen werden."
 msgstr ""
 
 #: partials/navigation/pagelinks.php:4
@@ -57,22 +60,22 @@ msgstr ""
 
 #: partials/navigation/pagelinks.php:7
 msgctxt "Page number link"
-msgid "Next"
+msgid "Nächste"
 msgstr ""
 
 #: partials/navigation/pagelinks.php:8
 msgctxt "Page number link"
-msgid "Previous"
+msgid "Vorige"
 msgstr ""
 
 #: partials/meta/category.php:5
 msgctxt "Taxonomy title (singular view)"
-msgid "Categories"
+msgid "Kategorien"
 msgstr ""
 
 #: partials/meta/post_tag.php:5
 msgctxt "Taxonomy title (singular view)"
-msgid "Tags"
+msgid "Schlagwörter"
 msgstr ""
 
 #. Category archive title. %s: Category name
@@ -124,7 +127,7 @@ msgstr ""
 #: src/Package/Archives.php:37
 #, php-format
 msgctxt "Archive title day month year"
-msgid "Posts from %s"
+msgid "Beiträge aus %s"
 msgstr ""
 
 #: src/Package/Archives.php:37
@@ -136,7 +139,7 @@ msgstr ""
 #: src/Package/Archives.php:60
 #, php-format
 msgctxt "Archive title post type archive"
-msgid "%s Archives"
+msgid "%s Archiv"
 msgstr ""
 
 #. Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term
@@ -149,10 +152,6 @@ msgstr ""
 #: src/Package/Archives.php:66
 msgctxt "Archive title default"
 msgid "Archiv"
-msgstr ""
-
-#: src/Package/CustomPages.php:45
-msgid "Custom Pages"
 msgstr ""
 
 #: src/Package/Error.php:55
@@ -196,11 +195,13 @@ msgid "(Pixelgrösse)"
 msgstr ""
 
 #: src/Package/Media.php:27
-msgid "Gutenberg wide"
+msgctxt "Custom selectable image size"
+msgid "Gutenberg breit"
 msgstr ""
 
 #: src/Package/Media.php:28
-msgid "Gutenberg full"
+msgctxt "Custom selectable image size"
+msgid "Gutenberg voll"
 msgstr ""
 
 #. Name of the theme
