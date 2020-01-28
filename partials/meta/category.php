@@ -2,7 +2,7 @@
 if (!empty(get_the_terms(get_the_ID(), 'category'))) :
 	?>
 	<div class="c-taxonomy c-taxonomy--category">
-		<h3 class="c-taxonomy__title"><?php _ex('Categories', 'Taxonomy title (singular view)', 'sht');?></h3>
+		<h3 class="c-taxonomy__title"><?php _ex('Kategorien', 'Taxonomy title (singular view)', 'sht');?></h3>
 		<?php
 		the_terms(
 			get_the_ID(),
