@@ -16,7 +16,7 @@ const wplib = [
 	'element',
 	'i18n',
 	'utils',
-	'data',
+	'data'
 ];
 
 export const task = config => {
@@ -40,7 +40,7 @@ export const task = config => {
 				},
 				output: {
 					filename: 'blocks.js',
-					library: ['wp', 'i18n'],
+					library: ['wp', '[name]'],
 					libraryTarget: 'window'
 				},
 				externals: wplib.reduce((externals, lib) => {
