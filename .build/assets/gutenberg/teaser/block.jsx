@@ -1,7 +1,7 @@
+import { __ } from '@wordpress/i18n';
+import { registerBlockType } from '@wordpress/blocks';
 
-import { __ } from 'wp.i18n';
-
-wp.blocks.registerBlockType( 'sht/test', {
+registerBlockType( 'sht/test', {
 	title: __( 'Test Block', 'sht' ),
 	description: __( 'Test Block description', 'sht' ),
 	icon: 'lock',

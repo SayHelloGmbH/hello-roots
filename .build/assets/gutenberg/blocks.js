@@ -1,12 +1,14 @@
 import "./teaser/block.jsx";
 
+import domReady from '@wordpress/dom-ready';
+
 window.onload = function () {
 	window.shtDisabledBlocks.forEach(block => {
 		wp.blocks.unregisterBlockType(block);
 	});
 };
 
-wp.domReady(() => {
+domReady(() => {
 	wp.blocks.registerBlockStyle('core/cover', {
 		name: 'aspect-21',
 		label: '2:1'
