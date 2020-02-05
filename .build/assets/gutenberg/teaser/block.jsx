@@ -1,4 +1,3 @@
-// import "./block.scss";
 
 import { __ } from 'wp.i18n';
 
