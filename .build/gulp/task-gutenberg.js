@@ -38,9 +38,9 @@ export const task = config => {
 		)
 		.on('error', config.errorLog)
 		.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
-		.pipe(filter(['**/*.js']))
 
 		// Minify
+		.pipe(filter(['**/*.js']))
 		.pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
