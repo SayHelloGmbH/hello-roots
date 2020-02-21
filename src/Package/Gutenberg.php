@@ -272,4 +272,20 @@ class Gutenberg
 	{
 		return array_key_exists('context', $_GET) && $_GET['context'] === 'edit';
 	}
+	
+	/**
+	 * Get a context-aware image wrapped in a FIGURE tag. If frontend, it'll be a lazyimage.
+	 */
+	public function getLazyImage($post_id, $size, $figure_class, $image_class)
+	{
+		if ($this->isContextEdit()) {
+			$featured_image = wp_get_attachment_image(get_post_thumbnail_id($post_id), $size, false, ['class' => $image_class]);
+			if (!empty($featured_image)) {
+				$featured_image = '<figure class="'.$figure_class.'">'.$featured_image.'</figure>';
+			}
+		} else {
+			$featured_image = sht_theme()->Package->Lazysizes->getLazyImage(get_post_thumbnail_id($post_id), $size, $figure_class, $image_class);
+		}
+		return $featured_image;
+	}
 }
