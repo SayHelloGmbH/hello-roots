@@ -85,11 +85,13 @@ class Gutenberg
 	public function registerBlockAssets()
 	{
 		if ($this->js) {
-			wp_register_script(
+			$script_asset_path = get_template_directory().'/assets/gutenberg/blocks.asset.php';
+			$script_asset = file_exists($script_asset_path) ? require($script_asset_path) : ['dependencies' => [], 'version' => sht_theme()->version];
+			wp_enqueue_script(
 				sht_theme()->prefix . '-gutenberg-script',
 				$this->js,
-				['wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n'],
-				sht_theme()->version
+				$script_asset['dependencies'],
+				$script_asset['version']
 			);
 		}
 	}

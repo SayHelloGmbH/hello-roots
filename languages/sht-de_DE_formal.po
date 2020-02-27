@@ -4,15 +4,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sht 0.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hello-roots\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: sayhello <mark@sayhello.ch>\n"
+"Language-Team: Deutsch (Sie)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-05T09:55:43+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"POT-Creation-Date: 2020-02-05T09:56:11+00:00\n"
+"PO-Revision-Date: 2020-02-05 09:57+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Domain: sht\n"
+"Language: de_DE_formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #. Theme Name of the theme
 msgid "Hello Theme"
@@ -207,20 +210,19 @@ msgstr ""
 
 #: src/Theme.php:140
 msgctxt "Duplicate PHP class assignmment in Theme"
-msgid "Ein Problem ist geschehen im Theme. Nur eine PHP-Klasse namens «%1$s» darf dem Theme-Objekt «%2$s» zugewiesen werden."
+msgid ""
+"Ein Problem ist geschehen im Theme. Nur eine PHP-Klasse namens «%1$s» darf "
+"dem Theme-Objekt «%2$s» zugewiesen werden."
 msgstr ""
 
-#: .build/assets/gutenberg/teaser/block.jsx:6
-#: assets/gutenberg/blocks.js:1
+#: .build/assets/gutenberg/teaser/block.jsx:6 assets/gutenberg/blocks.js:1
 msgid "Test Block"
-msgstr ""
+msgstr "Test-Block"
 
-#: .build/assets/gutenberg/teaser/block.jsx:7
-#: assets/gutenberg/blocks.js:1
+#: .build/assets/gutenberg/teaser/block.jsx:7 assets/gutenberg/blocks.js:1
 msgid "Test Block description"
-msgstr ""
+msgstr "Beschreibung des Test-Blocks"
 
-#: .build/assets/gutenberg/teaser/block.jsx:12
-#: assets/gutenberg/blocks.js:1
+#: .build/assets/gutenberg/teaser/block.jsx:12 assets/gutenberg/blocks.js:1
 msgid "Translated String"
-msgstr ""
+msgstr "Übersetzter String"
