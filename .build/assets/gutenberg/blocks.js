@@ -1,4 +1,6 @@
-// import "./teaser/block.jsx";
+import "./teaser/block.jsx";
+
+import domReady from '@wordpress/dom-ready';
 
 window.onload = function () {
 	window.shtDisabledBlocks.forEach(block => {
@@ -6,28 +8,7 @@ window.onload = function () {
 	});
 };
 
-wp.domReady(() => {
-
-	// Temporary workaround for broken preview Fn
-	// Only add once per block type!
-	// mhm 15.6.2019
-	var el = wp.element.createElement;
-	var allowColumnStyle = wp.compose.createHigherOrderComponent(function (BlockEdit) {
-		return function (props) {
-			var content = el(BlockEdit, props);
-
-			if(props.name === 'core/cover' && typeof props.insertBlocksAfter === 'undefined') {
-				content = el('div', {});
-			}
-
-			return el(
-				wp.element.Fragment, {}, content
-			);
-		};
-	}, 'allowColumnStyle');
-
-	wp.hooks.addFilter('editor.BlockEdit', 'my/gutenberg', allowColumnStyle);
-
+domReady(() => {
 	wp.blocks.registerBlockStyle('core/cover', {
 		name: 'aspect-21',
 		label: '2:1'
