@@ -12,6 +12,6 @@
     }
   },
   "require": {
-    "enshrined/svg-sanitize": "^0.12.0"
+    "enshrined/svg-sanitize": "^0.13.1"
   }
 }
