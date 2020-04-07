@@ -1,0 +1,31 @@
+:root {
+	@each $colour, $colourSet in $theme_colors {
+		@each $variant, $value in $colourSet {
+			@if $variant == 'base' {
+				--color-#{$colour}: #{$value};
+			} @else {
+				--color-#{$colour}-#{$variant}: #{$value};
+			}
+		}
+	}
+}
+
+@each $color, $colorSet in $gutenberg_colors {
+	@each $variant, $value in $colorSet {
+		@if $variant == 'base' {
+			.has-#{$color}-color {
+				color: #{$value};
+			}
+			.has-#{$color}-background-color {
+				background-color: #{$value};
+			}
+		} @else {
+			.has-#{$color}-#{$variant}-color {
+				color: #{$value};
+			}
+			.has-#{$color}-#{$variant}-background-color {
+				background-color: #{$value};
+			}
+		}
+	}
+}
