@@ -21,6 +21,17 @@ if (!is_plugin_active('ithemes-security-pro/ithemes-security-pro.php')) {
 	define('DISALLOW_FILE_EDIT', true);
 }
 
+
+if (!function_exists('dump')) {
+	function dump($var, $exit = false)
+	{
+		echo '<pre>'.print_r($var, true).'</pre>';
+		if ($exit) {
+			exit;
+		}
+	}
+}
+
 if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_VERSION, '7.0', '<') || ! class_exists('acf')) {
 	add_action(
 		'admin_notices',
