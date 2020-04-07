@@ -3,6 +3,7 @@
 namespace SayHello\Theme\Package;
 
 use SayHello\Theme\Vendor\LazyImage;
+use WP_Error;
 
 /**
  * This Class provides advanced media loading possibilities via lazysizes.
