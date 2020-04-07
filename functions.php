@@ -11,14 +11,19 @@
  * Check if WordPress 5.0 and PHP 7.0 or newer and ACF is active
  */
 
-
-// The following command gets added by the iThemes Security Pro plugin
-// so if we include it too, a PHP warning is displayed.
-if (!function_exists('is_plugin_active')) {
-	include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-}
-if (!is_plugin_active('ithemes-security-pro/ithemes-security-pro.php')) {
+if (!defined('DISALLOW_FILE_EDIT')) {
 	define('DISALLOW_FILE_EDIT', true);
+}
+
+
+if (!function_exists('dump')) {
+	function dump($var, $exit = false)
+	{
+		echo '<pre>'.print_r($var, true).'</pre>';
+		if ($exit) {
+			exit;
+		}
+	}
 }
 
 if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_VERSION, '7.0', '<') || ! class_exists('acf')) {

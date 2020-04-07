@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit30a976fd35c7f78499aa4c99d7a36fc7
+class ComposerStaticInit71b2d1fac139fe8067bc88794c4d8854
 {
     public static $prefixLengthsPsr4 = array (
         'e' => 
@@ -28,38 +28,11 @@ class ComposerStaticInit30a976fd35c7f78499aa4c99d7a36fc7
         ),
     );
 
-    public static $classMap = array (
-        'SayHello\\Theme\\Package\\Adminbar' => __DIR__ . '/../..' . '/src/Package/Adminbar.php',
-        'SayHello\\Theme\\Package\\Ajax' => __DIR__ . '/../..' . '/src/Package/Ajax.php',
-        'SayHello\\Theme\\Package\\Assets' => __DIR__ . '/../..' . '/src/Package/Assets.php',
-        'SayHello\\Theme\\Package\\Bodyclass' => __DIR__ . '/../..' . '/src/Package/BodyClass.php',
-        'SayHello\\Theme\\Package\\CustomPages' => __DIR__ . '/../..' . '/src/Package/CustomPages.php',
-        'SayHello\\Theme\\Package\\Error' => __DIR__ . '/../..' . '/src/Package/Error.php',
-        'SayHello\\Theme\\Package\\Gutenberg' => __DIR__ . '/../..' . '/src/Package/Gutenberg.php',
-        'SayHello\\Theme\\Package\\Helpers' => __DIR__ . '/../..' . '/src/Package/Helpers.php',
-        'SayHello\\Theme\\Package\\Language' => __DIR__ . '/../..' . '/src/Package/Language.php',
-        'SayHello\\Theme\\Package\\Lazysizes' => __DIR__ . '/../..' . '/src/Package/Lazysizes.php',
-        'SayHello\\Theme\\Package\\LoginScreen' => __DIR__ . '/../..' . '/src/Package/LoginScreen.php',
-        'SayHello\\Theme\\Package\\Media' => __DIR__ . '/../..' . '/src/Package/Media.php',
-        'SayHello\\Theme\\Package\\NavWalker' => __DIR__ . '/../..' . '/src/Package/NavWalker.php',
-        'SayHello\\Theme\\Package\\SVG' => __DIR__ . '/../..' . '/src/Package/SVG.php',
-        'SayHello\\Theme\\Package\\Sidebars' => __DIR__ . '/../..' . '/src/Package/Sidebars.php',
-        'SayHello\\Theme\\Package\\ThemeOptions' => __DIR__ . '/../..' . '/src/Package/ThemeOptions.php',
-        'SayHello\\Theme\\Theme' => __DIR__ . '/../..' . '/src/Theme.php',
-        'SayHello\\Theme\\Vendor\\LazyImage' => __DIR__ . '/../..' . '/src/Vendor/LazyImage.php',
-        'enshrined\\svgSanitize\\Sanitizer' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/Sanitizer.php',
-        'enshrined\\svgSanitize\\data\\AllowedAttributes' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AllowedAttributes.php',
-        'enshrined\\svgSanitize\\data\\AllowedTags' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AllowedTags.php',
-        'enshrined\\svgSanitize\\data\\AttributeInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
-        'enshrined\\svgSanitize\\data\\TagInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/TagInterface.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit30a976fd35c7f78499aa4c99d7a36fc7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit30a976fd35c7f78499aa4c99d7a36fc7::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit30a976fd35c7f78499aa4c99d7a36fc7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit71b2d1fac139fe8067bc88794c4d8854::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit71b2d1fac139fe8067bc88794c4d8854::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

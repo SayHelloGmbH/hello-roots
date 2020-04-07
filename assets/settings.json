@@ -45,6 +45,26 @@
 			"border": "#A01E32"
 		}
 	},
+	"gutenberg_colors": {
+		"primary": {
+			"base": "#77adbf",
+			"dark": "#4b8a9f"
+		},
+		"black": {
+			"base": "#1d1d1b",
+			"dark": "#000011",
+			"light": "#222223"
+		},
+		"white": {
+			"base": "#fff"
+		},
+		"gray": {
+			"dark": "#666",
+			"base": "#999",
+			"mid": "#aaa",
+			"light": "#f0f0f0"
+		}
+	},
 	"theme_breakpoints": {
 		"phone": 330,
 		"wordpress_small": 600,
