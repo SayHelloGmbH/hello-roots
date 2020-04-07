@@ -45,6 +45,7 @@ class Gutenberg
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
 		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
+		add_action('after_setup_theme', [$this, 'colorPalette']);
 
 		add_action('init', [$this, 'setScriptTranslations']);
 	}
@@ -57,16 +58,56 @@ class Gutenberg
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
-		add_theme_support('disable-custom-colors');
-		add_theme_support('editor-color-palette', []);
-
-		// https://github.com/WordPress/gutenberg/issues/18213
-		add_theme_support('__experimental-editor-gradient-presets', []);
-		add_theme_support('__experimental-disable-custom-gradients', true);
 
 		// Don't disable these if you're using Media and Text, otherwise you can't reset the text size.
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
+	}
+
+	/**
+	 * Read in the gutenberg_colors array from the settings.json file
+	 * and add these colors to the Gutenberg color palette
+	 * @return void
+	 */
+	public function colorPalette()
+	{
+		add_theme_support('disable-custom-colors');
+
+		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
+		if (!is_file($path)) {
+			return false;
+		}
+
+		$settings = file_get_contents($path);
+
+		if (is_string($settings) && !empty($settings)) {
+			$settings = json_decode($settings, true);
+			if (isset($settings['gutenberg_colors'])) {
+				$colors = [];
+
+				foreach ($settings['gutenberg_colors'] as $color_key => $color) {
+					foreach ($color as $variation_key => $variation) {
+						$colors[] = [
+							'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
+							'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
+							'color' => $color[$variation_key]
+						];
+					}
+				}
+
+				if (!empty($colors)) {
+					add_theme_support('editor-color-palette', $colors);
+				}
+			}
+		}
+
+		// add_theme_support('editor-gradient-presets', [
+		// 	[
+		// 		'name'     => __('Test', 'sht'),
+		// 		'gradient' => 'linear-gradient(180deg, red, orange)',
+		// 		'slug'     => 'test'
+		// 	]
+		// ]);
 	}
 
 	/**
