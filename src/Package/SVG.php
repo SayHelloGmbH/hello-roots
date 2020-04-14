@@ -109,11 +109,13 @@ class SVG
 
 	public function fixWpGetAttachmentImageSvg($image, $attachment_id, $size)
 	{
-		if (is_array($image) && preg_match('/\.svg$/i', $image[ 0 ]) && $image[ 1 ] <= 1) {
+		$file_path = get_attached_file($attachment_id);
+
+		if (is_array($image) && preg_match('/\.svg$/i', $file_path) && $image[ 1 ] <= 1) {
 			if (is_array($size)) {
 				$image[ 1 ] = $size[ 0 ];
 				$image[ 2 ] = $size[ 1 ];
-			} elseif (($xml = simplexml_load_file(untrailingslashit(ABSPATH) . wp_make_link_relative($image[ 0 ]))) !== false) {
+			} elseif (($xml = simplexml_load_file($file_path)) !== false) {
 				$attr       = $xml->attributes();
 				$viewbox    = explode(' ', $attr->viewBox);
 				$image[ 1 ] = isset($attr->width) && preg_match('/\d+/', $attr->width, $value) ? (int)$value[ 0 ] : (count($viewbox) == 4 ? (int)$viewbox[ 2 ] : null);
