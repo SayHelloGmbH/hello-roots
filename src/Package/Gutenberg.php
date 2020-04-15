@@ -101,6 +101,11 @@ class Gutenberg
 			}
 		}
 
+		// Removes gradient feature
+		add_theme_support('disable-custom-gradients', true);
+		add_theme_support('editor-gradient-presets', []);
+
+		// Adds custom gradient (replace line above with this line to use)
 		// add_theme_support('editor-gradient-presets', [
 		// 	[
 		// 		'name'     => __('Test', 'sht'),
@@ -315,7 +320,7 @@ class Gutenberg
 	{
 		return array_key_exists('context', $_GET) && $_GET['context'] === 'edit';
 	}
-	
+
 	/**
 	 * Get a context-aware image wrapped in a FIGURE tag. If frontend, it'll be a lazyimage.
 	 */
