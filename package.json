@@ -16,9 +16,9 @@
   },
   "homepage": "https://github.com/SayHelloGmbH/hello-roots#readme",
   "dependencies": {
-    "@wordpress/blocks": "^6.12.0",
-    "@wordpress/dependency-extraction-webpack-plugin": "^2.3.0",
-    "@wordpress/i18n": "^3.9.0",
+    "@wordpress/blocks": "^6.14.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^2.5.0",
+    "@wordpress/i18n": "^3.11.0",
     "jquery-easing": "0.0.1",
     "verge": "^1.9.1"
   },
