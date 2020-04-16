@@ -1,3 +1,12 @@
-.editor-post-title__block .editor-post-title__input {
-	font-family: var(--font-heading);
+@import '../../../assets/settings.json';
+@import '_______settings/__all.settings';
+@import '______tools/mixins/context';
+
+$context: 'admin';
+
+@include context-admin {
+	.editor-post-title__block .editor-post-title__input {
+		font-family: var(--font-heading);
+		opacity: .5;
+	}
 }
