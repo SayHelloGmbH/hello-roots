@@ -13,6 +13,8 @@ class Gutenberg
 	public $theme_path = '';
 	public $min = false;
 	public $js = false;
+	public $admin_font_url = false;
+	public $admin_font_path = false;
 	public $allowedCoreBlocks = [
 		'core/paragraph',
 		'core/image',
@@ -31,6 +33,11 @@ class Gutenberg
 
 		if (file_exists($this->theme_path . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
 			$this->js = $this->theme_url . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
+		}
+
+		if (file_exists($this->theme_path . '/assets/fonts/fonts-woff2.css')) {
+			$this->admin_font_path = $this->theme_path . '/assets/fonts/fonts-woff2.css';
+			$this->admin_font_url = $this->theme_url . '/assets/fonts/fonts-woff2.css';
 		}
 	}
 
@@ -148,6 +155,9 @@ class Gutenberg
 			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script');
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
+		}
+		if ($this->admin_font_url) {
+			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-font', $this->admin_font_url, [], filemtime($this->admin_font_path));
 		}
 	}
 
