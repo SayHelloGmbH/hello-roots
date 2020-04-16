@@ -1,4 +1,5 @@
 .editor-post-title__block .editor-post-title__input {
-  font-family: var(--font-heading); }
+  font-family: var(--font-heading);
+  opacity: .5; }
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLEFBQUEseUJBQXlCLENBQUMseUJBQXlCLENBQUM7RUFDbkQsV0FBVyxFQUFFLG1CQUFtQixHQUNoQyJ9 */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIiwiX19fX19fX3NldHRpbmdzL19fYWxsLnNldHRpbmdzLnNjc3MiLCJfX19fX19fc2V0dGluZ3MvX2dyaWQuc2NzcyIsIl9fX19fX19zZXR0aW5ncy9fdHJhbnNpdGlvbi5zY3NzIiwiX19fX19fX3NldHRpbmdzL190eXBvZ3JhcGh5LnNjc3MiLCJfX19fX190b29scy9taXhpbnMvX2NvbnRleHQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFlQyxBQUFBLHlCQUF5QixDQUFDLHlCQUF5QixDQUFDO0VBQ25ELFdBQVcsRUFBRSxtQkFBbUI7RUFDaEMsT0FBTyxFQUFFLEVBQUUsR0FDWCJ9 */
