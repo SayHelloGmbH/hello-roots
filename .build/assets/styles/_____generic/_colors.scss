@@ -14,17 +14,17 @@
 	@each $variant, $value in $colorSet {
 		@if $variant == 'base' {
 			.has-#{$color}-color {
-				color: #{$value};
+				color: c($color);
 			}
 			.has-#{$color}-background-color {
-				background-color: #{$value};
+				background-color: c($color);
 			}
 		} @else {
 			.has-#{$color}-#{$variant}-color {
-				color: #{$value};
+				color: c($color, $variant);
 			}
 			.has-#{$color}-#{$variant}-background-color {
-				background-color: #{$value};
+				background-color: c($color, $variant);
 			}
 		}
 	}
