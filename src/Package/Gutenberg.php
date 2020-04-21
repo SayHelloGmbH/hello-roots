@@ -15,6 +15,7 @@ class Gutenberg
 	public $js = false;
 	public $admin_font_url = false;
 	public $admin_font_path = false;
+	public $colors = [];
 	public $allowedCoreBlocks = [
 		'core/paragraph',
 		'core/image',
@@ -104,6 +105,9 @@ class Gutenberg
 
 				if (!empty($colors)) {
 					add_theme_support('editor-color-palette', $colors);
+					foreach ($colors as $color) {
+						$this->colors[sanitize_title($color['slug'])] = $color;
+					}
 				}
 			}
 		}
