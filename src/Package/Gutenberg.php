@@ -47,7 +47,6 @@ class Gutenberg
 		if (!function_exists('register_block_type')) {
 			return; // Gutenberg is not active.
 		}
-		add_action('init', [$this, 'registerBlockAssets']);
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
 		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
@@ -139,7 +138,7 @@ class Gutenberg
 		return $editor_settings;
 	}
 
-	public function registerBlockAssets()
+	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
 			$script_asset_path = get_template_directory().'/assets/gutenberg/blocks.asset.php';
@@ -150,13 +149,6 @@ class Gutenberg
 				$script_asset['dependencies'],
 				$script_asset['version']
 			);
-		}
-	}
-
-	public function enqueueBlockAssets()
-	{
-		if ($this->js) {
-			wp_enqueue_script(sht_theme()->prefix . '-gutenberg-script');
 			$vars = json_encode(apply_filters('sht_disabled_blocks', []));
 			wp_add_inline_script(sht_theme()->prefix . '-gutenberg-script', "var shtDisabledBlocks = {$vars};", 'before');
 		}
