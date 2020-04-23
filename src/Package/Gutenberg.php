@@ -53,8 +53,9 @@ class Gutenberg
 		//add_filter('sht_disabled_blocks', [$this, 'disableCoreBlockTypes']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('after_setup_theme', [$this, 'colorPalette']);
-
 		add_action('init', [$this, 'setScriptTranslations']);
+
+		add_action('admin_menu', [$this, 'reusableBlocksAdminMenu']);
 	}
 
 	/**
@@ -179,6 +180,17 @@ class Gutenberg
 				'title' => _x('Blöcke von Hello', 'Custom block category name', 'sha'),
 			],
 		]);
+	}
+
+	public function reusableBlocksAdminMenu()
+	{
+		add_submenu_page(
+			'themes.php',
+			_x('Wiederverwendbare Blöcke', 'Admin page title', 'sht'),
+			_x('Wiederverwendbare Blöcke', 'Admin menu label', 'sht'),
+			'edit_posts',
+			'edit.php?post_type=wp_block'
+		);
 	}
 
 	/**
