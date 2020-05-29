@@ -42,8 +42,6 @@ if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_
 		}
 	);
 } else {
-	require_once 'vendor/autoload.php';
-
 	/*
 	 * This lot auto-loads a class or trait just when you need it. You don't need to
 	 * use require, include or anything to get the class/trait files, as long
