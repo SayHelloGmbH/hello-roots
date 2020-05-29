@@ -1,6 +1,8 @@
 :root {
-	--adminbar-height: #{rem-calc(46px)};
-	@media (min-width: 783px) {
-		--adminbar-height: #{rem-calc(32px)};
+	&.admin-bar {
+		--adminbar-height: #{rem-calc(46px)};
+		@media (min-width: 783px) {
+			--adminbar-height: #{rem-calc(32px)};
+		}
 	}
 }
