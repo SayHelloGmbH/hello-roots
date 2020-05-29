@@ -55,6 +55,7 @@ class Gutenberg
 		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
 
+		add_filter('admin_body_class', [$this, 'extendAdminBodyClass']);
 		add_action('admin_menu', [$this, 'reusableBlocksAdminMenu']);
 	}
 
@@ -353,5 +354,21 @@ class Gutenberg
 			$featured_image = sht_theme()->Package->Lazysizes->getLazyImage(get_post_thumbnail_id($post_id), $size, $figure_class, $image_class);
 		}
 		return $featured_image;
+	}
+
+	/**
+	 * Add a CSS class name to the admin body, containing current post
+	 * name and post type.
+	 * @param  string $classes The pre-existing body class name/s
+	 * @return string
+	 */
+	public function extendAdminBodyClass($classes)
+	{
+		global $post;
+		if ($post->post_type ?? false && $post->post_name ?? false) {
+			global $post;
+			$classes .= ' post-type-'.$post->post_type.' post-type-'.$post->post_type.'--'.$post->post_name;
+		}
+		return $classes;
 	}
 }
