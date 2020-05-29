@@ -1,6 +1,6 @@
 <article <?php post_class('c-article c-article--'.get_post_type()); ?>>
 
-	<div class="c-article__content c-blocks">
+	<div class="c-article__content c-blocks c-constraint">
 		<?php
 		if (!(bool) get_field('hide_title', get_the_ID())) {
 			?>
@@ -14,11 +14,13 @@
 		?>
 	</div>
 
-	<?php
-		get_template_part('partials/navigation/pagelinks');
-		get_template_part('partials/meta/category');
-		get_template_part('partials/meta/post_tag');
-		get_template_part('partials/comments/template');
-	?>
+	<div class="c-constraint">
+		<?php
+			get_template_part('partials/navigation/pagelinks');
+			get_template_part('partials/meta/category');
+			get_template_part('partials/meta/post_tag');
+			get_template_part('partials/comments/template');
+		?>
+	</div>
 
 </article>

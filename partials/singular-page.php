@@ -1,6 +1,6 @@
 <article <?php post_class('c-article c-article--'.get_post_type()); ?>>
 
-	<div class="c-article__content c-blocks">
+	<div class="c-article__content c-blocks c-constraint">
 		<?php
 		if (!(bool) get_field('hide_title', get_the_ID())) {
 			?>
