@@ -1,6 +1,6 @@
-<section class="c-archive c-content">
+<section class="c-archive">
 
-	<div class="c-archive__content c-content__content">
+	<div class="c-archive__content">
 
 		<header class="c-archive__header">
 			<?php the_archive_title('<h1 class="c-archive__title">', '</h1>'); ?>
