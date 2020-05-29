@@ -70,7 +70,8 @@
     "wide": "1280px",
     "full": "100vw"
   },
-  "theme_breakpoints": {
+  "breakpoints": {
+    "zero": 0,
     "phone": 320,
     "wordpress_small": 600,
     "narrow": 640,

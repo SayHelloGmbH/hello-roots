@@ -9,7 +9,7 @@ html.c-body--themedev::after {
 	outline: 1px dotted red;
 	z-index: 9999;
 	display: block;
-	@each $bp in map-keys($theme_breakpoints) {
+	@each $bp in map-keys($breakpoints) {
 		@include for-screen($bp) {
 			content: '#{$bp}';
 		}
