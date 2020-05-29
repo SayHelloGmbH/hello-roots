@@ -6,7 +6,13 @@
         <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
         <exclude name="Generic.Files.LineLength.TooLong"/>
     </rule>
-    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    <rule ref="Generic.Arrays.ArrayIndent">
+	    <properties>
+	        <property name="indent" value="4" />
+	    </properties>
+	</rule>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
     <rule ref="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed"/>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
