@@ -1,0 +1,12 @@
+.wp-block-quote {
+	padding: var(--unit);
+
+	&.is-style-large {
+		margin: 0 auto;
+		padding: var(--unit);
+
+		* + & {
+			margin-top: var(--c-block-margin-top);
+		}
+	}
+}
