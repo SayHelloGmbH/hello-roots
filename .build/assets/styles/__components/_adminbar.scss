@@ -1,8 +1,10 @@
 :root {
+	--adminbar-height: 0;
+
 	&.admin-bar {
-		--adminbar-height: #{rem-calc(46px)};
-		@media (min-width: 783px) {
-			--adminbar-height: #{rem-calc(32px)};
+		--adminbar-height: 46px;
+		@include for-screen-min(wordpress_medium) {
+			--adminbar-height: 32px;
 		}
 	}
 }

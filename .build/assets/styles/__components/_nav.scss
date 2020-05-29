@@ -2,7 +2,7 @@
 	&--mobile {
 		background-color: c(white);
 		position: fixed;
-		top: var(--masthead-height);
+		top: var(--c-masthead-height);
 		bottom: 0;
 		right: 0;
 		transform: translateX(100vw);
@@ -20,7 +20,7 @@
 		}
 
 		.admin-bar & {
-			top: calc(var(--masthead-height) + var(--adminbar-height));
+			top: calc(var(--c-masthead-height) + var(--adminbar-height));
 		}
 	}
 }
