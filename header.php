@@ -8,32 +8,32 @@
 	</head>
 <body <?php body_class(); ?>>
 
-<section class="c-page__section" id="header">
-	<header class="c-page__header c-masthead" role="banner">
+<section class="c-masthead" role="banner">
 
-		<div class="c-masthead__inner">
-			<h1 class="c-site__title">
-				<a class="c-site__titlelink" href="<?php echo get_home_url();?>"><?php echo get_bloginfo('name');?></a>
-			</h1>
+	<div class="c-masthead__inner">
+		<h1 class="c-masthead__title">
+			<a class="c-masthead__titlelink" href="<?php echo get_home_url();?>"><?php echo get_bloginfo('name');?></a>
+		</h1>
 
+		<?php
+		wp_nav_menu(
+			[
+				'theme_location' => 'primary',
+				'container'      => 'nav',
+				'container_class' => 'c-menu c-menu--primary',
+				'menu_id'        => 'primary-menu',
+				'menu_class'     => 'c-menu c-menu--primary',
+			]
+		);
+		?>
+
+		<div class="c-masthead__toggler">
 			<?php
-			wp_nav_menu(
-				[
-					'theme_location' => 'primary',
-					'container'      => 'nav',
-					'container_class' => 'c-menu c-menu--primary',
-					'menu_id'        => 'primary-menu',
-					'menu_class'     => 'c-menu c-menu--primary',
-				]
-			);
+			sht_theme()->getTemplatePart('partials/navigation/menutoggler', [
+				'target_id' => 'mobile-menu'
+			]);
 			?>
-
-			<button class="c-masthead__toggler o-menutoggler" aria-controls="mobile-menu" aria-expanded="false">
-				<span class="o-menutoggler__line"></span>
-				<span class="o-menutoggler__line"></span>
-				<span class="o-menutoggler__line"></span>
-			</button>
 		</div>
+	</div>
 
-	</header>
 </section>

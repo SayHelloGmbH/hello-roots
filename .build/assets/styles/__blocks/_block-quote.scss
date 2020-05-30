@@ -1,0 +1,16 @@
+:root {
+	--wp-block-quote-padding: var(--unit);
+}
+
+.wp-block-quote {
+	padding: var(--wp-block-quote-padding);
+
+	&.is-style-large {
+		margin: 0 auto;
+		padding: var(--wp-block-quote-padding);
+
+		* + & {
+			margin-top: var(--c-block-margin-top);
+		}
+	}
+}

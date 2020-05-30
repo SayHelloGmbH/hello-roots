@@ -16,6 +16,12 @@ $context: 'edit';
 @import '_____generic/__all.generic';
 @import '____elements/__all.elements';
 @import '___objects/__all.objects';
-@import '__blocks/__all.blocks';
+
+/*
+ * Components before blocks, so that block-specific
+ * rules can override components
+ */
 @import '__components/__all.components';
+@import '__blocks/__all.blocks';
+
 @import '_trumps/__all.trumps';

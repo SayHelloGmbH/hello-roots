@@ -16,6 +16,7 @@
 			.has-#{$color}-color {
 				color: c($color);
 			}
+
 			.has-#{$color}-background-color {
 				background-color: c($color);
 			}
@@ -23,9 +24,14 @@
 			.has-#{$color}-#{$variant}-color {
 				color: c($color, $variant);
 			}
+
 			.has-#{$color}-#{$variant}-background-color {
 				background-color: c($color, $variant);
 			}
 		}
 	}
+}
+
+.has-text-color * {
+	color: currentColor;
 }
