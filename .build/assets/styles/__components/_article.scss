@@ -1,9 +1,6 @@
 .c-article {
 
 	@extend .h-stack--medium;
-	max-width: var(--constraint-narrow);
-	margin-left: auto;
-	margin-right: auto;
 
 	&__date {
 		display: block;
@@ -12,23 +9,5 @@
 
 	&__header {
 		@extend .h-stack;
-	}
-
-	&__thumbnail {
-		@extend .alignmedium;
-	}
-
-	&__video {
-		@extend .alignwide;
-
-		&__figure {
-			margin: 0;
-
-			html.single-format-video & {
-				order: -1;
-				@extend .alignwide;
-			}
-		}
-
 	}
 }

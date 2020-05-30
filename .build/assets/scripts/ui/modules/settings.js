@@ -19,7 +19,7 @@ export const c = (mycolor, tone = 'base') => {
 };
 
 export const is_mobile = () => {
-	return (verge.viewportW() <= settings.theme_breakpoints['tablet']);
+	return (verge.viewportW() <= settings.breakpoints['tablet']);
 };
 
 const themeObject = settings;
