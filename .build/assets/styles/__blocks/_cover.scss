@@ -1,5 +1,9 @@
 .wp-block-cover {
 
+	&.has-background-dim {
+		color: var(--color-white);
+	}
+
 	&.is-style-aspect-21::after {
 		content: '';
 		display: block;
@@ -38,7 +42,6 @@
 		max-width: var(--constraint-narrow);
 		color: inherit !important;
 	}
-
 }
 
 @include context-edit {
