@@ -1,16 +1,38 @@
 :root {
 	--wp-block-quote-padding: var(--unit);
+	--wp-block-quote-text-size--large: 1.25em;
 }
 
 .wp-block-quote {
 	padding: var(--wp-block-quote-padding);
 
+	p {
+		font-size: 1em;
+	}
+
+	&__citation,
+	cite {
+		text-align: inherit;
+		color: currentColor;
+	}
+
 	&.is-style-large {
 		margin: 0 auto;
 		padding: var(--wp-block-quote-padding);
+		font-size: var(--wp-block-quote-text-size--large);
 
 		* + & {
 			margin-top: var(--c-block-margin-top);
+		}
+
+		p {
+			font-size: 1.1em;
+		}
+
+		.wp-block-quote__citation,
+		cite {
+			font-size: 1em;
+			text-align: inherit;
 		}
 	}
 }

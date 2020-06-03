@@ -5,9 +5,7 @@
 			"dark": "#4b8a9f"
 		},
 		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000",
-			"light": "#ddd"
+			"base": "#000"
 		},
 		"white": {
 			"base": "#fff"
@@ -51,9 +49,7 @@
 			"dark": "#4b8a9f"
 		},
 		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000011",
-			"light": "#222223"
+			"base": "#000"
 		},
 		"white": {
 			"base": "#fff"
@@ -69,6 +65,28 @@
 		"narrow": "640px",
 		"wide": "1280px",
 		"full": "100vw"
+	},
+	"font_sizes": {
+		"xsmall": {
+			"name": "Extra klein",
+			"value": 12
+		},
+		"small": {
+			"name": "Klein",
+			"value": 14
+		},
+		"medium": {
+			"name": "Medium",
+			"value": 18
+		},
+		"large": {
+			"name": "Gross",
+			"value": 21
+		},
+		"xlarge": {
+			"name": "Extra gross",
+			"value": 24
+		}
 	},
 	"breakpoints": {
 		"zero": 0,

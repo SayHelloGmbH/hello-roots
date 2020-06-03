@@ -1,0 +1,24 @@
+:root {
+	--body-color: var(--color-black);
+	--body-background-color: var(--color-white);
+
+	--selection-color: var(--color-white);
+	--selection-background-color: var(--color-black);
+}
+
+html {
+	overflow-y: scroll;
+	max-height: 100%;
+	line-height: 1.5;
+}
+
+body {
+	overflow-x: hidden;
+	background-color: var(--body-background-color);
+	color: var(--body-color);
+}
+
+::selection {
+	color: var(--selection-color);
+	background-color: var(--selection-background-color);
+}

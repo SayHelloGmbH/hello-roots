@@ -30,6 +30,7 @@
 		"@sayhellogmbh/maybe-set-link-target": "^1.0.4",
 		"babel-loader": "^8.1.0",
 		"browser-sync": "^2.26.7",
+		"classnames": "^2.2.6",
 		"css-vars-ponyfill": "^2.2.1",
 		"gulp": "^4.0.0",
 		"gulp-autoprefixer": "^6.1.0",

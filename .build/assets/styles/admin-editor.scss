@@ -11,17 +11,16 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 */
 
 $context: 'edit';
-@import '_______settings/__all.settings';
-@import '______tools/__all.tools';
-@import '_____generic/__all.generic';
-@import '____elements/__all.elements';
-@import '___objects/__all.objects';
+@import '________settings/__all.settings';
+@import '_______tools/__all.tools';
+@import '______generic/__all.generic';
+@import '_____elements/__all.elements';
+@import '____objects/__all.objects';
 
 /*
  * Components before blocks, so that block-specific
  * rules can override components
  */
-@import '__components/__all.components';
+@import '___components/__all.components';
 @import '__blocks/__all.blocks';
-
 @import '_trumps/__all.trumps';

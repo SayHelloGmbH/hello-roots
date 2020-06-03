@@ -16,7 +16,6 @@
 			.has-#{$color}-color {
 				color: c($color);
 			}
-
 			.has-#{$color}-background-color {
 				background-color: c($color);
 			}
@@ -33,5 +32,11 @@
 }
 
 .has-text-color * {
-	color: currentColor;
+	color: inherit;
+}
+
+@include context-edit {
+	.has-text-color * {
+		color: inherit !important;
+	}
 }
