@@ -3,6 +3,10 @@
 	margin-left: auto;
 	margin-right: auto;
 
+	figcaption {
+		color: inherit;
+	}
+
 	&.wp-has-aspect-ratio {
 		.wp-block-embed__wrapper {
 			position: relative;

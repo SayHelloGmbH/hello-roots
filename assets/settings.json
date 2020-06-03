@@ -5,9 +5,7 @@
 			"dark": "#4b8a9f"
 		},
 		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000",
-			"light": "#ddd"
+			"base": "#000"
 		},
 		"white": {
 			"base": "#fff"
@@ -51,9 +49,7 @@
 			"dark": "#4b8a9f"
 		},
 		"black": {
-			"base": "#1d1d1b",
-			"dark": "#000011",
-			"light": "#222223"
+			"base": "#000"
 		},
 		"white": {
 			"base": "#fff"
