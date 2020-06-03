@@ -1,7 +1,16 @@
 .wp-block-image {
+
+	.alignleft {
+		margin-top: var(--unit-xsmall);
+		margin-right: var(--unit);
+	}
+
+	.alignright {
+		margin-top: var(--unit-xsmall);
+		margin-left: var(--unit);
+	}
+
 	figcaption {
-		max-width: var(--constraint-narrow);
-		margin-left: auto;
-		margin-right: auto;
+		color: inherit;
 	}
 }

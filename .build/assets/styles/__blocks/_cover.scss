@@ -1,6 +1,7 @@
 .wp-block-cover {
+
 	&.has-background-dim {
-		color: c(white);
+		color: var(--color-white);
 	}
 
 	&.is-style-aspect-21::after {
@@ -33,19 +34,6 @@
 		padding-bottom: 100vh;
 	}
 
-	&.has-background-dim::before {
-		background: c(black, dark);
-	}
-
-	&.has-white-background-color::before {
-		background: c(white);
-	}
-
-	&.has-white-background-color {
-		background-color: c(white);
-		color: c(black);
-	}
-
 	&__inner-container {
 		@extend .h-stack;
 		padding-top: var(--unit);
@@ -54,7 +42,6 @@
 		max-width: var(--constraint-narrow);
 		color: inherit !important;
 	}
-
 }
 
 @include context-edit {

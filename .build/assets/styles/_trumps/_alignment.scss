@@ -69,3 +69,15 @@ img.alignright {
 		width: 100vw;
 	}
 }
+
+@include context-edit {
+	.wp-block {
+		max-width: var(--constraint-narrow);
+		&[data-align="wide"] {
+			max-width: var(--constraint-wide);
+		}
+		&[data-align="full"] {
+			max-width: var(--constraint-full);
+		}
+	}
+}

@@ -20,7 +20,7 @@
 		}
 
 		.admin-bar & {
-			top: calc(var(--c-masthead-height) + var(--adminbar-height));
+			top: calc(var(--c-masthead-height) + var(--c-adminbar-height));
 		}
 	}
 }
