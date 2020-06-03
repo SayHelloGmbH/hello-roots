@@ -33,5 +33,11 @@
 }
 
 .has-text-color * {
-	color: currentColor;
+	color: inherit;
+}
+
+@include context-edit {
+	.has-text-color * {
+		color: inherit !important;
+	}
 }

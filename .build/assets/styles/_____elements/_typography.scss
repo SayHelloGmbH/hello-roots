@@ -8,6 +8,9 @@
 	--font-size-xlarge: #{rem-calc(21px)};
 	--line-height: 1.5;
 	--line-height-heading: 1.2;
+
+	--color-link: var(--color-primary);
+	--color-link-hover: var(--color-primary-dark);
 }
 
 body {
@@ -24,13 +27,7 @@ acronym {
 
 a,
 button {
-	color: c(primary);
 	@include transition();
-
-	&:active,
-	&:hover {
-		color: c(primary, dark);
-	}
 }
 
 button {
@@ -188,5 +185,31 @@ h6 {
 		width: auto;
 		z-index: 100000;
 		/* Above WP toolbar. */
+	}
+}
+
+@include context-view {
+	a,
+	button {
+		color: var(--color-link);
+
+		&:active,
+		&:hover {
+			color: var(--color-link-hover);
+		}
+	}
+}
+
+@include context-edit {
+	.block-editor-rich-text__editable a {
+		a,
+		button {
+			color: var(--color-link);
+
+			&:active,
+			&:hover {
+				color: var(--color-link-hover);
+			}
+		}
 	}
 }

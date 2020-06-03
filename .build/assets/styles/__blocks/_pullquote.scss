@@ -1,4 +1,14 @@
 .wp-block-pullquote.wp-block-pullquote {
+
+	&.has-background {
+		a {
+			color: currentColor;
+			&:active,
+			&:hover {
+				color: currentColor;
+			}
+		}
+	}
 	blockquote {
 		text-align: center;
 	}
