@@ -61,13 +61,11 @@ class Gutenberg
 	/**
 	 * Allow the Theme to use additional core features
 	 * See https://github.com/SayHelloGmbH/hello-roots/wiki/Gutenberg#theme-colours for information on how to
-	 * load the colours from your settings.json into Gutenberg
+	 * load the colours and text sizes from your settings.json into Gutenberg
 	 */
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
-
-		// Don't disable these if you're using Media and Text, otherwise you can't reset the text size.
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
 	}

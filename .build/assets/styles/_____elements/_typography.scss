@@ -2,10 +2,10 @@
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-size: #{$font-size};
-	--font-size-small: #{rem-calc(14px)};
-	--font-size-xsmall: #{rem-calc(12px)};
-	--font-size-large: #{rem-calc(18px)};
-	--font-size-xlarge: #{rem-calc(21px)};
+	--font-size-small: #{map-get(map-get($font_sizes, small), value)+0px};
+	--font-size-xsmall: #{map-get(map-get($font_sizes, xsmall), value)+0px};
+	--font-size-large: #{map-get(map-get($font_sizes, large), value)+0px};
+	--font-size-xlarge: #{map-get(map-get($font_sizes, xlarge), value)+0px};
 	--line-height: 1.5;
 	--line-height-heading: 1.2;
 

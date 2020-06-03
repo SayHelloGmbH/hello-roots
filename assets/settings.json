@@ -66,6 +66,28 @@
 		"wide": "1280px",
 		"full": "100vw"
 	},
+	"font_sizes": {
+		"xsmall": {
+			"name": "Extra klein",
+			"value": 12
+		},
+		"small": {
+			"name": "Klein",
+			"value": 14
+		},
+		"medium": {
+			"name": "Medium",
+			"value": 18
+		},
+		"large": {
+			"name": "Gross",
+			"value": 21
+		},
+		"xlarge": {
+			"name": "Extra gross",
+			"value": 24
+		}
+	},
 	"breakpoints": {
 		"zero": 0,
 		"phone": 320,
