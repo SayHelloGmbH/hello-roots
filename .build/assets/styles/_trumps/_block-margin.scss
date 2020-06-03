@@ -1,0 +1,50 @@
+.has-block-margin {
+	&--small {
+		margin-top: var(--unit-small);
+		margin-bottom: var(--unit-small);
+	}
+	&--medium {
+		margin-top: var(--unit-medium);
+		margin-bottom: var(--unit-medium);
+	}
+	&--large {
+		margin-top: var(--unit-large);
+		margin-bottom: var(--unit-large);
+	}
+	&--xlarge {
+		margin-top: var(--unit-xlarge);
+		margin-bottom: var(--unit-xlarge);
+	}
+}
+
+@include context-view {
+	.has-block-margin {
+		&--large,
+		&--medium,
+		&--small,
+		&--xlarge {
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@include context-edit {
+	.has-block-margin {
+		&--large,
+		&--medium,
+		&--small,
+		&--xlarge {
+			.wp-block:first-child & {
+				margin-top: 0;
+			}
+			.wp-block:last-child & {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

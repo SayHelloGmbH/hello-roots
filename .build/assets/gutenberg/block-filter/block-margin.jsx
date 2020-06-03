@@ -133,22 +133,24 @@ const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
 						title={ __( 'Abstände', 'sht' ) }
 						initialOpen={ false }
 					>
-						<label class="components-base-control__label" style={{marginBottom: '4px', display: 'block'}}>{ __( 'Vertikaler Abstand ändern', 'sht' ) }</label>
-						<ButtonGroup>
-							{Object.keys( controlOptions ).map( key => {
-								return (
-									<Button
-										isSecondary={controlOptions[key].value !== shtMargin}
-										isPrimary={controlOptions[key].value === shtMargin}
-										onClick={() => {
-											props.setAttributes( {
-												shtMargin: controlOptions[key].value,
-											})
-										}}
-									>{controlOptions[key].label}</Button>
-								)
-							} )}
-						</ButtonGroup>
+						<div className="components-base-control">
+							<label class="components-base-control__label">{ __( 'Vertikaler Abstand ändern', 'sht' ) }</label>
+							<ButtonGroup>
+								{Object.keys( controlOptions ).map( key => {
+									return (
+										<Button
+											isSecondary={controlOptions[key].value !== shtMargin}
+											isPrimary={controlOptions[key].value === shtMargin}
+											onClick={() => {
+												props.setAttributes( {
+													shtMargin: controlOptions[key].value,
+												})
+											}}
+										>{controlOptions[key].label}</Button>
+									)
+								} )}
+							</ButtonGroup>
+						</div>
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
