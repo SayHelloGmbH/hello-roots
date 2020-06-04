@@ -9,3 +9,11 @@
 		clear: both;
 	}
 }
+
+@mixin clearfix_after() {
+	&:after {
+		content: ' ';
+		display: table;
+		clear: both;
+	}
+}

@@ -75,6 +75,10 @@
 			"name": "Klein",
 			"value": 14
 		},
+		"regular": {
+			"name": "Regular",
+			"value": 16
+		},
 		"medium": {
 			"name": "Medium",
 			"value": 18

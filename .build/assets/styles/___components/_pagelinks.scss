@@ -1,0 +1,18 @@
+.c-pagelinks {
+	text-align: center;
+	max-width: var(--constraint-narrow);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--unit);
+	padding-right: var(--unit);
+
+	@include tablet {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&__entry {
+		margin-left: var(--unit-small);
+		margin-right: var(--unit-small);
+	}
+}
