@@ -17,14 +17,13 @@ const icon = () => {
 
 // enable filters for blocks
 const enableOnBlocks = {
-	'core/heading': 'standard', // block: defaultMargin
-	'core/paragraph': 'small' // block: defaultMargin
+	'core/group': 'standard', // block: defaultPadding
 }
 
-const controlOptions = [
+const paddingControlOptions = [
 	{
 		label: __( '0', 'sht' ),
-		title: __( 'Kein Abstand', 'sht' ),
+		title: __( 'Kein Innenabstand', 'sht' ),
 		value: 'none',
 	},
 	{
@@ -55,14 +54,14 @@ const controlOptions = [
 ];
 
 /**
- * Add shtMargin attribute to block.
+ * Add shtPadding attribute to block.
  *
  * @param {object} settings Current block settings.
  * @param {string} name Name of block.
  *
  * @returns {object} Modified block settings.
  */
-const addMarginAttribute = ( settings, name ) => {
+const addPaddingAttribute = ( settings, name ) => {
 	// if block font size is enabled for this block
 
 	let defaultSize = 'standard';
@@ -73,7 +72,7 @@ const addMarginAttribute = ( settings, name ) => {
 
 	// use lodash's assign to gracefully handle if attributes are undefined
 	settings.attributes = assign( settings.attributes, {
-		shtMargin: {
+		shtPadding: {
 			type: 'string',
 			default: defaultSize,
 		},
@@ -89,32 +88,39 @@ const addMarginAttribute = ( settings, name ) => {
  *
  * @returns {object} Modified block block edit component.
  */
-const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addPaddingControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 
-		const { shtMargin } = props.attributes;
+		// if control is enabled for this block
+		if ( !( props.name in enableOnBlocks ) ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
+
+		const { shtPadding } = props.attributes;
 
 		// remove all previous font size classes on props.attributes.className
 		if ( props.attributes.className ) {
 			let classes = props.attributes.className.trim().split( " " );
 
-			Object.keys( controlOptions ).map( key => {
-				classes = classes.filter( function ( value, index, arr ) { return value !== 'has-block-margin--' + controlOptions[ key ].value } );
+			Object.keys( paddingControlOptions ).map( key => {
+				classes = classes.filter( function ( value, index, arr ) { return value !== 'has-block-vertical-padding--' + paddingControlOptions[ key ].value } );
 			} );
 
 			props.attributes.className = classnames( classes );
 		}
 
-		// generate each classname from controlOptions
+		// generate each classname from paddingControlOptions
 		let classNames = [];
-		Object.keys( controlOptions ).map( key => {
+		Object.keys( paddingControlOptions ).map( key => {
 			classNames.push( {
-				[ 'has-block-margin--' + controlOptions[ key ].value ]: controlOptions[ key ].value === shtMargin ? true : false
+				[ 'has-block-vertical-padding has-block-vertical-padding--' + paddingControlOptions[ key ].value ]: paddingControlOptions[ key ].value === shtPadding ? true : false
 			} )
 		} );
 
 		// set the font size class names only if font size is not the blocks default font size
-		if ( enableOnBlocks[ props.name ] !== shtMargin ) {
+		if ( enableOnBlocks[ props.name ] !== shtPadding ) {
 			props.attributes.className = classnames( props.attributes.className, classNames );
 		}
 
@@ -123,11 +129,11 @@ const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
 			<Fragment>
 				{
 					<BlockControls>
-						<MarginToolbar
-							value={shtMargin}
+						<PaddingToolbar
+							value={shtPadding}
 							onChange={ (size) => {
 								props.setAttributes( {
-									shtMargin: size,
+									shtPadding: size,
 								} )
 							} }/>
 					</BlockControls>
@@ -135,23 +141,23 @@ const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit { ...props } />
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Aussenabstände', 'sht' ) }
+						title={ __( 'Innenabstände', 'sht' ) }
 						initialOpen={ false }
 					>
 						<div className="components-base-control">
-							<label class="components-base-control__label">{ __( 'Vertikaler Abstand ändern', 'sht' ) }</label>
+							<label class="components-base-control__label">{ __( 'Vertikaler Innenabstand ändern', 'sht' ) }</label>
 							<ButtonGroup>
-								{Object.keys( controlOptions ).map( key => {
+								{Object.keys( paddingControlOptions ).map( key => {
 									return (
 										<Button
-											isSecondary={controlOptions[key].value !== shtMargin}
-											isPrimary={controlOptions[key].value === shtMargin}
+											isSecondary={paddingControlOptions[key].value !== shtPadding}
+											isPrimary={paddingControlOptions[key].value === shtPadding}
 											onClick={() => {
 												props.setAttributes( {
-													shtMargin: controlOptions[key].value,
+													shtPadding: paddingControlOptions[key].value,
 												})
 											}}
-										>{controlOptions[key].label}</Button>
+										>{paddingControlOptions[key].label}</Button>
 									)
 								} )}
 							</ButtonGroup>
@@ -161,9 +167,9 @@ const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</Fragment>
 		);
 	};
-}, 'addMarginControl' );
+}, 'addPaddingControl' );
 
-const MarginToolbar = ( props ) => {
+const PaddingToolbar = ( props ) => {
 	const {
 		value,
 		onChange,
@@ -177,12 +183,12 @@ const MarginToolbar = ( props ) => {
 		<Toolbar
 			isCollapsed={ true }
 			icon={icon}
-			label={ __( 'Vertikaler Abstand ändern', 'sht' ) }
+			label={ __( 'Vertikaler Innenabstand ändern', 'sht' ) }
 			popoverProps={ {
 				position: 'bottom right',
 				isAlternate: true,
 			} }
-			controls={ controlOptions.map( ( option ) => {
+			controls={ paddingControlOptions.map( ( option ) => {
 				return {
 					title: option.title,
 					icon: icon,
@@ -196,6 +202,5 @@ const MarginToolbar = ( props ) => {
 	);
 }
 
-// font size filter
-addFilter( 'blocks.registerBlockType', 'sht/attribute/block-margin', addMarginAttribute );
-addFilter( 'editor.BlockEdit', 'sht/control/block-margin', addMarginControl );
+addFilter( 'blocks.registerBlockType', 'sht/attribute/block-padding', addPaddingAttribute );
+addFilter( 'editor.BlockEdit', 'sht/control/block-padding', addPaddingControl );
