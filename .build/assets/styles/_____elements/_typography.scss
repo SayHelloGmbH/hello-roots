@@ -1,16 +1,15 @@
 :root {
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-	--font-size: #{$font-size};
-	--font-size-small: #{map-get(map-get($font_sizes, small), value)+0px};
-	--font-size-xsmall: #{map-get(map-get($font_sizes, xsmall), value)+0px};
-	--font-size-large: #{map-get(map-get($font_sizes, large), value)+0px};
-	--font-size-xlarge: #{map-get(map-get($font_sizes, xlarge), value)+0px};
 	--line-height: 1.5;
 	--line-height-heading: 1.2;
 
 	--color-link: var(--color-primary);
 	--color-link-hover: var(--color-primary-dark);
+
+	@each $size, $sizeValues in $font_sizes {
+		--font-size-#{$size}: #{map-get($sizeValues, value)+0px};
+	}
 }
 
 body {
@@ -89,6 +88,7 @@ nav {
 		padding: 0;
 		margin: 0;
 	}
+
 	a {
 		text-decoration: none;
 	}
