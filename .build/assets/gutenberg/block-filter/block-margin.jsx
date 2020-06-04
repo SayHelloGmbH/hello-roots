@@ -28,6 +28,11 @@ const controlOptions = [
 		value: 'small',
 	},
 	{
+		label: __( '0', 'sht' ),
+		title: __( 'Kein', 'sht' ),
+		value: 'none',
+	},
+	{
 		label: __( 'Std', 'sht' ),
 		title: __( 'Standard', 'sht' ),
 		value: 'standard',
