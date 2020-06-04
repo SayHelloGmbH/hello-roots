@@ -27,13 +27,13 @@ const fontSizeControlOptions = [ {
 		value: 'small',
 	},
 	{
-		label: __( 'R', 'sht' ),
-		title: __( 'Regular', 'sht' ),
+		label: __( 'N', 'sht' ),
+		title: __( 'Normal', 'sht' ),
 		value: 'regular',
 	},
 	{
 		label: __( 'M', 'sht' ),
-		title: __( 'Medium', 'sht' ),
+		title: __( 'Mittelgross', 'sht' ),
 		value: 'medium',
 	},
 	{
@@ -132,26 +132,28 @@ const addFontSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 				<BlockEdit { ...props } />
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Schriftgrösse', 'sht' ) }
+						title={ __( 'Schriftgrösse ändern', 'sht' ) }
 						initialOpen={ false }
 					>
-						<label class="components-base-control__label" style={{marginBottom: '4px', display: 'block'}}>{ __( 'Schriftgrösse auswählen', 'sht' ) }</label>
-						<ButtonGroup>
-							{Object.keys( fontSizeControlOptions ).map( key => {
-								return (
-									<Button
-										isSecondary={fontSizeControlOptions[key].value !== shtFontSize}
-										isPrimary={fontSizeControlOptions[key].value === shtFontSize}
-										isPressed={fontSizeControlOptions[key].value === shtFontSize}
-										onClick={() => {
-											props.setAttributes( {
-												shtFontSize: fontSizeControlOptions[key].value,
-											} )
-										}}
-									>{fontSizeControlOptions[key].label}</Button>
-								)
-							} )}
-						</ButtonGroup>
+						<div className="components-base-control">
+							<label class="components-base-control__label">{ __( 'Schriftgrösse ändern', 'sht' ) }</label>
+							<ButtonGroup>
+								{Object.keys( fontSizeControlOptions ).map( key => {
+									return (
+										<Button
+											isSecondary={fontSizeControlOptions[key].value !== shtFontSize}
+											isPrimary={fontSizeControlOptions[key].value === shtFontSize}
+											isPressed={fontSizeControlOptions[key].value === shtFontSize}
+											onClick={() => {
+												props.setAttributes( {
+													shtFontSize: fontSizeControlOptions[key].value,
+												} )
+											}}
+										>{fontSizeControlOptions[key].label}</Button>
+									)
+								} )}
+							</ButtonGroup>
+						</div>
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>

@@ -33,13 +33,13 @@ const controlOptions = [
 		value: 'small',
 	},
 	{
-		label: __( 'Std', 'sht' ),
-		title: __( 'Standard', 'sht' ),
+		label: __( 'N', 'sht' ),
+		title: __( 'Normal', 'sht' ),
 		value: 'standard',
 	},
 	{
 		label: __( 'M', 'sht' ),
-		title: __( 'Medium', 'sht' ),
+		title: __( 'Mittelgross', 'sht' ),
 		value: 'medium',
 	},
 	{
