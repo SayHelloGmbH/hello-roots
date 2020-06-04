@@ -23,14 +23,14 @@ const enableOnBlocks = {
 
 const controlOptions = [
 	{
+		label: __( '0', 'sht' ),
+		title: __( 'Kein Abstand', 'sht' ),
+		value: 'none',
+	},
+	{
 		label: __( 'S', 'sht' ),
 		title: __( 'Klein', 'sht' ),
 		value: 'small',
-	},
-	{
-		label: __( '0', 'sht' ),
-		title: __( 'Kein', 'sht' ),
-		value: 'none',
 	},
 	{
 		label: __( 'Std', 'sht' ),
