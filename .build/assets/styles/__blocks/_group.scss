@@ -1,0 +1,9 @@
+.wp-block-group {
+	&.has-background {
+		padding: var(--unit);
+	}
+
+	&__inner-container {
+		@extend .h-stack;
+	}
+}
