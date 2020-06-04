@@ -16,6 +16,7 @@
 			.has-#{$color}-color {
 				color: c($color);
 			}
+
 			.has-#{$color}-background-color {
 				background-color: c($color);
 			}
@@ -31,12 +32,16 @@
 	}
 }
 
-.has-text-color * {
+.has-text-color *,
+.has-text-color *:active,
+.has-text-color *:hover {
 	color: inherit;
 }
 
 @include context-edit {
-	.has-text-color * {
+	.has-text-color *,
+	.has-text-color *:active,
+	.has-text-color *:hover {
 		color: inherit !important;
 	}
 }
