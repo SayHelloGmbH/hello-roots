@@ -7,14 +7,14 @@
 		"black": {
 			"base": "#000"
 		},
-		"white": {
-			"base": "#fff"
-		},
 		"gray": {
 			"dark": "#666",
 			"base": "#999",
 			"mid": "#aaa",
 			"light": "#f0f0f0"
+		},
+		"white": {
+			"base": "#fff"
 		},
 		"brown": {
 			"base": "#930"
@@ -51,14 +51,14 @@
 		"black": {
 			"base": "#000"
 		},
-		"white": {
-			"base": "#fff"
-		},
 		"gray": {
 			"dark": "#666",
 			"base": "#999",
 			"mid": "#aaa",
 			"light": "#f0f0f0"
+		},
+		"white": {
+			"base": "#fff"
 		}
 	},
 	"alignments": {
