@@ -5,6 +5,9 @@
 
 	&__inner-container {
 		@extend .h-stack;
-		@extend .c-constraint;
+		> * {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 }
