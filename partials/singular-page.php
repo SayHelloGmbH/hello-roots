@@ -2,7 +2,7 @@
 
 	<div class="c-article__content c-blocks c-constraint">
 		<?php
-		if (!(bool) get_field('hide_title', get_the_ID())) {
+		if (!(bool) get_post_meta(get_the_ID(), 'hide_title', true)) {
 			?>
 			<header class="c-article__header">
 				<h1 class="c-article__title"><?php the_title(); ?></h1>
