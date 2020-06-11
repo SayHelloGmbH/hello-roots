@@ -6,9 +6,6 @@ import { withDispatch, withSelect } from '@wordpress/data';
 import { registerPlugin } from '@wordpress/plugins';
 
 let HideTitleControl = ( { hideTitle, postType, onUpdateHideTitle } ) => {
-	if(postType !== 'page'){
-		return;
-	}
 	return (
 		<ToggleControl
 			label={ _x('Beitragstitel verstecken', 'ToggleControl label', 'sha') }
