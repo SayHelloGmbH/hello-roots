@@ -16,8 +16,10 @@ const icon = () => {
 }
 
 // enable filters for blocks
+// block: defaultPadding
 const enableOnBlocks = {
-	'core/group': 'standard', // block: defaultPadding
+	'core/group': 'standard',
+	'core/cover': 'standard',
 }
 
 const paddingControlOptions = [
