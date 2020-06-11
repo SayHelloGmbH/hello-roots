@@ -4,6 +4,10 @@
 		color: var(--color-white);
 	}
 
+	&[class*='is-style-aspect'] {
+		min-height: 0;
+	}
+
 	&.is-style-aspect-21::after {
 		content: '';
 		display: block;
