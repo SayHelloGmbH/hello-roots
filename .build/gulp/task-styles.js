@@ -15,7 +15,7 @@ export const task = config => {
 	const blockFilter = filter(config.assetsBuild + 'styles/admin-editor.css', { restore: true });
 
 	return src(config.assetsBuild + 'styles/**/*.scss')
-		.pipe(sassImportJson({ isScss: true }))
+		.pipe(sassImportJson({ cache: false, isScss: true }))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: ['./node_modules/']
