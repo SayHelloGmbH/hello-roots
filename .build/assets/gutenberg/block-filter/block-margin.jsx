@@ -6,12 +6,12 @@ import { __ } from '@wordpress/i18n';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment } from '@wordpress/element';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, Button, ButtonGroup, Toolbar } from '@wordpress/components';
+import { PanelBody, Button, ButtonGroup, Toolbar, Tooltip } from '@wordpress/components';
 
 // icon
 const icon = () => {
 	return (
-		<svg aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M18 2H6C4.89 2 4 2.9 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V4C20 2.9 19.11 2 18 2M18 20H6V16H18V20M18 8H6V4H18V8Z" fill="currentColor" fill-rule="nonzero"></path></g></svg>
+		<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5"><path stroke-width="2" d="M4.393 5.966h15.603v12.476H4.393z" transform="matrix(.89724 0 0 .80153 1.05873 2.21781)"/><path d="M9.171465 4.99992275l2.82835582-2.82835581 2.828409 2.828409-2.82815786-.0079592-2.82860695.007906zM14.828535 19.00008515l-2.82835582 2.82835581-2.828409-2.828409 2.82815786.0079592 2.82860695-.007906z"/></svg>
 	)
 }
 
@@ -143,15 +143,17 @@ const addMarginControl = createHigherOrderComponent( ( BlockEdit ) => {
 							<ButtonGroup>
 								{Object.keys( controlOptions ).map( key => {
 									return (
-										<Button
-											isSecondary={controlOptions[key].value !== shtMargin}
-											isPrimary={controlOptions[key].value === shtMargin}
-											onClick={() => {
-												props.setAttributes( {
-													shtMargin: controlOptions[key].value,
-												})
-											}}
-										>{controlOptions[key].label}</Button>
+										<Tooltip text={controlOptions[key].title}>
+											<Button
+												isSecondary={controlOptions[key].value !== shtMargin}
+												isPrimary={controlOptions[key].value === shtMargin}
+												onClick={() => {
+													props.setAttributes( {
+														shtMargin: controlOptions[key].value,
+													})
+												}}
+											>{controlOptions[key].label}</Button>
+										</Tooltip>
 									)
 								} )}
 							</ButtonGroup>
