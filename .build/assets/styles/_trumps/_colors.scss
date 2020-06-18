@@ -32,16 +32,18 @@
 	}
 }
 
-.has-text-color *:not(.has-text-color),
-.has-text-color *:not(.has-text-color):active,
-.has-text-color *:not(.has-text-color):hover {
-	color: inherit;
-}
-
-@include context-edit {
+@include context-view {
 	.has-text-color *:not(.has-text-color),
 	.has-text-color *:not(.has-text-color):active,
 	.has-text-color *:not(.has-text-color):hover {
+		color: inherit;
+	}
+}
+
+@include context-edit {
+	.has-text-color *:not(.has-text-color):not([class*='components-']):hover,
+	.has-text-color *:not(.has-text-color):not([class*='components-']),
+	.has-text-color *:not(.has-text-color):not([class*='components-']):active {
 		color: inherit !important;
 	}
 }
