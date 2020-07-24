@@ -23,6 +23,13 @@ class ThemeOptions
 	{
 		add_action('acf/init', [ $this, 'page' ], 1);
 		add_action('acf/init', [ $this, 'options' ]);
+		add_action('acf/init', [ $this, 'acfInit' ]);
+	}
+	
+	public function acfInit()
+	{
+		$prefix = sht_theme()->prefix;
+		acf_update_setting('google_api_key', get_field("{$prefix}-maps-api-key", 'options'));
 	}
 
 	public function page()
