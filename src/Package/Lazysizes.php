@@ -101,6 +101,7 @@ class Lazysizes
 	{
 		register_rest_route('hello-roots/v1', '/lazy-image/(?P<id>\d+)', [
 			'methods'  => 'GET',
+			'permission_callback' => '__return_true',
 			'callback' => function ($data) {
 
 				$size = 'full';
