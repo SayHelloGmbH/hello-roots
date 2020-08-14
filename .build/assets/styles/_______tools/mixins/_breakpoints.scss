@@ -1,8 +1,23 @@
+@function breakpointPixels($key) {
+	@if unit(map-get($breakpoints, $key)) != '' {
+		@return map-get($breakpoints, $key)+0px;
+	} @else {
+		@return map-get($breakpoints, $key);
+	}
+}
+
 @mixin for-screen-min($name, $sizes: $breakpoints) {
 	$min: device-breakpoints-min($name, $sizes);
-	@if $min {
-		@media (min-width: $min+0px) {
-			@content;
+
+	@if type-of($min) == 'number' {
+		@if unit($min) == '' {
+			@media screen and (min-width: ($min/16)+0em) {
+				@content;
+			}
+		} @else {
+			@media screen and (min-width: $min) {
+				@content;
+			}
 		}
 	} @else {
 		@content;
@@ -11,9 +26,16 @@
 
 @mixin for-screen-max($name, $sizes: $breakpoints) {
 	$max: device-breakpoints-max($name, $sizes);
-	@if $max {
-		@media (max-width: $max+0px) {
-			@content;
+
+	@if type-of($max) == 'number' {
+		@if unit($max) == '' {
+			@media screen and (max-width: ($max/16)+0em) {
+				@content;
+			}
+		} @else {
+			@media screen and (max-width: $max) {
+				@content;
+			}
 		}
 	} @else {
 		@content;
@@ -28,8 +50,14 @@
 	}
 }
 
-@mixin mobile() {
+@mixin phone() {
 	@include for-screen-max(tablet) {
+		@content;
+	}
+}
+
+@mixin wordpress_small() {
+	@include for-screen-min(wordpress_small) {
 		@content;
 	}
 }
@@ -46,6 +74,24 @@
 	}
 }
 
+@mixin wordpress_medium() {
+	@include for-screen-min(wordpress_medium) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape() {
+	@include for-screen-min(tablet_landscape) {
+		@content;
+	}
+}
+
+@mixin tablet_landscape() {
+	@include for-screen-min(tablet_landscape) {
+		@content;
+	}
+}
+
 @mixin laptop() {
 	@include for-screen-min(laptop) {
 		@content;
@@ -58,14 +104,14 @@
 	}
 }
 
-@mixin wordpress_small() {
-	@include for-screen-min(wordpress_small) {
+@mixin wide() {
+	@include for-screen-min(wide) {
 		@content;
 	}
 }
 
-@mixin wordpress_medium() {
-	@include for-screen-min(wordpress_medium) {
+@mixin full() {
+	@include for-screen-min(full) {
 		@content;
 	}
 }

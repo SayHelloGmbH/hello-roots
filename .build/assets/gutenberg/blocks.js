@@ -7,4 +7,4 @@ import './block-styles/index.js';
 import './post-controls/index.jsx';
 import './unregister-block-type/index.js';
 
-//import "./teaser/block.jsx";
+//import "./blocks/teaser/block.jsx";

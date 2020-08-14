@@ -61,10 +61,10 @@
 			"base": "#fff"
 		}
 	},
-	"alignments": {
-		"narrow": "640px",
-		"wide": "1280px",
-		"full": "100vw"
+	"constraints": {
+		"narrow": 640,
+		"wide": 1280,
+		"full": "100%"
 	},
 	"font_sizes": {
 		"xsmall": {

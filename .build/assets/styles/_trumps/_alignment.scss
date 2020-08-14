@@ -1,7 +1,13 @@
+// Get all 'constraints' values from settings.json.
+// Convert them to EM if they're numeric, otherwise use them as-is.
 :root {
-	--constraint-narrow: #{alignments(narrow)};
-	--constraint-wide: #{alignments(wide)};
-	--constraint-full: #{alignments(full)};
+	@each $size, $sizeValue in $constraints {
+		@if type-of($sizeValue) == 'number' and (unit($sizeValue) == '' or unit($sizeValue) == 'px') {
+			--constraint-#{$size}: #{($sizeValue/16)+0em};
+		} @else {
+			--constraint-#{$size}: #{$sizeValue};
+		}
+	}
 }
 
 .alignleft,
@@ -52,7 +58,7 @@ img.alignright {
 .alignwide {
 	max-width: calc(100vw - (var(--c-constraint-padding-side) * 2));
 
-	@media screen and (min-width: #{alignments(wide)}) {
+	@media screen and (min-width: #{constraints(wide)}) {
 		max-width: var(--constraint-wide);
 
 		&.has-parallax {
@@ -65,7 +71,7 @@ img.alignright {
 	max-width: 100vw;
 	width: calc(100vw + var(--c-constraint-padding-side)); // Offset container padding
 	margin-left: calc(var(--c-constraint-padding-side) * -1); // Offset container padding
-	@media screen and (min-width: #{alignments(narrow)}) {
+	@media screen and (min-width: #{constraints(narrow)}) {
 		width: 100vw;
 	}
 }
@@ -73,9 +79,11 @@ img.alignright {
 @include context-edit {
 	.wp-block {
 		max-width: var(--constraint-narrow);
+
 		&[data-align="wide"] {
 			max-width: var(--constraint-wide);
 		}
+
 		&[data-align="full"] {
 			max-width: var(--constraint-full);
 		}
