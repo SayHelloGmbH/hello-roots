@@ -1,7 +1,4 @@
 :root {
-	--constraint-narrow: #{rem-calc(640px)};
-	--constraint-medium: #{rem-calc(960px)};
-	--constraint-wide: #{rem-calc(1280px)};
 	--unit-xxsmall: calc(var(--unit) / 8);
 	--unit-xsmall: calc(var(--unit) / 4);
 	--unit-small: calc(var(--unit) / 2);

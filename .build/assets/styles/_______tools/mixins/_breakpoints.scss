@@ -9,9 +9,15 @@
 @mixin for-screen-min($name, $sizes: $breakpoints) {
 	$min: device-breakpoints-min($name, $sizes);
 
-	@if type-of($min) == 'number' and unit($min) != '%' {
-		@media screen and (max-width: $min+0px) {
-			@content;
+	@if type-of($min) == 'number' {
+		@if unit($min) == '' {
+			@media screen and (min-width: ($min/16)+0em) {
+				@content;
+			}
+		} @else {
+			@media screen and (min-width: $min) {
+				@content;
+			}
 		}
 	} @else {
 		@content;
@@ -21,9 +27,15 @@
 @mixin for-screen-max($name, $sizes: $breakpoints) {
 	$max: device-breakpoints-max($name, $sizes);
 
-	@if type-of($max) == 'number' and unit($max) != '%' {
-		@media screen and (max-width: $max+0px) {
-			@content;
+	@if type-of($max) == 'number' {
+		@if unit($max) == '' {
+			@media screen and (max-width: ($max/16)+0em) {
+				@content;
+			}
+		} @else {
+			@media screen and (max-width: $max) {
+				@content;
+			}
 		}
 	} @else {
 		@content;

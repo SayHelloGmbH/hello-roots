@@ -62,8 +62,8 @@
 		}
 	},
 	"constraints": {
-		"narrow": "640px",
-		"wide": "1280px",
+		"narrow": 640,
+		"wide": 1280,
 		"full": "100%"
 	},
 	"font_sizes": {

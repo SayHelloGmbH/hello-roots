@@ -1,7 +1,13 @@
+// Get all 'constraints' values from settings.json.
+// Convert them to EM if they're numeric, otherwise use them as-is.
 :root {
-	--constraint-narrow: #{constraints(narrow)};
-	--constraint-wide: #{constraints(wide)};
-	--constraint-full: #{constraints(full)};
+	@each $size, $sizeValue in $constraints {
+		@if type-of($sizeValue) == 'number' and (unit($sizeValue) == '' or unit($sizeValue) == 'px') {
+			--constraint-#{$size}: #{($sizeValue/16)+0em};
+		} @else {
+			--constraint-#{$size}: #{$sizeValue};
+		}
+	}
 }
 
 .alignleft,
