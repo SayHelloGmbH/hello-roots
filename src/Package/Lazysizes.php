@@ -101,6 +101,7 @@ class Lazysizes
 	{
 		register_rest_route('hello-roots/v1', '/lazy-image/(?P<id>\d+)', [
 			'methods'  => 'GET',
+			'permission_callback' => '__return_true',
 			'callback' => function ($data) {
 
 				$size = 'full';
@@ -146,14 +147,14 @@ class Lazysizes
 	// 	$domDocument = new DOMDocument();
 	// 	$domDocument->preserveWhiteSpace = false;
 	// 	$domDocument->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-	//
+	// 
 	// 	$xpath = new DOMXpath($domDocument);
 	// 	$blocks = $xpath->query("//figure[contains(concat(' ',normalize-space(@class),' '),' wp-block-image ')]");
-	//
+	// 
 	// 	if (!count($blocks)) {
 	// 		return $content;
 	// 	}
-	//
+	// 
 	// 	foreach ($blocks as $block) {
 	// 		$figure_class = $block->getAttribute('class');
 	// 		$images = $xpath->query('.//img', $block);
@@ -166,14 +167,14 @@ class Lazysizes
 	// 		if (count($matches) === 2) {
 	// 			$image_id = $matches[1];
 	// 			$lazy_image = Lazysizes::getLazyImage($image_id, 'full', '', $image_class);
-	//
+	// 
 	// 			$tpl = new DOMDocument;
 	// 			$tpl->loadHTML($lazy_image);
 	// 			$new_figure = $domDocument->importNode($tpl->documentElement->getElementsByTagName('figure')->item(0), true);
-	//
+	// 
 	// 			$wrapper = $domDocument->createElement('div');
 	// 			$wrapper->setAttribute('class', $figure_class);
-	//
+	// 
 	// 			foreach ($block->childNodes as $child) {
 	// 				if (strtolower($child->tagName) === 'a') {
 	// 					$link = $child->cloneNode(false); // Just the link tag, not its childNodes
@@ -185,15 +186,15 @@ class Lazysizes
 	// 					break;
 	// 				}
 	// 			}
-	//
+	// 
 	// 			$wrapper->appendChild($new_figure);
-	//
+	// 
 	// 			$figcaption = $xpath->query('.//figcaption', $block);
 	// 			if ((int) $figcaption->length ?? 0) {
 	// 				$new_cap = $figcaption[0]->cloneNode(true);
 	// 				$wrapper->appendChild($new_cap);
 	// 			}
-	//
+	// 
 	// 			$block->parentNode->insertBefore($wrapper, $block);
 	// 			$block->parentNode->removeChild($block);
 	// 		}

@@ -68,6 +68,9 @@ class Gutenberg
 		add_theme_support('align-wide');
 		add_theme_support('disable-custom-font-sizes');
 		add_theme_support('editor-font-sizes', []);
+
+		// Since WordPress 5.5: disallow block patterns delivered by Core
+		remove_theme_support( 'core-block-patterns' );
 	}
 
 	/**

@@ -17,18 +17,54 @@
 				color: c($color);
 			}
 
+			a.has-#{$color}-color {
+				&:active,
+				&:hover {
+					color: c($color);
+				}
+			}
+
 			.has-#{$color}-background-color {
 				background-color: c($color);
+			}
+
+			.has-#{$color}-overlay-gradient {
+				&::before {
+					background: linear-gradient(transparent, c($color));
+				}
 			}
 		} @else {
 			.has-#{$color}-#{$variant}-color {
 				color: c($color, $variant);
 			}
 
+			a.has-#{$color}-#{$variant}-color {
+				&:active,
+				&:hover {
+					color: c($color, $variant);
+				}
+			}
+
 			.has-#{$color}-#{$variant}-background-color {
 				background-color: c($color, $variant);
 			}
+
+			.has-#{$color}-#{$variant}-overlay-gradient {
+				&::before {
+					background: linear-gradient(transparent, c($color, $variant));
+				}
+			}
 		}
+	}
+}
+
+.has-overlay {
+	&::before {
+		content: '';
+		@include flood;
+		top: 50%;
+		z-index: 1;
+		opacity: .9;
 	}
 }
 
@@ -41,9 +77,9 @@
 }
 
 @include context-edit {
-	.has-text-color *:not(.has-text-color):not([class*='components-']):hover,
-	.has-text-color *:not(.has-text-color):not([class*='components-']),
-	.has-text-color *:not(.has-text-color):not([class*='components-']):active {
+	.has-text-color *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']):hover,
+	.has-text-color *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']),
+	.has-text-color *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']):active {
 		color: inherit !important;
 	}
 }
