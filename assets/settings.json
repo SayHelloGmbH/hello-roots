@@ -61,7 +61,7 @@
 			"base": "#fff"
 		}
 	},
-	"alignments": {
+	"constraints": {
 		"narrow": "640px",
 		"wide": "1280px",
 		"full": "100vw"
