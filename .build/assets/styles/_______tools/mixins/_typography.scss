@@ -1,4 +1,7 @@
-$font-size: map-get(map-get($font_sizes, regular), value)+0px;
+// Get the "rem-base" font size from the font_sizes array in settings.json
+// This must be a pixel value, so that the calculation function rem-calc works.
+// In most cases, leave the value as 16px.
+$font-size: map-get(map-get($font_sizes, rem-base), value)+0px;
 
 @function rem-calc($values, $base-value: $font-size) {
 	$max: length($values);

@@ -8,7 +8,13 @@
 	--color-link-hover: var(--color-primary-dark);
 
 	@each $size, $sizeValues in $font_sizes {
-		--font-size-#{$size}: #{map-get($sizeValues, value)+0px};
+		$value: map-get($sizeValues, value);
+
+		@if unit($value) == '' {
+			--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value))};
+		} @else {
+			--font-size-#{$size}: #{map-get($sizeValues, value)};
+		}
 	}
 }
 
