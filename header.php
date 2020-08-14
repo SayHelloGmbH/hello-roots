@@ -29,7 +29,7 @@
 
 		<div class="c-masthead__toggler">
 			<?php
-			sht_theme()->getTemplatePart('partials/navigation/menutoggler', [
+			get_template_part('partials/navigation/menutoggler', null, [
 				'target_id' => 'mobile-menu'
 			]);
 			?>
