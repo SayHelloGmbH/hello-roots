@@ -18,7 +18,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
  * Converts a pixel, percentage, rem or em value to a unitless value based on a given font size. Ideal for working out unitless line heights.
  *
  * @param {Number} $value - Value to convert to a unitless line height
- * @param {Number} $base - The font size to use to work out the line height - defaults to $font-size
+ * @param {Number} $base - The font size to use to work out the line height - defaults to $rem-font-size
  *
  * @return {Number} - Unitless number
  */
