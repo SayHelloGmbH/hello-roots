@@ -38,8 +38,14 @@
 	}
 }
 
-@mixin mobile() {
+@mixin phone() {
 	@include for-screen-max(tablet) {
+		@content;
+	}
+}
+
+@mixin wordpress_small() {
+	@include for-screen-min(wordpress_small) {
 		@content;
 	}
 }
@@ -56,6 +62,24 @@
 	}
 }
 
+@mixin wordpress_medium() {
+	@include for-screen-min(wordpress_medium) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape() {
+	@include for-screen-min(tablet_landscape) {
+		@content;
+	}
+}
+
+@mixin tablet_landscape() {
+	@include for-screen-min(tablet_landscape) {
+		@content;
+	}
+}
+
 @mixin laptop() {
 	@include for-screen-min(laptop) {
 		@content;
@@ -64,18 +88,6 @@
 
 @mixin desktop() {
 	@include for-screen-min(desktop) {
-		@content;
-	}
-}
-
-@mixin wordpress_small() {
-	@include for-screen-min(wordpress_small) {
-		@content;
-	}
-}
-
-@mixin wordpress_medium() {
-	@include for-screen-min(wordpress_medium) {
 		@content;
 	}
 }
