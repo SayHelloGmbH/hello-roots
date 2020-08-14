@@ -201,44 +201,6 @@ class Theme
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>".chr(10);
 	}
 
-	public function getTemplatePart(string $file_path, ...$arguments)
-	{
-		$data = [];
-
-		// Array containing possible paths to the template part
-		$parts = (array) $file_path;
-
-		if (is_array($arguments)) {
-			// Find an array in $attributes and use it as $data in the
-			// included template part
-			foreach ($arguments as $attribute) {
-				if (is_array($attribute) || $attribute instanceof WP_Post) {
-					$data = $attribute;
-					break;
-				}
-			}
-
-			// If the first function attribute after $file_path is a string,
-			// prepend the alternative (e.g. post type) name to the paths array
-			// e.g. [partials/excerpt-customposttype, partials/excerpt]
-			if (is_string($arguments[0] ?? null)) {
-				array_unshift($parts, $file_path.'-'.$arguments[0]);
-			}
-		}
-
-		// Make sure that each possible file path is suffixed with .php
-		if (!empty($parts)) {
-			foreach ($parts as &$file) {
-				if (false === strpos($file, '.php')) {
-					$file .= '.php';
-				}
-			}
-			if (!empty($template = locate_template($parts))) {
-				require(locate_template($parts));
-			}
-		}
-	}
-
 	public function enqueueReplyScript()
 	{
 		if (is_singular() && get_option('thread_comments')) {
