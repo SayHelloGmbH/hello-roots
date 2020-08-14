@@ -79,3 +79,15 @@
 		@content;
 	}
 }
+
+@mixin wide() {
+	@include for-screen-min(wide) {
+		@content;
+	}
+}
+
+@mixin full() {
+	@include for-screen-min(full) {
+		@content;
+	}
+}
