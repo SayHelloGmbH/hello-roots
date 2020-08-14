@@ -64,7 +64,7 @@
 	"constraints": {
 		"narrow": "640px",
 		"wide": "1280px",
-		"full": "100vw"
+		"full": "100%"
 	},
 	"font_sizes": {
 		"xsmall": {
