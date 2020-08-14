@@ -1,7 +1,16 @@
+@function breakpointPixels($key) {
+	@if unit(map-get($breakpoints, $key)) != '' {
+		@return map-get($breakpoints, $key)+0px;
+	} @else {
+		@return map-get($breakpoints, $key);
+	}
+}
+
 @mixin for-screen-min($name, $sizes: $breakpoints) {
 	$min: device-breakpoints-min($name, $sizes);
-	@if $min {
-		@media (min-width: $min+0px) {
+
+	@if type-of($min) == 'number' and unit($min) != '%' {
+		@media screen and (max-width: $min+0px) {
 			@content;
 		}
 	} @else {
@@ -11,8 +20,9 @@
 
 @mixin for-screen-max($name, $sizes: $breakpoints) {
 	$max: device-breakpoints-max($name, $sizes);
-	@if $max {
-		@media (max-width: $max+0px) {
+
+	@if type-of($max) == 'number' and unit($max) != '%' {
+		@media screen and (max-width: $max+0px) {
 			@content;
 		}
 	} @else {
