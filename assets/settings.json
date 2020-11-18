@@ -89,6 +89,30 @@
 		"xlarge": {
 			"name": "Extra gross",
 			"value": 24
+		},
+		"h1": {
+			"name": "H1",
+			"value": 42
+		},
+		"h2": {
+			"name": "H2",
+			"value": 36
+		},
+		"h3": {
+			"name": "H3",
+			"value": 32
+		},
+		"h4": {
+			"name": "H4",
+			"value": 24
+		},
+		"h5": {
+			"name": "H5",
+			"value": 18
+		},
+		"h6": {
+			"name": "H6",
+			"value": 16
 		}
 	},
 	"breakpoints": {
