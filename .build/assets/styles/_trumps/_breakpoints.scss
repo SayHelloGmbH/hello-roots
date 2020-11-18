@@ -3,7 +3,7 @@
 :root {
 	@each $size, $sizeValue in $breakpoints {
 		@if type-of($sizeValue) == 'number' and (unit($sizeValue) == '' or unit($sizeValue) == 'px') {
-			--constraint-#{$size}: #{($sizeValue/16)+0em};
+			--constraint-#{$size}: #{($sizeValue/16)+0rem};
 		} @else {
 			--constraint-#{$size}: #{$sizeValue};
 		}
