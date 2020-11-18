@@ -47,12 +47,14 @@
  * or below a certain breakpoint.
  * Standard usage:
 
-@include breakpoint(tablet){
-	// Applies to screen sizes tablet and LARGER
-}
- *
- * Alternative
- *
+ @include breakpoint(tablet){
+ 	// Applies to screen sizes tablet and LARGER
+ }
+
+ @include breakpoint(tablet up){
+ 	// Applies to screen sizes tablet and LARGER
+ }
+
  @include breakpoint(tablet down){
  	// Applies to screen sizes tablet and SMALLER
  }
