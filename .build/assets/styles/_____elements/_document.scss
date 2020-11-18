@@ -7,9 +7,6 @@
 }
 
 html {
-	overflow-y: scroll;
-	max-height: 100%;
-	line-height: 1.5;
 
 	&.is--menuopen {
 		overflow: hidden;
@@ -34,8 +31,8 @@ html {
 }
 
 body {
-	background-color: var(--body-background-color);
 	color: var(--body-color);
+	background-color: var(--body-background-color);
 }
 
 ::selection {
