@@ -6,7 +6,9 @@
 
 	--color-link: var(--color-primary);
 	--color-link-hover: var(--color-primary-dark);
+	--font-weight-normal: 400;
 
+	--radius: 0;
 
 	// Probably not necessary but useful for browser debugging
 	--font-size-rem-base: #{$rem-font-size};
@@ -82,6 +84,45 @@ figure {
 figcaption {
 	font-size: var(--font-size-small);
 	text-align: center;
+	color: var(--color-gray);
+}
+
+hr {
+	border-style: solid;
+	border-width: 0 0 1px;
+	border-color: var(--wp-block-separator-color);
+}
+
+li {
+	@extend .h-stack;
+}
+
+ol {
+	padding-left: 0;
+	list-style: none;
+	@extend .h-stack--small;
+	counter-reset: item;
+
+	li:before {
+		margin-right: var(--unit-small);
+		content: counters(item, ".") '. ';
+		counter-increment: item;
+	}
+
+	ol {
+		margin-top: var(--unit-small);
+		padding-left: 1.2em;
+	}
+}
+
+ul {
+	padding-left: 1.2em;
+	list-style: revert;
+	@extend .h-stack--small;
+
+	ul {
+		margin-top: var(--unit);
+	}
 }
 
 nav {
@@ -97,6 +138,17 @@ nav {
 	}
 }
 
+p {
+
+	&:empty {
+		display: none;
+	}
+
+	&.has-background {
+		padding: var(--unit);
+	}
+}
+
 q {
 	font-style: italic;
 }
@@ -104,6 +156,7 @@ q {
 sub,
 sup {
 	font-size: var(--font-size-xsmall);
+	-webkit-font-smoothing: subpixel-antialiased;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
@@ -133,6 +186,7 @@ h6 {
 	font-family: var(--font-family-heading);
 	line-height: var(--line-height-heading);
 	margin: 0;
+	word-break: break-word;
 
 	a,
 	a:active,
@@ -142,6 +196,7 @@ h6 {
 	}
 }
 
+h1 {
 	font-size: var(--font-size-h1);
 
 	&.is-style-small-text {
@@ -299,15 +354,16 @@ h6 {
 }
 
 @include context-edit {
-	.block-editor-rich-text__editable a {
-		a,
-		button {
-			color: var(--color-link);
+	a {
+		color: var(--color-link);
+	}
 
-			&:active,
-			&:hover {
-				color: var(--color-link-hover);
-			}
+	.block-editor-rich-text__editable a {
+		color: var(--color-link) !important;
+
+		&:active,
+		&:hover {
+			color: var(--color-link-hover) !important;
 		}
 	}
 }
