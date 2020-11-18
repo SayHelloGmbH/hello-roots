@@ -61,11 +61,6 @@
 			"base": "#fff"
 		}
 	},
-	"constraints": {
-		"narrow": 640,
-		"wide": 1280,
-		"full": "100%"
-	},
 	"font_sizes": {
 		"rem-base": {
 			"name": "REM-Basis",
@@ -101,11 +96,17 @@
 		"phone": 320,
 		"wordpress_small": 600,
 		"narrow": 640,
+		"phone_wide": 667,
 		"tablet": 768,
 		"wordpress_medium": 783,
+		"medium": 960,
+		"wide": 1280,
 		"tablet_landscape": 1024,
 		"laptop": 1280,
-		"desktop": 1440
+		"full": "100%",
+		"desktop": 1440,
+		"desktop_large": 1600,
+		"desktop_xlarge": 1920
 	},
 	"easing_speed": 300,
 	"easing_speed_fast": 150,

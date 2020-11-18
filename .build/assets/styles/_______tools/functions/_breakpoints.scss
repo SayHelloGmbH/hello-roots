@@ -3,8 +3,8 @@
 	@return if($min != 0px, unquote($min + 'px'), null);
 }
 
-@function constraints($name) {
-	@return map-get($constraints, $name);
+@function breakpoints($name) {
+	@return map-get($breakpoints, $name);
 }
 
 @function device-breakpoints-min($name, $sizes: $breakpoints) {
