@@ -163,26 +163,6 @@ class Theme
 		}
 	}
 
-	public function getSettings()
-	{
-		if (!empty($this->settings)) {
-			return $this->settings;
-		}
-
-		$path = trailingslashit($this->Package->Assets->theme_path) . 'assets/settings.json';
-		if (!is_file($path)) {
-			return $this->settings;
-		}
-
-		$settings = file_get_contents($path);
-
-		if (is_string($settings) && !empty($settings)) {
-			$this->settings = json_decode($settings, true);
-		}
-
-		return $this->settings;
-	}
-
 	/**
 	 * Set the content width based on the theme's design and stylesheet
 	 */
@@ -238,6 +218,27 @@ class Theme
 			wp_enqueue_script('comment-reply');
 		}
 	}
+
+	public function getSettings()
+	{
+		if (!empty($this->settings)) {
+			return $this->settings;
+		}
+
+		$path = trailingslashit($this->Package->Assets->theme_path) . 'assets/settings.json';
+		if (!is_file($path)) {
+			return $this->settings;
+		}
+
+		$settings = file_get_contents($path);
+
+		if (is_string($settings) && !empty($settings)) {
+			$this->settings = json_decode($settings, true);
+		}
+
+		return $this->settings;
+	}
+
 	public function removeTypeAttributes($tag)
 	{
 		return preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
