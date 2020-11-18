@@ -24,8 +24,14 @@ class ThemeOptions
 		add_action('acf/init', [ $this, 'page' ], 1);
 		add_action('acf/init', [ $this, 'options' ]);
 		add_action('acf/init', [ $this, 'acfInit' ]);
+		add_action('after_setup_theme', [$this, 'disableEMRNews']);
 	}
-	
+
+	public function disableEMRNews()
+	{
+		update_option('emr_news', true);
+	}
+
 	public function acfInit()
 	{
 		$prefix = sht_theme()->prefix;
