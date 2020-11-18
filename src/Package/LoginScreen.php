@@ -239,7 +239,7 @@ class LoginScreen
 				$blue  = hexdec(substr($hex, 6, 2));
 				break;
 		}
-		$rgba = array( $red, $green, $blue, $alpha );
+		$rgba = [ $red, $green, $blue, $alpha ];
 
 		return 'rgba(' . implode(', ', $rgba) . ')';
 	}
