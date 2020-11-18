@@ -2,10 +2,9 @@
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--line-height: 1.5;
-	--line-height-heading: 1.2;
+	--line-height-small: 1.2;
+	--line-height-heading: var(--line-height-small);
 
-	--color-link: var(--color-primary);
-	--color-link-hover: var(--color-primary-dark);
 	--font-weight-normal: 400;
 
 	--radius: 0;
