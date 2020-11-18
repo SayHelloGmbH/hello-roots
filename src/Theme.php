@@ -211,7 +211,7 @@ class Theme
 			return $this->settings;
 		}
 
-		$path = trailingslashit($this->Package->Assets->theme_path) . 'assets/settings.json';
+		$path = get_template_directory() . '/assets/settings.json';
 		if (!is_file($path)) {
 			return $this->settings;
 		}
