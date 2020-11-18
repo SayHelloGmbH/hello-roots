@@ -9,8 +9,6 @@ namespace SayHello\Theme\Package;
  */
 class Gutenberg
 {
-	public $theme_url = '';
-	public $theme_path = '';
 	public $min = false;
 	public $js = false;
 	public $admin_font_url = false;
@@ -26,19 +24,17 @@ class Gutenberg
 
 	public function __construct()
 	{
-		$this->theme_url  = get_template_directory_uri();
-		$this->theme_path = get_template_directory();
 		if (sht_theme()->debug && is_user_logged_in()) {
 			$this->min = true;
 		}
 
-		if (file_exists($this->theme_path . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
-			$this->js = $this->theme_url . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
+		if (file_exists(get_template_directory() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
+			$this->js = get_template_directory_uri() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
 		}
 
-		if (file_exists($this->theme_path . '/assets/fonts/fonts-woff2.css')) {
-			$this->admin_font_path = $this->theme_path . '/assets/fonts/fonts-woff2.css';
-			$this->admin_font_url = $this->theme_url . '/assets/fonts/fonts-woff2.css';
+		if (file_exists(get_template_directory() . '/assets/fonts/fonts-woff2.css')) {
+			$this->admin_font_path = get_template_directory() . '/assets/fonts/fonts-woff2.css';
+			$this->admin_font_url = get_template_directory_uri() . '/assets/fonts/fonts-woff2.css';
 		}
 	}
 
