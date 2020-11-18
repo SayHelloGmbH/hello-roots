@@ -1,0 +1,150 @@
+:root {
+	// Variables for Gravity Forms. Comment in only if plugin in use.
+	--gf-ajaxspinner-borderoff-color: var(--color-gray);
+	--gf-ajaxspinner-borderon-color: var(--color-primary);
+	--gf-ajaxspinner-width: var(---unit-medium);
+	--gf-ajaxspinner-height: var(---unit-medium);
+}
+
+.gform {
+	&_confirmation_message {
+		border: 1px solid var(--color-success-border);
+		background-color: var(--color-success-background);
+		color: var(--color-success);
+		padding: var(--unit);
+	}
+
+	&_fields {
+		margin: 0;
+	}
+
+	&_wrapper {
+		.c-blocks > & {
+			max-width: var(--constraint-narrow);
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.gfield {
+			margin-top: var(--unit);
+			margin-bottom: var(--unit);
+			padding-right: 0 !important;
+			text-indent: 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			@include tablet {
+				display: grid;
+				grid-template-columns: 35% auto;
+				grid-column-gap: var(--unit);
+			}
+
+			&::before {
+				display: none;
+			}
+
+			&_description {
+				@include tablet {
+					@supports (display: grid) {
+						grid-column: 2/3;
+					}
+				}
+			}
+
+			&_error {
+				input,
+				select,
+				textarea {
+					border-color: var(--color-danger-border);
+					outline-color: var(--color-danger-border);
+				}
+			}
+
+			&_label {
+				font-weight: var(--font-weight-normal) !important;
+				padding-top: calc(var(--unit) * .8125);
+			}
+
+			&_required {
+				color: var(--color-danger);
+			}
+
+			&--checkbox,
+			&--radio {
+				grid-template-rows: 1fr;
+				align-items: center;
+
+				.gfield_label {
+					padding: 0;
+				}
+
+				.ginput_container {
+					margin-top: var(--unit-xsmall) !important;
+				}
+
+				li label {
+					margin-left: 0;
+				}
+			}
+
+			&--textarea {
+				.gfield_label {
+					padding-top: var(--unit);
+				}
+			}
+		}
+
+		.gform {
+			&_footer {
+				margin-top: var(--unit);
+				padding-left: calc(35% + var(--unit));
+			}
+
+			&_heading {
+				display: none;
+				margin: 0;
+			}
+
+		}
+
+		.ginput_container {
+			@include tablet {
+				@supports(display: grid) {
+					grid-row: 1/4;
+					grid-column: 2/3;
+				}
+			}
+		}
+
+		.validation_error,
+		.validation_message {
+			color: var(--color-danger);
+		}
+
+		.validation_message {
+			grid-column: 2;
+			font-size: var(--font-size-small);
+			margin: var(--unit-xsmall) 0 0;
+
+		}
+
+	}
+
+	&_ajax_spinner {
+		border: var(--unit-xsmall) solid var(--gf-ajaxspinner-borderoff-color);
+		border-left: var(--unit-xsmall) solid var(--gf-ajaxspinner-borderon-color);
+		animation: gf_ajaxspinner 1.1s infinite linear;
+		border-radius: 50%;
+		width: var(--gf-ajaxspinner-width);
+		height: var(--gf-ajaxspinner-height);
+		margin-left: var(--unit);
+		padding: 0;
+	}
+
+}
