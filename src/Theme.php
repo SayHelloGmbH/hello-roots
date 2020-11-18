@@ -100,6 +100,9 @@ class Theme
 		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 		add_action('comment_form_before', [$this, 'enqueueReplyScript']);
 
+		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
+		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
+
 		add_action('wp_head', [ $this, 'noJsScript' ]);
 		add_action('wp_head', [ $this, 'setResolutionCookie' ]);
 		add_action('wp_head', [ $this, 'humansTxt' ]);
@@ -234,5 +237,9 @@ class Theme
 		if (is_singular() && get_option('thread_comments')) {
 			wp_enqueue_script('comment-reply');
 		}
+	}
+	public function removeTypeAttributes($tag)
+	{
+		return preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
 	}
 }
