@@ -55,6 +55,14 @@ class Theme
 
 	private $theme;
 
+	/**
+	 * Will be filled with the json decoded contents of assets/settings.json
+	 * but ONLY when it is requested through the getSettings function in
+	 * this class. THIS IS A PRIVATE VARIABLE - get it using sht_theme()->getSettings()
+	 * @var array
+	 */
+	private $settings = [];
+
 	public function __construct()
 	{
 		$this->theme = wp_get_theme();
@@ -150,6 +158,26 @@ class Theme
 				sht_theme()->{$class_set}->{$class_short}->run();
 			}
 		}
+	}
+
+	public function getSettings()
+	{
+		if (!empty($this->settings)) {
+			return $this->settings;
+		}
+
+		$path = trailingslashit($this->Package->Assets->theme_path) . 'assets/settings.json';
+		if (!is_file($path)) {
+			return $this->settings;
+		}
+
+		$settings = file_get_contents($path);
+
+		if (is_string($settings) && !empty($settings)) {
+			$this->settings = json_decode($settings, true);
+		}
+
+		return $this->settings;
 	}
 
 	/**
