@@ -8,7 +8,7 @@
 		display: none;
 		font-size: var(--font-size-small);
 
-		@include laptop {
+		@include breakpoint(laptop) {
 			display: block;
 		}
 
@@ -19,7 +19,7 @@
 
 	&__entries {
 		&--primary {
-			@include laptop {
+			@include breakpoint(laptop) {
 				@include flex-row;
 			}
 		}
@@ -30,7 +30,7 @@
 			padding-left: var(--unit);
 			padding-right: var(--unit);
 			max-width: var(--constraint-narrow);
-			@include tablet {
+			@include breakpoint(tablet) {
 				padding-left: 0;
 				padding-right: 0;
 			}

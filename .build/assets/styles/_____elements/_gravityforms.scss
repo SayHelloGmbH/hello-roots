@@ -39,7 +39,7 @@
 				margin-bottom: 0;
 			}
 
-			@include tablet {
+			@include breakpoint(tablet) {
 				display: grid;
 				grid-template-columns: 35% auto;
 				grid-column-gap: var(--unit);
@@ -50,7 +50,7 @@
 			}
 
 			&_description {
-				@include tablet {
+				@include breakpoint(tablet) {
 					@supports (display: grid) {
 						grid-column: 2/3;
 					}
@@ -114,7 +114,7 @@
 		}
 
 		.ginput_container {
-			@include tablet {
+			@include breakpoint(tablet) {
 				@supports(display: grid) {
 					grid-row: 1/4;
 					grid-column: 2/3;

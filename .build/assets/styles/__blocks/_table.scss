@@ -2,7 +2,7 @@
 
 	&.alignleft,
 	&.alignright {
-		@include tablet {
+		@include breakpoint(tablet) {
 			max-width: 75%;
 		}
 	}

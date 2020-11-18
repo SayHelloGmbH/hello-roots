@@ -22,7 +22,7 @@ html {
 				margin-top: var(--c-adminbar-height);
 			}
 		}
-		@include desktop {
+		@include breakpoint(desktop) {
 			overflow-y: auto;
 			position: static;
 			height: auto;

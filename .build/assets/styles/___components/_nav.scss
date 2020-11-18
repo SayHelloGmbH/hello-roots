@@ -10,7 +10,7 @@
 		z-index: 2;
 		width: 100vw;
 		transition: opacity 300ms ease;
-		@include laptop {
+		@include breakpoint(laptop) {
 			display: none;
 		}
 

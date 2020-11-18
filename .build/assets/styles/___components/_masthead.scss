@@ -1,13 +1,13 @@
 :root {
 	--c-masthead-height: #{rem-calc(85px)};
-	@include laptop {
+	@include breakpoint(laptop) {
 		--c-masthead-height: #{rem-calc(104px)};
 	}
 }
 
 .c-masthead {
 	&__toggler {
-		@include laptop {
+		@include breakpoint(laptop) {
 			display: none;
 		}
 	}
@@ -21,12 +21,12 @@
 		margin-right: auto;
 		padding: var(--unit-medium) var(--unit);
 
-		@include narrow {
+		@include breakpoint(narrow) {
 			padding-left: 0;
 			padding-right: 0;
 		}
 
-		@include laptop {
+		@include breakpoint(laptop) {
 			max-width: var(--constraint-medium);
 		}
 	}

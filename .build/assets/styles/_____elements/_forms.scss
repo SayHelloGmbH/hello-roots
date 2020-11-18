@@ -57,7 +57,7 @@ input {
 		width: 100%;
 
 		&.medium {
-			@include tablet {
+			@include breakpoint(tablet) {
 				width: calc(50% - var(--unit));
 			}
 		}
@@ -136,7 +136,7 @@ textarea {
 	width: 100%;
 
 	&.medium {
-		@include tablet {
+		@include breakpoint(tablet) {
 			width: calc(50% - var(--unit));
 		}
 	}

@@ -6,7 +6,7 @@
 	padding-left: var(--unit);
 	padding-right: var(--unit);
 
-	@include tablet {
+	@include breakpoint(tablet) {
 		padding-left: 0;
 		padding-right: 0;
 	}
