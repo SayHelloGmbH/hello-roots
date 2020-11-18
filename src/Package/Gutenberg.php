@@ -86,35 +86,25 @@ class Gutenberg
 	 */
 	public function colorPalette()
 	{
-		add_theme_support('disable-custom-colors');
+		$settings = sht_theme()->getSettings();
 
-		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
-		if (!is_file($path)) {
-			return false;
-		}
+		if (isset($settings['gutenberg_colors'])) {
+			$colors = [];
 
-		$settings = file_get_contents($path);
-
-		if (is_string($settings) && !empty($settings)) {
-			$settings = json_decode($settings, true);
-			if (isset($settings['gutenberg_colors'])) {
-				$colors = [];
-
-				foreach ($settings['gutenberg_colors'] as $color_key => $color) {
-					foreach ($color as $variation_key => $variation) {
-						$colors[] = [
-							'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
-							'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
-							'color' => $color[$variation_key]
-						];
-					}
+			foreach ($settings['gutenberg_colors'] as $color_key => $color) {
+				foreach ($color as $variation_key => $variation) {
+					$colors[] = [
+						'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
+						'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
+						'color' => $color[$variation_key]
+					];
 				}
+			}
 
-				if (!empty($colors)) {
-					add_theme_support('editor-color-palette', $colors);
-					foreach ($colors as $color) {
-						$this->colors[sanitize_title($color['slug'])] = $color;
-					}
+			if (!empty($colors)) {
+				add_theme_support('editor-color-palette', $colors);
+				foreach ($colors as $color) {
+					$this->colors[sanitize_title($color['slug'])] = $color;
 				}
 			}
 		}
