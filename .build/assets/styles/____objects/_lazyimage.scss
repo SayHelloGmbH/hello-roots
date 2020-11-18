@@ -1,3 +1,8 @@
+:root {
+	--o-lazyimage-transition-duration: 350ms;
+	--o-lazyimage-preview-opacity: .5;
+}
+
 .o-lazyimage {
 	display: inline-block;
 	position: relative;
@@ -7,6 +12,7 @@
 		position: relative;
 		opacity: 0;
 		@include transition(opacity);
+		transition-duration: var(--o-lazyimage-transition-duration);
 
 		&--lazyloaded {
 			opacity: 1;
@@ -26,6 +32,8 @@
 		top: 0;
 		width: 100%;
 		@include transition(opacity);
+		transition-duration: var(--o-lazyimage-transition-duration);
+		opacity: var(--o-lazyimage-preview-opacity);
 	}
 
 	&--background {
