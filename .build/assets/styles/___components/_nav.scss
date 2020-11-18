@@ -11,10 +11,10 @@
 		width: 100vw;
 		transition: opacity 300ms ease;
 		@include laptop {
-			// display: none;
+			display: none;
 		}
 
-		&[aria-expanded="true"] {
+		&[aria-hidden="false"] {
 			transform: translateX(0);
 			opacity: 1;
 		}
