@@ -27,6 +27,7 @@ class Assets
 		add_action('admin_enqueue_scripts', [ $this, 'registerAdminAssets' ]);
 		add_action('admin_init', [ $this, 'editorStyle' ]);
 		add_action('wp_head', [ $this, 'loadFonts' ]);
+		add_action('wp_footer', [ $this, 'loadSvgFilter' ]);
 	}
 
 	public function registerAssets()
