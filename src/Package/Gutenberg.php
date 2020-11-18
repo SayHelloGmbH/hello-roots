@@ -53,6 +53,7 @@ class Gutenberg
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
+		add_action('init', [$this, 'addBlockPatternCategory']);
 
 		add_filter('admin_body_class', [$this, 'extendAdminBodyClass']);
 		add_action('admin_menu', [$this, 'reusableBlocksAdminMenu']);
@@ -232,5 +233,12 @@ class Gutenberg
 			$classes .= ' post-type-'.$post->post_type.' post-type-'.$post->post_type.'--'.$post->post_name;
 		}
 		return $classes;
+	}
+
+	public function addBlockPatternCategory()
+	{
+		if (function_exists('register_block_pattern_category')) {
+			register_block_pattern_category('sht-block-patterns', [ 'label' => __('Say Hello', 'sht') ]);
+		}
 	}
 }
