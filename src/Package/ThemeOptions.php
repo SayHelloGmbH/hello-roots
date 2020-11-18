@@ -63,116 +63,78 @@ class ThemeOptions
 		if (function_exists('acf_add_local_field_group')) {
 			$prefix = sht_theme()->prefix;
 
-			acf_add_local_field_group(
-				[
-					'key'      => "{$prefix}-contact-group",
-					'title'    => __('Kontakt', 'sha'),
-					'fields'   => [
-						[
-							'key'   => "field_{$prefix}-contact-tel",
-							'name'  => "{$prefix}-contact-tel",
-							'label' => __('Telefon', 'sha'),
-							'type'  => 'text',
+			acf_add_local_field_group([
+				'key' => "{$prefix}-options-group",
+				'title' => 'Theme Options',
+				'fields' => [
+					[
+						'key' => "{$prefix}-maps-api-key",
+						'label' => 'Google Maps API Key',
+						'key' => "{$prefix}-maps-api-key",
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => [
+							'width' => '',
+							'class' => '',
+							'id' => '',
 						],
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					],
+				],
+				'location'   => [
+					[
 						[
-							'key'   => "field_{$prefix}-contact-fax",
-							'name'  => "{$prefix}-contact-fax",
-							'label' => __('Fax', 'sha'),
-							'type'  => 'text',
-						],
-						[
-							'key'   => "field_{$prefix}-contact-email",
-							'name'  => "{$prefix}-contact-email",
-							'label' => __('E-Mail-Adresse', 'sha'),
-							'type'  => 'email',
-						],
-						[
-							'key'   => "field_{$prefix}-contact-name",
-							'name'  => "{$prefix}-contact-name",
-							'label' => __('Name', 'sha'),
-							'type'  => 'text',
-						],
-						[
-							'key'     => "field_{$prefix}-contact-street",
-							'name'    => "{$prefix}-contact-street",
-							'label'   => __('Strasse', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 70,
-							],
-						],
-						[
-							'key'     => "field_{$prefix}-contact-number",
-							'name'    => "{$prefix}-contact-number",
-							'label'   => __('Nummer', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 30,
-							],
-						],
-						[
-							'key'     => "field_{$prefix}-contact-zip",
-							'name'    => "{$prefix}-contact-zip",
-							'label'   => __('PLZ', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 30,
-							],
-						],
-						[
-							'key'     => "field_{$prefix}-contact-city",
-							'name'    => "{$prefix}-contact-city",
-							'label'   => __('Ort', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 70,
-							],
-						],
-						[
-							'key'     => "field_{$prefix}-contact-state",
-							'name'    => "{$prefix}-contact-state",
-							'label'   => __('Kanton', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 50,
-							],
-						],
-						[
-							'key'     => "field_{$prefix}-contact-country",
-							'name'    => "{$prefix}-contact-country",
-							'label'   => __('Land', 'sha'),
-							'type'    => 'text',
-							'wrapper' => [
-								'width' => 50,
-							],
+							'param'    => 'options_page',
+							'operator' => '==',
+							'value'    => $this->main_slug,
 						],
 					],
-					'location' => [
+				],
+				'menu_order' => 10,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			]);
+
+			// We can't use is_plugin_active() here because
+			// that function hasn't been defined when this
+			// code is being called.
+			if (in_array('block-areas/block-areas.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+				acf_add_local_field_group([
+					'key' => "{$prefix}-blockarea-group",
+					'title' => 'Inhaltsbereiche',
+					'fields' => [
 						[
-							[
-								'param'    => 'options_page',
-								'operator' => '==',
-								'value'    => $this->main_slug,
+							'key' => "{$prefix}-blockarea-footer",
+							'label' => 'Footer Block Area',
+							'name' => "{$prefix}-blockarea-footer",
+							'type' => 'post_object',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => [
+								'width' => '',
+								'class' => '',
+								'id' => '',
 							],
-						],
-					],
-				]
-			);
-
-			/**
-			 * Analytics
-			 */
-
-			acf_add_local_field_group(
-				[
-					'key'        => "{$prefix}-analytics-group",
-					'title'      => __('Analytics Tracking', 'sha'),
-					'fields'     => [
-						[
-							'key'   => "field_{$prefix}-analytics-track-id",
-							'name'  => "{$prefix}-analytics-track-id",
-							'label' => __('Google Analytics / Tag Manager ID', 'sha'),
-							'type'  => 'text',
+							'post_type' => [
+								0 => 'block_area',
+							],
+							'taxonomy' => '',
+							'allow_null' => 0,
+							'multiple' => 0,
+							'return_format' => 'object',
+							'ui' => 1,
 						],
 					],
 					'location'   => [
@@ -184,222 +146,16 @@ class ThemeOptions
 							],
 						],
 					],
-					'menu_order' => 50,
-				]
-			);
-		}
-	}
-
-	/**
-	 * return theme options with schema itemprops
-	 *
-	 * @param $args array of options to display. you can set just the option name or define an option array like $itemprops
-	 * @param $return set to false to return array of data, if true echo html
-	 * @param $container set to true to add container with itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"
-	 * @param $base_class set to true to use classes. you can specify your BEM class base as string
-	 *
-	 * @example return all options as array sht_theme()->Package->ThemeOptions->get( );
-	 * @example return tel option as array sht_theme()->Package->ThemeOptions->get( [ 'tel' ] );
-	 * @example echo all options with container sht_theme()->ThemeOptions->get( [], true, true );
-	 */
-
-	public function get($args = [], $return = false, $container = false, $base_class = false)
-	{
-
-		// if $args is string, set string to first item of $args
-		if ('string' == gettype($args)) {
-			$args = [ $args ];
-		}
-
-		// defualt $base_class if $base_class = true
-		if ($base_class && 'string' != gettype($base_class)) {
-			$base_class = 'address';
-		}
-
-		// if $args is not an array return
-		if (! is_array($args)) {
-			return;
-		}
-
-		// default setup for themeoptions
-		$itemprops = [
-			'tel'     => [
-				'prop' => 'telephone',
-				'elem' => 'a',
-				'attr' => [ 'href="tel:{value}"' ],
-			],
-			'fax'     => [
-				'prop' => 'faxNumber',
-				'elem' => 'a',
-				'attr' => [ 'href="fax:{value}"' ],
-			],
-			'email'   => [
-				'prop' => 'email',
-				'elem' => 'a',
-				'attr' => [ 'href="mailto:{value}"' ],
-			],
-			'name'    => [
-				'prop' => 'name',
-				'elem' => 'span',
-				'attr' => false,
-			],
-			// street includes street number
-			'street'  => [
-				'prop' => 'streetAddress',
-				'elem' => 'span',
-				'attr' => false,
-			],
-			'zip'     => [
-				'prop' => 'postalCode',
-				'elem' => 'span',
-				'attr' => false,
-			],
-			'city'    => [
-				'prop' => 'addressLocality',
-				'elem' => 'span',
-				'attr' => false,
-			],
-			'state'   => [
-				'prop' => 'addressRegion',
-				'elem' => 'span',
-				'attr' => false,
-			],
-			'country' => [
-				'prop' => 'addressCountry',
-				'elem' => 'span',
-				'attr' => false,
-			],
-		];
-
-		$output    = [];
-		$field_key = 'field_' . sht_theme()->prefix . '-contact-';
-
-		foreach ($itemprops as $key => $itemprop) {
-			// add all options or just the one in $args
-			if (empty($args) || in_array($key, $args)) {
-				$prop  = isset($args[ $key ][ 'prop' ]) ? $args[ $key ][ 'prop' ] : $itemprops[ $key ][ 'prop' ];
-				$elem  = isset($args[ $key ][ 'elem' ]) ? $args[ $key ][ 'elem' ] : $itemprops[ $key ][ 'elem' ];
-				$attr  = isset($args[ $key ][ 'attr' ]) ? $args[ $key ][ 'attr' ] : $itemprops[ $key ][ 'attr' ];
-				$value = (! empty(get_field($field_key . $key, 'option'))) ? get_field($field_key . $key, 'option') : false;
-
-				// if is street add number if exists
-				if ('street' == $key) {
-					$value = (! empty(get_field($field_key . 'number', 'option'))) ? $value . ' ' . get_field($field_key . 'number', 'option') : $value;
-				}
-
-				// if $attr is string, set string to first item of $attr
-				if ('string' == gettype($attr)) {
-					$attr = [ $attr ];
-				}
-
-				// // if classes are enabled, check $string and generate BEM class
-				if ($base_class) {
-					// generate the bem class for the current item
-					$bem_class = $base_class . '__' . $key;
-
-					if (is_array($attr)) {
-						foreach ($attr as $name => $string) {
-							//check if $string contains 'class'
-							if (strpos($string, 'class') !== false) {
-								preg_match_all('/"(.*?)"/', $string, $matches);
-
-								// get value in class=""
-								if (! empty($matches[ 1 ])) {
-									unset($attr[ $name ]);
-									$bem_class .= ' ' . $matches[ 1 ][ 0 ];
-								}
-
-								// remove class attribute in array
-								unset($matches);
-							}
-						}
-
-						// push new class attribute to array
-						array_push($attr, 'class="' . $bem_class . '"');
-					} else {
-						// set class attribute in array
-						$attr = [ 'class="' . $bem_class . '"' ];
-					}
-				}
-
-				if (! empty($value) && ! empty($elem)) {
-					// check if this items of $attr has value in curly braces
-					if (is_array($attr)) {
-						foreach ($attr as $name => $string) {
-							//var_dump( $value );
-							preg_match_all('/{(.*?)}/', $string, $matches);
-
-							// if has value in curly braces
-							if (! empty($matches[ 1 ])) {
-								// what to do for matches matching
-								switch ($matches[ 1 ][ 0 ]) {
-									case 'value':
-										$replace = str_replace('{' . $matches[ 1 ][ 0 ] . '}', $value, $attr[ $name ]);
-										//var_dump( $replace );
-										break;
-								}
-
-								// replace value from attr item
-								if (! empty($replace)) {
-									$attr[ $name ] = $replace;
-								}
-							}
-						}
-					}
-
-					$html = '<' . $elem . ' itemprop="' . $prop . '" ';
-					if (! empty($attr)) {
-						$html .= implode(' ', $attr) . ' ';
-					}
-					$html .= '>' . $value . '</' . $elem . '>';
-
-					$output[ $key ] = [
-						'prop'  => ($prop) ? $prop : $itemprop[ 'prop' ],
-						'elem'  => ($elem) ? $elem : $itemprop[ 'elem' ],
-						'attr'  => ($attr) ? $attr : $itemprop[ 'attr' ],
-						'value' => $value,
-						'html'  => $html,
-					];
-				}
+					'menu_order' => 5,
+					'position' => 'normal',
+					'style' => 'default',
+					'label_placement' => 'top',
+					'instruction_placement' => 'label',
+					'hide_on_screen' => '',
+					'active' => true,
+					'description' => '',
+				]);
 			}
-		}
-
-		//if $return is false return data
-		if (! $return) {
-			if (1 == sizeof($output)) {
-				// returns the first elemen of array regardless of key
-				return reset($output);
-			} else {
-				return $output;
-			}
-		}
-
-		switch ($return) {
-			default:
-				// if $container is set to true, start with wrapper
-
-				// generate class string
-				if ($base_class) {
-					$class = 'class="' . $base_class . '"';
-				} else {
-					$class = '';
-				}
-
-				// QUESTION: this container is hardcoded. should it be customizable?
-				$html_output = ($container) ? '<address ' . $class . ' itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">' : '';
-
-				foreach ($output as $key => $value) {
-					$html_output .= $value[ 'html' ];
-				}
-
-				// if $container is set to true, end with wrapper
-				if ($container) {
-					$html_output .= '</address>';
-				}
-
-				echo $html_output;
-
-				break;
 		}
 	}
 }
