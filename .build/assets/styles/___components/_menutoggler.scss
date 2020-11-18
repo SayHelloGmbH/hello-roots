@@ -1,6 +1,6 @@
 .c-menutoggler {
 	display: none;
-	@include desktop {
+	@include breakpoint(desktop) {
 		display: block;
 	}
 	height: 3rem;

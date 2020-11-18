@@ -1,10 +1,19 @@
 :root {
 	--checkbox-size: calc(var(--unit) * 1.5);
 	--checkbox-size-small: var(--unit); // used in other SCSS files, not here
+	--field-border: 1px solid var(--color-gray);
+	--field-radius: var(--radius);
+	--checkbox-radius: #{rem-calc(2px)};
+	--checkbox-background-color: var(--color-white);
+	--checkbox-checked-background-color: var(--color-primary);
+	--checkbox-checked-border-color: var(--color-primary);
+	--field-radius: var(--radius);
+	--field-placeholder-color: var(--color-gray);
+	--field-border-focus-color: var(--color-primary);
 }
 
 ::placeholder {
-	color: c(gray, mid);
+	color: var(--field-placeholder-color);
 }
 
 form {
@@ -41,20 +50,25 @@ input {
 	&[type=url],
 	&[type=week] {
 		-webkit-appearance: none; // remove inner shadow
-		border: 1px solid c(gray, mid);
-		border-radius: var(--radius);
+		border: var(--field-border);
+		border-radius: var(--field-radius);
 		padding: var(--unit-small);
 		display: block;
 		width: 100%;
 
 		&.medium {
-			@include tablet {
+			@include breakpoint(tablet) {
 				width: calc(50% - var(--unit));
 			}
 		}
 
 		&.small {
 			width: calc(25% - var(--unit));
+		}
+
+		&:focus {
+			outline: none;
+			border-color: var(--field-border-focus-color);
 		}
 	}
 }
@@ -84,10 +98,10 @@ input {
 			flex: 0 0 var(--checkbox-size);
 			margin-right: .5em;
 			background: url('../img/icons/checkbox-active.min.svg') center no-repeat;
-			background-color: c(white);
+			background-color: var(--checkbox-background-color);
 			background-size: 0;
-			border: 1px solid c(gray, mid);
-			border-radius: 2px;
+			border: var(--field-border);
+			border-radius: var(--checkbox-radius);
 			vertical-align: baseline;
 		}
 
@@ -98,14 +112,14 @@ input {
 	}
 
 	&:checked ~ label:before {
-		background-color: c(primary);
-		border-color: c(primary);
+		background-color: var(--checkbox-checked-background-color);
+		border-color: var(--checkbox-checked-border-color);
 		background-size: contain;
 	}
 }
 
 [type="checkbox"] ~ label:before {
-	border-radius: var(--radius);
+	border-radius: var(--checkbox-radius);
 }
 
 [type="radio"] ~ label:before {
@@ -115,14 +129,14 @@ input {
 textarea {
 	-webkit-appearance: none; // remove inner shadow
 	resize: vertical;
-	border: 1px solid c(gray, mid);
-	border-radius: var(--radius);
+	border: var(--field-border);
+	border-radius: var(--field-radius);
 	padding: var(--unit-small);
 	display: block;
 	width: 100%;
 
 	&.medium {
-		@include tablet {
+		@include breakpoint(tablet) {
 			width: calc(50% - var(--unit));
 		}
 	}
@@ -130,159 +144,19 @@ textarea {
 	&.small {
 		width: calc(25% - var(--unit));
 	}
-}
 
-.gform {
-	&_confirmation_message {
-		border: 1px solid c(success, border);
-		background-color: c(success, background);
-		color: c(success);
-		padding: var(--unit);
+	&:focus {
+		outline: none;
+		border-color: var(--field-border-focus-color);
 	}
-
-	&_fields {
-		margin: 0;
-	}
-
-	&_wrapper {
-		li {
-			text-indent: 0;
-
-			&::before {
-				display: none;
-			}
-		}
-
-		.gfield {
-			margin-top: var(--unit);
-			margin-bottom: var(--unit);
-			padding-right: 0 !important;
-			text-indent: 0;
-
-			&:first-child {
-				margin-top: 0;
-			}
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-
-			@include tablet {
-				display: grid;
-				grid-template-columns: 35% auto;
-				grid-column-gap: var(--unit);
-			}
-
-			&::before {
-				display: none;
-			}
-
-			&_description {
-				@include tablet {
-					@supports (display: grid) {
-						grid-column: 2/3;
-					}
-				}
-			}
-
-			&_error {
-				input,
-				select,
-				textarea {
-					border-color: c(danger, border);
-					outline-color: c(danger, border);
-				}
-			}
-
-			&_label {
-				font-weight: var(--font-regular) !important;
-				padding-top: calc(var(--unit) * .8125);
-			}
-
-			&_required {
-				color: c(danger);
-			}
-
-			&--checkbox,
-			&--radio {
-				grid-template-rows: 1fr;
-				align-items: center;
-
-				.gfield_label {
-					padding: 0;
-				}
-
-				.ginput_container {
-					margin-top: var(--unit-xsmall) !important;
-				}
-
-				li label {
-					margin-left: 0;
-				}
-			}
-
-			&--textarea {
-				.gfield_label {
-					padding-top: var(--unit);
-				}
-			}
-		}
-
-		.gform {
-			&_footer {
-				margin-top: var(--unit);
-				padding-left: calc(35% + var(--unit));
-			}
-
-			&_heading {
-				display: none;
-				margin: 0;
-			}
-
-		}
-
-		.ginput_container {
-			@include tablet {
-				@supports(display: grid) {
-					grid-row: 1/4;
-					grid-column: 2/3;
-				}
-			}
-		}
-
-		.validation_error,
-		.validation_message {
-			color: c(danger);
-		}
-
-		.validation_message {
-			grid-column: 2;
-			font-size: var(--font-size-small);
-			margin: var(--unit-xsmall) 0 0;
-
-		}
-
-	}
-
-	&_ajax_spinner {
-		border: var(--unit-xsmall) solid c(gray, mid);
-		border-left: var(--unit-xsmall) solid c(primary);
-		animation: gf_ajaxspinner 1.1s infinite linear;
-		border-radius: 50%;
-		width: var(--unit-medium);
-		height: var(--unit-medium);
-		margin-left: var(--unit);
-		padding: 0;
-	}
-
 }
 
 label.error {
-	color: c(danger);
+	color: var(--color-danger);
 	font-size: var(--font-size-small);
 }
 
 .input.error {
-	border-color: c(danger, border);
-	outline-color: c(danger, border);
+	border-color: var(--color-danger-border);
+	outline-color: var(--color-danger-border);
 }

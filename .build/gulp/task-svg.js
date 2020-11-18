@@ -9,7 +9,11 @@ export const task = config => {
 			config.assetsDir + '**/*.svg',
 			'!' + config.assetsDir + '**/*.min.svg'
 		])
-		.pipe(svgmin())
+		.pipe(svgmin({
+			plugins: [{
+				removeViewBox: false
+			}]
+		}))
 		.pipe(rename({
 			suffix: '.min'
 		}))

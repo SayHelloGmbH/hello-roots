@@ -21,10 +21,3 @@ export const c = (mycolor, tone = 'base') => {
 export const is_mobile = () => {
 	return (verge.viewportW() <= settings.breakpoints['tablet']);
 };
-
-const themeObject = settings;
-for(const attrname in ThemeJSVars) {
-	themeObject[attrname] = ThemeJSVars[attrname];
-}
-
-export const theme = themeObject;

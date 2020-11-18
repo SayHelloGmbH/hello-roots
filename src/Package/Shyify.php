@@ -14,9 +14,10 @@ class Shyify
 
 	public function run()
 	{
-		add_filter('the_title', [$this, 'addSoftBreaks']);
+		add_filter('the_title', [$this, 'shyifyHTML']);
 		add_filter('the_content', [$this, 'addSoftBreaks']);
 		add_filter('document_title_parts', [$this, 'shyifyTitleTag']);
+		add_filter('wp_nav_menu_items', [$this, 'shyifyHTML']);
 		add_filter('wpseo_title', [$this, 'shyifyYoastTitle'], 100);
 	}
 
@@ -37,8 +38,23 @@ class Shyify
 	 */
 	public function shyifyTitleTag($titleparts)
 	{
-		$titleparts['title'] = $this->addSoftBreaks($titleparts['title']);
+		if (!is_admin()) {
+			$titleparts['title'] = $this->addSoftBreaks($titleparts['title']);
+		}
 		return $titleparts;
+	}
+
+	/**
+	 * Remove tilde character - used for shyifying page or post titles - from the <TITLE> tag
+	 * @param  array $titleparts The parts of the page title
+	 * @return array             The potentially modified parts of the page title
+	 */
+	public function shyifyHTML($html)
+	{
+		if (!is_admin()) {
+			$html = $this->addSoftBreaks($html);
+		}
+		return $html;
 	}
 
 	/**

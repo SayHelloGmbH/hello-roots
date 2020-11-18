@@ -1,1 +1,1 @@
-.editor-post-title__block .editor-post-title__input{font-family:var(--font-heading)}
+.editor-post-title__block .editor-post-title__input{font-family:var(--font-heading)}body.post-type-block_area .editor-post-title__block,body.post-type-page .editor-post-title__block{opacity:.5}body.post-type-block_area .editor-post-title__block::after,body.post-type-page .editor-post-title__block::after{content:'Wird nicht als Inhalt ausgegeben';position:absolute;top:50%;left:-10rem;max-width:9rem;font-family:sans-serif;text-transform:uppercase;font-size:small;transform:translateY(-50%)}

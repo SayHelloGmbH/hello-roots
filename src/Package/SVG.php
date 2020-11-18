@@ -20,9 +20,9 @@ class SVG
 	 */
 	public function run()
 	{
-		add_filter('upload_mimes', array( $this, 'allowSvgUpload' ));
-		add_filter('wp_handle_upload_prefilter', array( $this, 'sanitizeSvg' ));
-		add_action('admin_enqueue_scripts', array( $this, 'addSvgStyles' ));
+		add_filter('upload_mimes', [ $this, 'allowSvgUpload' ]);
+		add_filter('wp_handle_upload_prefilter', [ $this, 'sanitizeSvg' ]);
+		add_action('admin_enqueue_scripts', [ $this, 'addSvgStyles' ]);
 		add_filter('wp_get_attachment_image_src', [ $this, 'fixWpGetAttachmentImageSvg' ], 10, 3);
 	}
 
@@ -68,7 +68,7 @@ class SVG
 			$sanitizedSvg = $sanitizer->sanitize($dirtySVG);
 
 			global $wp_filesystem;
-			$credentials = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, array());
+			$credentials = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, []);
 			if (! WP_Filesystem($credentials)) {
 				request_filesystem_credentials(site_url() . '/wp-admin/', '', true, false, null);
 			}

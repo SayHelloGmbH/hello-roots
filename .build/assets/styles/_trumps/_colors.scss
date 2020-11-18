@@ -1,4 +1,10 @@
 :root {
+	--color-link: var(--color-primary);
+	--color-link-hover: var(--color-primary-dark);
+
+	// This is needed by Core for some reason
+	--wp--style--color--link: var(--color-link);
+
 	@each $colour, $colourSet in $theme_colors {
 		@each $variant, $value in $colourSet {
 			@if $variant == 'base' {

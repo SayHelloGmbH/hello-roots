@@ -1,5 +1,5 @@
 .wp-block-quote {
-	border-left: .25em solid c(gray, mid);
+	border-left: .25em solid var(--color-gray);
 	background-color: c(gray, light);
 	padding: var(--unit);
 	font-style: italic;

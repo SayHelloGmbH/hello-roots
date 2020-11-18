@@ -55,6 +55,14 @@ class Theme
 
 	private $theme;
 
+	/**
+	 * Will be filled with the json decoded contents of assets/settings.json
+	 * but ONLY when it is requested through the getSettings function in
+	 * this class. THIS IS A PRIVATE VARIABLE - get it using sht_theme()->getSettings()
+	 * @var array
+	 */
+	private $settings = [];
+
 	public function __construct()
 	{
 		$this->theme = wp_get_theme();
@@ -65,7 +73,6 @@ class Theme
 		$this->loadClasses(
 			[
 				\SayHello\Theme\Package\Helpers::class,
-				\SayHello\Theme\Package\ACF::class,
 				\SayHello\Theme\Package\Assets::class,
 				\SayHello\Theme\Package\Archives::class,
 				\SayHello\Theme\Package\BodyClass::class,
@@ -81,10 +88,12 @@ class Theme
 				\SayHello\Theme\Package\Sidebars::class,
 				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
-				\SayHello\Theme\Package\View::class,
 
+				\SayHello\Theme\PostType\BlockAreas::class,
 				\SayHello\Theme\PostType\Page::class,
 				\SayHello\Theme\PostType\Post::class,
+
+				\SayHello\Theme\Plugin\ACF::class,
 			]
 		);
 
@@ -92,9 +101,10 @@ class Theme
 		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
 		add_action('comment_form_before', [$this, 'enqueueReplyScript']);
 
+		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
+		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
+
 		add_action('wp_head', [ $this, 'noJsScript' ]);
-		add_action('wp_head', [ $this, 'setResolutionCookie' ]);
-		add_action('wp_head', [ $this, 'humansTxt' ]);
 
 		$this->cleanHead();
 	}
@@ -181,18 +191,6 @@ class Theme
 		remove_action('wp_print_styles', 'print_emoji_styles');
 	}
 
-	public function humansTxt()
-	{
-		echo '<link type="text/plain" rel="author" href="' . trailingslashit(get_template_directory_uri()) . 'humans.txt" />';
-	}
-
-	public function setResolutionCookie()
-	{
-		echo '<script>
-			document.cookie="resolution="+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+"; path=/";
-		</script>';
-	}
-
 	/**
 	 * Adds a JS script to the head that removes 'no-js' from the html class list
 	 */
@@ -206,5 +204,30 @@ class Theme
 		if (is_singular() && get_option('thread_comments')) {
 			wp_enqueue_script('comment-reply');
 		}
+	}
+
+	public function getSettings()
+	{
+		if (!empty($this->settings)) {
+			return $this->settings;
+		}
+
+		$path = get_template_directory() . '/assets/settings.json';
+		if (!is_file($path)) {
+			return $this->settings;
+		}
+
+		$settings = file_get_contents($path);
+
+		if (is_string($settings) && !empty($settings)) {
+			$this->settings = json_decode($settings, true);
+		}
+
+		return $this->settings;
+	}
+
+	public function removeTypeAttributes($tag)
+	{
+		return preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
 	}
 }

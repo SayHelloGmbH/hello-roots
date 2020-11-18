@@ -2,19 +2,18 @@
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	--line-height: 1.5;
-	--line-height-heading: 1.2;
+	--line-height-small: 1.2;
+	--line-height-heading: var(--line-height-small);
 
-	--color-link: var(--color-primary);
-	--color-link-hover: var(--color-primary-dark);
+	--font-weight-normal: 400;
+
+	--radius: 0;
+
+	// Probably not necessary but useful for browser debugging
+	--font-size-rem-base: #{$rem-font-size};
 
 	@each $size, $sizeValues in $font_sizes {
-		$value: map-get($sizeValues, value);
-
-		@if unit($value) == '' {
-			--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value))};
-		} @else {
-			--font-size-#{$size}: #{map-get($sizeValues, value)};
-		}
+		--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value)+0px)};
 	}
 }
 
@@ -53,7 +52,6 @@ cite {
 }
 
 code {
-	// color: c(brown);
 	background-color: c(gray, light);
 	display: inline-block;
 	padding: .0625em .25em;
@@ -85,6 +83,45 @@ figure {
 figcaption {
 	font-size: var(--font-size-small);
 	text-align: center;
+	color: var(--color-gray);
+}
+
+hr {
+	border-style: solid;
+	border-width: 0 0 1px;
+	border-color: var(--wp-block-separator-color);
+}
+
+li {
+	@extend .h-stack;
+}
+
+ol {
+	padding-left: 0;
+	list-style: none;
+	@extend .h-stack--small;
+	counter-reset: item;
+
+	li:before {
+		margin-right: var(--unit-small);
+		content: counters(item, ".") '. ';
+		counter-increment: item;
+	}
+
+	ol {
+		margin-top: var(--unit-small);
+		padding-left: 1.2em;
+	}
+}
+
+ul {
+	padding-left: 1.2em;
+	list-style: revert;
+	@extend .h-stack--small;
+
+	ul {
+		margin-top: var(--unit);
+	}
 }
 
 nav {
@@ -100,6 +137,17 @@ nav {
 	}
 }
 
+p {
+
+	&:empty {
+		display: none;
+	}
+
+	&.has-background {
+		padding: var(--unit);
+	}
+}
+
 q {
 	font-style: italic;
 }
@@ -107,6 +155,7 @@ q {
 sub,
 sup {
 	font-size: var(--font-size-xsmall);
+	-webkit-font-smoothing: subpixel-antialiased;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
@@ -136,12 +185,109 @@ h6 {
 	font-family: var(--font-family-heading);
 	line-height: var(--line-height-heading);
 	margin: 0;
+	word-break: break-word;
 
 	a,
 	a:active,
 	a:hover {
 		text-decoration: none;
 		color: currentColor;
+	}
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h1) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h1) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h1) * 1.4);
+	}
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h2) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h2) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h2) * 1.4);
+	}
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h3) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h3) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h3) * 1.4);
+	}
+}
+
+h4 {
+	font-size: var(--font-size-h4);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h4) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h4) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h4) * 1.4);
+	}
+}
+
+h5 {
+	font-size: var(--font-size-h5);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h5) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h5) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h5) * 1.4);
+	}
+}
+
+h6 {
+	font-size: var(--font-size-h6);
+
+	&.is-style-small-text {
+		font-size: calc(var(--font-size-h6) * 0.9);
+	}
+
+	&.is-style-large-text {
+		font-size: calc(var(--font-size-h6) * 1.2);
+	}
+
+	&.is-style-xlarge-text {
+		font-size: calc(var(--font-size-h6) * 1.4);
 	}
 }
 
@@ -207,15 +353,16 @@ h6 {
 }
 
 @include context-edit {
-	.block-editor-rich-text__editable a {
-		a,
-		button {
-			color: var(--color-link);
+	a {
+		color: var(--color-link);
+	}
 
-			&:active,
-			&:hover {
-				color: var(--color-link-hover);
-			}
+	.block-editor-rich-text__editable a {
+		color: var(--color-link) !important;
+
+		&:active,
+		&:hover {
+			color: var(--color-link-hover) !important;
 		}
 	}
 }

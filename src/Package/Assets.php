@@ -11,14 +11,10 @@ class Assets
 {
 
 	public $font_version = '1.0';
-	public $theme_url = '';
-	public $theme_path = '';
 
 	public function __construct()
 	{
 		$this->font_version = sht_theme()->version;
-		$this->theme_url    = get_template_directory_uri();
-		$this->theme_path   = get_template_directory();
 	}
 
 	public function run()
@@ -27,49 +23,41 @@ class Assets
 		add_action('admin_enqueue_scripts', [ $this, 'registerAdminAssets' ]);
 		add_action('admin_init', [ $this, 'editorStyle' ]);
 		add_action('wp_head', [ $this, 'loadFonts' ]);
+		add_action('wp_footer', [ $this, 'loadSvgFilter' ]);
 	}
 
 	public function registerAssets()
 	{
 
-		if (! is_user_logged_in()) {
+		if (!is_user_logged_in()) {
 			wp_deregister_style('dashicons');
 		}
 
-		$min = !sht_theme()->debug;
-
-		/**
-		 * CSS
-		 */
+		// CSS
 		$deps = ['wp-block-library'];
-		wp_enqueue_style('fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
+		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, filemtime($this->theme_path .'/assets/styles/ui' . ($min ? '.min' : '') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime(get_template_directory() .'/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
-		/**
-		 * Javascript
-		 */
+		// JavaScript
 		$deps = [];
 		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', $this->theme_url . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', false);
+		wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', false);
 		$deps[] = 'jquery';
 
-		if (file_exists($this->theme_path . '/assets/scripts/modernizr/ui-modernizr.min.js')) {
-			wp_enqueue_script('ui-modernizr', $this->theme_url . '/assets/scripts/modernizr/ui-modernizr.min.js', [], filemtime($this->theme_path .'/assets/scripts/modernizr/ui-modernizr.min.js'), true);
-			$deps[] = 'ui-modernizr';
-		}
-
-		wp_enqueue_script('fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true);
+		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true);
 		$deps[] = 'fancybox';
 
-		wp_enqueue_script(sht_theme()->prefix . '-script', $this->theme_url . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js', $deps, filemtime($this->theme_path . '/assets/scripts/ui' . ($min ? '.min' : '') . '.js'), true);
-		wp_localize_script(sht_theme()->prefix . '-script', 'ThemeJSVars', apply_filters('sht_footer_js', [
-			'GeneralError' => sht_theme()->error,
-			'AjaxURL'      => admin_url('admin-ajax.php'),
-			'homeurl'      => get_home_url(),
-			'templateurl'  => get_template_directory_uri(),
-		]));
-		// wp_localize_script(sht_theme()->prefix . '-script', 'wp_api', array(
+		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps, filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+
+		if (function_exists('acf_get_setting')) {
+			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
+				'google_api_key' => acf_get_setting('google_api_key'),
+			]);
+		}
+
+		// Comment in if you need to access the REST API from your scripts
+		// wp_localize_script(sht_theme()->prefix . '-script', 'sht_wp_api', array(
 		// 	'root' => esc_url_raw(rest_url()),
 		// 	'nonce' => wp_create_nonce('wp_rest'),
 		// 	'uid' => get_current_user_id()
@@ -78,20 +66,23 @@ class Assets
 
 	public function registerAdminAssets()
 	{
+		// CSS
+		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
-		if (file_exists($this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js')) {
-			wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/modernizr/admin-modernizr.min.js', [], filemtime($this->theme_path . '/assets/scripts/modernizr/admin-modernizr.min.js'), true);
+		// Javascript
+		wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		if (function_exists('acf_get_setting')) {
+			wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
+				'google_api_key' => acf_get_setting('google_api_key'),
+			]);
 		}
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', $this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], filemtime($this->theme_path . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', $this->theme_url . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime($this->theme_path . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
-
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', $this->theme_url . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], filemtime($this->theme_path . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
 	}
 
 	public function editorStyle()
 	{
-		if (file_exists($this->theme_path . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
-			add_editor_style($this->theme_url . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
+		if (file_exists(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
+			add_editor_style(get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 		}
 	}
 
@@ -143,5 +134,14 @@ class Assets
 		}
 
 		return $settings[ $setting ];
+	}
+
+	public function loadSvgFilter()
+	{
+		ob_start();
+		get_template_part('partials/svg/svg-filter');
+		$html = ob_get_contents();
+		ob_end_clean();
+		echo $html;
 	}
 }

@@ -8,4 +8,23 @@ $context: 'admin';
 	.editor-post-title__block .editor-post-title__input {
 		font-family: var(--font-heading);
 	}
+
+	body.post-type-block_area,
+	body.post-type-page {
+		.editor-post-title__block {
+			opacity: .5;
+
+			&::after {
+				content: 'Wird nicht als Inhalt ausgegeben';
+				position: absolute;
+				top: 50%;
+				left: -10rem;
+				max-width: 9rem;
+				font-family: sans-serif;
+				text-transform: uppercase;
+				font-size: small;
+				transform: translateY(-50%);
+			}
+		}
+	}
 }

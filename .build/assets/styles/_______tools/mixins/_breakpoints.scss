@@ -1,17 +1,9 @@
-@function breakpointPixels($key) {
-	@if unit(map-get($breakpoints, $key)) != '' {
-		@return map-get($breakpoints, $key)+0px;
-	} @else {
-		@return map-get($breakpoints, $key);
-	}
-}
-
 @mixin for-screen-min($name, $sizes: $breakpoints) {
 	$min: device-breakpoints-min($name, $sizes);
 
 	@if type-of($min) == 'number' {
 		@if unit($min) == '' {
-			@media screen and (min-width: ($min/16)+0em) {
+			@media screen and (min-width: ($min/map-get($rem-base, value))+0em) {
 				@content;
 			}
 		} @else {
@@ -29,7 +21,7 @@
 
 	@if type-of($max) == 'number' {
 		@if unit($max) == '' {
-			@media screen and (max-width: ($max/16)+0em) {
+			@media screen and (max-width: ($max/map-get($rem-base, value))+0em) {
 				@content;
 			}
 		} @else {
@@ -50,68 +42,39 @@
 	}
 }
 
-@mixin phone() {
-	@include for-screen-max(tablet) {
-		@content;
-	}
-}
+/**
+ * Use in order to make a set of rules only apply above
+ * or below a certain breakpoint.
+ * Standard usage:
 
-@mixin wordpress_small() {
-	@include for-screen-min(wordpress_small) {
-		@content;
-	}
+@include breakpoint(tablet){
+	// Applies to screen sizes tablet and LARGER
 }
+ *
+ * Alternative
+ *
+ @include breakpoint(tablet down){
+ 	// Applies to screen sizes tablet and SMALLER
+ }
+ *
+ **/
 
-@mixin narrow() {
-	@include for-screen-min(narrow) {
-		@content;
-	}
-}
+@mixin breakpoint($value) {
 
-@mixin tablet() {
-	@include for-screen-min(tablet) {
-		@content;
-	}
-}
+	$direction: if(length($value) > 1, nth($value, 2), up);
+	$name: if(length($value) > 1, nth($value, 1), $value);
 
-@mixin wordpress_medium() {
-	@include for-screen-min(wordpress_medium) {
-		@content;
-	}
-}
-
-@mixin tablet-landscape() {
-	@include for-screen-min(tablet_landscape) {
-		@content;
-	}
-}
-
-@mixin tablet_landscape() {
-	@include for-screen-min(tablet_landscape) {
-		@content;
-	}
-}
-
-@mixin laptop() {
-	@include for-screen-min(laptop) {
-		@content;
-	}
-}
-
-@mixin desktop() {
-	@include for-screen-min(desktop) {
-		@content;
-	}
-}
-
-@mixin wide() {
-	@include for-screen-min(wide) {
-		@content;
-	}
-}
-
-@mixin full() {
-	@include for-screen-min(full) {
-		@content;
+	@if type-of(map-get($breakpoints, $name)) != 'null' {
+		@if $direction == down {
+			@include for-screen-max($name) {
+				@content;
+			}
+		} @else {
+			@include for-screen-min($name) {
+				@content;
+			}
+		}
+	} @else {
+		@debug 'Breakpoint ' + $value + ' not defined';
 	}
 }

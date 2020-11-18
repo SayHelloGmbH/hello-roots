@@ -29,7 +29,7 @@
 		outline: none;
 	}
 
-	@include desktop {
+	@include breakpoint(desktop) {
 		display: none;
 	}
 

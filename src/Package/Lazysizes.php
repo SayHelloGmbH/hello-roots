@@ -4,10 +4,6 @@ namespace SayHello\Theme\Package;
 
 use SayHello\Theme\Vendor\LazyImage;
 
-// use DomDocument;
-// use DOMElement;
-// use DOMXPath;
-
 /**
  * This Class provides advanced media loading possibilities via lazysizes.
  * Please make sure you included https://github.com/aFarkas/lazysizes/ so the images are loaded via JS.
@@ -28,11 +24,9 @@ class Lazysizes
 	public function run()
 	{
 		add_action('wp_head', [$this, 'noscriptCSS'], 50);
-		add_action('sht_after_body_open', [$this, 'svgFilter'], 50000);
 		add_action('wp_enqueue_scripts', [$this, 'addAssets']);
 		add_action('rest_api_init', [$this, 'registerRoute']);
-		add_filter('lazy_sizes_size', [$this, 'customLazySizesBreakpoints'], 10, 0);
-		//add_filter('the_content', [$this, 'makeImageBlocksLazy']); // ask mark - work in progress
+		add_filter('lazy_sizes_size', [$this, 'customLazyBreakpoints'], 10, 0);
 	}
 
 	public function noscriptCSS()
@@ -44,17 +38,6 @@ class Lazysizes
 			}
 		</style>
 		</noscript>';
-	}
-
-	public function svgFilter()
-	{
-		echo '<svg class="o-lazysizes-svgfilter">
-				<filter id="ls-sharp-blur">
-					<feGaussianBlur stdDeviation="10"></feGaussianBlur>
-					<feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0"></feColorMatrix>
-					<feComposite in2="SourceGraphic" operator="in"></feComposite>
-				</filter>
-			</svg>';
 	}
 
 	public function addAssets()
@@ -126,81 +109,16 @@ class Lazysizes
 		]);
 	}
 
-	public function customLazySizesBreakpoints()
+	public function customLazyBreakpoints()
 	{
 		return [
 			'window' => 2560,
-			'page' => 1440,
+			'page' => 1376,
 			'large' => 1280,
-			'medium' => 768,
-			'small' => 320,
+			'medium' => 330,
+			'smallsquare' => 180,
+			'small' => 160,
 		];
 		return $image_object->getImage($background);
 	}
-
-	// public function makeImageBlocksLazy($content)
-	// {
-	// 	if (!has_block('core/image') || empty($content)) {
-	// 		return $content;
-	// 	}
-	// 	libxml_use_internal_errors(true);
-	// 	$domDocument = new DOMDocument();
-	// 	$domDocument->preserveWhiteSpace = false;
-	// 	$domDocument->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
-	// 
-	// 	$xpath = new DOMXpath($domDocument);
-	// 	$blocks = $xpath->query("//figure[contains(concat(' ',normalize-space(@class),' '),' wp-block-image ')]");
-	// 
-	// 	if (!count($blocks)) {
-	// 		return $content;
-	// 	}
-	// 
-	// 	foreach ($blocks as $block) {
-	// 		$figure_class = $block->getAttribute('class');
-	// 		$images = $xpath->query('.//img', $block);
-	// 		if (!$images || !$images[0]) {
-	// 			continue;
-	// 		}
-	// 		$image = $images[0];
-	// 		$image_class = $image->getAttribute('class');
-	// 		preg_match('~wp-image-([0-9]+)~', $image_class, $matches);
-	// 		if (count($matches) === 2) {
-	// 			$image_id = $matches[1];
-	// 			$lazy_image = Lazysizes::getLazyImage($image_id, 'full', '', $image_class);
-	// 
-	// 			$tpl = new DOMDocument;
-	// 			$tpl->loadHTML($lazy_image);
-	// 			$new_figure = $domDocument->importNode($tpl->documentElement->getElementsByTagName('figure')->item(0), true);
-	// 
-	// 			$wrapper = $domDocument->createElement('div');
-	// 			$wrapper->setAttribute('class', $figure_class);
-	// 
-	// 			foreach ($block->childNodes as $child) {
-	// 				if (strtolower($child->tagName) === 'a') {
-	// 					$link = $child->cloneNode(false); // Just the link tag, not its childNodes
-	// 					$images = $xpath->query(".//img[contains(concat(' ',normalize-space(@class),' '),' o-lazyimage__image ')]", $new_figure);
-	// 					foreach ($images as $image) {
-	// 						$link->appendChild($image);
-	// 					}
-	// 					$new_figure->insertBefore($link, $new_figure->firstChild->nextSibling);
-	// 					break;
-	// 				}
-	// 			}
-	// 
-	// 			$wrapper->appendChild($new_figure);
-	// 
-	// 			$figcaption = $xpath->query('.//figcaption', $block);
-	// 			if ((int) $figcaption->length ?? 0) {
-	// 				$new_cap = $figcaption[0]->cloneNode(true);
-	// 				$wrapper->appendChild($new_cap);
-	// 			}
-	// 
-	// 			$block->parentNode->insertBefore($wrapper, $block);
-	// 			$block->parentNode->removeChild($block);
-	// 		}
-	// 	}
-	// 	$body = $domDocument->saveHtml($domDocument->getElementsByTagName('body')->item(0));
-	// 	$content = str_replace([ '<body>', '</body>' ], '', $body);
-	// 	return $content;
-	// }
 }

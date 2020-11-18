@@ -1,37 +1,55 @@
 :root {
-	--color-button-primary-background: #{c(primary)};
-	--color-button-primary-background-hover: #{c(primary, dark)};
-	--color-button-primary-hover: #{c(white)};
-	--color-button-primary: #{c(white)};
+	--button-color-primary: var(--color-white);
+	--button-background-color-primary: var(--color-primary);
+	--button-color-primary-hover: var(--color-white);
+	--button-background-color-primary-hover: var(--color-primary-dark);
+
+	--button-font-size: 1em;
+	--button-font-size-small: .8em;
+	--button-font-size-large: 1.2em;
+	--button-padding: .35em 1em;
+	--button-radius: 3px;
+}
+
+%button-generics {
+	transition: all 300ms ease, box-shadow 150ms ease;
+	user-select: none;
+	display: inline-block;
+	text-decoration: none;
+	border: 1px solid currentColor;
+	padding: var(--button-padding);
+	border-radius: var(--button-radius);
+	text-align: center;
+	font-size: var(--button-font-size);
+	color: var(--button-color-primary);
+	background-color: var(--button-background-color-primary); // default. can be overridden by has- classes (via editor)
+	border-color: var(--button-background-color-primary); // default. can be overridden by has- classes (via editor)
+
+	.is-style-outline & {
+		background-color: transparent;
+		border-color: currentColor;
+		border-width: 1px;
+
+		&:not(.has-text-color) {
+			color: var(--button-color-primary);
+		}
+	}
+
+	&:active,
+	&:hover {
+		filter: saturate(.8);
+	}
 }
 
 .o-button {
-
-	display: inline-block;
-	text-decoration: none;
-	border: none;
-	padding: .5em;
-	background-color: var(--color-button-primary-background);
-	color: var(--color-button-primary);
-	&:active,
-	&:hover {
-		background-color: var(--color-button-primary-background-hover);
-		color: var(--color-button-primary-hover);
-	}
+	@extend %button-generics;
 
 	&--size-small {
-		font-size: var(--font-size-small);
+		font-size: var(--button-font-size-small);
 	}
 
 	&--size-large {
-		font-size: var(--font-size-large);
+		font-size: var(--button-font-size-large);
 	}
 
-	&--size-smaller {
-		font-size: var(--font-size-xsmall);
-	}
-
-	&--size-larger {
-		font-size: var(--font-size-larger);
-	}
 }

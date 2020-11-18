@@ -23,7 +23,7 @@ class Navigation
 	public function run()
 	{
 		add_filter('wp_nav_menu_args', [$this, 'navMenuArgs'], 1, 1);
-		add_filter('nav_menu_css_class', [$this, 'menuItemClasses'], 10, 3);
+		add_filter('nav_menu_css_class', [$this, 'menuItemClasses'], 10, 4);
 		add_filter('nav_menu_link_attributes', [$this, 'menuLinkAttributes']);
 
 		if (count($this->menus)) {
@@ -44,9 +44,9 @@ class Navigation
 		return $args;
 	}
 
-	public function menuItemClasses($classes, $item, $args)
+	public function menuItemClasses($classes, $item, $args, $depth)
 	{
-		$classes[] = 'c-menu__entry c-menu__entry--'.$args->theme_location;
+		$classes[] = 'c-menu__entry c-menu__entry--depth-'.$depth.' c-menu__entry--'.$args->theme_location;
 		if ($item->current) {
 			$classes[] = 'c-menu__entry--current';
 		}

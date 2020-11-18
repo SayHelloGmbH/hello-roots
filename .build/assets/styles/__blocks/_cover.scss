@@ -4,40 +4,6 @@
 		color: var(--color-white);
 	}
 
-	&[class*='is-style-aspect'] {
-		min-height: 0;
-	}
-
-	&.is-style-aspect-21::after {
-		content: '';
-		display: block;
-		padding-bottom: percentage(1/2);
-	}
-
-	&.is-style-aspect-31::after {
-		content: '';
-		display: block;
-		padding-bottom: percentage(1/3);
-	}
-
-	&.is-style-aspect-41::after {
-		content: '';
-		display: block;
-		padding-bottom: percentage(1/4);
-	}
-
-	&.is-style-aspect-169::after {
-		content: '';
-		display: block;
-		padding-bottom: percentage(9/16);
-	}
-
-	&.is-style-full-height::after {
-		content: '';
-		display: block;
-		padding-bottom: 100vh;
-	}
-
 	&__inner-container {
 		@extend .h-stack;
 		padding-top: var(--unit);

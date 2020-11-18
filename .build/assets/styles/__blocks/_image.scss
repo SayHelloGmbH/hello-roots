@@ -1,5 +1,4 @@
 .wp-block-image {
-
 	.alignleft {
 		margin-top: var(--unit-xsmall);
 		margin-right: var(--unit);
@@ -10,7 +9,9 @@
 		margin-left: var(--unit);
 	}
 
-	figcaption {
-		color: inherit;
+	&.alignfull,
+	&.alignwide {
+		// margin-top: var(--unit-large);
+		// margin-bottom: var(--unit-large);
 	}
 }

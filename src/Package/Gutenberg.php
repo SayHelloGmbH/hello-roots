@@ -9,8 +9,6 @@ namespace SayHello\Theme\Package;
  */
 class Gutenberg
 {
-	public $theme_url = '';
-	public $theme_path = '';
 	public $min = false;
 	public $js = false;
 	public $admin_font_url = false;
@@ -26,19 +24,17 @@ class Gutenberg
 
 	public function __construct()
 	{
-		$this->theme_url  = get_template_directory_uri();
-		$this->theme_path = get_template_directory();
 		if (sht_theme()->debug && is_user_logged_in()) {
 			$this->min = true;
 		}
 
-		if (file_exists($this->theme_path . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
-			$this->js = $this->theme_url . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
+		if (file_exists(get_template_directory() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
+			$this->js = get_template_directory_uri() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js';
 		}
 
-		if (file_exists($this->theme_path . '/assets/fonts/fonts-woff2.css')) {
-			$this->admin_font_path = $this->theme_path . '/assets/fonts/fonts-woff2.css';
-			$this->admin_font_url = $this->theme_url . '/assets/fonts/fonts-woff2.css';
+		if (file_exists(get_template_directory() . '/assets/fonts/fonts-woff2.css')) {
+			$this->admin_font_path = get_template_directory() . '/assets/fonts/fonts-woff2.css';
+			$this->admin_font_url = get_template_directory_uri() . '/assets/fonts/fonts-woff2.css';
 		}
 	}
 
@@ -53,6 +49,7 @@ class Gutenberg
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
+		add_action('init', [$this, 'addBlockPatternCategory']);
 
 		add_filter('admin_body_class', [$this, 'extendAdminBodyClass']);
 		add_action('admin_menu', [$this, 'reusableBlocksAdminMenu']);
@@ -66,11 +63,16 @@ class Gutenberg
 	public function themeSupports()
 	{
 		add_theme_support('align-wide');
+
+		// Hide the free number field
 		add_theme_support('disable-custom-font-sizes');
+
+		// Hide the selectable text sizes
 		add_theme_support('editor-font-sizes', []);
 
-		// Since WordPress 5.5: disallow block patterns delivered by Core
-		remove_theme_support( 'core-block-patterns' );
+		// Since WordPress 5.5: DISALLOW block patterns delivered by Core
+		// (We can add our own to the pattern category sht-block-patterns)
+		remove_theme_support('core-block-patterns');
 	}
 
 	/**
@@ -80,35 +82,25 @@ class Gutenberg
 	 */
 	public function colorPalette()
 	{
-		add_theme_support('disable-custom-colors');
+		$settings = sht_theme()->getSettings();
 
-		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
-		if (!is_file($path)) {
-			return false;
-		}
+		if (isset($settings['gutenberg_colors'])) {
+			$colors = [];
 
-		$settings = file_get_contents($path);
-
-		if (is_string($settings) && !empty($settings)) {
-			$settings = json_decode($settings, true);
-			if (isset($settings['gutenberg_colors'])) {
-				$colors = [];
-
-				foreach ($settings['gutenberg_colors'] as $color_key => $color) {
-					foreach ($color as $variation_key => $variation) {
-						$colors[] = [
-							'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
-							'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
-							'color' => $color[$variation_key]
-						];
-					}
+			foreach ($settings['gutenberg_colors'] as $color_key => $color) {
+				foreach ($color as $variation_key => $variation) {
+					$colors[] = [
+						'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
+						'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
+						'color' => $color[$variation_key]
+					];
 				}
+			}
 
-				if (!empty($colors)) {
-					add_theme_support('editor-color-palette', $colors);
-					foreach ($colors as $color) {
-						$this->colors[sanitize_title($color['slug'])] = $color;
-					}
+			if (!empty($colors)) {
+				add_theme_support('editor-color-palette', $colors);
+				foreach ($colors as $color) {
+					$this->colors[sanitize_title($color['slug'])] = $color;
 				}
 			}
 		}
@@ -176,7 +168,7 @@ class Gutenberg
 		return array_merge($categories, [
 			[
 				'slug'  => 'sht/blocks',
-				'title' => _x('Blöcke von Hello', 'Custom block category name', 'sha'),
+				'title' => _x('Blöcke von Say Hello', 'Custom block category name', 'sha'),
 			],
 		]);
 	}
@@ -227,5 +219,12 @@ class Gutenberg
 			$classes .= ' post-type-'.$post->post_type.' post-type-'.$post->post_type.'--'.$post->post_name;
 		}
 		return $classes;
+	}
+
+	public function addBlockPatternCategory()
+	{
+		if (function_exists('register_block_pattern_category')) {
+			register_block_pattern_category('sht-block-patterns', [ 'label' => __('Say Hello', 'sht') ]);
+		}
 	}
 }

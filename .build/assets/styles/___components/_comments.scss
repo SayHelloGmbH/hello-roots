@@ -6,7 +6,7 @@
 	padding-left: var(--unit);
 	padding-right: var(--unit);
 
-	@include tablet {
+	@include breakpoint(tablet) {
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -71,7 +71,7 @@
 
 	.comment-meta {
 		@extend .h-stack--small;
-		@include tablet {
+		@include breakpoint(tablet) {
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
@@ -85,7 +85,7 @@
 	.comment-metadata {
 		font-size: var(--font-size-xsmall);
 		text-align: right;
-		@include tablet {
+		@include breakpoint(tablet) {
 			flex: 0 0 40%;
 			margin-left: var(--unit);
 		}
