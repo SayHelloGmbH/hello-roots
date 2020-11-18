@@ -90,6 +90,7 @@ class Theme
 				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
 
+				\SayHello\Theme\PostType\BlockAreas::class,
 				\SayHello\Theme\PostType\Page::class,
 				\SayHello\Theme\PostType\Post::class,
 			]
