@@ -30,8 +30,8 @@ class Lazysizes
 		add_action('wp_head', [$this, 'noscriptCSS'], 50);
 		add_action('wp_enqueue_scripts', [$this, 'addAssets']);
 		add_action('rest_api_init', [$this, 'registerRoute']);
-		add_filter('lazy_sizes_size', [$this, 'customLazySizesBreakpoints'], 10, 0);
 		//add_filter('the_content', [$this, 'makeImageBlocksLazy']); // ask mark - work in progress
+		add_filter('lazy_sizes_size', [$this, 'customLazyBreakpoints'], 10, 0);
 	}
 
 	public function noscriptCSS()
@@ -114,14 +114,15 @@ class Lazysizes
 		]);
 	}
 
-	public function customLazySizesBreakpoints()
+	public function customLazyBreakpoints()
 	{
 		return [
 			'window' => 2560,
-			'page' => 1440,
+			'page' => 1376,
 			'large' => 1280,
-			'medium' => 768,
-			'small' => 320,
+			'medium' => 330,
+			'smallsquare' => 180,
+			'small' => 160,
 		];
 		return $image_object->getImage($background);
 	}
