@@ -20,6 +20,7 @@
 		"@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
 		"@wordpress/i18n": "^3.16.0",
 		"jquery-easing": "0.0.1",
+		"object-fit-images": "^3.2.4",
 		"verge": "^1.9.1"
 	},
 	"devDependencies": {
