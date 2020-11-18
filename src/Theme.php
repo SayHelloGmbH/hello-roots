@@ -73,7 +73,6 @@ class Theme
 		$this->loadClasses(
 			[
 				\SayHello\Theme\Package\Helpers::class,
-				\SayHello\Theme\Package\ACF::class,
 				\SayHello\Theme\Package\Assets::class,
 				\SayHello\Theme\Package\Archives::class,
 				\SayHello\Theme\Package\BodyClass::class,
@@ -93,6 +92,8 @@ class Theme
 				\SayHello\Theme\PostType\BlockAreas::class,
 				\SayHello\Theme\PostType\Page::class,
 				\SayHello\Theme\PostType\Post::class,
+
+				\SayHello\Theme\Plugin\ACF::class,
 			]
 		);
 
