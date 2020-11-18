@@ -11,3 +11,9 @@
 		}
 	}
 }
+
+@include context-edit {
+	.wp-block[data-type="core/group"][data-align="full"] {
+		max-width: 100%;
+	}
+}

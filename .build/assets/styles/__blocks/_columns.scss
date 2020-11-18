@@ -1,11 +1,36 @@
 .wp-block-column {
 	@extend .h-stack;
 	@include wordpress_small {
+		&:nth-child(2) {
+			margin-top: 0;
+		}
+	}
+
+	@include wordpress_medium {
 		margin-top: 0;
-		margin-bottom: 0;
+
+		&:not(:first-child) {
+			margin-left: var(--unit-medium);
+		}
 	}
 }
 
 .wp-block-columns {
 	@extend .h-stack--medium;
+
+	&.has-background {
+		padding: var(--unit);
+		@include tablet {
+			padding-right: var(--unit-medium);
+		}
+	}
+}
+
+@include context-edit {
+	@include wordpress_small {
+		[data-type="core/columns"][data-align=full] .wp-block-columns {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
 }
