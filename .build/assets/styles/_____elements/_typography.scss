@@ -7,14 +7,12 @@
 	--color-link: var(--color-primary);
 	--color-link-hover: var(--color-primary-dark);
 
-	@each $size, $sizeValues in $font_sizes {
-		$value: map-get($sizeValues, value);
 
-		@if unit($value) == '' {
-			--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value))};
-		} @else {
-			--font-size-#{$size}: #{map-get($sizeValues, value)};
-		}
+	// Probably not necessary but useful for browser debugging
+	--font-size-rem-base: #{$rem-font-size};
+
+	@each $size, $sizeValues in $font_sizes {
+		--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value)+0px)};
 	}
 }
 

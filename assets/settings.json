@@ -61,11 +61,11 @@
 			"base": "#fff"
 		}
 	},
+	"rem-base": {
+		"name": "REM-Basis",
+		"value": 16
+	},
 	"font_sizes": {
-		"rem-base": {
-			"name": "REM-Basis",
-			"value": 16
-		},
 		"xsmall": {
 			"name": "Extra klein",
 			"value": 12
