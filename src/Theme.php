@@ -104,8 +104,6 @@ class Theme
 		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
 
 		add_action('wp_head', [ $this, 'noJsScript' ]);
-		add_action('wp_head', [ $this, 'setResolutionCookie' ]);
-		add_action('wp_head', [ $this, 'humansTxt' ]);
 
 		$this->cleanHead();
 	}
@@ -190,18 +188,6 @@ class Theme
 		remove_action('wp_head', 'rsd_link');
 		remove_action('wp_head', 'print_emoji_detection_script', 7);
 		remove_action('wp_print_styles', 'print_emoji_styles');
-	}
-
-	public function humansTxt()
-	{
-		echo '<link type="text/plain" rel="author" href="' . trailingslashit(get_template_directory_uri()) . 'humans.txt" />';
-	}
-
-	public function setResolutionCookie()
-	{
-		echo '<script>
-			document.cookie="resolution="+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+"; path=/";
-		</script>';
 	}
 
 	/**
