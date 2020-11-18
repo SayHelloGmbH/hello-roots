@@ -1,10 +1,8 @@
 import domReady from '@wordpress/dom-ready';
 
-import './block-filter/block-margin.jsx';
-import './block-filter/block-padding.jsx';
-import './block-filter/font-size.jsx';
-import './block-styles/index.js';
+import './block-filter/index.jsx';
+import './block-styles/index.jsx';
 import './post-controls/index.jsx';
-import './unregister-block-type/index.js';
+import './unregister-block-type/index.jsx';
 
 //import "./blocks/teaser/block.jsx";
