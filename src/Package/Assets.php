@@ -32,11 +32,9 @@ class Assets
 	public function registerAssets()
 	{
 
-		if (! is_user_logged_in()) {
+		if (!is_user_logged_in()) {
 			wp_deregister_style('dashicons');
 		}
-
-		$min = !sht_theme()->debug;
 
 		/**
 		 * CSS
@@ -44,7 +42,7 @@ class Assets
 		$deps = ['wp-block-library'];
 		wp_enqueue_style('fancybox', $this->theme_url . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . ($min ? '.min' : '') . '.css', $deps, filemtime($this->theme_path .'/assets/styles/ui' . ($min ? '.min' : '') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-style', $this->theme_url . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime($this->theme_path .'/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
 		/**
 		 * Javascript
