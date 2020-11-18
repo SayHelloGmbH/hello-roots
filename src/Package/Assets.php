@@ -144,4 +144,13 @@ class Assets
 
 		return $settings[ $setting ];
 	}
+
+	public function loadSvgFilter()
+	{
+		ob_start();
+		get_template_part('partials/svg/svg-filter');
+		$html = ob_get_contents();
+		ob_end_clean();
+		echo $html;
+	}
 }
