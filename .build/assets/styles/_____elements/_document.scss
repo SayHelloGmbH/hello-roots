@@ -10,6 +10,27 @@ html {
 	overflow-y: scroll;
 	max-height: 100%;
 	line-height: 1.5;
+
+	&.is--menuopen {
+		overflow: hidden;
+		position: fixed;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+
+		&.admin-bar {
+			margin-top: 0 !important;
+
+			body {
+				margin-top: var(--c-adminbar-height);
+			}
+		}
+		@include desktop {
+			overflow-y: auto;
+			position: static;
+			height: auto;
+		}
+	}
 }
 
 body {
