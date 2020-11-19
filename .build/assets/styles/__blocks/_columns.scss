@@ -34,9 +34,3 @@
 		}
 	}
 }
-
-@include breakpoint(tablet down) {
-	body {
-		color: red;
-	}
-}
