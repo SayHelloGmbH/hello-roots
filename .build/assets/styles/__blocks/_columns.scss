@@ -1,3 +1,7 @@
+:root {
+	--column-grid-gap: var(--unit-medium);
+}
+
 .wp-block-column {
 	@extend .h-stack;
 	@include breakpoint(wordpress_small) {
@@ -6,11 +10,19 @@
 		}
 	}
 
+	@include breakpoint(wordpress_small up) {
+		@include breakpoint(wordpress_medium down) {
+			&:nth-child(2n) {
+				margin-left: var(--column-grid-gap);
+			}
+		}
+	}
+
 	@include breakpoint(wordpress_medium) {
 		margin-top: 0;
 
 		&:not(:first-child) {
-			margin-left: var(--unit-medium);
+			margin-left: var(--column-grid-gap);
 		}
 	}
 }
@@ -21,7 +33,7 @@
 	&.has-background {
 		padding: var(--unit);
 		@include breakpoint(tablet) {
-			padding-right: var(--unit-medium);
+			padding-right: var(--column-grid-gap);
 		}
 	}
 }
