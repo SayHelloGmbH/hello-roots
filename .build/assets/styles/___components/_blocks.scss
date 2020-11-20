@@ -15,3 +15,11 @@
 		}
 	}
 }
+
+@include context-edit {
+	.wp-block {
+		&.is-reusable {
+			max-width: 100%;
+		}
+	}
+}
