@@ -16,14 +16,20 @@
 	user-select: none;
 	display: inline-block;
 	text-decoration: none;
-	border: 1px solid currentColor;
+	border: 1px solid;
 	padding: var(--button-padding);
 	border-radius: var(--button-radius);
 	text-align: center;
 	font-size: var(--button-font-size);
-	color: var(--button-color-primary);
-	background-color: var(--button-background-color-primary); // default. can be overridden by has- classes (via editor)
-	border-color: var(--button-background-color-primary); // default. can be overridden by has- classes (via editor)
+	
+	&:not(.has-background) {
+		background-color: var(--button-background-color); // default. can be overridden by has- classes (via editor)
+		border-color: var(--button-background-color); // default. can be overridden by has- classes (via editor)
+	}
+
+	&:not(.has-text-color) {
+		color: var(--button-color); // default. can be overridden by has- classes (via editor)
+	}
 
 	.is-style-outline & {
 		background-color: transparent;
