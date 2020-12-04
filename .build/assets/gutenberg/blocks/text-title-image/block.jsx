@@ -6,7 +6,7 @@
  *
  * https://github.com/SayHelloGmbH/Gutenberg/tree/master/components/ImageSelectorWithPlaceholder
  *
- * The attribute “externalURL” is only used for the preview (see
+ * The attribute “imageExternalURL” is only used for the preview (see
  * “example” below). The function which allows a user to select an
  * external URL from the MediaPlaceholder is deactivated.
  *
@@ -40,11 +40,11 @@ registerBlockType( blockName, {
 		attributes: {
 			title: 'Lorem ipsum dolor<br>Sit amet consectetur<br>Adipisicing elit sed<br>Do eiusmod tempor<br>Incididunt ut labore',
 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-			externalURL: 'https://sayhello.ch/gutenberg-demo-image-do-not-delete.jpg'
+			imageExternalURL: 'https://sayhello.ch/gutenberg-demo-image-do-not-delete.jpg'
 		},
 	},
 	attributes: {
-		externalURL: {
+		imageExternalURL: {
 			source: 'attribute',
 			selector: `img.${classNameBase}__imagefromurl`,
 			attribute: 'src'
@@ -75,7 +75,7 @@ registerBlockType( blockName, {
 
 			const { attributes, className, setAttributes } = this.props;
 
-			const { externalURL, image, text, title } = attributes;
+			const { imageExternalURL, image, text, title } = attributes;
 
 			return [
 				(
@@ -97,9 +97,9 @@ registerBlockType( blockName, {
 									<LazyImage className={`${classNameBase}__figure`} image={image} background={false} admin={true}/>
 								}
 								{
-									!!externalURL && !image.id &&
+									!!imageExternalURL && !image.id &&
 									<figure className={`${classNameBase}__figure`}>
-										<img className={`${classNameBase}__imagefromurl`} src={externalURL} alt='' />
+										<img className={`${classNameBase}__imagefromurl`} src={imageExternalURL} alt='' />
 									</figure>
 								}
 							</div>
@@ -139,7 +139,7 @@ registerBlockType( blockName, {
 
 		const classNameBase = getBlockDefaultClassName( blockName );
 
-		const { externalURL, image, text, title } = attributes;
+		const { imageExternalURL, image, text, title } = attributes;
 
 		return (
 			<div className={ className }>
@@ -149,9 +149,9 @@ registerBlockType( blockName, {
 						<LazyImage className={`${classNameBase}__figure`} image={image} background={false} admin={false}/>
 					}
 					{
-						!!externalURL && !image.id &&
+						!!imageExternalURL && !image.id &&
 						<figure className={`${classNameBase}__figure`}>
-							<img className={`${classNameBase}__imagefromurl`} src={externalURL} alt={text} />
+							<img className={`${classNameBase}__imagefromurl`} src={imageExternalURL} alt={text} />
 						</figure>
 					}
 				</div>
