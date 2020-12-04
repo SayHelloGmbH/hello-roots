@@ -2,10 +2,8 @@
 
 namespace SayHello\Theme\Package;
 
-use enshrined\svgSanitize\Sanitizer;
-
 /**
- * Implements SVG Support to WordPress, cleaning SVG Files before they are saved.
+ * Implements SVG Support to WordPress
  *
  * @author Mark Howells-Mead <mark@sayhello.ch>
  */
@@ -21,7 +19,6 @@ class SVG
 	public function run()
 	{
 		add_filter('upload_mimes', [ $this, 'allowSvgUpload' ]);
-		add_filter('wp_handle_upload_prefilter', [ $this, 'sanitizeSvg' ]);
 		add_action('admin_enqueue_scripts', [ $this, 'addSvgStyles' ]);
 		add_filter('wp_get_attachment_image_src', [ $this, 'fixWpGetAttachmentImageSvg' ], 10, 3);
 	}
@@ -48,36 +45,6 @@ class SVG
 		$mimeTypes[ 'svg' ] = 'image/svg+xml';
 
 		return $mimeTypes;
-	}
-
-	/**
-	 * Sanitizes a SVG file before it's saved to the server storage.
-	 * This removes unallowed tags and scripts.
-	 *
-	 * @see    enshrined\svgSanitize\Sanitizer
-	 *
-	 * @param  Array $file Uploaded file.
-	 *
-	 * @return Array        Cleaned file if type is SVG.
-	 */
-	public function sanitizeSvg($file)
-	{
-		if ($file[ 'type' ] == 'image/svg+xml') {
-			$sanitizer    = new Sanitizer();
-			$dirtySVG     = file_get_contents($file[ 'tmp_name' ]);
-			$sanitizedSvg = $sanitizer->sanitize($dirtySVG);
-
-			global $wp_filesystem;
-			$credentials = request_filesystem_credentials(site_url() . '/wp-admin/', '', false, false, []);
-			if (! WP_Filesystem($credentials)) {
-				request_filesystem_credentials(site_url() . '/wp-admin/', '', true, false, null);
-			}
-
-			// Using the filesystem API provided by WordPress, we replace the contents of the temporary file and then let the process continue as normal.
-			$wp_filesystem->put_contents($file[ 'tmp_name' ], $sanitizedSvg, FS_CHMOD_FILE);
-		}
-
-		return $file;
 	}
 
 	/**
