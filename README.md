@@ -40,6 +40,11 @@ $ npm start
 
 ## Feature overview
 
+### Block Areas
+
+Until WordPress Core supports [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/), our own projects use the [Block Areas plugin](https://wordpress.org/plugins/block-areas/) to provide sites with additional content areas for use with the Gutenberg Editor. If your project doesn't have this requirement, then you can remove the `PostType/BlockAreas` Package.
+
+
 ### Content width
 
 WordPress loads content at an appropriate size - e.g. responsive images or external video embeds - using the `$content_width` variable. This should be modified for your project based on the standard width of a content element in the single blog post view. The definition is in the `Theme` class and can either be modified directly or via the filter `sht/content_width`.
