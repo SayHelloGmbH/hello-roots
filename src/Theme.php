@@ -86,7 +86,6 @@ class Theme
 				\SayHello\Theme\Package\Navigation::class,
 				\SayHello\Theme\Package\Shyify::class,
 				\SayHello\Theme\Package\Sidebars::class,
-				\SayHello\Theme\Package\SVG::class,
 				\SayHello\Theme\Package\ThemeOptions::class,
 
 				\SayHello\Theme\PostType\BlockAreas::class,
