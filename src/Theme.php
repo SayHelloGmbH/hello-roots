@@ -72,27 +72,27 @@ class Theme
 	{
 		$this->loadClasses(
 			[
-				\SayHello\Theme\Package\Helpers::class,
-				\SayHello\Theme\Package\Assets::class,
-				\SayHello\Theme\Package\Archives::class,
-				\SayHello\Theme\Package\BodyClass::class,
-				\SayHello\Theme\Package\CustomPages::class,
-				\SayHello\Theme\Package\Error::class,
-				\SayHello\Theme\Package\Gutenberg::class,
-				\SayHello\Theme\Package\Language::class,
-				\SayHello\Theme\Package\Lazysizes::class,
-				\SayHello\Theme\Package\LoginScreen::class,
-				\SayHello\Theme\Package\Media::class,
-				\SayHello\Theme\Package\Navigation::class,
-				\SayHello\Theme\Package\Shyify::class,
-				\SayHello\Theme\Package\Sidebars::class,
-				\SayHello\Theme\Package\ThemeOptions::class,
+				Package\Helpers::class,
+				Package\Assets::class,
+				Package\Archives::class,
+				Package\BodyClass::class,
+				Package\CustomPages::class,
+				Package\Error::class,
+				Package\Gutenberg::class,
+				Package\Language::class,
+				Package\Lazysizes::class,
+				Package\LoginScreen::class,
+				Package\Media::class,
+				Package\Navigation::class,
+				Package\Shyify::class,
+				Package\Sidebars::class,
+				Package\ThemeOptions::class,
 
-				\SayHello\Theme\PostType\BlockAreas::class,
-				\SayHello\Theme\PostType\Page::class,
-				\SayHello\Theme\PostType\Post::class,
+				PostType\BlockAreas::class,
+				PostType\Page::class,
+				PostType\Post::class,
 
-				\SayHello\Theme\Plugin\ACF::class,
+				Plugin\ACF::class,
 			]
 		);
 
