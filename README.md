@@ -18,10 +18,6 @@ Prefix:      sht
 
 ## System requirements
 
-### Composer
-
-PHP dependencies (but not WordPress dependencies like plugins) are loaded using [Composer](https://getcomposer.org/). Use `composer install` when first starting work on the theme, and `composer update` thereafter.
-
 ### NodeJS
 
 `node` and node package manager `npm` are required to run the build commands.
@@ -64,7 +60,7 @@ The Package Class `Assets` enqueues them directly.
 
 #### CSS Variables
 
-The CSS will be generated with [CSS Variables](https://dev.to/sarah_chima/an-introduction-to-css-variables-cmj) in the generated stylesheets. The (JavaScript-based) Ponyfill `css-vars-ponyfill` ([source](https://github.com/jhildenbiddle/css-vars-ponyfill)) is included for IE11 support in the frontend. (_Not_ in the admin area!)
+The CSS will be generated with [CSS Variables](https://dev.to/sarah_chima/an-introduction-to-css-variables-cmj) in the generated stylesheets. The (JavaScript-based) Ponyfill `css-vars-ponyfill` ([source](https://github.com/jhildenbiddle/css-vars-ponyfill)) is included for IE11 support in the frontend. (_Not_ in the admin area! The Gutenberg Editor doesn't fully support IE11 anyway.)
 
 #### Gutenberg Blocks
 
@@ -108,6 +104,10 @@ These files are then loaded [by JavaScript](https://github.com/SayHelloGmbH/hell
 It also uses [LiveReload](http://livereload.com/) to refresh your browser on every change you make.
 
 If you are using Google Chrome there is a pretty helpful extension: [chrome LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+
+### SVG
+
+SVG support and sanitization was formerly handled directly by the Theme. This feature was removed in 2020 in favour of https://wordpress.org/plugins/safe-svg/.
 
 # Authors
 - [Nico Martin](https://github.com/nico-martin)
