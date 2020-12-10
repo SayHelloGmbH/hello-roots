@@ -10,6 +10,8 @@
 
 <section class="c-masthead" role="banner">
 
+	<?php do_action('sht_after_body_open'); ?>
+
 	<div class="c-masthead__inner">
 		<h1 class="c-masthead__title">
 			<a class="c-masthead__titlelink" href="<?php echo get_home_url();?>"><?php echo get_bloginfo('name');?></a>
