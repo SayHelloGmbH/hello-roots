@@ -9,8 +9,7 @@
 
 import { getBlockTypes, unregisterBlockType } from '@wordpress/blocks';
 
-// Must be onload, not on domReady!
-window.addEventListener( 'load', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
 	let activeBlocks = [];
 
