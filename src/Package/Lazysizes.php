@@ -4,6 +4,9 @@ namespace SayHello\Theme\Package;
 
 use SayHello\Theme\Vendor\LazyImage;
 
+use WP_Error;
+use WP_REST_Response;
+
 /**
  * This Class provides advanced media loading possibilities via lazysizes.
  * Please make sure you included https://github.com/aFarkas/lazysizes/ so the images are loaded via JS.
@@ -86,7 +89,6 @@ class Lazysizes
 			'methods'  => 'GET',
 			'permission_callback' => '__return_true',
 			'callback' => function ($data) {
-
 				$size = 'full';
 				if (array_key_exists('size', $_GET)) {
 					$size = $_GET['size'];
@@ -101,10 +103,16 @@ class Lazysizes
 					]);
 				}
 
-				return $srcs;
+				$srcs = apply_filters('sht/lazyimage-srcs', $srcs);
+
+				return new WP_REST_Response($srcs);
 			},
 			'args' => [
-				'id',
+				'id' => [
+					'validate_callback' => function ($param) {
+						return is_numeric($param);
+					}
+				],
 			],
 		]);
 	}
