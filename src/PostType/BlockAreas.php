@@ -20,7 +20,7 @@ class BlockAreas
 
 	public function customPostTypeArgs($args)
 	{
-		if ($args['capability_type'] === 'block') {
+		if (isset($args['capability_type']) && $args['capability_type'] === 'block') {
 			$args['public'] = true;
 		}
 		return $args;
