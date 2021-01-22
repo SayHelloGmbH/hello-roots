@@ -41,6 +41,12 @@ body {
 }
 
 @include context-view {
+	
+	[id] {
+		scroll-snap-margin-top: var(--unit); // Safari
+		scroll-margin-top: var(--unit);
+	}
+
 	body {
 		overflow-x: hidden;
 	}
