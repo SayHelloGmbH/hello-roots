@@ -166,7 +166,8 @@ class Theme
 	 */
 	public function contentWidth()
 	{
-		$GLOBALS['content_width'] = apply_filters('sht/content_width', 640);
+		$settings = $this->getSettings();
+		$GLOBALS['content_width'] = apply_filters('sht/content_width', $settings['breakpoints']['narrow'] ?? '600');
 	}
 
 	/**
