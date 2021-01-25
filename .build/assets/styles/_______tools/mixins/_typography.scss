@@ -37,11 +37,11 @@ $rem-font-size: map-get($rem-base, value) + 0px;
  */
 @mixin typo($size: null, $line-height: null, $av: null) {
     @if ($size) {
-        font-size: rem-calc($size * $rem-font-size/100);
+        font-size: rem-calc(strip-unit($size));
     }
     @if ($size) {
         @if ($line-height) {
-            line-height: ($line-height/$size);
+            line-height: ($line-height/strip-unit($size));
         }
     }
     @if ($av) {
