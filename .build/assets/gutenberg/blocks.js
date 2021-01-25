@@ -1,7 +1,7 @@
-import './block-filter/index.jsx';
-import './block-styles/index.jsx';
-import './extend-styles-wrapper-class/index.jsx';
-import './post-controls/index.jsx';
-import './unregister-block-type/index.jsx';
+import './block-filter';
+import './block-styles';
+import './extend-styles-wrapper-class';
+import './post-controls';
+import './unregister-block-type';
 
-import "./blocks/text-title-image/block.jsx";
+import './blocks/text-title-image';

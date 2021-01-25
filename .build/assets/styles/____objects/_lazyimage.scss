@@ -1,85 +1,85 @@
 :root {
-	--o-lazyimage-transition-duration: 350ms;
-	--o-lazyimage-preview-opacity: .5;
+    --o-lazyimage-transition-duration: 350ms;
+    --o-lazyimage-preview-opacity: 0.5;
 }
 
 .o-lazyimage {
-	display: inline-block;
-	position: relative;
+    display: inline-block;
+    position: relative;
 
-	&__image {
-		display: block;
-		position: relative;
-		opacity: 0;
-		@include transition(opacity);
-		transition-duration: var(--o-lazyimage-transition-duration);
+    &__image {
+        display: block;
+        position: relative;
+        opacity: 0;
+        @include transition(opacity);
+        transition-duration: var(--o-lazyimage-transition-duration);
 
-		&--lazyloaded {
-			opacity: 1;
-		}
-	}
+        &--lazyloaded {
+            opacity: 1;
+        }
+    }
 
-	&--svg {
-		.o-lazyimage__image {
-			opacity: 1;
-		}
-	}
+    &--svg {
+        .o-lazyimage__image {
+            opacity: 1;
+        }
+    }
 
-	&__preview {
-		filter: url(#ls-sharp-blur);
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		@include transition(opacity);
-		transition-duration: var(--o-lazyimage-transition-duration);
-		opacity: var(--o-lazyimage-preview-opacity);
-	}
+    &__preview {
+        filter: url(#ls-sharp-blur);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        @include transition(opacity);
+        transition-duration: var(--o-lazyimage-transition-duration);
+        opacity: var(--o-lazyimage-preview-opacity);
+    }
 
-	&--background {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		top: 0;
+    &--background {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
 
-		.o-lazyimage__image,
-		.o-lazyimage__preview {
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			left: 0;
-			top: 0;
-			background: center center no-repeat;
-			background-size: cover;
-		}
-	}
+        .o-lazyimage__image,
+        .o-lazyimage__preview {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            background: center center no-repeat;
+            background-size: cover;
+        }
+    }
 
-	&--loaded {
-		.o-lazyimage__preview[src$=".png"] {
-			opacity: 0;
-		}
-	}
+    &--loaded {
+        .o-lazyimage__preview[src$='.png'] {
+            opacity: 0;
+        }
+    }
 }
 
 .o-lazyimage--transparent:before {
-	$size: 2.5rem;
-	content: '';
-	@include spinner(5px solid #fff, 2.5rem);
-	margin-top: -1.25rem;
-	margin-left: -1.25rem;
-	position: absolute;
-	top: 50%;
-	left: 50%;
+    $size: 2.5rem;
+    content: '';
+    @include spinner(5px solid #fff, 2.5rem);
+    margin-top: -1.25rem;
+    margin-left: -1.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .o-lazysizes-svgfilter {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

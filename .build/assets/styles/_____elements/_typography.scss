@@ -1,179 +1,180 @@
 :root {
-	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-	--font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-	--line-height: 1.5;
-	--line-height-small: 1.2;
-	--line-height-heading: var(--line-height-small);
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-family-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --line-height: 1.5;
+    --line-height-small: 1.2;
+    --line-height-heading: var(--line-height-small);
 
-	--font-weight-normal: 400;
+    --font-weight-normal: 400;
 
-	--radius: 0;
+    --radius: 0;
 
-	// Probably not necessary but useful for browser debugging
-	--font-size-rem-base: #{$rem-font-size};
+    // Probably not necessary but useful for browser debugging
+    --font-size-rem-base: #{$rem-font-size};
 
-	@each $size, $sizeValues in $font_sizes {
-		--font-size-#{$size}: #{rem-calc(map-get($sizeValues, value)+0px)};
-	}
+    @each $size, $sizeValues in $font_sizes {
+        --font-size-#{$size}: #{rem-calc(map-get($sizeValues, value) + 0px)};
+    }
 }
 
 body {
-	font-family: var(--font-family);
-	font-weight: 400;
-	line-height: var(--line-height);
-	font-size: 1rem;
+    font-family: var(--font-family);
+    font-weight: 400;
+    line-height: var(--line-height);
+    font-size: 1rem;
 }
 
 abbr,
 acronym {
-	cursor: help;
+    cursor: help;
 }
 
 a,
 button {
-	@include transition();
+    @include transition();
 }
 
 button {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 blockquote {
-	margin: 0;
-	@extend .h-stack;
+    margin: 0;
+    @extend .h-stack;
 }
 
 button {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 cite {
-	display: block;
+    display: block;
 }
 
 code {
-	background-color: c(gray, light);
-	display: inline-block;
-	padding: .0625em .25em;
+    background-color: c(gray, light);
+    display: inline-block;
+    padding: 0.0625em 0.25em;
 }
 
 dd + dt {
-	margin-top: var(--unit);
+    margin-top: var(--unit);
 }
 
 dt {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 figure,
 img {
-	max-width: 100%;
-	height: auto;
-	vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
 }
 
 figure {
-	margin: 0;
+    margin: 0;
 
-	> a {
-		border-bottom: none;
-	}
+    > a {
+        border-bottom: none;
+    }
 }
 
 figcaption {
-	font-size: var(--font-size-small);
-	text-align: center;
-	color: var(--color-gray);
+    font-size: var(--font-size-small);
+    text-align: center;
+    color: var(--color-gray);
 }
 
 hr {
-	border-style: solid;
-	border-width: 0 0 1px;
-	border-color: var(--wp-block-separator-color);
+    border-style: solid;
+    border-width: 0 0 1px;
+    border-color: var(--wp-block-separator-color);
 }
 
 li {
-	@extend .h-stack;
+    @extend .h-stack;
 }
 
 ol {
-	padding-left: 0;
-	list-style: none;
-	@extend .h-stack--small;
-	counter-reset: item;
+    padding-left: 0;
+    list-style: none;
+    @extend .h-stack--small;
+    counter-reset: item;
 
-	li:before {
-		margin-right: var(--unit-small);
-		content: counters(item, ".") '. ';
-		counter-increment: item;
-	}
+    li:before {
+        margin-right: var(--unit-small);
+        content: counters(item, '.') '. ';
+        counter-increment: item;
+    }
 
-	ol {
-		margin-top: var(--unit-small);
-		padding-left: 1.2em;
-	}
+    ol {
+        margin-top: var(--unit-small);
+        padding-left: 1.2em;
+    }
 }
 
 ul {
-	padding-left: 1.2em;
-	list-style: revert;
-	@extend .h-stack--small;
+    padding-left: 1.2em;
+    list-style: revert;
+    @extend .h-stack--small;
 
-	ul {
-		margin-top: var(--unit);
-	}
+    ul {
+        margin-top: var(--unit);
+    }
 }
 
 nav {
-	li,
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
+    li,
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-	a {
-		text-decoration: none;
-	}
+    a {
+        text-decoration: none;
+    }
 }
 
 p {
+    &:empty {
+        display: none;
+    }
 
-	&:empty {
-		display: none;
-	}
-
-	&.has-background {
-		padding: var(--unit);
-	}
+    &.has-background {
+        padding: var(--unit);
+    }
 }
 
 q {
-	font-style: italic;
+    font-style: italic;
 }
 
 sub,
 sup {
-	font-size: var(--font-size-xsmall);
-	-webkit-font-smoothing: subpixel-antialiased;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+    font-size: var(--font-size-xsmall);
+    -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
 }
 
 sup {
-	top: -0.5em;
+    top: -0.5em;
 }
 
 sub {
-	bottom: -0.25em;
+    bottom: -0.25em;
 }
 
 input,
 li,
 p,
 tr {
-	font-size: 1em;
+    font-size: 1em;
 }
 
 h1,
@@ -182,187 +183,187 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-family-heading);
-	line-height: var(--line-height-heading);
-	margin: 0;
-	word-break: break-word;
+    font-family: var(--font-family-heading);
+    line-height: var(--line-height-heading);
+    margin: 0;
+    word-break: break-word;
 
-	a,
-	a:active,
-	a:hover {
-		text-decoration: none;
-		color: currentColor;
-	}
+    a,
+    a:active,
+    a:hover {
+        text-decoration: none;
+        color: currentColor;
+    }
 }
 
 h1 {
-	font-size: var(--font-size-h1);
+    font-size: var(--font-size-h1);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h1) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h1) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h1) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h1) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h1) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h1) * 1.4);
+    }
 }
 
 h2 {
-	font-size: var(--font-size-h2);
+    font-size: var(--font-size-h2);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h2) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h2) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h2) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h2) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h2) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h2) * 1.4);
+    }
 }
 
 h3 {
-	font-size: var(--font-size-h3);
+    font-size: var(--font-size-h3);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h3) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h3) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h3) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h3) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h3) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h3) * 1.4);
+    }
 }
 
 h4 {
-	font-size: var(--font-size-h4);
+    font-size: var(--font-size-h4);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h4) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h4) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h4) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h4) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h4) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h4) * 1.4);
+    }
 }
 
 h5 {
-	font-size: var(--font-size-h5);
+    font-size: var(--font-size-h5);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h5) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h5) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h5) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h5) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h5) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h5) * 1.4);
+    }
 }
 
 h6 {
-	font-size: var(--font-size-h6);
+    font-size: var(--font-size-h6);
 
-	&.is-style-small-text {
-		font-size: calc(var(--font-size-h6) * 0.9);
-	}
+    &.is-style-small-text {
+        font-size: calc(var(--font-size-h6) * 0.9);
+    }
 
-	&.is-style-large-text {
-		font-size: calc(var(--font-size-h6) * 1.2);
-	}
+    &.is-style-large-text {
+        font-size: calc(var(--font-size-h6) * 1.2);
+    }
 
-	&.is-style-xlarge-text {
-		font-size: calc(var(--font-size-h6) * 1.4);
-	}
+    &.is-style-xlarge-text {
+        font-size: calc(var(--font-size-h6) * 1.4);
+    }
 }
 
 @include context-edit {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: var(--font-family-heading);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-family-heading);
 
-		a,
-		a:active,
-		a:hover {
-			color: currentColor !important;
-			border: none !important;
-		}
-	}
+        a,
+        a:active,
+        a:hover {
+            color: currentColor !important;
+            border: none !important;
+        }
+    }
 }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	word-wrap: normal !important;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
 
-	&:focus {
-		clip: auto !important;
-		clip-path: none;
-		color: c(black);
-		display: block;
-		font-size: 1em;
-		height: auto;
-		left: 5px;
-		line-height: normal;
-		padding: 15px 23px 14px;
-		text-decoration: none;
-		top: 5px;
-		width: auto;
-		z-index: 100000;
-		/* Above WP toolbar. */
-	}
+    &:focus {
+        clip: auto !important;
+        clip-path: none;
+        color: c(black);
+        display: block;
+        font-size: 1em;
+        height: auto;
+        left: 5px;
+        line-height: normal;
+        padding: 15px 23px 14px;
+        text-decoration: none;
+        top: 5px;
+        width: auto;
+        z-index: 100000;
+        /* Above WP toolbar. */
+    }
 }
 
 @include context-view {
-	a,
-	button {
-		color: var(--color-link);
+    a,
+    button {
+        color: var(--color-link);
 
-		&:active,
-		&:hover {
-			color: var(--color-link-hover);
-		}
-	}
+        &:active,
+        &:hover {
+            color: var(--color-link-hover);
+        }
+    }
 }
 
 @include context-edit {
-	a {
-		color: var(--color-link);
-	}
+    a {
+        color: var(--color-link);
+    }
 
-	.block-editor-rich-text__editable a {
-		color: var(--color-link) !important;
+    .block-editor-rich-text__editable a {
+        color: var(--color-link) !important;
 
-		&:active,
-		&:hover {
-			color: var(--color-link-hover) !important;
-		}
-	}
+        &:active,
+        &:hover {
+            color: var(--color-link-hover) !important;
+        }
+    }
 }

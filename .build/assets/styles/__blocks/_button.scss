@@ -1,30 +1,31 @@
 .wp-block-button {
-	&__link {
-		@extend %button-generics;
-	}
+    &__link {
+        @extend %button-generics;
+    }
 
-	&.is-style-outline {
-		.wp-block-button__link:not(.has-text-color) {
-			color: var(--button-color-alt);
-		}
-		.wp-block-button__link {
-			background-color: transparent !important;
-			border-color: currentColor;
-		}
-	}
+    &.is-style-outline {
+        .wp-block-button__link:not(.has-text-color) {
+            color: var(--button-color-alt);
+        }
+        .wp-block-button__link {
+            background-color: transparent !important;
+            border-color: currentColor;
+        }
+    }
 }
 
 // Solution for specificity issues in button border coloring
 @each $color, $colorSet in $gutenberg_colors {
-	@each $variant, $value in $colorSet {
-		@if $variant == 'base' {
-			.wp-block-button.is-style-fill .wp-block-button__link.has-#{$color}-background-color {
-				border-color: var(--color-#{$color});
-			}
-		} @else {
-			.wp-block-button.is-style-fill .wp-block-button__link.has-#{$color}-#{$variant}-background-color {
-				border-color: var(--color-#{$color}-#{$variant});
-			}
-		}
-	}
+    @each $variant, $value in $colorSet {
+        @if $variant == 'base' {
+            .wp-block-button.is-style-fill .wp-block-button__link.has-#{$color}-background-color {
+                border-color: var(--color-#{$color});
+            }
+        } @else {
+            .wp-block-button.is-style-fill
+                .wp-block-button__link.has-#{$color}-#{$variant}-background-color {
+                border-color: var(--color-#{$color}-#{$variant});
+            }
+        }
+    }
 }

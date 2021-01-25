@@ -19,11 +19,11 @@ class Assets
 
 	public function run()
 	{
-		add_action('wp_enqueue_scripts', [ $this, 'registerAssets' ]);
-		add_action('admin_enqueue_scripts', [ $this, 'registerAdminAssets' ]);
-		add_action('admin_init', [ $this, 'editorStyle' ]);
-		add_action('wp_head', [ $this, 'loadFonts' ]);
-		add_action('sht_after_body_open', [ $this, 'loadSvgFilter' ]);
+		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
+		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
+		add_action('admin_init', [$this, 'editorStyle']);
+		add_action('wp_head', [$this, 'loadFonts']);
+		add_action('sht_after_body_open', [$this, 'loadSvgFilter']);
 	}
 
 	public function registerAssets()
@@ -37,7 +37,7 @@ class Assets
 		$deps = ['wp-block-library'];
 		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime(get_template_directory() .'/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime(get_template_directory() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
 		// JavaScript
 		$deps = [];
@@ -45,7 +45,7 @@ class Assets
 		wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', false);
 		$deps[] = 'jquery';
 
-		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true);
+		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
 		$deps[] = 'fancybox';
 
 		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps, filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
@@ -98,7 +98,7 @@ class Assets
 		$font_name = sanitize_title(sht_theme()->name) . '-font-' . $this->font_version;
 
 		$file = get_template_directory() . '/assets/scripts/loadfonts.min.js';
-		if (! file_exists($file)) {
+		if (!file_exists($file)) {
 			echo 'loadfonts.min.js not found!';
 			die;
 		}
@@ -124,16 +124,16 @@ class Assets
 	public function getSetting($setting)
 	{
 		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
-		if (! is_file($path)) {
+		if (!is_file($path)) {
 			return false;
 		}
 
 		$settings = json_decode(file_get_contents($path), true);
-		if (! array_key_exists($setting, $settings)) {
+		if (!array_key_exists($setting, $settings)) {
 			return false;
 		}
 
-		return $settings[ $setting ];
+		return $settings[$setting];
 	}
 
 	public function loadSvgFilter()

@@ -45,7 +45,7 @@ class Gutenberg
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
-		add_filter('block_editor_settings', [ $this, 'editorSettings' ]);
+		add_filter('block_editor_settings', [$this, 'editorSettings']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
@@ -135,7 +135,7 @@ class Gutenberg
 	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
-			$script_asset_path = get_template_directory().'/assets/gutenberg/blocks.asset.php';
+			$script_asset_path = get_template_directory() . '/assets/gutenberg/blocks.asset.php';
 			$script_asset = file_exists($script_asset_path) ? require($script_asset_path) : ['dependencies' => [], 'version' => sht_theme()->version];
 			wp_enqueue_script(
 				sht_theme()->prefix . '-gutenberg-script',
@@ -197,7 +197,7 @@ class Gutenberg
 		if ($this->isContextEdit()) {
 			$featured_image = wp_get_attachment_image(get_post_thumbnail_id($post_id), $size, false, ['class' => $image_class]);
 			if (!empty($featured_image)) {
-				$featured_image = '<figure class="'.$figure_class.'">'.$featured_image.'</figure>';
+				$featured_image = '<figure class="' . $figure_class . '">' . $featured_image . '</figure>';
 			}
 		} else {
 			$featured_image = sht_theme()->Package->Lazysizes->getLazyImage(get_post_thumbnail_id($post_id), $size, $figure_class, $image_class);
@@ -216,7 +216,7 @@ class Gutenberg
 		global $post;
 		if ($post->post_type ?? false && $post->post_name ?? false) {
 			global $post;
-			$classes .= ' post-type-'.$post->post_type.' post-type-'.$post->post_type.'--'.$post->post_name;
+			$classes .= ' post-type-' . $post->post_type . ' post-type-' . $post->post_type . '--' . $post->post_name;
 		}
 		return $classes;
 	}
@@ -224,7 +224,7 @@ class Gutenberg
 	public function addBlockPatternCategory()
 	{
 		if (function_exists('register_block_pattern_category')) {
-			register_block_pattern_category('sht-block-patterns', [ 'label' => __('Say Hello', 'sht') ]);
+			register_block_pattern_category('sht-block-patterns', ['label' => __('Say Hello', 'sht')]);
 		}
 	}
 }

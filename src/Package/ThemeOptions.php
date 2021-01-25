@@ -21,9 +21,9 @@ class ThemeOptions
 
 	public function run()
 	{
-		add_action('acf/init', [ $this, 'page' ], 1);
-		add_action('acf/init', [ $this, 'options' ]);
-		add_action('acf/init', [ $this, 'acfInit' ]);
+		add_action('acf/init', [$this, 'page'], 1);
+		add_action('acf/init', [$this, 'options']);
+		add_action('acf/init', [$this, 'acfInit']);
 		add_action('after_setup_theme', [$this, 'disableEMRNews']);
 	}
 

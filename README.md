@@ -4,8 +4,7 @@ This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It ha
 
 # Getting started
 
-It is distributed under the GNU General Public License v3.0. Or in short: **It's open source**.
-You are free to use this starter theme or only parts of it for personal and commercial use!
+It is distributed under the GNU General Public License v3.0. Or in short: **It's open source**. You are free to use this starter theme or only parts of it for personal and commercial use!
 
 Just clone this repository and run a search for the following values and replace them with the values for your project.
 
@@ -29,11 +28,14 @@ Please visit [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
 This theme comes with some very handy gulp tasks to make your life much easier.
 
 You can install the packages using `npm install`.
+
 ```
 $ cd path/to/your/project/
 $ npm install
 ```
+
 Afterwards you can use the following command to start the default gulp tasks.
+
 ```
 $ npm start
 ```
@@ -43,7 +45,6 @@ $ npm start
 ### Block Areas
 
 Until WordPress Core supports [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/), our own projects use the [Block Areas plugin](https://wordpress.org/plugins/block-areas/) to provide sites with additional content areas for use with the Gutenberg Editor. If your project doesn't have this requirement, then you can remove the `PostType/BlockAreas` Package.
-
 
 ### Content width
 
@@ -59,9 +60,9 @@ This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/
 
 The Package Class `Assets` enqueues them directly.
 
-- admin-editor.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin-editor.scss_.
-- admin.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin.scss_.
-- ui.min.css is loaded in the backend. This file is generated from _.build/assets/styles/ui.scss_.
+-   admin-editor.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin-editor.scss_.
+-   admin.min.css is loaded in the backend. This file is generated from _.build/assets/styles/admin.scss_.
+-   ui.min.css is loaded in the backend. This file is generated from _.build/assets/styles/ui.scss_.
 
 #### CSS Variables
 
@@ -75,13 +76,13 @@ The SCSS variable `$context` is defined in _admin-editor.scss_ (value `edit`) an
 
 ```scss
 .wp-block-image {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 @include context-view() {
-	.wp-block-image {
-		margin-top: 1rem;
-		margin-bottom: 1rem;
-	}
+    .wp-block-image {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
 }
 ```
 
@@ -94,7 +95,6 @@ Gulp uses the [gulp-editor-styles](https://www.npmjs.com/package/gulp-editor-sty
 ### Scripts
 
 This theme uses ES6 modules which are converted to ES5 using Babel and bundled using Webpack. The Package Class `Assets` enqueues the resultant fidirectly. For example: all `.build/assets/scripts/ui/*.js` files will be bundled to `assets/scripts/ui.js`. There will also be a minified version `assets/scripts/ui.min.js`.
-
 
 ### Fonts
 
@@ -115,7 +115,8 @@ If you are using Google Chrome there is a pretty helpful extension: [chrome Live
 SVG support and sanitization was formerly handled directly by the Theme. This feature was removed in 2020 in favour of https://wordpress.org/plugins/safe-svg/.
 
 # Authors
-- [Nico Martin](https://github.com/nico-martin)
-- [Mark Howells-Mead](https://github.com/markhowellsmead/)
-- [Joel Stüdle](https://github.com/joel-st)
-- [Dimitri Suter](https://github.com/gnochi/)
+
+-   [Nico Martin](https://github.com/nico-martin)
+-   [Mark Howells-Mead](https://github.com/markhowellsmead/)
+-   [Joel Stüdle](https://github.com/joel-st)
+-   [Dimitri Suter](https://github.com/gnochi/)

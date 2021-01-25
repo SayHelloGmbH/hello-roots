@@ -1,21 +1,19 @@
 (function ($) {
+    const CheckClass = 'c-body--no-outline';
+    const $body = $('body');
 
-	const CheckClass = 'c-body--no-outline';
-	const $body = $('body');
+    $(function () {
+        $body.addClass(CheckClass);
 
-	$(function () {
+        $(window).keydown(function (e) {
+            const code = e.keyCode ? e.keyCode : e.which;
+            if (code === 9) {
+                $body.removeClass(CheckClass);
+            }
+        });
 
-		$body.addClass(CheckClass);
-
-		$(window).keydown(function (e) {
-			const code = (e.keyCode ? e.keyCode : e.which);
-			if(code === 9) {
-				$body.removeClass(CheckClass);
-			}
-		});
-
-		$(window).mousemove(function (e) {
-			$body.addClass(CheckClass);
-		});
-	});
+        $(window).mousemove(function (e) {
+            $body.addClass(CheckClass);
+        });
+    });
 })(jQuery);

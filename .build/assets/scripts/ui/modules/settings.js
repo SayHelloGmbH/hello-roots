@@ -5,19 +5,19 @@ import verge from 'verge';
 
 jQuery.easing.def = jQuery.bez(settings.easing_bezier);
 jQuery.fx.speeds = {
-	slow: settings.easing_speed_slow,
-	fast: settings.easing_speed_fast,
-	_default: settings.easing_speed
+    slow: settings.easing_speed_slow,
+    fast: settings.easing_speed_fast,
+    _default: settings.easing_speed,
 };
 
 export const color = (mycolor, tone = 'base') => {
-	return settings.theme_colors[mycolor][tone];
+    return settings.theme_colors[mycolor][tone];
 };
 
 export const c = (mycolor, tone = 'base') => {
-	return color(mycolor, tone);
+    return color(mycolor, tone);
 };
 
 export const is_mobile = () => {
-	return (verge.viewportW() <= settings.breakpoints['tablet']);
+    return verge.viewportW() <= settings.breakpoints['tablet'];
 };

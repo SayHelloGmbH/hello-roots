@@ -18,12 +18,12 @@ class LoginScreen
 	public function run()
 	{
 		if (class_exists('WP_Customize_Control')) {
-			add_action('customize_register', [ $this, 'customSections' ]);
+			add_action('customize_register', [$this, 'customSections']);
 		}
-		add_action('login_head', [ $this, 'customizeLoginForm' ]);
-		add_action('password_protected_login_head', [ $this, 'customizeLoginForm' ]);
-		add_filter('login_headerurl', [ $this, 'loginLogoUrl' ]);
-		add_filter('login_headertext', [ $this, 'loginLogoTitle' ]);
+		add_action('login_head', [$this, 'customizeLoginForm']);
+		add_action('password_protected_login_head', [$this, 'customizeLoginForm']);
+		add_filter('login_headerurl', [$this, 'loginLogoUrl']);
+		add_filter('login_headertext', [$this, 'loginLogoTitle']);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class LoginScreen
 				'sht_login_logo_size',
 				[
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => [ $this, 'sanitizeAbsint' ],
+					'sanitize_callback' => [$this, 'sanitizeAbsint'],
 					'default'           => 320,
 				]
 			);
@@ -174,25 +174,25 @@ class LoginScreen
 		$theme_mods = get_theme_mods();
 
 		$css = [];
-		if (isset($theme_mods[ 'sht_login_logo' ])) {
-			$theme_mods[ 'sht_login_logo' ] = wp_get_attachment_url($theme_mods[ 'sht_login_logo' ]);
-			$css[] = '.login h1 a {background: url(\'' . $theme_mods[ 'sht_login_logo' ] . '\') center/contain no-repeat;}';
+		if (isset($theme_mods['sht_login_logo'])) {
+			$theme_mods['sht_login_logo'] = wp_get_attachment_url($theme_mods['sht_login_logo']);
+			$css[] = '.login h1 a {background: url(\'' . $theme_mods['sht_login_logo'] . '\') center/contain no-repeat;}';
 			$css[] = '.login h1 a {width: ' . get_theme_mod('sht_login_logo_size', 320) . 'px}';
 		}
-		if (isset($theme_mods[ 'login_background_colour' ])) {
-			$css[] = 'body {background-color: ' . $theme_mods[ 'login_background_colour' ] . ';}';
+		if (isset($theme_mods['login_background_colour'])) {
+			$css[] = 'body {background-color: ' . $theme_mods['login_background_colour'] . ';}';
 		}
-		if (isset($theme_mods[ 'login_button_colour' ])) {
-			$css[] = '.login .button-primary, .login .button-primary:active, .login .button-primary:focus {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
-			$css[] = '.login .button-primary:hover {background-color: ' . $theme_mods[ 'login_button_colour' ] . ';box-shadow: 0 0 .5rem ' . self::boxshadow($theme_mods[ 'login_button_colour' ]) . '}';
+		if (isset($theme_mods['login_button_colour'])) {
+			$css[] = '.login .button-primary, .login .button-primary:active, .login .button-primary:focus {background-color: ' . $theme_mods['login_button_colour'] . ';border: none;text-shadow: none;box-shadow: none;transition:all 300ms ease-in-out}';
+			$css[] = '.login .button-primary:hover {background-color: ' . $theme_mods['login_button_colour'] . ';box-shadow: 0 0 .5rem ' . self::boxshadow($theme_mods['login_button_colour']) . '}';
 		}
-		if (isset($theme_mods[ 'login_link_colour' ])) {
-			$css[] = '.login #backtoblog a, .login #backtoblog a:hover, .login #nav a, .login #nav a:hover {color: ' . $theme_mods[ 'login_link_colour' ] . ';transition:all 300ms ease-in-out}';
+		if (isset($theme_mods['login_link_colour'])) {
+			$css[] = '.login #backtoblog a, .login #backtoblog a:hover, .login #nav a, .login #nav a:hover {color: ' . $theme_mods['login_link_colour'] . ';transition:all 300ms ease-in-out}';
 			$css[] = '.login #backtoblog a:hover, .login #nav a:hover {opacity: .8}';
-			$css[] = '.login a, .login a:hover {color: ' . $theme_mods[ 'login_link_colour' ] . ';transition:all 300ms ease-in-out}';
+			$css[] = '.login a, .login a:hover {color: ' . $theme_mods['login_link_colour'] . ';transition:all 300ms ease-in-out}';
 			$css[] = '.login a:hover {opacity: .8}';
 		}
-		if (! empty($css)) {
+		if (!empty($css)) {
 			echo '<style>' . implode(chr(10), $css) . '</style>';
 		}
 	}
@@ -239,7 +239,7 @@ class LoginScreen
 				$blue  = hexdec(substr($hex, 6, 2));
 				break;
 		}
-		$rgba = [ $red, $green, $blue, $alpha ];
+		$rgba = [$red, $green, $blue, $alpha];
 
 		return 'rgba(' . implode(', ', $rgba) . ')';
 	}

@@ -12,7 +12,7 @@ class Media
 
 	public function run()
 	{
-		add_action('after_setup_theme', [ $this, 'addImageSizes' ]);
+		add_action('after_setup_theme', [$this, 'addImageSizes']);
 		add_filter('image_size_names_choose', [$this, 'selectableImageSizes']);
 	}
 

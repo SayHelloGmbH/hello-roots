@@ -1,37 +1,37 @@
 :root {
-	--c-masthead-height: #{rem-calc(85px)};
-	@include breakpoint(laptop) {
-		--c-masthead-height: #{rem-calc(104px)};
-	}
+    --c-masthead-height: #{rem-calc(85px)};
+    @include breakpoint(laptop) {
+        --c-masthead-height: #{rem-calc(104px)};
+    }
 }
 
 .c-masthead {
-	&__toggler {
-		@include breakpoint(laptop) {
-			display: none;
-		}
-	}
+    &__toggler {
+        @include breakpoint(laptop) {
+            display: none;
+        }
+    }
 
-	&__inner {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		max-width: var(--constraint-narrow);
-		margin-left: auto;
-		margin-right: auto;
-		padding: var(--unit-medium) var(--unit);
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--constraint-narrow);
+        margin-left: auto;
+        margin-right: auto;
+        padding: var(--unit-medium) var(--unit);
 
-		@include breakpoint(narrow) {
-			padding-left: 0;
-			padding-right: 0;
-		}
+        @include breakpoint(narrow) {
+            padding-left: 0;
+            padding-right: 0;
+        }
 
-		@include breakpoint(laptop) {
-			max-width: var(--constraint-medium);
-		}
-	}
+        @include breakpoint(laptop) {
+            max-width: var(--constraint-medium);
+        }
+    }
 
-	&__title {
-		font-size: 1rem;
-	}
+    &__title {
+        font-size: 1rem;
+    }
 }

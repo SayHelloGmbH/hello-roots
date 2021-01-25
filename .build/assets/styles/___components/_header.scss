@@ -1,13 +1,13 @@
 .c-header {
-	text-align: center;
+    text-align: center;
 
-	&__logo {
-		display: inline-block;
-		margin: var(--unit) 0;
-		width: 200px;
-	}
+    &__logo {
+        display: inline-block;
+        margin: var(--unit) 0;
+        width: 200px;
+    }
 
-	&__menutoggler {
-		margin: var(--unit) auto;
-	}
+    &__menutoggler {
+        margin: var(--unit) auto;
+    }
 }

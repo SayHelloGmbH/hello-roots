@@ -1,61 +1,64 @@
 :root {
-	--button-color-primary: var(--color-white);
-	--button-background-color-primary: var(--color-primary);
-	--button-color-primary-hover: var(--color-white);
-	--button-background-color-primary-hover: var(--color-primary-dark);
+    --button-color-primary: var(--color-white);
+    --button-background-color-primary: var(--color-primary);
+    --button-color-primary-hover: var(--color-white);
+    --button-background-color-primary-hover: var(--color-primary-dark);
 
-	--button-font-size: 1em;
-	--button-font-size-small: .8em;
-	--button-font-size-large: 1.2em;
-	--button-padding: .35em 1em;
-	--button-radius: 3px;
+    --button-font-size: 1em;
+    --button-font-size-small: 0.8em;
+    --button-font-size-large: 1.2em;
+    --button-padding: 0.35em 1em;
+    --button-radius: 3px;
 }
 
 %button-generics {
-	transition: all 300ms ease, box-shadow 150ms ease;
-	user-select: none;
-	display: inline-block;
-	text-decoration: none;
-	border: 1px solid;
-	padding: var(--button-padding);
-	border-radius: var(--button-radius);
-	text-align: center;
-	font-size: var(--button-font-size);
-	
-	&:not(.has-background) {
-		background-color: var(--button-background-color); // default. can be overridden by has- classes (via editor)
-		border-color: var(--button-background-color); // default. can be overridden by has- classes (via editor)
-	}
+    transition: all 300ms ease, box-shadow 150ms ease;
+    user-select: none;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid;
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
+    text-align: center;
+    font-size: var(--button-font-size);
 
-	&:not(.has-text-color) {
-		color: var(--button-color); // default. can be overridden by has- classes (via editor)
-	}
+    &:not(.has-background) {
+        background-color: var(
+            --button-background-color
+        ); // default. can be overridden by has- classes (via editor)
+        border-color: var(
+            --button-background-color
+        ); // default. can be overridden by has- classes (via editor)
+    }
 
-	.is-style-outline & {
-		background-color: transparent;
-		border-color: currentColor;
-		border-width: 1px;
+    &:not(.has-text-color) {
+        color: var(--button-color); // default. can be overridden by has- classes (via editor)
+    }
 
-		&:not(.has-text-color) {
-			color: var(--button-color-primary);
-		}
-	}
+    .is-style-outline & {
+        background-color: transparent;
+        border-color: currentColor;
+        border-width: 1px;
 
-	&:active,
-	&:hover {
-		filter: saturate(.8);
-	}
+        &:not(.has-text-color) {
+            color: var(--button-color-primary);
+        }
+    }
+
+    &:active,
+    &:hover {
+        filter: saturate(0.8);
+    }
 }
 
 .o-button {
-	@extend %button-generics;
+    @extend %button-generics;
 
-	&--size-small {
-		font-size: var(--button-font-size-small);
-	}
+    &--size-small {
+        font-size: var(--button-font-size-small);
+    }
 
-	&--size-large {
-		font-size: var(--button-font-size-large);
-	}
-
+    &--size-large {
+        font-size: var(--button-font-size-large);
+    }
 }

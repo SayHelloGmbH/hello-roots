@@ -1,28 +1,28 @@
 // Double class name allows this trump to override other block rules
 
 .has-block-vertical-padding.has-block-vertical-padding {
-	&--none {
-		padding-top: 0;
-		padding-bottom: 0;
-	}
+    &--none {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 
-	&--small {
-		padding-top: var(--unit-small);
-		padding-bottom: var(--unit-small);
-	}
+    &--small {
+        padding-top: var(--unit-small);
+        padding-bottom: var(--unit-small);
+    }
 
-	&--medium {
-		padding-top: var(--unit-medium);
-		padding-bottom: var(--unit-medium);
-	}
+    &--medium {
+        padding-top: var(--unit-medium);
+        padding-bottom: var(--unit-medium);
+    }
 
-	&--large {
-		padding-top: var(--unit-large);
-		padding-bottom: var(--unit-large);
-	}
+    &--large {
+        padding-top: var(--unit-large);
+        padding-bottom: var(--unit-large);
+    }
 
-	&--xlarge {
-		padding-top: var(--unit-xlarge);
-		padding-bottom: var(--unit-xlarge);
-	}
+    &--xlarge {
+        padding-top: var(--unit-xlarge);
+        padding-bottom: var(--unit-xlarge);
+    }
 }

@@ -1,15 +1,15 @@
 .c-archive {
-	@extend .h-stack;
+    @extend .h-stack;
 
-	&__content {
-		@extend .h-stack--medium;
-	}
+    &__content {
+        @extend .h-stack--medium;
+    }
 
-	&__entries {
-		@extend .h-stack--medium;
-	}
+    &__entries {
+        @extend .h-stack--medium;
+    }
 
-	&__header {
-		padding-bottom: var(--unit-medium);
-	}
+    &__header {
+        padding-bottom: var(--unit-medium);
+    }
 }

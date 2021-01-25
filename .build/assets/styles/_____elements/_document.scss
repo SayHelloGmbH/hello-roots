@@ -1,53 +1,51 @@
 :root {
-	--body-color: var(--color-black);
-	--body-background-color: var(--color-white);
+    --body-color: var(--color-black);
+    --body-background-color: var(--color-white);
 
-	--selection-color: var(--color-white);
-	--selection-background-color: var(--color-black);
+    --selection-color: var(--color-white);
+    --selection-background-color: var(--color-black);
 }
 
 html {
+    &.is--menuopen {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
 
-	&.is--menuopen {
-		overflow: hidden;
-		position: fixed;
-		top: 0;
-		width: 100vw;
-		height: 100vh;
+        &.admin-bar {
+            margin-top: 0 !important;
 
-		&.admin-bar {
-			margin-top: 0 !important;
-
-			body {
-				margin-top: var(--c-adminbar-height);
-			}
-		}
-		@include breakpoint(desktop) {
-			overflow-y: auto;
-			position: static;
-			height: auto;
-		}
-	}
+            body {
+                margin-top: var(--c-adminbar-height);
+            }
+        }
+        @include breakpoint(desktop) {
+            overflow-y: auto;
+            position: static;
+            height: auto;
+        }
+    }
 }
 
 body {
-	color: var(--body-color);
-	background-color: var(--body-background-color);
+    color: var(--body-color);
+    background-color: var(--body-background-color);
 }
 
 ::selection {
-	color: var(--selection-color);
-	background-color: var(--selection-background-color);
+    color: var(--selection-color);
+    background-color: var(--selection-background-color);
 }
 
 @include context-view {
-	
-	[id] {
-		scroll-snap-margin-top: var(--unit); // Safari
-		scroll-margin-top: var(--unit);
-	}
+    [id] {
+        scroll-snap-margin-top: var(--unit); // Safari
+        scroll-margin-top: var(--unit);
+    }
 
-	body {
-		overflow-x: hidden;
-	}
+    body {
+        overflow-x: hidden;
+    }
 }

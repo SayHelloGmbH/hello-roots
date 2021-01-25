@@ -1,11 +1,11 @@
 :root {
-	--unit-xxsmall: calc(var(--unit) / 8);
-	--unit-xsmall: calc(var(--unit) / 4);
-	--unit-small: calc(var(--unit) / 2);
-	--unit-medium: calc(var(--unit) * 2);
-	--unit-large: calc(var(--unit) * 4);
-	--unit-xlarge: calc(var(--unit) * 6);
-	--unit-xxlarge: calc(var(--unit) * 8);
-	--unit-xxxlarge: calc(var(--unit) * 10);
-	--unit: 1rem;
+    --unit-xxsmall: calc(var(--unit) / 8);
+    --unit-xsmall: calc(var(--unit) / 4);
+    --unit-small: calc(var(--unit) / 2);
+    --unit-medium: calc(var(--unit) * 2);
+    --unit-large: calc(var(--unit) * 4);
+    --unit-xlarge: calc(var(--unit) * 6);
+    --unit-xxlarge: calc(var(--unit) * 8);
+    --unit-xxxlarge: calc(var(--unit) * 10);
+    --unit: 1rem;
 }

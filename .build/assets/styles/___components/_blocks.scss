@@ -1,25 +1,24 @@
 :root {
-	--c-block-margin-top: var(--unit);
+    --c-block-margin-top: var(--unit);
 }
 
 .c-blocks {
+    @include clearfix_after();
 
-	@include clearfix_after();
+    > * {
+        margin-top: 0;
+        margin-bottom: 0;
 
-	> * {
-		margin-top: 0;
-		margin-bottom: 0;
-
-		& + * {
-			margin-top: var(--c-block-margin-top);
-		}
-	}
+        & + * {
+            margin-top: var(--c-block-margin-top);
+        }
+    }
 }
 
 @include context-edit {
-	.wp-block {
-		&.is-reusable {
-			max-width: 100%;
-		}
-	}
+    .wp-block {
+        &.is-reusable {
+            max-width: 100%;
+        }
+    }
 }

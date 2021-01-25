@@ -1,18 +1,17 @@
 .wp-block-media-text {
-	h1 + &,
-	h2 + &,
-	h3 + &,
-	h4 + &,
-	h5 + &,
-	h6 + & {
-		margin-top: var(--c-block-margin-top-medium);
-	}
+    h1 + &,
+    h2 + &,
+    h3 + &,
+    h4 + &,
+    h5 + &,
+    h6 + & {
+        margin-top: var(--c-block-margin-top-medium);
+    }
 
-	// This block has too much CSS specificity in core
-	.wp-block-media-text {
-		&__content {
-			padding: var(--unit-medium) var(--unit);
-		}
-	}
-
+    // This block has too much CSS specificity in core
+    .wp-block-media-text {
+        &__content {
+            padding: var(--unit-medium) var(--unit);
+        }
+    }
 }

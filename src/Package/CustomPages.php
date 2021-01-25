@@ -20,22 +20,22 @@ class CustomPages
 	public function run()
 	{
 		//Adds an options Page (ACF) if there are CPTs that have an Archive.
-		add_action('init', [ $this, 'optionsPage' ], 35);
+		add_action('init', [$this, 'optionsPage'], 35);
 
 		//Adds a page-state to the page-list and show a message on edit Archivepage for a proper Archivepage Styling
-		add_action('display_post_states', [ $this, 'pageState' ], 10, 2);
-		add_action('admin_notices', [ $this, 'editPageNotification' ]);
+		add_action('display_post_states', [$this, 'pageState'], 10, 2);
+		add_action('admin_notices', [$this, 'editPageNotification']);
 
 		//Update slug on save
-		add_action('save_post', [ $this, 'changePageslugToCptslug' ]);
-		add_action('acf/save_post', [ $this, 'changePageslugToCptslugOnacf' ], 1);
-		add_filter('page_link', [ $this, 'archivePermalink' ], 10, 2);
+		add_action('save_post', [$this, 'changePageslugToCptslug']);
+		add_action('acf/save_post', [$this, 'changePageslugToCptslugOnacf'], 1);
+		add_filter('page_link', [$this, 'archivePermalink'], 10, 2);
 
 		// Archive Title
-		add_filter('get_the_archive_title', [ $this, 'changeArchiveTitle' ]);
+		add_filter('get_the_archive_title', [$this, 'changeArchiveTitle']);
 
 		// Body Class
-		add_filter('body_class', [ $this, 'bodyClasses' ]);
+		add_filter('body_class', [$this, 'bodyClasses']);
 	}
 
 	public function optionsPage()
@@ -79,7 +79,7 @@ class CustomPages
 
 			$post_types = $this->getPosttypeItems();
 
-			if (! empty($post_types)) {
+			if (!empty($post_types)) {
 				if (function_exists('acf_add_local_field')) {
 					acf_add_local_field(
 						[
@@ -227,33 +227,33 @@ class CustomPages
 	public function changePageslugToCptslug($post_id)
 	{
 
-		if (! wp_is_post_revision($post_id)) {
+		if (!wp_is_post_revision($post_id)) {
 			//remove the hook to prevent from invinite loop
-			remove_action('save_post', [ $this, 'changePageslugToCptslug' ]);
+			remove_action('save_post', [$this, 'changePageslugToCptslug']);
 
 			$assoc_pt = $this->getPosttypeForArchivePageid($post_id);
-			if (! $assoc_pt) {
+			if (!$assoc_pt) {
 				return;
 			}
 
 			$assoc_pt_ob = get_post_type_object($assoc_pt);
 
-			$slug = $assoc_pt_ob->rewrite[ 'slug' ] . '-alias-' . $post_id;
+			$slug = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
 			if (strpos($slug, '/') !== false) {
-				$slug = explode('/', $slug)[ 0 ];
+				$slug = explode('/', $slug)[0];
 			}
 
 			$this->changeslug($post_id, $slug);
 
 			// re-hook this function
-			add_action('save_post', [ $this, 'changePageslugToCptslug' ]);
+			add_action('save_post', [$this, 'changePageslugToCptslug']);
 		}
 	}
 
 	public function changePageslugToCptslugOnacf($post_id)
 	{
 
-		if (empty($_POST[ 'acf' ])) {
+		if (empty($_POST['acf'])) {
 			return;
 		}
 
@@ -264,14 +264,14 @@ class CustomPages
 		);
 
 		foreach ($posttypes as $pt) {
-			if (isset($_POST[ 'acf' ][ 'page_for_' . $pt ])) {
+			if (isset($_POST['acf']['page_for_' . $pt])) {
 				$assoc_pt_ob = get_post_type_object($pt);
-				$slug        = $assoc_pt_ob->rewrite[ 'slug' ] . '-alias-' . $post_id;
+				$slug        = $assoc_pt_ob->rewrite['slug'] . '-alias-' . $post_id;
 				if (strpos($slug, '/') !== false) {
-					$slug = explode('/', $slug)[ 0 ];
+					$slug = explode('/', $slug)[0];
 				}
 
-				$this->changeslug($_POST[ 'acf' ][ 'page_for_' . $pt ], $slug);
+				$this->changeslug($_POST['acf']['page_for_' . $pt], $slug);
 			}
 		}
 	}
@@ -279,7 +279,7 @@ class CustomPages
 	public function archivePermalink($url, $post_id)
 	{
 		$assoc_pt = $this->getPosttypeForArchivePageid($post_id);
-		if (! $assoc_pt) {
+		if (!$assoc_pt) {
 			return $url;
 		}
 
@@ -294,7 +294,7 @@ class CustomPages
 	{
 
 		$post_with_sameslug = get_page_by_path($slug);
-		if (! is_null($post_with_sameslug)) {
+		if (!is_null($post_with_sameslug)) {
 			wp_update_post(
 				[
 					'ID'        => $post_with_sameslug->ID,
@@ -311,7 +311,7 @@ class CustomPages
 			]
 		);
 
-		if (! is_null($post_with_sameslug)) {
+		if (!is_null($post_with_sameslug)) {
 			wp_update_post(
 				[
 					'ID'        => $post_with_sameslug->ID,
@@ -334,7 +334,7 @@ class CustomPages
 		foreach ($posttypes as $pt) {
 			$post_type = get_post_type_object($pt);
 			if ($post_type->has_archive && $post_type->publicly_queryable) {
-				$post_types[ $pt ] = $post_type->labels->name;
+				$post_types[$pt] = $post_type->labels->name;
 			}
 		}
 
@@ -366,7 +366,7 @@ class CustomPages
 	public function changeArchiveTitle($title)
 	{
 		if (function_exists('get_field')) {
-			if (! is_admin() && is_post_type_archive()) {
+			if (!is_admin() && is_post_type_archive()) {
 				$post_type  = get_query_var('post_type');
 				$assoc_page = get_field("page_for_{$post_type}", 'options');
 

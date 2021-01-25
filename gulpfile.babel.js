@@ -2,21 +2,18 @@ import gulp from 'gulp';
 import livereload from 'gulp-livereload';
 
 const config = {
-	name: 'Hello Theme',
-	key: 'sht',
-	assetsDir: 'assets/',
-	gulpDir: './.build/gulp/',
-	assetsBuild: '.build/assets/',
-	errorLog: function (error) {
-		console.log('\x1b[31m%s\x1b[0m', error);
-		if(this.emit) {
-			this.emit('end');
-		}
-	},
-	reload: [
-		'*.php',
-		'{Classes,inc,partials,templates,includes}/**/*.{php,html,twig}'
-	]
+    name: 'Hello Theme',
+    key: 'sht',
+    assetsDir: 'assets/',
+    gulpDir: './.build/gulp/',
+    assetsBuild: '.build/assets/',
+    errorLog: function (error) {
+        console.log('\x1b[31m%s\x1b[0m', error);
+        if (this.emit) {
+            this.emit('end');
+        }
+    },
+    reload: ['*.php', '{Classes,inc,partials,templates,includes}/**/*.{php,html,twig}'],
 };
 
 import { task as taskStyles } from './.build/gulp/task-styles';
@@ -37,19 +34,29 @@ export const pot = () => taskPot(config);
 export const gutenberg = () => taskGutenberg(config);
 export const serve = () => taskServe(config);
 export const watch = () => {
+    const settings = { usePolling: true, interval: 100 };
 
-	const settings = { usePolling: true, interval: 100 };
+    livereload.listen();
 
-	livereload.listen();
-
-	gulp.watch(config.assetsBuild + 'styles/**/*.scss', settings, gulp.series(styles));
-	gulp.watch(config.assetsBuild + 'scripts/**/*.{scss,css,js}', settings, gulp.series(scripts));
-	gulp.watch(config.assetsBuild + 'gutenberg/**/*.{scss,css,js,jsx}', settings, gulp.series(gutenberg));
-	gulp.watch(config.assetsDir + 'settings.json', settings, gulp.series(gutenberg, scripts, styles));
-	gulp.watch([config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'], settings, gulp.series(svg));
-	gulp.watch(config.reload).on('change', livereload.changed);
+    gulp.watch(config.assetsBuild + 'styles/**/*.scss', settings, gulp.series(styles));
+    gulp.watch(config.assetsBuild + 'scripts/**/*.{scss,css,js}', settings, gulp.series(scripts));
+    gulp.watch(
+        config.assetsBuild + 'gutenberg/**/*.{scss,css,js,jsx}',
+        settings,
+        gulp.series(gutenberg)
+    );
+    gulp.watch(
+        config.assetsDir + 'settings.json',
+        settings,
+        gulp.series(gutenberg, scripts, styles)
+    );
+    gulp.watch(
+        [config.assetsDir + '**/*.svg', '!' + config.assetsDir + '**/*.min.svg'],
+        settings,
+        gulp.series(svg)
+    );
+    gulp.watch(config.reload).on('change', livereload.changed);
 };
-
 
 export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
 export default taskDefault;

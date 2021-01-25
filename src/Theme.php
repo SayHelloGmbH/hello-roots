@@ -96,14 +96,14 @@ class Theme
 			]
 		);
 
-		add_action('after_setup_theme', [ $this, 'themeSupports' ]);
-		add_action('after_setup_theme', [ $this, 'contentWidth' ]);
+		add_action('after_setup_theme', [$this, 'themeSupports']);
+		add_action('after_setup_theme', [$this, 'contentWidth']);
 		add_action('comment_form_before', [$this, 'enqueueReplyScript']);
 
 		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
 		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
 
-		add_action('wp_head', [ $this, 'noJsScript' ]);
+		add_action('wp_head', [$this, 'noJsScript']);
 
 		$this->cleanHead();
 	}
@@ -116,7 +116,7 @@ class Theme
 	 */
 	public static function getInstance()
 	{
-		if (! isset(self::$instance) && ! (self::$instance instanceof Theme)) {
+		if (!isset(self::$instance) && !(self::$instance instanceof Theme)) {
 			self::$instance = new Theme;
 
 			self::$instance->name    = self::$instance->theme->name;
@@ -125,7 +125,7 @@ class Theme
 			self::$instance->error   = _x('Ein unerwarteter Fehler ist geschehen.', 'Theme instance unexpected error', 'sht');
 			self::$instance->debug   = true;
 
-			if (! isset($_SERVER[ 'HTTP_HOST' ]) || (strpos($_SERVER[ 'HTTP_HOST' ], '.hello') === false && strpos($_SERVER[ 'HTTP_HOST' ], '.local') === false) && ! in_array($_SERVER[ 'REMOTE_ADDR' ], [ '127.0.0.1', '::1' ])) {
+			if (!isset($_SERVER['HTTP_HOST']) || (strpos($_SERVER['HTTP_HOST'], '.hello') === false && strpos($_SERVER['HTTP_HOST'], '.local') === false) && !in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 				self::$instance->debug = false;
 			}
 		}
@@ -143,9 +143,9 @@ class Theme
 		foreach ($classes as $class) {
 			$class_parts = explode('\\', $class);
 			$class_short = end($class_parts);
-			$class_set   = $class_parts[ count($class_parts) - 2 ];
+			$class_set   = $class_parts[count($class_parts) - 2];
 
-			if (! isset(sht_theme()->{$class_set}) || ! is_object(sht_theme()->{$class_set})) {
+			if (!isset(sht_theme()->{$class_set}) || !is_object(sht_theme()->{$class_set})) {
 				sht_theme()->{$class_set} = new \stdClass();
 			}
 
@@ -166,7 +166,7 @@ class Theme
 	 */
 	public function contentWidth()
 	{
-		$GLOBALS[ 'content_width' ] = apply_filters('sht/content_width', 640);
+		$GLOBALS['content_width'] = apply_filters('sht/content_width', 640);
 	}
 
 	/**
@@ -177,8 +177,8 @@ class Theme
 		add_theme_support('title-tag');
 		add_theme_support('automatic-feed-links');
 		add_theme_support('custom-logo');
-		add_theme_support('html5', [ 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ]);
-		add_theme_support('post-thumbnails', [ 'post' ]);
+		add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption']);
+		add_theme_support('post-thumbnails', ['post']);
 	}
 
 	public function cleanHead()
@@ -195,7 +195,7 @@ class Theme
 	 */
 	public function noJsScript()
 	{
-		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>".chr(10);
+		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>" . chr(10);
 	}
 
 	public function enqueueReplyScript()

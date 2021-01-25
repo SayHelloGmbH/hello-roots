@@ -1,17 +1,17 @@
 @mixin context-edit() {
-	@if $context == edit {
-		@content;
-	}
+    @if $context == edit {
+        @content;
+    }
 }
 
 @mixin context-view() {
-	@if $context == view {
-		@content;
-	}
+    @if $context == view {
+        @content;
+    }
 }
 
 @mixin context-admin() {
-	@if $context == admin {
-		@content;
-	}
+    @if $context == admin {
+        @content;
+    }
 }

@@ -1,27 +1,27 @@
 // This class overrides the core CSS.
 .has-large-font-size {
-	font-size: 1em;
+    font-size: 1em;
 }
 
 // We set font sizes using our own class names
 // which are defined after the “reset” of the
 // core class name. See gutenberg(block-filter/font-size.jsx)
 .has-font-size-xsmall {
-	font-size: var(--font-size-xsmall);
+    font-size: var(--font-size-xsmall);
 }
 
 .has-font-size-small {
-	font-size: var(--font-size-small);
+    font-size: var(--font-size-small);
 }
 
 .has-font-size-medium {
-	font-size: var(--font-size-medium);
+    font-size: var(--font-size-medium);
 }
 
 .has-font-size-large {
-	font-size: var(--font-size-large);
+    font-size: var(--font-size-large);
 }
 
 .has-font-size-xlarge {
-	font-size: var(--font-size-xlarge);
+    font-size: var(--font-size-xlarge);
 }

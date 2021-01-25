@@ -3,90 +3,89 @@
  */
 
 .h-stack {
-	> * {
-		margin-top: 0;
-		margin-bottom: 0;
+    > * {
+        margin-top: 0;
+        margin-bottom: 0;
 
-		& + * {
-			margin-top: var(--unit);
-		}
-	}
+        & + * {
+            margin-top: var(--unit);
+        }
+    }
 
-	&--small {
-		> * {
-			margin-top: 0;
-			margin-bottom: 0;
+    &--small {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
 
-			& + * {
-				margin-top: var(--unit-small);
-			}
-		}
-	}
+            & + * {
+                margin-top: var(--unit-small);
+            }
+        }
+    }
 
-	&--xsmall {
-		> * {
-			margin-top: 0;
-			margin-bottom: 0;
+    &--xsmall {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
 
-			& + * {
-				margin-top: var(--unit-xsmall);
-			}
-		}
-	}
+            & + * {
+                margin-top: var(--unit-xsmall);
+            }
+        }
+    }
 
-	&--medium {
-		> * {
-			margin-top: 0;
-			margin-bottom: 0;
+    &--medium {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
 
-			& + * {
-				margin-top: var(--unit-medium);
-			}
-		}
-	}
+            & + * {
+                margin-top: var(--unit-medium);
+            }
+        }
+    }
 
-	&--large {
-		> * {
-			margin-top: 0;
-			margin-bottom: 0;
+    &--large {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
 
-			& + * {
-				margin-top: var(--unit-large);
-			}
-		}
-	}
+            & + * {
+                margin-top: var(--unit-large);
+            }
+        }
+    }
 
-	&--xlarge {
-		> * {
-			margin-top: 0;
-			margin-bottom: 0;
+    &--xlarge {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
 
-			& + * {
-				margin-top: var(--unit-xlarge);
-			}
-		}
-	}
-
+            & + * {
+                margin-top: var(--unit-xlarge);
+            }
+        }
+    }
 }
 
 .h-stack-row {
-	> * {
-		margin-left: 0;
-		margin-right: 0;
+    > * {
+        margin-left: 0;
+        margin-right: 0;
 
-		& + * {
-			margin-left: var(--unit);
-		}
-	}
+        & + * {
+            margin-left: var(--unit);
+        }
+    }
 }
 
 .h-stack-row--xsmall {
-	> * {
-		margin-left: 0;
-		margin-right: 0;
+    > * {
+        margin-left: 0;
+        margin-right: 0;
 
-		& + * {
-			margin-left: var(--unit-xsmall);
-		}
-	}
+        & + * {
+            margin-left: var(--unit-xsmall);
+        }
+    }
 }

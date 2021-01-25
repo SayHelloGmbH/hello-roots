@@ -1,17 +1,17 @@
 .wp-block-image {
-	.alignleft {
-		margin-top: var(--unit-xsmall);
-		margin-right: var(--unit);
-	}
+    .alignleft {
+        margin-top: var(--unit-xsmall);
+        margin-right: var(--unit);
+    }
 
-	.alignright {
-		margin-top: var(--unit-xsmall);
-		margin-left: var(--unit);
-	}
+    .alignright {
+        margin-top: var(--unit-xsmall);
+        margin-left: var(--unit);
+    }
 
-	&.alignfull,
-	&.alignwide {
-		// margin-top: var(--unit-large);
-		// margin-bottom: var(--unit-large);
-	}
+    &.alignfull,
+    &.alignwide {
+        // margin-top: var(--unit-large);
+        // margin-bottom: var(--unit-large);
+    }
 }

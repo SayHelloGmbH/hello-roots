@@ -1,26 +1,26 @@
 .c-nav {
-	&--mobile {
-		background-color: c(white);
-		position: fixed;
-		top: var(--c-masthead-height);
-		bottom: 0;
-		right: 0;
-		transform: translateX(100vw);
-		opacity: 0;
-		z-index: 2;
-		width: 100vw;
-		transition: opacity 300ms ease;
-		@include breakpoint(laptop) {
-			display: none;
-		}
+    &--mobile {
+        background-color: c(white);
+        position: fixed;
+        top: var(--c-masthead-height);
+        bottom: 0;
+        right: 0;
+        transform: translateX(100vw);
+        opacity: 0;
+        z-index: 2;
+        width: 100vw;
+        transition: opacity 300ms ease;
+        @include breakpoint(laptop) {
+            display: none;
+        }
 
-		&[aria-hidden="false"] {
-			transform: translateX(0);
-			opacity: 1;
-		}
+        &[aria-hidden='false'] {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-		.admin-bar & {
-			top: calc(var(--c-masthead-height) + var(--c-adminbar-height));
-		}
-	}
+        .admin-bar & {
+            top: calc(var(--c-masthead-height) + var(--c-adminbar-height));
+        }
+    }
 }

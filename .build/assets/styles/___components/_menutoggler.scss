@@ -1,51 +1,51 @@
 .c-menutoggler {
-	display: none;
-	@include breakpoint(desktop) {
-		display: block;
-	}
-	height: 3rem;
-	width: 4rem;
-	position: relative;
-	cursor: pointer;
-	color: c(primary);
+    display: none;
+    @include breakpoint(desktop) {
+        display: block;
+    }
+    height: 3rem;
+    width: 4rem;
+    position: relative;
+    cursor: pointer;
+    color: c(primary);
 
-	&__line {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		right: 0;
-		height: .5rem;
-		transform: translateY(-50%);
-		background-color: currentColor;
-		display: block;
-		@include transition();
-		will-change: transform;
+    &__line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 0.5rem;
+        transform: translateY(-50%);
+        background-color: currentColor;
+        display: block;
+        @include transition();
+        will-change: transform;
 
-		&--1 {
-			top: 0;
-		}
+        &--1 {
+            top: 0;
+        }
 
-		&--3 {
-			top: 100%;
-		}
-	}
+        &--3 {
+            top: 100%;
+        }
+    }
 
-	&[aria-expanded="true"] {
-		.c-menutoggler__line {
-			&--1 {
-				top: 50%;
-				transform: translateY(-50%) rotate(45deg);
-			}
+    &[aria-expanded='true'] {
+        .c-menutoggler__line {
+            &--1 {
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+            }
 
-			&--2 {
-				left: 50%;
-				right: 50%;
-			}
+            &--2 {
+                left: 50%;
+                right: 50%;
+            }
 
-			&--3 {
-				top: 50%;
-				transform: translateY(-50%) rotate(-45deg);
-			}
-		}
-	}
+            &--3 {
+                top: 50%;
+                transform: translateY(-50%) rotate(-45deg);
+            }
+        }
+    }
 }

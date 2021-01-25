@@ -1,31 +1,31 @@
 // Get the "rem-base" font size from the assets.json file
 // This must be a pixel value, so that the calculation function rem-calc works.
 // In most cases, leave the value as 16px.
-$rem-font-size: map-get($rem-base, value)+0px;
+$rem-font-size: map-get($rem-base, value) + 0px;
 
 @function rem-calc($values, $base-value: $rem-font-size) {
-	$max: length($values);
-	@if $max==1 {
-		@return convert-to-rem(nth($values, 1), $base-value);
-	}
-	$remValues: ();
-	@for $i from 1 through $max {
-		$remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
-	}
-	@return $remValues;
+    $max: length($values);
+    @if $max==1 {
+        @return convert-to-rem(nth($values, 1), $base-value);
+    }
+    $remValues: ();
+    @for $i from 1 through $max {
+        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    }
+    @return $remValues;
 }
 
 @function convert-to-rem($value, $base-value: $rem-font-size) {
-	$value: strip-unit($value) / strip-unit($base-value) * 1rem;
-	@if ($value==0rem) {
-		$value: 0;
-	}
-	// Turn 0rem into 0
-	@return $value;
+    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    @if ($value==0rem) {
+        $value: 0;
+    }
+    // Turn 0rem into 0
+    @return $value;
 }
 
 @function strip-unit($num) {
-	@return $num / ($num * 0 + 1);
+    @return $num / ($num * 0 + 1);
 }
 
 /**
@@ -36,17 +36,17 @@ $rem-font-size: map-get($rem-base, value)+0px;
  * @return {void}
  */
 @mixin typo($size: null, $line-height: null, $av: null) {
-	@if ($size) {
-		font-size: rem-calc($size*$rem-font-size/100);
-	}
-	@if ($size) {
-		@if ($line-height) {
-			line-height: ($line-height/$size);
-		}
-	}
-	@if ($av) {
-		@include av($av);
-	}
+    @if ($size) {
+        font-size: rem-calc($size * $rem-font-size/100);
+    }
+    @if ($size) {
+        @if ($line-height) {
+            line-height: ($line-height/$size);
+        }
+    }
+    @if ($av) {
+        @include av($av);
+    }
 }
 
 /**
@@ -58,44 +58,44 @@ $rem-font-size: map-get($rem-base, value)+0px;
  * @return {Number} - Unitless number
  */
 @function unitless-calc($value, $base: null) {
-	// If no base is defined, defer to the global font size
-	@if $base == null {
-		$base: $rem-font-size;
-	}
-	// First, lets convert our $base to pixels
-	// If the base font size is a %, then multiply it by 16px
-	@if unit($base) == '%' {
-		$base: ($base / 100%) * 16px;
-	}
+    // If no base is defined, defer to the global font size
+    @if $base == null {
+        $base: $rem-font-size;
+    }
+    // First, lets convert our $base to pixels
+    // If the base font size is a %, then multiply it by 16px
+    @if unit($base) == '%' {
+        $base: ($base / 100%) * 16px;
+    }
 
-	@if unit($base) == 'rem' {
-		$base: strip-unit($base) * 16px;
-	}
+    @if unit($base) == 'rem' {
+        $base: strip-unit($base) * 16px;
+    }
 
-	@if unit($base) == 'em' {
-		$base: strip-unit($base) * 16px;
-	}
-	// Now let's convert our value to pixels too
-	@if unit($value) == '%' {
-		$value: ($value / 100%) * $base;
-	}
+    @if unit($base) == 'em' {
+        $base: strip-unit($base) * 16px;
+    }
+    // Now let's convert our value to pixels too
+    @if unit($value) == '%' {
+        $value: ($value / 100%) * $base;
+    }
 
-	@if unit($value) == 'rem' {
-		$value: strip-unit($value) * $base;
-	}
+    @if unit($value) == 'rem' {
+        $value: strip-unit($value) * $base;
+    }
 
-	@if unit($value) == 'em' {
-		$value: strip-unit($value) * $base;
-	}
-	// 'px'
-	@if unit($value) == 'px' {
-		@return strip-unit($value) / strip-unit($base);
-	}
-	// assume that line-heights greater than 10 are meant to be absolute in 'px'
-	@if unitless($value) and ($value > 10) {
-		@return $value / strip-unit($base);
-	}
-	@return $value;
+    @if unit($value) == 'em' {
+        $value: strip-unit($value) * $base;
+    }
+    // 'px'
+    @if unit($value) == 'px' {
+        @return strip-unit($value) / strip-unit($base);
+    }
+    // assume that line-heights greater than 10 are meant to be absolute in 'px'
+    @if unitless($value) and ($value > 10) {
+        @return $value / strip-unit($base);
+    }
+    @return $value;
 }
 
 /**
@@ -103,5 +103,5 @@ $rem-font-size: map-get($rem-base, value)+0px;
  * https://scotch.io/tutorials/converting-photoshop-letter-spacing-to-css
  */
 @mixin av($size) {
-	letter-spacing: ($size / 1000) * 1em;
+    letter-spacing: ($size / 1000) * 1em;
 }

@@ -1,45 +1,45 @@
 @mixin for-screen-min($name, $sizes: $breakpoints) {
-	$min: device-breakpoints-min($name, $sizes);
+    $min: device-breakpoints-min($name, $sizes);
 
-	@if type-of($min) == 'number' {
-		@if unit($min) == '' {
-			@media screen and (min-width: ($min/map-get($rem-base, value))+0em) {
-				@content;
-			}
-		} @else {
-			@media screen and (min-width: $min) {
-				@content;
-			}
-		}
-	} @else {
-		@content;
-	}
+    @if type-of($min) == 'number' {
+        @if unit($min) == '' {
+            @media screen and (min-width: ($min/map-get($rem-base, value))+0em) {
+                @content;
+            }
+        } @else {
+            @media screen and (min-width: $min) {
+                @content;
+            }
+        }
+    } @else {
+        @content;
+    }
 }
 
 @mixin for-screen-max($name, $sizes: $breakpoints) {
-	$max: device-breakpoints-max($name, $sizes);
+    $max: device-breakpoints-max($name, $sizes);
 
-	@if type-of($max) == 'number' {
-		@if unit($max) == '' {
-			@media screen and (max-width: ($max/map-get($rem-base, value))+0em) {
-				@content;
-			}
-		} @else {
-			@media screen and (max-width: $max) {
-				@content;
-			}
-		}
-	} @else {
-		@content;
-	}
+    @if type-of($max) == 'number' {
+        @if unit($max) == '' {
+            @media screen and (max-width: ($max/map-get($rem-base, value))+0em) {
+                @content;
+            }
+        } @else {
+            @media screen and (max-width: $max) {
+                @content;
+            }
+        }
+    } @else {
+        @content;
+    }
 }
 
 @mixin for-screen($name, $sizes: $breakpoints) {
-	@include for-screen-min($name, $sizes) {
-		@include for-screen-max($name, $sizes) {
-			@content;
-		}
-	}
+    @include for-screen-min($name, $sizes) {
+        @include for-screen-max($name, $sizes) {
+            @content;
+        }
+    }
 }
 
 /**
@@ -62,21 +62,20 @@
  **/
 
 @mixin breakpoint($value) {
+    $direction: if(length($value) > 1, nth($value, 2), up);
+    $name: if(length($value) > 1, nth($value, 1), $value);
 
-	$direction: if(length($value) > 1, nth($value, 2), up);
-	$name: if(length($value) > 1, nth($value, 1), $value);
-
-	@if type-of(map-get($breakpoints, $name)) != 'null' {
-		@if $direction == down {
-			@include for-screen-max($name) {
-				@content;
-			}
-		} @else {
-			@include for-screen-min($name) {
-				@content;
-			}
-		}
-	} @else {
-		@debug 'Breakpoint ' + $value + ' not defined';
-	}
+    @if type-of(map-get($breakpoints, $name)) != 'null' {
+        @if $direction == down {
+            @include for-screen-max($name) {
+                @content;
+            }
+        } @else {
+            @include for-screen-min($name) {
+                @content;
+            }
+        }
+    } @else {
+        @debug 'Breakpoint ' + $value + ' not defined';
+    }
 }

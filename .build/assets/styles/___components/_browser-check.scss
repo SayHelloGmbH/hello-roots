@@ -1,34 +1,34 @@
 .c-browser-check {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: var(--color-black);
-	display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-black);
+    display: none;
 
-	p {
-		margin: 0;
-		padding: $space-item;
-		color: #fff;
-		text-align: center;
-		font-size: var(--font-size-small);
-		line-height: var(--line-height);
+    p {
+        margin: 0;
+        padding: $space-item;
+        color: #fff;
+        text-align: center;
+        font-size: var(--font-size-small);
+        line-height: var(--line-height);
 
-		a {
-			color: var(--color-white);
-			text-decoration: underline;
-		}
-	}
+        a {
+            color: var(--color-white);
+            text-decoration: underline;
+        }
+    }
 }
 
 body.browser--no-js {
-	.c-browser-check--noscript {
-		display: block;
-	}
+    .c-browser-check--noscript {
+        display: block;
+    }
 }
 
 body.browser--outdated {
-	.c-browser-check--outdated {
-		display: block;
-	}
+    .c-browser-check--outdated {
+        display: block;
+    }
 }

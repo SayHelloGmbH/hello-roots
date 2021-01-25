@@ -1,4 +1,4 @@
-<article itemscope itemtype="http://schema.org/BlogPosting" <?php post_class('c-loop__entry c-loop__entry--'.get_post_type()); ?>>
+<article itemscope itemtype="http://schema.org/BlogPosting" <?php post_class('c-loop__entry c-loop__entry--' . get_post_type()); ?>>
 
 	<header class="c-loop__entryheader">
 		<h2 class="c-loop__entrytitle">
@@ -13,6 +13,6 @@
 		<?php the_excerpt(); ?>
 	</div>
 
-	<a class="c-loop__entrymore" href="<?php the_permalink(); ?>"><?php _ex('Weiterlesen', 'Excerpt read more link', 'sht')?></a>
+	<a class="c-loop__entrymore" href="<?php the_permalink(); ?>"><?php _ex('Weiterlesen', 'Excerpt read more link', 'sht') ?></a>
 
 </article>

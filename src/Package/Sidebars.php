@@ -30,8 +30,8 @@ class Sidebars
 	public function run()
 	{
 		if (count($this->sidebars)) {
-			add_action('after_setup_theme', [ $this, 'themeSupport' ]);
-			add_action('widgets_init', [ $this, 'register' ]);
+			add_action('after_setup_theme', [$this, 'themeSupport']);
+			add_action('widgets_init', [$this, 'register']);
 		}
 	}
 

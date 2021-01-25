@@ -13,12 +13,12 @@ class Error
 	public function run()
 	{
 		// Third party plugin support
-		add_filter('hellolog_types', [ $this, 'registerErrorLog' ], 10, 1);
+		add_filter('hellolog_types', [$this, 'registerErrorLog'], 10, 1);
 	}
 
 	public function registerErrorLog($types)
 	{
-		$types[ 'error' ] = __('Error', 'sha');
+		$types['error'] = __('Error', 'sha');
 
 		return $types;
 	}

@@ -46,7 +46,7 @@ class ACF
 		$colors = [];
 
 		foreach ($settings['acf_colors'] as $color_key => $color) {
-			$colors[] = '"'.$color.'"';
+			$colors[] = '"' . $color . '"';
 		}
 
 		if (empty($colors)) {

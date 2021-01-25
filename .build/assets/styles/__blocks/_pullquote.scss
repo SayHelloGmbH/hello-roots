@@ -1,21 +1,21 @@
 .wp-block-pullquote.wp-block-pullquote {
-	&:not(.is-style-solid-color) {
-		border-top: 4px solid currentColor;
-		border-bottom: 4px solid currentColor;
-	}
+    &:not(.is-style-solid-color) {
+        border-top: 4px solid currentColor;
+        border-bottom: 4px solid currentColor;
+    }
 
-	&.has-background {
-		a {
-			color: currentColor;
+    &.has-background {
+        a {
+            color: currentColor;
 
-			&:active,
-			&:hover {
-				color: currentColor;
-			}
-		}
-	}
+            &:active,
+            &:hover {
+                color: currentColor;
+            }
+        }
+    }
 
-	blockquote {
-		text-align: center;
-	}
+    blockquote {
+        text-align: center;
+    }
 }

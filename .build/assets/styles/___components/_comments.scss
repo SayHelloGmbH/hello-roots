@@ -1,116 +1,114 @@
 .c-comments {
+    max-width: var(--constraint-narrow);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unit);
+    padding-right: var(--unit);
 
-	max-width: var(--constraint-narrow);
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: var(--unit);
-	padding-right: var(--unit);
+    @include breakpoint(tablet) {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-	@include breakpoint(tablet) {
-		padding-left: 0;
-		padding-right: 0;
-	}
+    .children {
+        list-style: none;
+        padding-left: 0;
+    }
 
-	.children {
-		list-style: none;
-		padding-left: 0;
-	}
+    .comment,
+    .pingback,
+    .trackback {
+        padding: var(--unit);
+        border: 1px solid c(gray, light);
+        @extend .h-stack;
 
-	.comment,
-	.pingback,
-	.trackback {
-		padding: var(--unit);
-		border: 1px solid c(gray, light);
-		@extend .h-stack;
+        &[class*='depth'] {
+            padding-left: var(--unit);
+            padding-right: var(--unit);
+        }
 
-		&[class*="depth"] {
-			padding-left: var(--unit);
-			padding-right: var(--unit);
-		}
+        &.even {
+            background: c(gray, light);
+        }
 
-		&.even {
-			background: c(gray, light);
-		}
+        &.odd {
+            background-color: c(white);
+        }
 
-		&.odd {
-			background-color: c(white);
-		}
+        // Only if inside an existing comment (so as a specific reply)
+        .comment-respond {
+            padding-top: var(--unit);
+            padding-bottom: var(--unit);
+            border-top: 1px solid c(gray);
+        }
+    }
 
-		// Only if inside an existing comment (so as a specific reply)
-		.comment-respond {
-			padding-top: var(--unit);
-			padding-bottom: var(--unit);
-			border-top: 1px solid c(gray);
-		}
+    .comment-awaiting-moderation {
+        flex: 0 0 100%;
+        opacity: 0.65;
+    }
 
-	}
+    .comment-body,
+    .comment-content {
+        @extend .h-stack;
 
-	.comment-awaiting-moderation {
-		flex: 0 0 100%;
-		opacity: .65;
-	}
+        pre {
+            padding: 0;
+            overflow-x: auto;
+        }
+    }
 
-	.comment-body,
-	.comment-content {
-		@extend .h-stack;
+    .comment-edit-link {
+        @extend .o-button;
+    }
 
-		pre {
-			padding: 0;
-			overflow-x: auto;
-		}
-	}
+    .commentlist {
+        padding-left: 0;
+        list-style: none;
+    }
 
-	.comment-edit-link {
-		@extend .o-button;
-	}
+    .comment-meta {
+        @extend .h-stack--small;
+        @include breakpoint(tablet) {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
 
-	.commentlist {
-		padding-left: 0;
-		list-style: none;
-	}
+            > * {
+                margin-top: 0;
+            }
+        }
+    }
 
-	.comment-meta {
-		@extend .h-stack--small;
-		@include breakpoint(tablet) {
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
+    .comment-metadata {
+        font-size: var(--font-size-xsmall);
+        text-align: right;
+        @include breakpoint(tablet) {
+            flex: 0 0 40%;
+            margin-left: var(--unit);
+        }
+    }
 
-			> * {
-				margin-top: 0;
-			}
-		}
-	}
+    .comment-respond {
+        clear: both;
+    }
 
-	.comment-metadata {
-		font-size: var(--font-size-xsmall);
-		text-align: right;
-		@include breakpoint(tablet) {
-			flex: 0 0 40%;
-			margin-left: var(--unit);
-		}
-	}
+    .edit-link {
+        margin-left: var(--unit-small);
+    }
 
-	.comment-respond {
-		clear: both;
-	}
+    .navigation {
+        @include clearfix;
+    }
 
-	.edit-link {
-		margin-left: var(--unit-small);
-	}
+    #cancel-comment-reply-link {
+        font-weight: normal;
+        color: c(primary);
+        text-decoration: underline;
 
-	.navigation {
-		@include clearfix;
-	}
-
-	#cancel-comment-reply-link {
-		font-weight: normal;
-		color: c(primary);
-		text-decoration: underline;
-
-		&:active,
-		&:hover {
-			color: c(primary, dark);
-		}
-	}
+        &:active,
+        &:hover {
+            color: c(primary, dark);
+        }
+    }
 }
