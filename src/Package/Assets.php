@@ -19,36 +19,76 @@ class Assets
 
 	public function run()
 	{
-		add_action('wp_enqueue_scripts', [ $this, 'registerAssets' ]);
-		add_action('admin_enqueue_scripts', [ $this, 'registerAdminAssets' ]);
-		add_action('admin_init', [ $this, 'editorStyle' ]);
-		add_action('wp_head', [ $this, 'loadFonts' ]);
-		add_action('wp_footer', [ $this, 'loadSvgFilter' ]);
+		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
+		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
+		add_action('admin_init', [$this, 'editorStyle']);
+		add_action('wp_head', [$this, 'loadFonts']);
+		add_action('wp_footer', [$this, 'loadSvgFilter']);
 	}
 
 	public function registerAssets()
 	{
 
-		if (!is_user_logged_in()) {
+		if ( ! is_user_logged_in()) {
 			wp_deregister_style('dashicons');
 		}
 
 		// CSS
 		$deps = ['wp-block-library'];
-		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
+		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css',
+			[], '3.4.0');
 		$deps[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime(get_template_directory() .'/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-style',
+			get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps,
+			filemtime(get_template_directory() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
 		// JavaScript
 		$deps = [];
 		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1', false);
+		wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.2.1.min.js', [], '3.2.1',
+			false);
 		$deps[] = 'jquery';
 
-		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', [ 'jquery' ], '3.4.0', true);
+		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js',
+			['jquery'], '3.4.0', true);
 		$deps[] = 'fancybox';
 
-		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps, filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js',
+			['jquery'], '3.4.0', true);
+		$deps[] = 'fancybox';
+
+		wp_enqueue_script(
+			'preact',
+			get_template_directory_uri() . '/assets/plugins/preact/preact.min.js',
+			[],
+
+			'10.5.12',
+			true
+		);
+		$deps[] = 'preact';
+
+		wp_enqueue_script(
+			'preact-hooks',
+			get_template_directory_uri() . '/assets/plugins/preact/preact-hooks.min.js',
+			['preact'],
+			'10.5.12',
+			true
+		);
+		$deps[] = 'preact-hooks';
+
+		wp_enqueue_script(
+			'preact-compat',
+			get_template_directory_uri() . '/assets/plugins/preact/preact-compat.min.js',
+			['preact', 'preact-hooks'],
+			'10.5.12',
+			true
+		);
+		$deps[] = 'preact-compat';
+
+		wp_enqueue_script(sht_theme()->prefix . '-script',
+			get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps,
+			filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'),
+			true);
 
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
@@ -67,11 +107,20 @@ class Assets
 	public function registerAdminAssets()
 	{
 		// CSS
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style',
+			get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css',
+			['wp-edit-blocks'],
+			filemtime(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style',
+			get_template_directory_uri() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css',
+			[sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'],
+			filemtime(get_template_directory() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
 
 		// Javascript
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		wp_enqueue_script(sht_theme()->prefix . '-admin-script',
+			get_template_directory_uri() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [],
+			filemtime(get_template_directory() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'),
+			true);
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
 				'google_api_key' => acf_get_setting('google_api_key'),
@@ -98,7 +147,7 @@ class Assets
 		$font_name = sanitize_title(sht_theme()->name) . '-font-' . $this->font_version;
 
 		$file = get_template_directory() . '/assets/scripts/loadfonts.min.js';
-		if (! file_exists($file)) {
+		if ( ! file_exists($file)) {
 			echo 'loadfonts.min.js not found!';
 			die;
 		}
@@ -115,25 +164,25 @@ class Assets
 	/**
 	 * This function returns the settings value from assets/settings.js
 	 *
-	 * @since 0.1.0
-	 *
 	 * @param string $setting settings key
 	 *
-	 * @return string | bool
+	 * @return string |bool
+	 * @since 0.1.0
+	 *
 	 */
 	public function getSetting($setting)
 	{
 		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
-		if (! is_file($path)) {
+		if ( ! is_file($path)) {
 			return false;
 		}
 
 		$settings = json_decode(file_get_contents($path), true);
-		if (! array_key_exists($setting, $settings)) {
+		if ( ! array_key_exists($setting, $settings)) {
 			return false;
 		}
 
-		return $settings[ $setting ];
+		return $settings[$setting];
 	}
 
 	public function loadSvgFilter()
