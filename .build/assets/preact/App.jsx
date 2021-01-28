@@ -22,8 +22,12 @@ const App = () => {
 	</div>
 }
 
-ReactDOM.render(
-	<App/>,
-	document.querySelector('#preact')
-);
+const appElement = document.querySelector('#preact');
+
+if (appElement) {
+	ReactDOM.render(
+		<App/>,
+		appElement
+	);
+}
 
