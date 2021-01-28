@@ -26,3 +26,4 @@ ReactDOM.render(
 	<App/>,
 	document.querySelector('#preact')
 );
+

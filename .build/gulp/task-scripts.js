@@ -32,7 +32,7 @@ export const task = config => {
 			.pipe(
 				gulpWebpack({
 					entry,
-					mode: 'production',
+					mode: 'development',
 					module: {
 						rules: [{
 								test: /\.js$/,

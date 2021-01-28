@@ -65,7 +65,6 @@ class Assets
 			'10.5.12',
 			true
 		);
-		$deps[] = 'preact';
 
 		wp_enqueue_script(
 			'preact-hooks',
@@ -74,7 +73,6 @@ class Assets
 			'10.5.12',
 			true
 		);
-		$deps[] = 'preact-hooks';
 
 		wp_enqueue_script(
 			'preact-compat',
@@ -83,9 +81,14 @@ class Assets
 			'10.5.12',
 			true
 		);
-		$deps[] = 'preact-compat';
 
 		wp_enqueue_script(sht_theme()->prefix . '-script',
+			get_template_directory_uri() . '/assets/scripts/preact-app' . (sht_theme()->debug ? '' : '.min') . '.js',
+			['preact', 'preact-hooks', 'preact-compat'],
+			filemtime(get_template_directory() . '/assets/scripts/preact-app' . (sht_theme()->debug ? '' : '.min') . '.js'),
+			true);
+
+		wp_enqueue_script(sht_theme()->prefix . '-preact-app',
 			get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps,
 			filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'),
 			true);
