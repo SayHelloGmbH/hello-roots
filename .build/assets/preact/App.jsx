@@ -2,23 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const App = () => {
-	const [count, setCount] = React.useState(0);
-
-	const double = React.useMemo(() => count * 2, [count]);
+	const [liked, setLiked] = React.useState(false);
 
 	React.useEffect(() => {
-		console.log('APP INITIALIZED');
-		return () => console.log('APP DESTROYED');
-	}, []);
 
-	React.useEffect(() => {
-		console.log('COUNT UPDATED:', count);
-	}, [count]);
+		}, []
+	);
 
 	return <div>
-		<h2>Count: {count} ({double})</h2>
-		<button onClick={() => setCount(count + 1)}>+</button>
-		<button onClick={() => setCount(count - 1)}>-</button>
+		<button className={`button ${liked ? 'button--liked' : ''}`} disabled={liked}
+				style={{backgroundColor: liked ? 'pink' : 'blue'}} onClick={() => {
+			if (liked) {
+				alert('already liked');
+			}
+			$.get({
+				url: 'https://wordpress.hello/wp-json/wp/v2/',
+				success: () => {
+					setLiked(true);
+				},
+			});
+		}}>
+			like
+		</button>
+
 	</div>
 }
 

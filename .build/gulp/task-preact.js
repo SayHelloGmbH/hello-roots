@@ -9,8 +9,8 @@ import uglify from 'gulp-uglify';
 
 export const task = config => {
 	return gulp.src([
-			`${config.assetsBuild}preact/index.js`
-		])
+		`${config.assetsBuild}preact/index.js`
+	])
 		// Webpack
 		.pipe(
 			gulpWebpack({
@@ -21,10 +21,10 @@ export const task = config => {
 						exclude: /(node_modules)/,
 						loader: 'babel-loader'
 					},
-					{
-						test: /\.css$/i,
-						use: ['style-loader', 'css-loader'],
-					}]
+						{
+							test: /\.css$/i,
+							use: ['style-loader', 'css-loader'],
+						}]
 				},
 				watchOptions: {
 					poll: true,
@@ -36,6 +36,10 @@ export const task = config => {
 				plugins: [
 					//new DependencyExtractionWebpackPlugin(),
 				],
+				externals: {
+					react: 'preactCompat',
+					'react-dom': 'preactCompat',
+				}
 			}, webpack)
 		)
 		.on('error', config.errorLog)

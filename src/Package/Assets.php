@@ -84,14 +84,17 @@ class Assets
 
 		wp_enqueue_script(sht_theme()->prefix . '-script',
 			get_template_directory_uri() . '/assets/scripts/preact-app' . (sht_theme()->debug ? '' : '.min') . '.js',
-			['preact', 'preact-hooks', 'preact-compat'],
+			$deps,
 			filemtime(get_template_directory() . '/assets/scripts/preact-app' . (sht_theme()->debug ? '' : '.min') . '.js'),
 			true);
 
-		wp_enqueue_script(sht_theme()->prefix . '-preact-app',
-			get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps,
+		wp_enqueue_script(
+			sht_theme()->prefix . '-preact-app',
+			get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js',
+			['preact', 'preact-hooks', 'preact-compat'],
 			filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'),
-			true);
+			true
+		);
 
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
