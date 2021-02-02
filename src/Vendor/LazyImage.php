@@ -135,7 +135,7 @@ class LazyImage
 				}
 			}
 
-			$this->image_aspect = $org_width / $org_height;
+			$this->image_aspect = intval($org_width) / intval($org_height);
 
 			if ($org_width > $this->image_full[1]) {
 				$org_width  = $this->image_full[1];
