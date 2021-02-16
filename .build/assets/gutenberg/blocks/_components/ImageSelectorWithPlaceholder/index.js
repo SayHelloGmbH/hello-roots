@@ -9,7 +9,7 @@ import { Component, Fragment } from '@wordpress/element';
 import { MediaPlaceholder, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 import { _x } from '@wordpress/i18n';
 
-import { getLazySrcs } from '../lazyimage';
+import { getLazySrcs } from '../LazyImage';
 
 export default class ImageSelectorWithPlaceholder extends Component {
     constructor(props) {

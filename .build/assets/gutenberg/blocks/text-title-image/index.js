@@ -22,7 +22,7 @@ import { sayhello as icon } from '../../icons';
 
 // Say Hello
 import ImageSelectorWithPlaceholder from '../_components/ImageSelectorWithPlaceholder';
-import { LazyImage } from '../_components/lazyimage';
+import { LazyImage } from '../_components/LazyImage';
 
 const blockName = 'sht/contact-info';
 const classNameBase = getBlockDefaultClassName(blockName);
