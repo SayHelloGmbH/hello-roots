@@ -9,7 +9,7 @@
  * Namespace:   HelloTheme
  * Prefix:      sht
  *
- * Check if WordPress 5.0 and PHP 8.0 or newer and ACF is active
+ * Check if WordPress 5.0 and PHP 7.4 or newer and ACF is active
  */
 
 if (!defined('DISALLOW_FILE_EDIT')) {
@@ -27,7 +27,7 @@ if (!function_exists('dump')) {
 	}
 }
 
-if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_VERSION, '8.0', '<') || !class_exists('acf')) {
+if (version_compare(get_bloginfo('version'), '5.0', '<') || version_compare(PHP_VERSION, '7.4', '<') || !class_exists('acf')) {
 	add_action(
 		'admin_notices',
 		function () {
