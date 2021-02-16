@@ -474,9 +474,6 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 .editor-styles-wrapper :-ms-input-placeholder {
   color: var(--field-placeholder-color); }
 
-.editor-styles-wrapper ::-ms-input-placeholder {
-  color: var(--field-placeholder-color); }
-
 .editor-styles-wrapper ::placeholder {
   color: var(--field-placeholder-color); }
 
@@ -902,7 +899,6 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 .editor-styles-wrapper .o-button, .editor-styles-wrapper input[type='button'], .editor-styles-wrapper input[type='submit'], .editor-styles-wrapper .c-comments .comment-edit-link, .editor-styles-wrapper .wp-block-button__link {
   transition: all 300ms ease, box-shadow 150ms ease;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   display: inline-block;
