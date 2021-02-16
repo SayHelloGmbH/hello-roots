@@ -486,9 +486,6 @@ body {
 :-ms-input-placeholder {
   color: var(--field-placeholder-color); }
 
-::-ms-input-placeholder {
-  color: var(--field-placeholder-color); }
-
 ::placeholder {
   color: var(--field-placeholder-color); }
 
@@ -886,7 +883,6 @@ video {
 .o-button, input[type='button'], input[type='submit'], .c-comments .comment-edit-link, .wp-block-button__link {
   transition: all 300ms ease, box-shadow 150ms ease;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   display: inline-block;
