@@ -154,7 +154,10 @@ class LazyImage
 		 */
 
 		$this->image_srcset                          = [];
-		$this->image_srcset[$this->image_org[1]] = $this->image_org[0];
+
+		if (apply_filters('sht/lazyimage/include_original', true)) {
+			$this->image_srcset[$this->image_org[1]] = $this->image_org[0];
+		}
 
 		foreach ($this->getLsSizes() as $key => $width) {
 			if ($width > $this->image_org[1]) {
