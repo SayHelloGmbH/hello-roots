@@ -4,4 +4,4 @@ import './extend-styles-wrapper-class';
 import './post-controls';
 import './unregister-block-type';
 
-import './blocks/text-title-image';
+//import './blocks/text-title-image';

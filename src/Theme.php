@@ -93,6 +93,7 @@ class Theme
 				PostType\Post::class,
 
 				Plugin\ACF::class,
+				//Plugin\GravityForms::class, // Comment in if the GF plugin is being used
 			]
 		);
 
