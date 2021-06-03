@@ -57,7 +57,6 @@
             }
 
             &_description {
-                @include small-text;
                 padding-top: var(--unit-xsmall);
             }
 
@@ -73,18 +72,10 @@
                 padding: 0;
                 border: none;
                 background-color: transparent;
-                font-weight: var(--font-weight-bold);
-            }
-        }
-
-        .gform {
-            &_validation_errors > h2 {
-                font-size: var(--font-size-rem-base);
             }
         }
 
         &.gravity-theme .ginput_complex label {
-            @include small-text;
             padding-top: var(--unit-xsmall);
         }
     }
