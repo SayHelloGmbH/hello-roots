@@ -35,6 +35,12 @@ class Assets
 
 		// CSS
 		$deps = ['wp-block-library'];
+
+		if (class_exists('GFForms')) {
+			$deps[] = 'gform_basic';
+			$deps[] = 'gform_theme';
+		}
+
 		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps[] = 'fancybox';
 		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps, filemtime(get_template_directory() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
