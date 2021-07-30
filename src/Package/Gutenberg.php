@@ -73,6 +73,9 @@ class Gutenberg
 		// Since WordPress 5.5: DISALLOW block patterns delivered by Core
 		// (We can add our own to the pattern category sht-block-patterns)
 		remove_theme_support('core-block-patterns');
+
+		// Since WordPress 5.8: DISALLOW full-site editing
+		remove_theme_support('block-templates');
 	}
 
 	/**
