@@ -45,7 +45,6 @@ class Gutenberg
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories', [$this, 'blockCategories']);
-		add_filter('block_editor_settings', [$this, 'editorSettings']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
@@ -120,19 +119,6 @@ class Gutenberg
 		// 		'slug'     => 'test'
 		// 	]
 		// ]);
-	}
-
-	/**
-	 * Gutenberg enqueues a few styles within an inline STYLE block in the
-	 * editor. This removes them. (The default Gutenberg implementation
-	 * currently only contains a few basic typography settings.)
-	 * @param  array $editor_settings The pre-defined settings
-	 * @return array                  The modified settings
-	 */
-	public function editorSettings($editor_settings)
-	{
-		$editor_settings['styles'] = [];
-		return $editor_settings;
 	}
 
 	public function enqueueBlockAssets()
