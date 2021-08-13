@@ -1,0 +1,19 @@
+@include context-edit {
+    .c-editormessage {
+        --c-editormessage-color: var(--sht-color--info);
+        --c-editormessage-background-color: var(--sht-color--info-background);
+        --c-editormessage-border-color: var(--sht-color--info-border);
+
+        border: 1px solid var(--c-editormessage-border-color);
+        color: var(--c-editormessage-color);
+        background-color: var(--c-editormessage-background-color);
+        padding: 1rem;
+        @extend .h-stack;
+
+        &--error {
+            --c-editormessage-color: var(--sht-color--danger);
+            --c-editormessage-background-color: var(--sht-color--danger-background);
+            --c-editormessage-border-color: var(--sht-color--danger-border);
+        }
+    }
+}
