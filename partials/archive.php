@@ -18,12 +18,7 @@
 		</div>
 
 		<?php
-		$paginate = paginate_links();
-		if ('' !== $paginate) {
-			printf('<div class="c-archive__pagination c-pagination">
-				<div class="c-archive__paginationcontent c-pagination__content">%s</div>
-			</div>', $paginate);
-		}
+		get_template_part('partials/navigation/pagination');
 		?>
 	</div>
 
