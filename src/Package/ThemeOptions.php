@@ -46,7 +46,7 @@ class ThemeOptions
 					'page_title'  => __('Theme-Optionen', 'sha'),
 					'menu_title'  => __('Theme-Optionen', 'sha'),
 					'menu_slug'   => $this->main_slug,
-					'parent_slug' => 'themes.php',
+					'parent_slug' => 'options-general.php',
 					'capability'  => 'edit_theme_options',
 				]
 			);

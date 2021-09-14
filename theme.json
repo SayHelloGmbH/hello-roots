@@ -1,0 +1,63 @@
+{
+    "version": 1,
+    "settings": {
+        "custom": {
+            "spacing": {
+                "unit": "1rem"
+            }
+        },
+        "layout": {
+            "contentSize": "728px",
+            "wideSize": "1280px"
+        },
+        "spacing": {
+            "customMargin": false,
+            "customPadding": false
+        },
+        "typography": {
+            "customFontSize": false,
+            "customLineHeight": false,
+            "dropCap": false,
+            "fontSizes": []
+        },
+        "color": {
+            "palette": [
+                {
+                    "slug": "primary",
+                    "color": "#77adbf",
+                    "name": "Primäre Farbe"
+                },
+                {
+                    "slug": "primary-dark",
+                    "color": "#4b8a9f",
+                    "name": "Primäre Farbe - dunkel"
+                },
+                {
+                    "slug": "secondary",
+                    "color": "#BF8977",
+                    "name": "Sekundäre Farbe"
+                },
+                {
+                    "slug": "secondary-dark",
+                    "color": "#8E856C",
+                    "name": "Sekundäre Farbe - dunkel"
+                },
+                {
+                    "slug": "black",
+                    "color": "#000000",
+                    "name": "Schwarz"
+                },
+                {
+                    "slug": "white",
+                    "color": "#FFFFFF",
+                    "name": "Weiss"
+                },
+                {
+                    "slug": "gray",
+                    "color": "#999",
+                    "name": "Grau"
+                }
+            ]
+        }
+    }
+}
