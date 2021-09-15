@@ -1,17 +1,8 @@
 @function color($color: black, $tone: 'base') {
-    @if map-has-key($theme_colors, $color) {
-        @if map-has-key(map-get($theme_colors, $color), $tone) {
-            @if $tone == 'base' {
-                @return var(--color-#{$color});
-            } @else {
-                @return var(--color-#{$color}-#{$tone});
-            }
-        }
-        @warn "Unknown tone `#{$tone}` of #{$color}.";
-        @return null;
+    @if $tone == 'base' {
+        @return var(--wp--preset--color--#{$color});
     }
-    @warn "Unknown `#{$color}` in $colors.";
-    @return null;
+    @return var(--wp--preset--color--#{$color}-#{$tone});
 }
 
 @function c($color: black, $tone: 'base') {
