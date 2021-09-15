@@ -20,15 +20,7 @@
 			</h1>
 
 			<?php
-			wp_nav_menu(
-				[
-					'theme_location' => 'primary',
-					'container'      => 'nav',
-					'container_class' => 'c-menu c-menu--primary',
-					'menu_id'        => 'primary-menu',
-					'menu_class'     => 'c-menu c-menu--primary',
-				]
-			);
+			get_template_part('partials/navigation/primary');
 			?>
 
 			<div class="c-masthead__toggler">
