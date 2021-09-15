@@ -85,7 +85,7 @@ class Theme
 				Package\Media::class,
 				Package\Navigation::class,
 				Package\Shyify::class,
-				Package\Sidebars::class,
+				// Package\Sidebars::class,
 				Package\ThemeOptions::class,
 
 				PostType\BlockAreas::class,
