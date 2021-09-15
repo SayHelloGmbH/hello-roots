@@ -1,27 +1,5 @@
 {
 	"theme_colors": {
-		"primary": {
-			"base": "#77adbf",
-			"dark": "#4b8a9f"
-		},
-		"black": {
-			"base": "#000"
-		},
-		"gray": {
-			"dark": "#666",
-			"base": "#999",
-			"mid": "#aaa",
-			"light": "#f0f0f0"
-		},
-		"white": {
-			"base": "#fff"
-		},
-		"brown": {
-			"base": "#930"
-		},
-		"yellow": {
-			"base": "#ffc"
-		},
 		"success": {
 			"base": "#489324",
 			"background": "#dff0d8",
@@ -43,25 +21,7 @@
 			"border": "#A01E32"
 		}
 	},
-	"gutenberg_colors": {
-		"primary": {
-			"base": "#77adbf",
-			"dark": "#4b8a9f"
-		},
-		"black": {
-			"base": "#000"
-		},
-		"gray": {
-			"dark": "#666",
-			"base": "#999",
-			"mid": "#aaa",
-			"light": "#f0f0f0"
-		},
-		"white": {
-			"base": "#fff"
-		}
-	},
-	"rem-base": {
+    "rem-base": {
 		"name": "REM-Basis",
 		"value": 16
 	},
