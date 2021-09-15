@@ -77,6 +77,11 @@
                     "slug": "gray",
                     "color": "#999",
                     "name": "Grau"
+                },
+                {
+                    "slug": "gray-light",
+                    "color": "#ccc",
+                    "name": "Hellgrau"
                 }
             ]
         }
