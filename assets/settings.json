@@ -65,56 +65,6 @@
 		"name": "REM-Basis",
 		"value": 16
 	},
-	"font_sizes": {
-		"xsmall": {
-			"name": "Extra klein",
-			"value": 12
-		},
-		"small": {
-			"name": "Klein",
-			"value": 14
-		},
-		"regular": {
-			"name": "Regular",
-			"value": 16
-		},
-		"medium": {
-			"name": "Medium",
-			"value": 18
-		},
-		"large": {
-			"name": "Gross",
-			"value": 21
-		},
-		"xlarge": {
-			"name": "Extra gross",
-			"value": 24
-		},
-		"h1": {
-			"name": "H1",
-			"value": 42
-		},
-		"h2": {
-			"name": "H2",
-			"value": 36
-		},
-		"h3": {
-			"name": "H3",
-			"value": 32
-		},
-		"h4": {
-			"name": "H4",
-			"value": 24
-		},
-		"h5": {
-			"name": "H5",
-			"value": 18
-		},
-		"h6": {
-			"name": "H6",
-			"value": 16
-		}
-	},
 	"easing_speed": 300,
 	"easing_speed_fast": 150,
 	"easing_speed_slow": 450,
