@@ -13,14 +13,6 @@ class Gutenberg
 	public $js = false;
 	public $admin_font_url = false;
 	public $admin_font_path = false;
-	public $colors = [];
-	public $allowedCoreBlocks = [
-		'core/paragraph',
-		'core/image',
-		'core/heading',
-		'core/list',
-		'core/shortcode',
-	];
 
 	public function __construct()
 	{
@@ -55,8 +47,6 @@ class Gutenberg
 
 	/**
 	 * Allow the Theme to use additional core features
-	 * See https://github.com/SayHelloGmbH/hello-roots/wiki/Gutenberg#theme-colours for information on how to
-	 * load the colours and text sizes from your settings.json into Gutenberg
 	 */
 	public function themeSupports()
 	{
