@@ -1,9 +1,12 @@
-:root {
+body {
     --body-color: var(--color-black);
     --body-background-color: var(--color-white);
 
     --selection-color: var(--color-white);
     --selection-background-color: var(--color-black);
+
+    color: var(--body-color);
+    background-color: var(--body-background-color);
 }
 
 html {
@@ -21,17 +24,13 @@ html {
                 margin-top: var(--c-adminbar-height);
             }
         }
+
         @include breakpoint(desktop) {
             overflow-y: auto;
             position: static;
             height: auto;
         }
     }
-}
-
-body {
-    color: var(--body-color);
-    background-color: var(--body-background-color);
 }
 
 ::selection {

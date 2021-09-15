@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Everything to do with menus and site navigation
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Navigation
 {
@@ -68,7 +68,6 @@ class Navigation
 		$atts['class'] = (!empty($atts['class']) ? ' ' : '') . 'c-menu__entrylink';
 		return $atts;
 	}
-	
 	/**
 	 * Removes next/previous links and replaces them
 	 * with SVG arrows. Also adds links to first/last pages.

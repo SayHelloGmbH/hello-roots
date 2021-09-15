@@ -2,12 +2,10 @@
 
 namespace SayHello\Theme\Package;
 
-use SayHello\Theme\Vendor\LazyImage;
-
 /**
  * Helper functions
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Helpers
 {

@@ -2,6 +2,12 @@
 
 namespace SayHello\Theme\Package;
 
+/**
+ * Custom Pages
+ *
+ * @author Say Hello GmbH <hello@sayhello.ch>
+ */
+
 class CustomPages
 {
 

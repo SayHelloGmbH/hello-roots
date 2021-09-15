@@ -2,6 +2,12 @@
 
 namespace SayHello\Theme\Package;
 
+/**
+ * CSS class for BODY tag
+ *
+ * @author Say Hello GmbH <hello@sayhello.ch>
+ */
+
 class Bodyclass
 {
 

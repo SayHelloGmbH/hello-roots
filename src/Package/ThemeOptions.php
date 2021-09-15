@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Theme Options
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 
 class ThemeOptions
@@ -46,7 +46,7 @@ class ThemeOptions
 					'page_title'  => __('Theme-Optionen', 'sha'),
 					'menu_title'  => __('Theme-Optionen', 'sha'),
 					'menu_slug'   => $this->main_slug,
-					'parent_slug' => 'themes.php',
+					'parent_slug' => 'options-general.php',
 					'capability'  => 'edit_theme_options',
 				]
 			);

@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Post archives
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Archives
 {

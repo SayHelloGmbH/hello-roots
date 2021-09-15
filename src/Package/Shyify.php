@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Handles the replacement of ~ with &shy; throughout the Theme.
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Shyify
 {

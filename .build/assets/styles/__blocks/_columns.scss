@@ -1,39 +1,35 @@
-:root {
-    --column-grid-gap: var(--unit-medium);
+body {
+    --column-grid-gap: var(--gutter);
+    --column-row-gap: var(--unit-medium);
+
+    @include breakpoint(tablet) {
+        --column-row-gap: 0;
+    }
 }
 
 .wp-block-column {
     @extend .h-stack;
-    @include breakpoint(wordpress_small) {
-        &:nth-child(2) {
-            margin-top: 0;
-        }
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    & + .wp-block-column {
+        margin-top: var(--column-row-gap);
     }
 
-    @include breakpoint(wordpress_small up) {
-        @include breakpoint(wordpress_medium down) {
-            &:nth-child(2n) {
+    &:nth-child(2n) {
+        @include breakpoint(wordpress_small up) {
+            @include breakpoint(wordpress_medium down) {
                 margin-left: var(--column-grid-gap);
             }
         }
     }
 
-    @include breakpoint(wordpress_medium) {
-        margin-top: 0;
-
-        &:not(:first-child) {
-            margin-left: var(--column-grid-gap);
-        }
-    }
-}
-
-.wp-block-columns {
-    @extend .h-stack--medium;
-
-    &.has-background {
-        padding: var(--unit);
-        @include breakpoint(tablet) {
-            padding-right: var(--column-grid-gap);
+    &:not(:only-child) {
+        @include breakpoint(wordpress_small up) {
+            @include breakpoint(wordpress_medium down) {
+                flex-basis: calc(50% - var(--column-grid-gap)) !important;
+            }
         }
     }
 }
