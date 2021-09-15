@@ -68,7 +68,6 @@ class Navigation
 		$atts['class'] = (!empty($atts['class']) ? ' ' : '') . 'c-menu__entrylink';
 		return $atts;
 	}
-
 	/**
 	 * Removes next/previous links and replaces them
 	 * with SVG arrows. Also adds links to first/last pages.
