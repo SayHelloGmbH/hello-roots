@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Adjustments for the Gutenberg Editor
  *
- * @author Nico Martin <nico@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Gutenberg
 {
@@ -13,14 +13,6 @@ class Gutenberg
 	public $js = false;
 	public $admin_font_url = false;
 	public $admin_font_path = false;
-	public $colors = [];
-	public $allowedCoreBlocks = [
-		'core/paragraph',
-		'core/image',
-		'core/heading',
-		'core/list',
-		'core/shortcode',
-	];
 
 	public function __construct()
 	{
@@ -44,9 +36,8 @@ class Gutenberg
 			return; // Gutenberg is not active.
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
-		add_filter('block_categories', [$this, 'blockCategories']);
+		add_filter('block_categories_all', [$this, 'blockCategories']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
-		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
 		add_action('init', [$this, 'addBlockPatternCategory']);
 
@@ -56,69 +47,15 @@ class Gutenberg
 
 	/**
 	 * Allow the Theme to use additional core features
-	 * See https://github.com/SayHelloGmbH/hello-roots/wiki/Gutenberg#theme-colours for information on how to
-	 * load the colours and text sizes from your settings.json into Gutenberg
 	 */
 	public function themeSupports()
 	{
-		add_theme_support('align-wide');
-
-		// Hide the free number field
-		add_theme_support('disable-custom-font-sizes');
-
-		// Hide the selectable text sizes
-		add_theme_support('editor-font-sizes', []);
-
 		// Since WordPress 5.5: DISALLOW block patterns delivered by Core
 		// (We can add our own to the pattern category sht-block-patterns)
 		remove_theme_support('core-block-patterns');
 
 		// Since WordPress 5.8: DISALLOW full-site editing
 		remove_theme_support('block-templates');
-	}
-
-	/**
-	 * Read in the gutenberg_colors array from the settings.json file
-	 * and add these colors to the Gutenberg color palette
-	 * @return void
-	 */
-	public function colorPalette()
-	{
-		$settings = sht_theme()->getSettings();
-
-		if (isset($settings['gutenberg_colors'])) {
-			$colors = [];
-
-			foreach ($settings['gutenberg_colors'] as $color_key => $color) {
-				foreach ($color as $variation_key => $variation) {
-					$colors[] = [
-						'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
-						'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
-						'color' => $color[$variation_key]
-					];
-				}
-			}
-
-			if (!empty($colors)) {
-				add_theme_support('editor-color-palette', $colors);
-				foreach ($colors as $color) {
-					$this->colors[sanitize_title($color['slug'])] = $color;
-				}
-			}
-		}
-
-		// Removes gradient feature
-		add_theme_support('disable-custom-gradients', true);
-		add_theme_support('editor-gradient-presets', []);
-
-		// Adds custom gradient (replace line above with this line to use)
-		// add_theme_support('editor-gradient-presets', [
-		// 	[
-		// 		'name'     => __('Test', 'sht'),
-		// 		'gradient' => 'linear-gradient(180deg, red, orange)',
-		// 		'slug'     => 'test'
-		// 	]
-		// ]);
 	}
 
 	public function enqueueBlockAssets()

@@ -5,8 +5,9 @@ namespace SayHello\Theme\Package;
 /**
  * Error handling
  *
- * @author Nico Martin <nico@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
+
 class Error
 {
 

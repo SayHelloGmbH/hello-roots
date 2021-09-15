@@ -1,4 +1,4 @@
-:root {
+body {
     --checkbox-size: calc(var(--unit) * 1.5);
     --checkbox-size-small: var(--unit); // used in other SCSS files, not here
     --field-border: 1px solid var(--color-gray);

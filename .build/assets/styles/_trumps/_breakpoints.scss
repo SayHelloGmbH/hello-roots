@@ -1,6 +1,7 @@
-// Get all 'breakpoints' values from settings.json.
+// Get all 'breakpoints' values from theme.json.
 // Convert them to EM if they're numeric, otherwise use them as-is.
-:root {
+
+body {
     @each $size, $sizeValue in $breakpoints {
         @if type-of($sizeValue) == 'number' and (unit($sizeValue) == '' or unit($sizeValue) == 'px')
         {

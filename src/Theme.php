@@ -98,7 +98,6 @@ class Theme
 		);
 
 		add_action('after_setup_theme', [$this, 'themeSupports']);
-		add_action('after_setup_theme', [$this, 'contentWidth']);
 		add_action('comment_form_before', [$this, 'enqueueReplyScript']);
 
 		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
@@ -160,15 +159,6 @@ class Theme
 				sht_theme()->{$class_set}->{$class_short}->run();
 			}
 		}
-	}
-
-	/**
-	 * Set the content width based on the theme's design and stylesheet
-	 */
-	public function contentWidth()
-	{
-		$settings = $this->getSettings();
-		$GLOBALS['content_width'] = apply_filters('sht/content_width', $settings['breakpoints']['narrow'] ?? '600');
 	}
 
 	/**
