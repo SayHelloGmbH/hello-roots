@@ -13,19 +13,3 @@
         }
     }
 }
-
-// Solution for specificity issues in button border coloring
-@each $color, $colorSet in $gutenberg_colors {
-    @each $variant, $value in $colorSet {
-        @if $variant == 'base' {
-            .wp-block-button.is-style-fill .wp-block-button__link.has-#{$color}-background-color {
-                border-color: var(--color-#{$color});
-            }
-        } @else {
-            .wp-block-button.is-style-fill
-                .wp-block-button__link.has-#{$color}-#{$variant}-background-color {
-                border-color: var(--color-#{$color}-#{$variant});
-            }
-        }
-    }
-}
