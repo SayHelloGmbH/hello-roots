@@ -2,6 +2,10 @@
     "version": 1,
     "settings": {
         "custom": {
+            "line-height": {
+                "regular": 1.5,
+                "heading": 1.2
+            },
             "spacing": {
                 "unit": "1rem"
             },

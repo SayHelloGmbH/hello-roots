@@ -3,9 +3,6 @@ body {
         'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --font-family-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    --line-height: 1.5;
-    --line-height-small: 1.2;
-    --line-height-heading: var(--line-height-small);
 
     --font-weight-normal: 400;
 
@@ -18,7 +15,7 @@ body {
 body {
     font-family: var(--font-family);
     font-weight: 400;
-    line-height: var(--line-height);
+    line-height: var(--wp--custom--line-height--regular);
     font-size: 1rem;
 }
 
@@ -180,7 +177,7 @@ h4,
 h5,
 h6 {
     font-family: var(--font-family-heading);
-    line-height: var(--line-height-heading);
+    line-height: var(--wp--custom--line-height--heading);
     margin: 0;
     word-break: break-word;
 
