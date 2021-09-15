@@ -1,3 +1,7 @@
+body {
+    --c-menutoggler-color: var(--wp--preset--color--primary);
+}
+
 .c-menutoggler {
     display: none;
     @include breakpoint(desktop) {
@@ -7,7 +11,7 @@
     width: 4rem;
     position: relative;
     cursor: pointer;
-    color: c(primary);
+    color: var(--c-menutoggler-color);
 
     &__line {
         position: absolute;

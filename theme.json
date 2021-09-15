@@ -2,6 +2,10 @@
     "version": 1,
     "settings": {
         "custom": {
+            "line-height": {
+                "regular": 1.5,
+                "heading": 1.2
+            },
             "spacing": {
                 "unit": "1rem"
             },
@@ -73,6 +77,11 @@
                     "slug": "gray",
                     "color": "#999",
                     "name": "Grau"
+                },
+                {
+                    "slug": "gray-light",
+                    "color": "#ccc",
+                    "name": "Hellgrau"
                 }
             ]
         }
