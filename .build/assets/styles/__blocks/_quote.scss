@@ -1,6 +1,10 @@
+body {
+    --wp-block-quote-background-color: var(--wp--preset--color--gray-light);
+}
+
 .wp-block-quote {
     border-left: 0.25em solid var(--color-gray);
-    background-color: c(gray, light);
+    background-color: var(--wp-block-quote-background-color);
     padding: var(--unit);
     font-style: italic;
 

@@ -1,5 +1,9 @@
+body {
+    --wp-block-code-border-color: var(--wp--preset--color--gray-light);
+}
+
 .wp-block-code {
-    border: 1px solid c(gray, light);
+    border: 1px solid var(--wp-block-code-border-color);
     code {
         vertical-align: middle;
         max-width: 100%;

@@ -1,6 +1,10 @@
+body {
+    --c-nav-background-color--mobile: var(--wp--preset--color--white);
+}
+
 .c-nav {
     &--mobile {
-        background-color: c(white);
+        background-color: var(--c-nav-background-color--mobile);
         position: fixed;
         top: var(--c-masthead-height);
         bottom: 0;
