@@ -46,7 +46,6 @@ class Gutenberg
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
-		add_action('after_setup_theme', [$this, 'colorPalette']);
 		add_action('init', [$this, 'setScriptTranslations']);
 		add_action('init', [$this, 'addBlockPatternCategory']);
 
@@ -67,37 +66,6 @@ class Gutenberg
 
 		// Since WordPress 5.8: DISALLOW full-site editing
 		remove_theme_support('block-templates');
-	}
-
-	/**
-	 * Read in the gutenberg_colors array from the settings.json file
-	 * and add these colors to the Gutenberg color palette
-	 * @return void
-	 */
-	public function colorPalette()
-	{
-		$settings = sht_theme()->getSettings();
-
-		if (isset($settings['gutenberg_colors'])) {
-			$colors = [];
-
-			foreach ($settings['gutenberg_colors'] as $color_key => $color) {
-				foreach ($color as $variation_key => $variation) {
-					$colors[] = [
-						'name' => $variation_key === 'base' ? ucfirst($color_key) : implode(' ', [ucfirst($color_key), $variation_key]),
-						'slug' => $variation_key === 'base' ? $color_key : implode(' ', [$color_key, $variation_key]),
-						'color' => $color[$variation_key]
-					];
-				}
-			}
-
-			if (!empty($colors)) {
-				add_theme_support('editor-color-palette', $colors);
-				foreach ($colors as $color) {
-					$this->colors[sanitize_title($color['slug'])] = $color;
-				}
-			}
-		}
 	}
 
 	public function enqueueBlockAssets()
