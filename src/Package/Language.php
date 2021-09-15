@@ -3,9 +3,9 @@
 namespace SayHello\Theme\Package;
 
 /**
- * Multilingual stuff and translations
+ * Translations etc.
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Language
 {

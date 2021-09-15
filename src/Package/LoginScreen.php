@@ -8,7 +8,7 @@ use WP_Customize_Cropped_Image_Control;
 /**
  * Configuration for the Customizer in the admin area.
  *
- * @author Mark Howells-Mead <mark@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class LoginScreen
 {

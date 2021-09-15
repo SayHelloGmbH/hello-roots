@@ -5,7 +5,7 @@ namespace SayHello\Theme\Package;
 /**
  * Adjustments for the Gutenberg Editor
  *
- * @author Nico Martin <nico@sayhello.ch>
+ * @author Say Hello GmbH <hello@sayhello.ch>
  */
 class Gutenberg
 {
