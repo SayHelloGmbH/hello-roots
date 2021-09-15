@@ -16,54 +16,6 @@ body {
     }
 }
 
-@each $color, $colorSet in $gutenberg_colors {
-    @each $variant, $value in $colorSet {
-        @if $variant == 'base' {
-            .has-#{$color}-color {
-                color: c($color);
-            }
-
-            a.has-#{$color}-color {
-                &:active,
-                &:hover {
-                    color: c($color);
-                }
-            }
-
-            .has-#{$color}-background-color {
-                background-color: c($color);
-            }
-
-            .has-#{$color}-overlay-gradient {
-                &::before {
-                    background: linear-gradient(transparent, c($color));
-                }
-            }
-        } @else {
-            .has-#{$color}-#{$variant}-color {
-                color: c($color, $variant);
-            }
-
-            a.has-#{$color}-#{$variant}-color {
-                &:active,
-                &:hover {
-                    color: c($color, $variant);
-                }
-            }
-
-            .has-#{$color}-#{$variant}-background-color {
-                background-color: c($color, $variant);
-            }
-
-            .has-#{$color}-#{$variant}-overlay-gradient {
-                &::before {
-                    background: linear-gradient(transparent, c($color, $variant));
-                }
-            }
-        }
-    }
-}
-
 .has-overlay {
     &::before {
         content: '';

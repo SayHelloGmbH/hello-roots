@@ -1,27 +1,5 @@
 {
 	"theme_colors": {
-		"primary": {
-			"base": "#77adbf",
-			"dark": "#4b8a9f"
-		},
-		"black": {
-			"base": "#000"
-		},
-		"gray": {
-			"dark": "#666",
-			"base": "#999",
-			"mid": "#aaa",
-			"light": "#f0f0f0"
-		},
-		"white": {
-			"base": "#fff"
-		},
-		"brown": {
-			"base": "#930"
-		},
-		"yellow": {
-			"base": "#ffc"
-		},
 		"success": {
 			"base": "#489324",
 			"background": "#dff0d8",
@@ -43,77 +21,9 @@
 			"border": "#A01E32"
 		}
 	},
-	"gutenberg_colors": {
-		"primary": {
-			"base": "#77adbf",
-			"dark": "#4b8a9f"
-		},
-		"black": {
-			"base": "#000"
-		},
-		"gray": {
-			"dark": "#666",
-			"base": "#999",
-			"mid": "#aaa",
-			"light": "#f0f0f0"
-		},
-		"white": {
-			"base": "#fff"
-		}
-	},
-	"rem-base": {
+    "rem-base": {
 		"name": "REM-Basis",
 		"value": 16
-	},
-	"font_sizes": {
-		"xsmall": {
-			"name": "Extra klein",
-			"value": 12
-		},
-		"small": {
-			"name": "Klein",
-			"value": 14
-		},
-		"regular": {
-			"name": "Regular",
-			"value": 16
-		},
-		"medium": {
-			"name": "Medium",
-			"value": 18
-		},
-		"large": {
-			"name": "Gross",
-			"value": 21
-		},
-		"xlarge": {
-			"name": "Extra gross",
-			"value": 24
-		},
-		"h1": {
-			"name": "H1",
-			"value": 42
-		},
-		"h2": {
-			"name": "H2",
-			"value": 36
-		},
-		"h3": {
-			"name": "H3",
-			"value": 32
-		},
-		"h4": {
-			"name": "H4",
-			"value": 24
-		},
-		"h5": {
-			"name": "H5",
-			"value": 18
-		},
-		"h6": {
-			"name": "H6",
-			"value": 16
-		}
 	},
 	"easing_speed": 300,
 	"easing_speed_fast": 150,
