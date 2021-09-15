@@ -1,23 +1,45 @@
-import * as settings from '../../../../../assets/settings.json';
-import 'jquery-easing';
-import './jquery.bez.js';
-import verge from 'verge';
+import * as theme_json from '../../../../../theme.json';
+const settings = theme_json.settings;
 
-jQuery.easing.def = jQuery.bez(settings.easing_bezier);
-jQuery.fx.speeds = {
-    slow: settings.easing_speed_slow,
-    fast: settings.easing_speed_fast,
-    _default: settings.easing_speed,
-};
+// import 'jquery-easing';
+// import './jquery.bez.js';
 
+//import verge from 'verge';
+
+// jQuery.easing.def = jQuery.bez(settings.easing_bezier);
+// jQuery.fx.speeds = {
+//     slow: settings.easing_speed_slow,
+//     fast: settings.easing_speed_fast,
+//     _default: settings.easing_speed,
+// };
+
+/**
+ * Usage: console.log(color('primary));
+ * Usage: console.log(color('primary', 'dark'));
+ *
+ * @param {string} mycolor Base slug of the required color
+ * @param {string} tone Alternative sub-tone of the required color
+ * @returns string | null
+ */
 export const color = (mycolor, tone = 'base') => {
-    return settings.theme_colors[mycolor][tone];
+    if (tone !== '' && tone !== 'base') {
+        mycolor = `${mycolor}-${tone}`;
+    }
+
+    const found = settings.color.palette.find(entry => {
+        return entry.slug === mycolor;
+    });
+
+    return !!found ? found.color : false;
 };
 
+/**
+ * Alias of color()
+ */
 export const c = (mycolor, tone = 'base') => {
     return color(mycolor, tone);
 };
 
-export const is_mobile = () => {
-    return verge.viewportW() <= settings.breakpoints['tablet'];
-};
+// export const is_mobile = () => {
+//     return verge.viewportW() <= settings.custom.breakpoint.tablet;
+// };
