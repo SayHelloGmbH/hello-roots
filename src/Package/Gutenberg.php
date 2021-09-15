@@ -61,14 +61,6 @@ class Gutenberg
 	 */
 	public function themeSupports()
 	{
-		add_theme_support('align-wide');
-
-		// Hide the free number field
-		add_theme_support('disable-custom-font-sizes');
-
-		// Hide the selectable text sizes
-		add_theme_support('editor-font-sizes', []);
-
 		// Since WordPress 5.5: DISALLOW block patterns delivered by Core
 		// (We can add our own to the pattern category sht-block-patterns)
 		remove_theme_support('core-block-patterns');
@@ -106,19 +98,6 @@ class Gutenberg
 				}
 			}
 		}
-
-		// Removes gradient feature
-		add_theme_support('disable-custom-gradients', true);
-		add_theme_support('editor-gradient-presets', []);
-
-		// Adds custom gradient (replace line above with this line to use)
-		// add_theme_support('editor-gradient-presets', [
-		// 	[
-		// 		'name'     => __('Test', 'sht'),
-		// 		'gradient' => 'linear-gradient(180deg, red, orange)',
-		// 		'slug'     => 'test'
-		// 	]
-		// ]);
 	}
 
 	public function enqueueBlockAssets()
