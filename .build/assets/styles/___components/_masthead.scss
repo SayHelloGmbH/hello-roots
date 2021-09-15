@@ -1,4 +1,4 @@
-:root {
+body {
     --c-masthead-height: #{rem-calc(85px)};
     @include breakpoint(laptop) {
         --c-masthead-height: #{rem-calc(104px)};
