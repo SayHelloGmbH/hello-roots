@@ -12,7 +12,7 @@ import { getBlockTypes, unregisterBlockType } from '@wordpress/blocks';
 // The domReady handler from Gutenberg doesn't currently
 // work correctly so we're using a regular event listener.
 // Must be onload, not on domReady!
-window.addEventListener( 'load', () => {
+window.addEventListener('load', () => {
     let activeBlocks = [];
 
     getBlockTypes().forEach(function (blockType) {
@@ -29,3 +29,19 @@ window.addEventListener( 'load', () => {
         }
     });
 });
+
+// ALTERNATIVE: only allow specified blocks
+// import {getBlockTypes} from '@wordpress/blocks';
+
+/*
+window.addEventListener('load', () => {
+     const activeBlocks = getBlockTypes().map(blockType => blockType.name);
+     const allowBlocks = ['core/paragraph', 'core/image', 'core/heading', 'core/list'];
+
+     const blocksToRemove = activeBlocks.filter(
+         activeBlock => allowBlocks.indexOf(activeBlock) === -1
+     );
+
+     blocksToRemove.map(block => unregisterBlockType(block));
+});
+*/
