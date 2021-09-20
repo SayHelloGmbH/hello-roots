@@ -31,6 +31,7 @@ window.addEventListener('load', () => {
 });
 
 // ALTERNATIVE: only allow specified blocks
+// (SHT blocks are always allowed in this version)
 // import {getBlockTypes} from '@wordpress/blocks';
 
 /*
@@ -39,7 +40,7 @@ window.addEventListener('load', () => {
      const allowBlocks = ['core/paragraph', 'core/image', 'core/heading', 'core/list'];
 
      const blocksToRemove = activeBlocks.filter(
-         activeBlock => allowBlocks.indexOf(activeBlock) === -1
+         activeBlock => allowBlocks.indexOf(activeBlock) === -1 && activeBlock.indexOf('sht/') !== -1
      );
 
      blocksToRemove.map(block => unregisterBlockType(block));
