@@ -11,7 +11,8 @@ import { getBlockTypes, unregisterBlockType } from '@wordpress/blocks';
 
 // The domReady handler from Gutenberg doesn't currently
 // work correctly so we're using a regular event listener.
-document.addEventListener('DOMContentLoaded', () => {
+// Must be onload, not on domReady!
+window.addEventListener( 'load', () => {
     let activeBlocks = [];
 
     getBlockTypes().forEach(function (blockType) {
