@@ -33,17 +33,13 @@
  <div id="my-overlay" aria-hidden="true"> … Content of the overlay … </nav>
  *
  *
- * This version mark@sayhello.ch 18.11.2020
+ * This version mark@sayhello.ch 21.09.2021
  *
  */
 
-(function () {
-    const controllers = document.querySelectorAll('[aria-controls]');
+const controllers = document.querySelectorAll('[aria-controls]');
 
-    if (!controllers) {
-        return;
-    }
-
+if (!!controllers) {
     var clickHandler = function () {
         let target = document.querySelector('#' + this.getAttribute('aria-controls'));
 
@@ -65,18 +61,33 @@
         });
 
         // Focus the first form field in the Target if there is one
-        if (target.getAttribute('aria-hidden') === 'false' && target.querySelector('input')) {
-            let field_focused = false;
-            target.getElementsByTagName('input,textarea').forEach(field => {
-                if (field_focused) {
-                    return;
-                }
-                let style = window.getComputedStyle(field);
-                if (!(style.display === 'none' || style.visibility === 'hidden')) {
-                    target.querySelector('input').focus();
-                    field_focused = true;
-                }
-            });
+        if (
+            target.getAttribute('aria-hidden') === 'false' &&
+            target.querySelectorAll('input,textarea').length
+        ) {
+            let field_focused = false,
+                fields = target.querySelectorAll('input,textarea');
+
+            if (!!fields.length) {
+                fields.forEach(field => {
+                    if (field_focused) {
+                        return;
+                    }
+                    let style = window.getComputedStyle(field);
+                    if (!(style.display === 'none' || style.visibility === 'hidden')) {
+                        target.querySelector('input').focus();
+                        field_focused = true;
+                    }
+                });
+            }
+        }
+
+        if (!!target.dataset.toggleStyle && target.dataset.toggleStyle !== '') {
+            if (target.getAttribute('aria-hidden') === 'false') {
+                target.classList.add(target.dataset.toggleStyle);
+            } else {
+                target.classList.remove(target.dataset.toggleStyle);
+            }
         }
 
         if (!!target.dataset.rootStyle && target.dataset.rootStyle !== '') {
@@ -86,9 +97,13 @@
                 document.documentElement.classList.remove(target.dataset.rootStyle);
             }
         }
+
+        if (!!this.getAttribute('data-blurme')) {
+            this.blur();
+        }
     };
 
     controllers.forEach(controller => {
         controller.addEventListener('click', clickHandler);
     });
-})();
+}
