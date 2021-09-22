@@ -18,7 +18,7 @@ function my_admin_body_class($classes)
  * mark@sayhello.ch 17.4.2020
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     let body_classes = document.querySelector('body').classList;
     if (body_classes.contains('wp-admin') && body_classes.contains('block-editor-page')) {
         const matches = document
