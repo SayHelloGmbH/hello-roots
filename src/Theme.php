@@ -221,4 +221,28 @@ class Theme
 	{
 		return preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
 	}
+
+	public function getJson()
+	{
+		if (!file_exists(get_template_directory() . '/theme.json')) {
+			return null;
+		}
+
+		$data = file_get_contents(get_template_directory() . '/theme.json');
+		$decoded = json_decode($data, true);
+		return new WP_Theme_JSON($decoded);
+	}
+
+	public function getBreakpoint(string $breakpoint)
+	{
+		$json = $this->getJson();
+
+		if (!$json instanceof WP_Theme_JSON) {
+			return null;
+		}
+
+		$settings = $json->get_settings();
+
+		return $settings['custom']['breakpoint'][$breakpoint] ?? new WP_Error('404', sprintf(__('Breakpoint “%s” not found', 'sha'), $breakpoint));
+	}
 }
