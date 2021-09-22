@@ -2,6 +2,9 @@
 
 namespace SayHello\Theme;
 
+use WP_Error;
+use WP_Theme_JSON;
+
 /**
  * Theme class which gets loaded in functions.php.
  * Defines the Starting point of the Theme and registers Packages.
