@@ -48,15 +48,6 @@ export class LazyImage extends Component {
         let style_orig = {};
         let style_pre = {};
 
-        if (this.props.objectFocalPoint) {
-            style_orig.objectPosition = `${this.props.objectFocalPoint.x * 100}% ${
-                this.props.objectFocalPoint.y * 100
-            }%`;
-            style_pre.objectPosition = `${this.props.objectFocalPoint.x * 100}% ${
-                this.props.objectFocalPoint.y * 100
-            }%`;
-        }
-
         if (this.props.background === true) {
             style_orig.backgroundImage = `url('${image.org[0]}')`;
             style_pre.backgroundImage = `url('${image.pre}')`;
@@ -69,8 +60,6 @@ export class LazyImage extends Component {
                     this.props.objectFocalPoint.y * 100
                 }%`;
             }
-
-            console.log(style_orig);
 
             if (this.props.admin) {
                 return (
@@ -102,6 +91,15 @@ export class LazyImage extends Component {
                     </noscript>
                 </figure>
             );
+        }
+
+        if (this.props.objectFocalPoint) {
+            style_orig.objectPosition = `${this.props.objectFocalPoint.x * 100}% ${
+                this.props.objectFocalPoint.y * 100
+            }%`;
+            style_pre.objectPosition = `${this.props.objectFocalPoint.x * 100}% ${
+                this.props.objectFocalPoint.y * 100
+            }%`;
         }
 
         if (this.props.admin) {
