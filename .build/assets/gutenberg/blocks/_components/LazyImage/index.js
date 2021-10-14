@@ -58,17 +58,19 @@ export class LazyImage extends Component {
         }
 
         if (this.props.background === true) {
-            style_orig.backgroundImage = "url('${image.org[0]}')";
-            style_pre.backgroundImage = "url('${image.pre}')";
+            style_orig.backgroundImage = `url('${image.org[0]}')`;
+            style_pre.backgroundImage = `url('${image.pre}')`;
 
-            if (this.props.focalPoint) {
-                style_orig.backgroundPosition = `${this.props.focalPoint.x * 100}% ${
-                    this.props.focalPoint.y * 100
+            if (this.props.objectFocalPoint) {
+                style_orig.backgroundPosition = `${this.props.objectFocalPoint.x * 100}% ${
+                    this.props.objectFocalPoint.y * 100
                 }%`;
-                style_pre.backgroundPosition = `${this.props.focalPoint.x * 100}% ${
-                    this.props.focalPoint.y * 100
+                style_pre.backgroundPosition = `${this.props.objectFocalPoint.x * 100}% ${
+                    this.props.objectFocalPoint.y * 100
                 }%`;
             }
+
+            console.log(style_orig);
 
             if (this.props.admin) {
                 return (
@@ -101,9 +103,10 @@ export class LazyImage extends Component {
                 </figure>
             );
         }
+
         if (this.props.admin) {
             return (
-                <figure className={className} style={style_orig}>
+                <figure className={className}>
                     <img
                         {...image.attributes}
                         className='o-lazyimage__image o-lazyimage__image--lazyloaded'
@@ -116,10 +119,8 @@ export class LazyImage extends Component {
         }
 
         return (
-            <figure className={className} style={style_orig}>
-                {!image.svg && (
-                    <img className='o-lazyimage__preview' src={image.pre} style={style_pre} />
-                )}
+            <figure className={className}>
+                {!image.svg && <img className='o-lazyimage__preview' src={image.pre} />}
                 <img
                     {...image.attributes}
                     className='o-lazyimage__image o-lazyimage__image--lazyload'
