@@ -22,9 +22,11 @@ import { task as taskReload } from './.build/gulp/task-reload';
 import { task as taskSvg } from './.build/gulp/task-svg';
 import { task as taskModernizr } from './.build/gulp/task-modernizr';
 import { task as taskPot } from './.build/gulp/task-pot';
+// import { task as taskPreact } from './.build/gulp/task-preact';
 import { task as taskServe } from './.build/gulp/task-serve';
 import { task as taskGutenberg } from './.build/gulp/task-gutenberg';
 
+// export const preact = () => taskPreact(config);
 export const styles = () => taskStyles(config);
 export const scripts = () => taskScripts(config);
 export const reload = () => taskReload(config);
@@ -38,6 +40,7 @@ export const watch = () => {
 
     livereload.listen();
 
+    //gulp.watch(config.assetsBuild + 'preact/**/*.{scss,css,js,jsx}', settings, gulp.series(preact));
     gulp.watch(config.assetsBuild + 'styles/**/*.scss', settings, gulp.series(styles));
     gulp.watch(config.assetsBuild + 'scripts/**/*.{scss,css,js}', settings, gulp.series(scripts));
     gulp.watch(
@@ -58,5 +61,6 @@ export const watch = () => {
     gulp.watch(config.reload).on('change', livereload.changed);
 };
 
+// Add 'preact' as a task here if necessary in your project
 export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
 export default taskDefault;
