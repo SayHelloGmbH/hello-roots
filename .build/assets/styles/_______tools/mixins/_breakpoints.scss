@@ -36,10 +36,98 @@
 
 @mixin for-screen($name, $sizes: $breakpoints) {
     @include for-screen-min($name, $sizes) {
-        @include for-screen-max($name, $sizes) {
+        @include for-screen-max(map-get-next($sizes, $name, false, key)) {
             @content;
         }
     }
+}
+
+/// Function to get next map item
+/// returns next map item or fallback value if map, key or next item does not exist
+/// Github Repo: https://github.com/elcheio/sass-map-get-next-prev
+/// Node Module: https://www.npmjs.com/package/sass-map-get-next-prev
+///
+/// @author Simon Koch <agorilla@me.com>
+///
+/// Licensed under the MIT license.
+///
+/// @access public
+///
+/// @param {Map} $map - Sass list map
+/// @param {String} $key - List map key
+/// @param {Boolean} $fallback (false) - Fallback value if map, key or previous item does not exist
+/// @param {String} $return (value) - Return value or key of previous list item
+/// @param {Boolean} $debug (false) - Debug option
+///
+/// @example scss - Usage
+///$map: (
+///   s: 320px,
+///   m: 768px,
+/// );
+///
+/// .foo {
+///   width: map-get-next($map, s);
+/// }
+///
+/// .bar {
+///    width: map-get-next($map, m, 1024px);
+/// }
+///
+/// @example css - CSS output
+/// .foo {
+///   width: 768px;
+/// }
+///
+/// .bar {
+///   width: 1024px;
+/// }
+
+@function map-get-next($map, $key, $fallback: false, $return: value) {
+    // Check if map is valid
+    @if type-of($map) == map {
+        // Check if key exists in map
+        @if map-has-key($map, $key) {
+            // Init index counter variable
+            $i: 0;
+
+            // Init key index
+            $key-index: false;
+
+            // Traverse map for key
+            @each $map-key, $map-value in $map {
+                // Update index
+                $i: $i + 1;
+
+                // If map key found, set key index
+                @if $map-key == $key {
+                    $key-index: $i;
+                }
+
+                // If next index return next value or key based on $return
+                @if $i == $key-index + 1 {
+                    @if $return == key {
+                        @return $map-key;
+                    } @else {
+                        @return $map-value;
+                    }
+                }
+
+                // If last entry return false
+                @if $i == length($map) {
+                    @return $fallback;
+                }
+            }
+
+            @warn 'No next map item for key #{$key}';
+            @return $fallback;
+        }
+
+        @warn 'No valid key #{$key} in map';
+        @return $fallback;
+    }
+
+    @warn 'No valid map';
+    @return $fallback;
 }
 
 /**
@@ -69,6 +157,12 @@
         @if $direction == down {
             @include for-screen-max($name) {
                 @content;
+            }
+        } @else if $direction == only {
+            @include for-screen-min($name) {
+                @include for-screen-max(map-get-next($breakpoints, $name, false, key)) {
+                    @content;
+                }
             }
         } @else {
             @include for-screen-min($name) {
