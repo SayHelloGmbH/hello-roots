@@ -52,9 +52,13 @@ WordPress loads content at an appropriate size - e.g. responsive images or exter
 
 In order to allow wide- and full- width content, ensure that the correct value is set for `settings.layout.wideSize`.
 
-### settings.json
+### theme.json and settings.json
+
+_settings.json_ is our own settings file; _[theme.json](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/)_ was introduced with WordPress 5.8 as part of the technology for [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/).
 
 There are shared settings between CSS and JavaScript files which are stored inside `assets/settings.json`. You can import them into any JavaScript module (`import settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
+
+You can also load the contents of the theme.json file into SCSS and/or JavaScript by the same means. For example, `import theme_json from '../../../../assets/theme.json';`
 
 ### Styles
 
