@@ -1,4 +1,4 @@
-import * as theme_json from '../../../../../theme.json';
+import theme_json from '../../../../../theme.json';
 const settings = theme_json.settings;
 
 // import 'jquery-easing';
