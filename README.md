@@ -60,6 +60,8 @@ There are shared settings between CSS and JavaScript files which are stored insi
 
 You can also load the contents of the theme.json file into SCSS and/or JavaScript by the same means. For example, `import theme_json from '../../../../assets/theme.json';`
 
+This import functionality is part of the build process. It uses [gulp-sass-import-json](https://www.npmjs.com/package/gulp-sass-import-json) by [Renat Gafarov](https://www.npmjs.com/~acusticdemon).
+
 ### Styles
 
 This theme uses an [ITCSS architecture](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) together with the [BEM naming convention](http://getbem.com/). All `.build/assets/styles/*.scss` files will be converted to inside `assets/styles/{$name}.css` files.
