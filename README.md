@@ -44,11 +44,13 @@ $ npm start
 
 ### Block Areas
 
-Until WordPress Core supports [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/), our own projects use the [Block Areas plugin](https://wordpress.org/plugins/block-areas/) to provide sites with additional content areas for use with the Gutenberg Editor. If your project doesn't have this requirement, then you can remove the `PostType/BlockAreas` Package.
+Until WordPress Core fully supports [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/), our own projects use the [Block Areas plugin](https://wordpress.org/plugins/block-areas/) to provide sites with additional content areas for use with the Gutenberg Editor. If your project doesn't have this requirement, then you can remove the `PostType/BlockAreas` Package.
 
 ### Content width
 
-WordPress loads content at an appropriate size - e.g. responsive images or external video embeds - using the `$content_width` variable. This should be modified for your project based on the standard width of a content element in the single blog post view. The definition is in the `Theme` class and can either be modified directly or via the filter `sht/content_width`.
+WordPress loads content at an appropriate size - e.g. responsive images or external video embeds - using the `$content_width` variable. Since the introduction of [theme.json](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/), as a preliminary part of [Full Site Editing](https://make.wordpress.org/design/handbook/focuses/full-site-editing/), this variable is set from the value of `settings.layout.contentSize` in the theme.json file. This should be modified for your project based on the standard width of a content element in the single blog post view.
+
+In order to allow wide- and full- width content, ensure that the correct value is set for `settings.layout.wideSize`.
 
 ### settings.json
 
@@ -119,4 +121,4 @@ SVG support and sanitization was formerly handled directly by the Theme. This fe
 -   [Nico Martin](https://github.com/nico-martin)
 -   [Mark Howells-Mead](https://github.com/markhowellsmead/)
 -   [Joel Stüdle](https://github.com/joel-st)
--   [Dimitri Suter](https://github.com/gnochi/)
+-   <s>[Dimitri Suter](https://github.com/gnochi/)</s> (Dimitri is a former contributor)
