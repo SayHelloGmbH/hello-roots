@@ -52,7 +52,7 @@ WordPress loads content at an appropriate size - e.g. responsive images or exter
 
 ### settings.json
 
-There are shared settings between CSS and JavaScript files which are stored inside `assets/settings.json`. You can import them into any JavaScript module (`import * as settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
+There are shared settings between CSS and JavaScript files which are stored inside `assets/settings.json`. You can import them into any JavaScript module (`import settings from '../../../../../assets/settings.json';`) or use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`).
 
 ### Styles
 
