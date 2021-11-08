@@ -189,6 +189,30 @@ h6 {
     }
 }
 
+h1 {
+    font-size: var(--wp--preset--font-size--h-1);
+}
+
+h2 {
+    font-size: var(--wp--preset--font-size--h-2);
+}
+
+h3 {
+    font-size: var(--wp--preset--font-size--h-3);
+}
+
+h4 {
+    font-size: var(--wp--preset--font-size--h-4);
+}
+
+h5 {
+    font-size: var(--wp--preset--font-size--h-5);
+}
+
+h6 {
+    font-size: var(--wp--preset--font-size--h-6);
+}
+
 @include context-edit {
     h1,
     h2,
