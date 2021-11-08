@@ -101,6 +101,8 @@ class Theme
 		);
 
 		add_action('after_setup_theme', [$this, 'themeSupports']);
+		add_action('after_setup_theme', [$this, 'contentWidth']);
+
 		add_action('comment_form_before', [$this, 'enqueueReplyScript']);
 
 		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
@@ -197,6 +199,17 @@ class Theme
 	{
 		if (is_singular() && get_option('thread_comments')) {
 			wp_enqueue_script('comment-reply');
+		}
+	}
+
+	/**
+	 * Set the content width based on the theme's design and stylesheet
+	 */
+	public function contentWidth()
+	{
+		if (file_exists(get_stylesheet_directory() . '/theme.json')) {
+			$json = json_decode(file_get_contents(get_stylesheet_directory() . '/theme.json'), true);
+			$GLOBALS['content_width'] = (int) apply_filters('sht/content_width', $json['settings']['layout']['contentSize'] ?? 500);
 		}
 	}
 
