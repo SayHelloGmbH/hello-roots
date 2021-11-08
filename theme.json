@@ -125,6 +125,13 @@
                     "name": "Huge"
                 }
             ]
+        },
+        "blocks": {
+            "core/button": {
+                "border": {
+                    "customRadius": false
+                }
+            }
         }
     }
 }
