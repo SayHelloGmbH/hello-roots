@@ -95,6 +95,8 @@ class Theme
 				PostType\Page::class,
 				PostType\Post::class,
 
+				Block\ArchiveTitleSearch::class,
+
 				Plugin\ACF::class,
 				//Plugin\GravityForms::class, // Comment in if the GF plugin is being used
 			]
