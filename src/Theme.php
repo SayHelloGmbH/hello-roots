@@ -108,7 +108,8 @@ class Theme
 		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
 		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
 
-		add_action('wp_head', [$this, 'noJsScript']);
+		add_action('wp_head', [$this, 'headExtras']);
+		add_action('wp_footer', [$this, 'noJsScript']);
 
 		$this->cleanHead();
 	}
@@ -192,7 +193,7 @@ class Theme
 	 */
 	public function noJsScript()
 	{
-		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>" . chr(10);
+		echo "<script>document.querySelector('body').classList.remove('no-js');</script>" . chr(10);
 	}
 
 	public function enqueueReplyScript()
