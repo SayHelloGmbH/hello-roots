@@ -1,10 +1,10 @@
 body {
-    --c-adminbar-height: 0;
+    --admin-bar-height: 0;
 
     &.admin-bar {
-        --c-adminbar-height: 46px;
+        --admin-bar-height: 46px;
         @include for-screen-min(wordpress_medium) {
-            --c-adminbar-height: 32px;
+            --admin-bar-height: 32px;
         }
     }
 }
