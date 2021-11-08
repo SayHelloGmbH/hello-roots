@@ -56,7 +56,24 @@ class Gutenberg
 		remove_theme_support('core-block-patterns');
 
 		// Since WordPress 5.8: DISALLOW full-site editing
+		// This stops clients from modifying the site structure.
 		remove_theme_support('block-templates');
+
+		// Allows blocks to be set to full and wide.
+		add_theme_support('align-wide');
+
+		// Add support for custom units.
+		// https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#support-custom-units
+		add_theme_support('custom-units', []);
+
+		// Add support for editor styles.
+		add_theme_support('editor-styles');
+
+		// Adding support for core block visual styles.
+		// This is required to allow the editor to work correctly.
+		if (is_admin()) {
+			add_theme_support('wp-block-styles');
+		}
 	}
 
 	public function enqueueBlockAssets()

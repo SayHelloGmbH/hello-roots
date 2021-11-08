@@ -169,14 +169,24 @@ class Theme
 
 	/**
 	 * Allow the Theme to use additional core features
+	 * https://developer.wordpress.org/reference/functions/add_theme_support/
 	 */
 	public function themeSupports()
 	{
-		add_theme_support('title-tag');
+		// Adds RSS feed links to the header
 		add_theme_support('automatic-feed-links');
-		add_theme_support('custom-logo');
+
+		// Use HTML5 tags in the listed pre-defined elements
 		add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption']);
+
+		// Add post thumbnail support to post types
 		add_theme_support('post-thumbnails', ['post']);
+
+		// Adds TITLE tag to header and allows it to be filtered.
+		add_theme_support('title-tag');
+
+		// Adding support for responsive embedded content.
+		add_theme_support('responsive-embeds');
 	}
 
 	public function cleanHead()
@@ -194,6 +204,12 @@ class Theme
 	public function noJsScript()
 	{
 		echo "<script>document.querySelector('body').classList.remove('no-js');</script>" . chr(10);
+	}
+
+	public function headExtras()
+	{
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">';
 	}
 
 	public function enqueueReplyScript()
