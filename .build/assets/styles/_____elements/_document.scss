@@ -12,7 +12,7 @@ html {
         position: fixed;
         top: 0;
         width: 100vw;
-        height: 100vh;
+        height: calc(100 * var(--vh));
 
         &.admin-bar {
             margin-top: 0 !important;
