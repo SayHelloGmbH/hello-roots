@@ -4,7 +4,7 @@
  * This is a WordPress theme by Say Hello
  * This file links the class file for the Theme and through it, any additional classes.
  *
- * Version requirements are set in style.css.
+ * Version requirements (PHP and WordPress) are set in style.css.
  */
 
 if (!defined('DISALLOW_FILE_EDIT')) {
@@ -22,13 +22,13 @@ if (!function_exists('dump')) {
 }
 
 /*
-	 * This lot auto-loads a class or trait just when you need it. You don't need to
-	 * use require, include or anything to get the class/trait files, as long
-	 * as they are stored in the correct folder and use the correct namespaces.
-	 *
-	 * See http://www.php-fig.org/psr/psr-4/ for an explanation of the file structure
-	 * and https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md for usage examples.
-	 */
+ * This lot auto-loads a class or trait just when you need it. You don't need to
+ * use require, include or anything to get the class/trait files, as long
+ * as they are stored in the correct folder and use the correct namespaces.
+ *
+ * See http://www.php-fig.org/psr/psr-4/ for an explanation of the file structure
+ * and https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md for usage examples.
+ */
 spl_autoload_register(function ($class) {
 
 	// project-specific namespace prefix

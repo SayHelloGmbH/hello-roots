@@ -2,6 +2,10 @@
 
 namespace SayHello\Theme\Package;
 
+use DOMDocument;
+use DOMNode;
+use DOMXPath;
+
 /**
  * Everything to do with menus and site navigation
  *
@@ -88,7 +92,7 @@ class Navigation
 		$domDocument = new DOMDocument();
 		$domDocument->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
-		$xpath = new DOMXpath($domDocument);
+		$xpath = new DOMXPath($domDocument);
 
 		global $wp_query;
 		$last = intval($wp_query->max_num_pages);
