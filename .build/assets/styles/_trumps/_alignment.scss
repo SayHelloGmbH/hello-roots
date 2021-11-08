@@ -43,38 +43,8 @@ img.alignright {
     max-width: 50%;
 }
 
-.alignwide {
-    max-width: calc(100vw - (var(--c-constraint-padding-side) * 2));
-
-    @include breakpoint(wide) {
-        max-width: var(--constraint-wide);
-
-        &.has-parallax {
-            background-position-x: calc(var(--constraint-wide) / 2);
-        }
-    }
-}
-
+.alignwide,
 .alignfull {
-    max-width: 100vw;
-    width: calc(100vw + var(--c-constraint-padding-side)); // Offset container padding
-    margin-left: calc(var(--c-constraint-padding-side) * -1); // Offset container padding
-
-    @include for-screen-min(narrow) {
-        width: 100vw;
-    }
-}
-
-@include context-edit {
-    .wp-block {
-        max-width: var(--constraint-narrow);
-
-        &[data-align='wide'] {
-            max-width: var(--constraint-wide);
-        }
-
-        &[data-align='full'] {
-            max-width: var(--constraint-full);
-        }
-    }
+    margin-left: auto;
+    margin-right: auto;
 }
