@@ -2,6 +2,8 @@ body {
     --body-color: var(--color-black);
     --body-background-color: var(--color-white);
 
+    --wp--style--block-gap: var(--unit);
+
     color: var(--body-color);
     background-color: var(--body-background-color);
 }
