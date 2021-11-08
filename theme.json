@@ -1,6 +1,11 @@
 {
     "version": 1,
     "settings": {
+        "border": {
+            "radius": false,
+            "style": false,
+            "width": false
+        },
         "custom": {
             "line-height": {
                 "regular": 1.5,
