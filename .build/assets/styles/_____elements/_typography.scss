@@ -1,3 +1,13 @@
+:root {
+    // Temporary solution until fontSizes is fully supported in FSE
+    --font-size--tiny: #{rem-calc(12px)};
+    --font-size--small: #{rem-calc(14px)};
+    --font-size--medium: #{rem-calc(18px)};
+    --font-size--large: #{rem-calc(24px)};
+    --font-size--xlarge: #{rem-calc(36px)};
+    --font-size--huge: #{rem-calc(42px)};
+}
+
 body {
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
         'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -10,15 +20,7 @@ body {
     --radius: 0;
 
     // Probably not necessary but useful for browser debugging
-    --font-size-rem-base: #{$rem-font-size};
-
-    // Temporary solution until fontSizes is fully supported in FSE
-    --font-size-xsmall: var(--wp--preset--font-size--xsmall);
-    --font-size-small: var(--wp--preset--font-size--small);
-    --font-size-medium: var(--wp--preset--font-size--medium);
-    --font-size-large: var(--wp--preset--font-size--large);
-    --font-size-xlarge: var(--wp--preset--font-size--huge);
-    --font-size-huge: var(--wp--preset--font-size--huge);
+    --wp--preset--font-size--rem-base: #{$rem-font-size};
 }
 
 body {
@@ -31,6 +33,10 @@ body {
 abbr,
 acronym {
     cursor: help;
+}
+
+a {
+    color: var(--wp--preset--color--primary);
 }
 
 a,
@@ -85,9 +91,8 @@ figure {
 }
 
 figcaption {
-    font-size: var(--font-size-small);
+    font-size: var(--wp--preset--font-size--small);
     text-align: center;
-    color: var(--wp--preset--color--gray);
 }
 
 hr {
@@ -157,7 +162,7 @@ q {
 
 sub,
 sup {
-    font-size: var(--font-size-xsmall);
+    font-size: var(--wp--preset--font-size--tiny);
     -webkit-font-smoothing: subpixel-antialiased;
     line-height: 0;
     position: relative;
@@ -198,28 +203,13 @@ h6 {
     }
 }
 
-h1 {
-    font-size: var(--wp--preset--font-size--h-1);
-}
-
-h2 {
-    font-size: var(--wp--preset--font-size--h-2);
-}
-
-h3 {
-    font-size: var(--wp--preset--font-size--h-3);
-}
-
-h4 {
-    font-size: var(--wp--preset--font-size--h-4);
-}
-
-h5 {
-    font-size: var(--wp--preset--font-size--h-5);
-}
-
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
-    font-size: var(--wp--preset--font-size--h-6);
+    font-size: 1rem;
 }
 
 @include context-edit {

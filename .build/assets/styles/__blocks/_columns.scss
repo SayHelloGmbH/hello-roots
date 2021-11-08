@@ -1,5 +1,4 @@
 body {
-    --column-grid-gap: var(--gutter);
     --column-row-gap: var(--unit-medium);
 
     @include breakpoint(tablet) {
@@ -15,22 +14,6 @@ body {
 
     & + .wp-block-column {
         margin-top: var(--column-row-gap);
-    }
-
-    &:nth-child(2n) {
-        @include breakpoint(wordpress_small up) {
-            @include breakpoint(wordpress_medium down) {
-                margin-left: var(--column-grid-gap);
-            }
-        }
-    }
-
-    &:not(:only-child) {
-        @include breakpoint(wordpress_small up) {
-            @include breakpoint(wordpress_medium down) {
-                flex-basis: calc(50% - var(--column-grid-gap)) !important;
-            }
-        }
     }
 }
 

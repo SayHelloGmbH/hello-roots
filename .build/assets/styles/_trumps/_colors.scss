@@ -26,6 +26,7 @@ body {
     }
 }
 
+// Ensures color inheritance down the tree (frontend)
 @include context-view {
     .has-text-color *:not(.has-text-color),
     .has-text-color *:not(.has-text-color):active,
@@ -34,6 +35,7 @@ body {
     }
 }
 
+// Ensures color inheritance down the tree (admin)
 @include context-edit {
     .has-text-color
         *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']):hover,
