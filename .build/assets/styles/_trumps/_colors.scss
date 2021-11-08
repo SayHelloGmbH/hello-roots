@@ -1,6 +1,6 @@
 body {
-    --color-link: var(--color-primary);
-    --color-link-hover: var(--color-primary-dark);
+    --color-link: var(--wp--preset--color--primary);
+    --color-link-hover: var(--wp--preset--color--primary-dark);
 
     // This is needed by Core for some reason
     --wp--style--color--link: var(--color-link);

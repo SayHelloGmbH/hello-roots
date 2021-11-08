@@ -3,7 +3,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-black);
+    background-color: var(--wp--preset--color--black);
     display: none;
 
     p {
@@ -15,7 +15,7 @@
         line-height: var(--wp--custom--line-height--regular);
 
         a {
-            color: var(--color-white);
+            color: var(--wp--preset--color--white);
             text-decoration: underline;
         }
     }

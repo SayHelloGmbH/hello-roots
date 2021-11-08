@@ -1,8 +1,8 @@
 body {
-    --button-color-primary: var(--color-white);
-    --button-background-color-primary: var(--color-primary);
-    --button-color-primary-hover: var(--color-white);
-    --button-background-color-primary-hover: var(--color-primary-dark);
+    --button-color-primary: var(--wp--preset--color--white);
+    --button-background-color-primary: var(--wp--preset--color--primary);
+    --button-color-primary-hover: var(--wp--preset--color--white);
+    --button-background-color-primary-hover: var(--wp--preset--color--primary-dark);
 
     --button-font-size: 1em;
     --button-font-size-small: 0.8em;

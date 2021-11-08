@@ -1,7 +1,7 @@
 body {
     // Variables for Gravity Forms. Comment in only if plugin in use.
-    --gf-ajaxspinner-borderoff-color: var(--color-gray-xlight);
-    --gf-ajaxspinner-borderon-color: var(--color-primary);
+    --gf-ajaxspinner-borderoff-color: var(--wp--preset--color--gray-xlight);
+    --gf-ajaxspinner-borderon-color: var(--wp--preset--color--primary);
     --gf-ajaxspinner-width: var(--unit-medium);
     --gf-ajaxspinner-height: var(--unit-medium);
 }
