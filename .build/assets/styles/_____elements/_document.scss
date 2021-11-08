@@ -2,9 +2,6 @@ body {
     --body-color: var(--color-black);
     --body-background-color: var(--color-white);
 
-    --selection-color: var(--color-white);
-    --selection-background-color: var(--color-black);
-
     color: var(--body-color);
     background-color: var(--body-background-color);
 }
@@ -31,11 +28,6 @@ html {
             height: auto;
         }
     }
-}
-
-::selection {
-    color: var(--selection-color);
-    background-color: var(--selection-background-color);
 }
 
 @include context-view {
