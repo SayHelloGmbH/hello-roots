@@ -1,4 +1,4 @@
-html.c-body--themedev::after {
+body.c-body--themedev::after {
     position: fixed;
     padding: 0.5em 0.75em;
     font-size: var(--font-size-small);
@@ -9,8 +9,9 @@ html.c-body--themedev::after {
     outline: 1px dotted red;
     z-index: 9999;
     display: block;
+    content: '';
     @each $bp in map-keys($breakpoints) {
-        @include for-screen($bp) {
+        @include breakpoint($bp only) {
             content: '#{$bp}';
         }
     }
