@@ -51,6 +51,11 @@
                     "slug": "gray-light",
                     "color": "#ccc",
                     "name": "Hellgrau"
+                },
+                {
+                    "slug": "gray-xlight",
+                    "color": "#f0f0f0",
+                    "name": "Hellste Grau"
                 }
             ]
         },
