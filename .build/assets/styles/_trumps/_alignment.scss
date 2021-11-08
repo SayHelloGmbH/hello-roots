@@ -7,12 +7,12 @@
 
 .alignleft {
     float: left;
-    margin-right: var(--unit);
+    margin-right: var(--unit) !important; // important to override unsuppressable inline core rules
 }
 
 .alignright {
     float: right;
-    margin-left: var(--unit);
+    margin-left: var(--unit) !important; // important to override unsuppressable inline core rules
 }
 
 .aligncenter {
