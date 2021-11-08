@@ -4,18 +4,14 @@ body {
 
 .c-blocks {
     @include clearfix_after();
-
-    > * {
-        margin-top: 0;
-        margin-bottom: 0;
-
-        & + * {
-            margin-top: var(--c-block-margin-top);
-        }
-    }
+    @extend .h-stack;
 }
 
 @include context-edit {
+    .is-root-container {
+        @extend .h-stack;
+    }
+
     .wp-block {
         &.is-reusable {
             max-width: 100%;
