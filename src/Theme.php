@@ -86,7 +86,7 @@ class Theme
 				Package\Lazysizes::class,
 				Package\LoginScreen::class,
 				Package\Media::class,
-				Package\Navigation::class,
+				// Package\Navigation::class, // Only use this if FSE isn't being used.
 				Package\Shyify::class,
 				// Package\Sidebars::class,
 				Package\ThemeOptions::class,
