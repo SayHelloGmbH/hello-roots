@@ -37,8 +37,9 @@
             "wideSize": "1280px"
         },
         "spacing": {
-            "customMargin": false,
-            "customPadding": false
+            "blockGap": null,
+            "margin": false,
+            "padding": false
         },
         "typography": {
             "customFontSize": false,
