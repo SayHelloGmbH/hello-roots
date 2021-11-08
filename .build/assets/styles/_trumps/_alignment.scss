@@ -48,3 +48,11 @@ img.alignright {
     margin-left: auto;
     margin-right: auto;
 }
+
+.alignwide {
+    max-width: var(--constraint-wide);
+}
+
+.alignfull {
+    max-width: none;
+}

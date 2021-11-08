@@ -34,6 +34,10 @@ body {
     }
 }
 
+.wp-block-columns {
+    margin-bottom: 0;
+}
+
 @include context-edit {
     @include breakpoint(wordpress_small) {
         [data-type='core/columns'][data-align='full'] .wp-block-columns {
