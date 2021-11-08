@@ -62,7 +62,7 @@ cite {
 }
 
 code {
-    background-color: c(gray, light);
+    background-color: var(--wp--preset--color--gray-xlight);
     display: inline-block;
     padding: 0.0625em 0.25em;
 }
