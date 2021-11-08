@@ -93,45 +93,33 @@
             "customFontSize": false,
             "customLineHeight": false,
             "dropCap": false,
-            "fontSizes": []
-        },
-        "blocks": {
-            "core/heading": {
-                "typography": {
-                    "fontSizes": [
-                        {
-                            "slug": "h1",
-                            "size": "2.5rem",
-                            "name": "H1"
-                        },
-                        {
-                            "slug": "h2",
-                            "size": "2rem",
-                            "name": "H2"
-                        },
-                        {
-                            "slug": "h3",
-                            "size": "1.5rem",
-                            "name": "H3"
-                        },
-                        {
-                            "slug": "h4",
-                            "size": "1.125rem",
-                            "name": "H4"
-                        },
-                        {
-                            "slug": "h5",
-                            "size": "1.0625rem",
-                            "name": "H5"
-                        },
-                        {
-                            "slug": "h6",
-                            "size": "1rem",
-                            "name": "H6"
-                        }
-                    ]
+            "fontSizes": [
+                {
+                    "slug": "tiny",
+                    "size": "var(--font-size--tiny)",
+                    "name": "Tiny"
+                },
+                {
+                    "slug": "small",
+                    "size": "var(--font-size--small)",
+                    "name": "Small"
+                },
+                {
+                    "slug": "medium",
+                    "size": "var(--font-size--medium)",
+                    "name": "Medium"
+                },
+                {
+                    "slug": "large",
+                    "size": "var(--font-size--large)",
+                    "name": "Large"
+                },
+                {
+                    "slug": "huge",
+                    "size": "var(--font-size--huge)",
+                    "name": "Huge"
                 }
-            }
+            ]
         }
     }
 }
