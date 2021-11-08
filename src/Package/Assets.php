@@ -21,7 +21,6 @@ class Assets
 	{
 		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
 		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
-		add_action('admin_init', [$this, 'editorStyle']);
 		add_action('wp_head', [$this, 'loadFonts']);
 		add_action('sht_after_body_open', [$this, 'loadSvgFilter']);
 	}
@@ -34,7 +33,7 @@ class Assets
 		}
 
 		// CSS
-		$deps_css = ['wp-block-library'];
+		$deps_css = [];
 
 		if (class_exists('GFForms')) {
 			$deps_css[] = 'gform_basic';
@@ -80,13 +79,6 @@ class Assets
 			wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
 				'google_api_key' => acf_get_setting('google_api_key'),
 			]);
-		}
-	}
-
-	public function editorStyle()
-	{
-		if (file_exists(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
-			add_editor_style(get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 		}
 	}
 

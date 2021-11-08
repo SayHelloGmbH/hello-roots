@@ -36,6 +36,7 @@ class Gutenberg
 			return; // Gutenberg is not active.
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
+		add_action('admin_init', [$this, 'editorStyle']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('init', [$this, 'setScriptTranslations']);
@@ -72,6 +73,18 @@ class Gutenberg
 		}
 		if ($this->admin_font_url) {
 			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-font', $this->admin_font_url, [], filemtime($this->admin_font_path));
+		}
+	}
+
+	/**
+	 * Add stylesheet which is specifically targeted to the Gutenberg editor
+	 *
+	 * @return void
+	 */
+	public function editorStyle()
+	{
+		if (file_exists(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
+			add_editor_style(get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 		}
 	}
 
