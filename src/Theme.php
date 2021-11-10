@@ -80,6 +80,7 @@ class Theme
 				Package\Archives::class,
 				Package\BodyClass::class,
 				Package\CustomPages::class,
+				Package\Customizer::class,
 				Package\Error::class,
 				Package\Gutenberg::class,
 				Package\Language::class,
