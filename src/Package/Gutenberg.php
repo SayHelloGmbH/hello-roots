@@ -9,7 +9,7 @@ namespace SayHello\Theme\Package;
  */
 class Gutenberg
 {
-	public $min = false;
+	public $min = true;
 	public $js = false;
 	public $admin_font_url = false;
 	public $admin_font_path = false;
@@ -17,7 +17,7 @@ class Gutenberg
 	public function __construct()
 	{
 		if (sht_theme()->debug && is_user_logged_in()) {
-			$this->min = true;
+			$this->min = false;
 		}
 
 		if (file_exists(get_template_directory() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
