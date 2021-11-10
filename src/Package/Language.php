@@ -24,6 +24,9 @@ class Language
 	public function loadTranslations()
 	{
 		load_theme_textdomain('sht', get_template_directory() . '/languages'); // Textdomain Frontend
-		load_theme_textdomain('sha', get_template_directory() . '/languages'); // Textdomain Admin
+
+		if (is_admin()) {
+			load_theme_textdomain('sha', get_template_directory() . '/languages'); // Textdomain Admin
+		}
 	}
 }
