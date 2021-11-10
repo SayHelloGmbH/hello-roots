@@ -85,9 +85,9 @@ class Assets
 	public function loadFonts()
 	{
 
-		$fontver = $this->getSetting('theme_fontver');
-		if ($fontver) {
-			$this->font_version = $fontver;
+		$font_version = $this->getSetting('theme_fontver');
+		if ($font_version) {
+			$this->font_version = $font_version;
 		}
 
 		$theme_url = str_replace(get_home_url(), '', get_template_directory_uri());
@@ -108,18 +108,17 @@ class Assets
 		echo '</noscript>';
 	}
 
+
 	/**
-	 * This function returns the settings value from assets/settings.js
+	 * This function returns the settings value from assets/settings.json
 	 *
-	 * @since 0.1.0
-	 *
-	 * @param string $setting settings key
-	 *
-	 * @return string | bool
+	 * @param string $setting	The name of the setting to fetch
+	 * @param string $filename	Optional, name/path of file.
+	 * @return mixed
 	 */
-	public function getSetting($setting)
+	public function getSetting(string $setting, string $filename = 'assets/settings.json')
 	{
-		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
+		$path = trailingslashit(get_template_directory()) . $filename;
 		if (!is_file($path)) {
 			return false;
 		}
