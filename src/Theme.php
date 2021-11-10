@@ -210,19 +210,34 @@ class Theme
 
 	public function headExtras()
 	{
-		echo '<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="profile" href="http://gmpg.org/xfn/11">';
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
+
+		// XFN is a HTML profile which describes the meaning of extra semantic data that can be added to the rel attribute of outbound links.
+		// http://gmpg.org/xfn/
+		echo '<link rel="profile" href="http://gmpg.org/xfn/11">';
 	}
 
+	/**
+	 * If comments are allowed for the current post/page and if the "reply"
+	 * feature is also allowed, add an extra JavaScript from Core to support this.
+	 *
+	 * @return void
+	 */
 	public function enqueueReplyScript()
 	{
-		if (is_singular() && get_option('thread_comments')) {
+		if (is_singular() && get_option('thread_comments') && comments_open()) {
 			wp_enqueue_script('comment-reply');
 		}
 	}
 
 	/**
-	 * Set the content width based on the theme's design and stylesheet
+	 * Set the content width based on the theme's design and stylesheet.
+	 * This is used by e.g. oEmbed when loading Youtube or other embedded iframes.
+	 *
+	 * The initial value comes from settings.layout.contentSize in theme.json
+	 * and can be filtered using 'sht/content_width'.
+	 *
+	 * @return void
 	 */
 	public function contentWidth()
 	{
@@ -232,6 +247,12 @@ class Theme
 		}
 	}
 
+	/**
+	 * Load the contents of assets/settings.json into a class
+	 * variable (once per request) and return it
+	 *
+	 * @return array
+	 */
 	public function getSettings()
 	{
 		if (!empty($this->settings)) {
@@ -249,15 +270,29 @@ class Theme
 			$this->settings = json_decode($settings, true);
 		}
 
-		return $this->settings;
+		return (array) $this->settings;
 	}
 
-	public function removeTypeAttributes($tag)
+	/**
+	 * Removes e.g. type="text/javascript" from SCRIPT and STYLE tags
+	 * because (according to the W3C Validator), the default values
+	 * are not required.
+	 *
+	 * @return string
+	 */
+
+	public function removeTypeAttributes(string $tag = '')
 	{
-		return preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
+		return (string) preg_replace("/ type=['\"]text\/(javascript|css)['\"]/", '', $tag);
 	}
 
-	public function getJson()
+	/**
+	 * Gets the contents of theme.json as a WP_Theme_JSON
+	 * object and return the settings as an array.
+	 *
+	 * @return array
+	 */
+	public function getThemeJson()
 	{
 		if (!file_exists(get_template_directory() . '/theme.json')) {
 			return null;
@@ -265,19 +300,20 @@ class Theme
 
 		$data = file_get_contents(get_template_directory() . '/theme.json');
 		$decoded = json_decode($data, true);
-		return new WP_Theme_JSON($decoded);
+		$object = new WP_Theme_JSON($decoded);
+		return (array) $object->get_settings();
 	}
 
+	/**
+	 * Get the specified breakpoint from theme.json.
+	 *
+	 * @param string $breakpoint
+	 * @return int|WP_Error
+	 */
 	public function getBreakpoint(string $breakpoint)
 	{
-		$json = $this->getJson();
+		$settings = $this->getThemeJson();
 
-		if (!$json instanceof WP_Theme_JSON) {
-			return null;
-		}
-
-		$settings = $json->get_settings();
-
-		return $settings['custom']['breakpoint'][$breakpoint] ?? new WP_Error('404', sprintf(__('Breakpoint “%s” not found', 'sha'), $breakpoint));
+		return (int) $settings['custom']['breakpoint'][$breakpoint] ?? new WP_Error('404', sprintf(__('Breakpoint “%s” not found', 'sha'), $breakpoint));
 	}
 }
