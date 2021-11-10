@@ -10,11 +10,16 @@ namespace SayHello\Theme\Package;
 class Assets
 {
 
-	public $font_version = '1.0';
+	private $font_version = '1.0';
+	private $min = true;
 
 	public function __construct()
 	{
 		$this->font_version = sht_theme()->version;
+
+		if (sht_theme()->debug && is_user_logged_in()) {
+			$this->min = false;
+		}
 	}
 
 	public function run()
@@ -42,7 +47,8 @@ class Assets
 
 		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps_css[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps_css, filemtime(get_template_directory() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
+
+		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css', $deps_css, filemtime(get_template_directory() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css'));
 
 		// JavaScript
 		$deps_js = [];
@@ -51,7 +57,7 @@ class Assets
 		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
 		$deps_js[] = 'fancybox';
 
-		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js'), true);
 
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
@@ -70,11 +76,11 @@ class Assets
 	public function registerAdminAssets()
 	{
 		// CSS
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css'));
 
 		// Javascript
-		// wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		// wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . ($this->min ? '.min' : '') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . ($this->min ? '.min' : '') . '.js'), true);
 		// if (function_exists('acf_get_setting')) {
 		// 	wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
 		// 		'google_api_key' => acf_get_setting('google_api_key'),

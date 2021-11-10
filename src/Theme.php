@@ -131,10 +131,10 @@ class Theme
 			self::$instance->version = self::$instance->theme->version;
 			self::$instance->prefix  = 'sht';
 			self::$instance->error   = _x('Ein unerwarteter Fehler ist geschehen.', 'Theme instance unexpected error', 'sht');
-			self::$instance->debug   = true;
 
-			if (!isset($_SERVER['HTTP_HOST']) || (strpos($_SERVER['HTTP_HOST'], '.hello') === false && strpos($_SERVER['HTTP_HOST'], '.local') === false) && !in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
-				self::$instance->debug = false;
+			// Add define('WP_DEBUG', true); to wp-config.php
+			if (defined('WP_DEBUG') && WP_DEBUG) {
+				self::$instance->debug = true;
 			}
 		}
 
