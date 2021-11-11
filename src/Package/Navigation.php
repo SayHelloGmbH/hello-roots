@@ -29,7 +29,9 @@ class Navigation
 		add_filter('wp_nav_menu_args', [$this, 'navMenuArgs'], 1, 1);
 		add_filter('nav_menu_css_class', [$this, 'menuItemClasses'], 10, 4);
 		add_filter('nav_menu_link_attributes', [$this, 'menuLinkAttributes']);
-		add_filter('paginate_links_output', [$this, 'paginateLinks']);
+
+		// Optional - replaces "next/previous" with arrows
+		// add_filter('paginate_links_output', [$this, 'paginateLinks']);
 
 		if (count($this->menus)) {
 			add_action('after_setup_theme', [$this, 'themeSupport']);
