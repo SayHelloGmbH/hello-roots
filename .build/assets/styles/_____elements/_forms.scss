@@ -152,11 +152,11 @@ textarea {
 }
 
 label.error {
-    color: var(--color-danger);
+    color: var(--sht--color--danger);
     font-size: var(--wp--preset--font-size--small);
 }
 
 .input.error {
-    border-color: var(--color-danger-border);
-    outline-color: var(--color-danger-border);
+    border-color: var(--sht--color--danger-border);
+    outline-color: var(--sht--color--danger-border);
 }

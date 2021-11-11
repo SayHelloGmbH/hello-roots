@@ -279,26 +279,26 @@ h6 {
 @include context-view {
     a,
     button {
-        color: var(--color-link);
+        color: var(--sht--color--link);
 
         &:active,
         &:hover {
-            color: var(--color-link-hover);
+            color: var(--sht--color--link-hover);
         }
     }
 }
 
 @include context-edit {
     a {
-        color: var(--color-link);
+        color: var(--sht--color--link);
     }
 
     .block-editor-rich-text__editable a {
-        color: var(--color-link) !important;
+        color: var(--sht--color--link) !important;
 
         &:active,
         &:hover {
-            color: var(--color-link-hover) !important;
+            color: var(--sht--color--link-hover) !important;
         }
     }
 }

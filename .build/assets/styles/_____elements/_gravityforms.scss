@@ -17,9 +17,9 @@ body {
 
 .gform {
     &_confirmation_message {
-        border: 1px solid var(--color-success-border);
-        background-color: var(--color-success-background);
-        color: var(--color-success);
+        border: 1px solid var(--sht--color--success-border);
+        background-color: var(--sht--color--success-background);
+        color: var(--sht--color--success);
         padding: var(--unit);
     }
 

@@ -1,16 +1,16 @@
 body {
-    --color-link: var(--wp--preset--color--primary);
-    --color-link-hover: var(--wp--preset--color--primary-dark);
+    --sht--color--link: var(--wp--preset--color--primary);
+    --sht--color--link-hover: var(--wp--preset--color--primary-dark);
 
     // This is needed by Core for some reason
-    --wp--style--color--link: var(--color-link);
+    --wp--style--color--link: var(--sht--color--link);
 
     @each $colour, $colourSet in $theme_colors {
         @each $variant, $value in $colourSet {
             @if $variant == 'base' {
-                --color-#{$colour}: #{$value};
+                --sht--color--#{$colour}: #{$value};
             } @else {
-                --color-#{$colour}-#{$variant}: #{$value};
+                --sht--color--#{$colour}-#{$variant}: #{$value};
             }
         }
     }
