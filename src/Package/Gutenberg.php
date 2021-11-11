@@ -38,7 +38,10 @@ class Gutenberg
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_action('admin_init', [$this, 'editorStyle']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
-		add_action('after_setup_theme', [$this, 'themeSupports']);
+
+		add_action('after_setup_theme', [$this, 'themeSupports'], 10);
+		// add_action('after_setup_theme', [$this, 'disableBlockTemplates'], 20);
+
 		add_action('init', [$this, 'setScriptTranslations']);
 		add_action('init', [$this, 'addBlockPatternCategory']);
 
@@ -55,10 +58,6 @@ class Gutenberg
 		// (We can add our own to the pattern category sht-block-patterns)
 		remove_theme_support('core-block-patterns');
 
-		// Since WordPress 5.8: DISALLOW full-site editing
-		// This stops clients from modifying the site structure.
-		remove_theme_support('block-templates');
-
 		// Allows blocks to be set to full and wide.
 		add_theme_support('align-wide');
 
@@ -69,12 +68,26 @@ class Gutenberg
 		// Add support for editor styles.
 		add_theme_support('editor-styles');
 
-		// Adding support for core block visual styles.
-		// This is required to allow the editor to work correctly.
-		if (is_admin()) {
-			add_theme_support('wp-block-styles');
-		}
+		// Load standard CSS from core.
+		// (Optional.)
+		// add_theme_support('wp-block-styles');
 	}
+
+	/**
+	 * Since WordPress 5.8: DISALLOW full-site editing
+	 * This stops clients from modifying the site structure.
+	 *
+	 * In theory, this code is correct. But it doesn't work with
+	 * Gutenberg 11.9.0 (11.11.2021)
+	 *
+	 * See https://github.com/WordPress/gutenberg/issues/36396
+	 *
+	 * @return void
+	 */
+	// public function disableBlockTemplates()
+	// {
+	// 	remove_theme_support('block-templates');
+	// }
 
 	public function enqueueBlockAssets()
 	{
