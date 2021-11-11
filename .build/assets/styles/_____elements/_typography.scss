@@ -203,13 +203,28 @@ h6 {
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
+h1 {
+    font-size: var(--font-size--huge);
+}
+
+h2 {
+    font-size: var(--font-size--xlarge);
+}
+
+h3 {
+    font-size: var(--font-size--large);
+}
+
+h4 {
+    font-size: var(--font-size--medium);
+}
+
+h5 {
+    font-size: var(--font-size--small);
+}
+
 h6 {
-    font-size: 1rem;
+    font-size: var(--font-size--tiny);
 }
 
 @include context-edit {
