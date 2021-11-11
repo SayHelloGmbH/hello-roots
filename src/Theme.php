@@ -97,6 +97,7 @@ class Theme
 				Block\ArchiveTitleSearch::class,
 
 				Plugin\ACF::class,
+				Plugin\EnableMediaReplace::class, // Delete if the "Enable Media Replace" plugin is not in use
 				//Plugin\GravityForms::class, // Comment in if the GF plugin is being used
 			]
 		);
