@@ -290,12 +290,16 @@ class Theme
 	 * Gets the contents of theme.json as a WP_Theme_JSON
 	 * object and return the settings as an array.
 	 *
-	 * @return array
+	 * @return array|WP_Error
 	 */
 	public function getThemeJson()
 	{
 		if (!file_exists(get_template_directory() . '/theme.json')) {
-			return null;
+			return new WP_Error('404', __('The theme.json file is missing.', 'sha'));
+		}
+
+		if (!class_exists('WP_Theme_JSON')) {
+			return new WP_Error('404', __('The class “WP_Theme_JSON” is not available', 'sha'));
 		}
 
 		$data = file_get_contents(get_template_directory() . '/theme.json');
