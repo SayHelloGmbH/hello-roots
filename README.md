@@ -14,7 +14,7 @@ This code is distributed under the GNU General Public License v3.0. Or in short:
 
 Please visit [https://nodejs.org/en/download/](https://nodejs.org/en/download/) and download the latest LTS version of nodeJS.
 
-# Automation: Gulp
+## Automation: Gulp
 
 This theme comes with some very handy gulp tasks to make your life much easier.
 
@@ -30,6 +30,8 @@ Afterwards you can use the following command to start the default gulp tasks.
 ```bash
 $ npm start
 ```
+
+(Installed node modules are explicitly excluded from the git repository.)
 
 ## Feature overview
 
