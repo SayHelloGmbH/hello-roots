@@ -35,6 +35,10 @@ $ npm start
 
 ## Feature overview
 
+### WordPress 5.9+
+
+This theme supports WordPress from version 5.9 onwards. Older versions of WordPress are not supported because of the theme's basis on Full-Site Editing.
+
 ### Advanced Custom Fields
 
 The theme is currently dependent on the [Advanced Custom Fields](https://www.advancedcustomfields.com/) plugin. This plugin must be installed and activated before the theme is activated.
