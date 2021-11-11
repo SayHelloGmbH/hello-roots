@@ -40,7 +40,6 @@ class Gutenberg
 		add_filter('block_categories_all', [$this, 'blockCategories']);
 
 		add_action('after_setup_theme', [$this, 'themeSupports'], 10);
-		// add_action('after_setup_theme', [$this, 'disableBlockTemplates'], 20);
 
 		add_action('init', [$this, 'setScriptTranslations']);
 		add_action('init', [$this, 'addBlockPatternCategory']);
@@ -72,22 +71,6 @@ class Gutenberg
 		// (Optional.)
 		// add_theme_support('wp-block-styles');
 	}
-
-	/**
-	 * Since WordPress 5.8: DISALLOW full-site editing
-	 * This stops clients from modifying the site structure.
-	 *
-	 * In theory, this code is correct. But it doesn't work with
-	 * Gutenberg 11.9.0 (11.11.2021)
-	 *
-	 * See https://github.com/WordPress/gutenberg/issues/36396
-	 *
-	 * @return void
-	 */
-	// public function disableBlockTemplates()
-	// {
-	// 	remove_theme_support('block-templates');
-	// }
 
 	public function enqueueBlockAssets()
 	{
