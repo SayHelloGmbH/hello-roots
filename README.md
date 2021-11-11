@@ -63,7 +63,7 @@ define('WP_DEBUG_LOG', true);
 
 This theme is set up to use the Full Site Editing feature built into WordPress since version 5.8 and extended in WordPress 5.9. Block templates are created containing a series of blocks and the theme contains a few block template parts, where a combination of blocks is used across multiple templates.
 
-The essential block templates - beginning with index.html - are located in the _block-templates_ folder. Block template parts are located in the _block-template-parts_ folder.
+The essential block templates are located in the _block-templates_ folder. Block template parts are located in the _block-template-parts_ folder.
 
 PHP files which were formerly in use for templating - like _archive.php_ or _single.php_ - will be **ignored** if full-site editing is active.
 
