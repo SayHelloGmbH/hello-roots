@@ -21,9 +21,7 @@
         "@wordpress/i18n": "^3.18.0",
         "jquery-easing": "^0.0.1",
         "object-fit-images": "^3.2.4",
-        "verge": "^1.10.2"
-    },
-    "devDependencies": {
+        "verge": "^1.10.2",
         "@babel/core": "^7.12.16",
         "@babel/preset-env": "^7.12.16",
         "@babel/preset-react": "^7.12.13",
