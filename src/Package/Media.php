@@ -31,7 +31,7 @@ class Media
 	}
 
 	/**
-	 * The default value of get_the_post_thubmbnail is "post-thumbnail"
+	 * The default value of get_the_post_thumbnail is "post-thumbnail"
 	 * which leads to the incorrectly-sized image being returned by core.
 	 * This is a temporary solution, until the core issue is fixed.
 	 *
