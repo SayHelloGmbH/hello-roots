@@ -91,7 +91,6 @@ class Theme
 				Package\Shyify::class,
 				Package\ThemeOptions::class,
 
-				PostType\BlockAreas::class,
 				PostType\Page::class,
 				PostType\Post::class,
 
