@@ -1,0 +1,7 @@
+.wp-block-navigation {
+    &-item {
+        &.current-menu-item {
+            color: var(--wp--preset--color--primary);
+        }
+    }
+}
