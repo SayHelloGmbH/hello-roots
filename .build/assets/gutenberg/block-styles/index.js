@@ -9,8 +9,6 @@ import { unregisterBlockStyle } from '@wordpress/blocks';
 // });
 
 window.addEventListener('load', () => {
-    unregisterBlockStyle('core/button', 'fill');
-    unregisterBlockStyle('core/button', 'outline');
     unregisterBlockStyle('core/image', 'default');
     unregisterBlockStyle('core/image', 'rounded');
 });
