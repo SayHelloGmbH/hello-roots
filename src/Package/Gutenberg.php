@@ -37,6 +37,7 @@ class Gutenberg
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
 		add_action('admin_init', [$this, 'editorStyle']);
+		add_action('admin_init', [$this, 'disableBlockDirectory']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
 
 		add_action('after_setup_theme', [$this, 'themeSupports'], 10);
@@ -178,5 +179,10 @@ class Gutenberg
 		if (function_exists('register_block_pattern_category')) {
 			register_block_pattern_category('sht-block-patterns', ['label' => __('Say Hello', 'sht')]);
 		}
+	}
+
+	public function disableBlockDirectory()
+	{
+		remove_action('enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets');
 	}
 }
