@@ -10,8 +10,18 @@ namespace SayHello\Theme\Plugin;
 class ACF
 {
 
+	/**
+	 * Statuses which should be selectable in an ACF field
+	 * @var array
+	 */
+	public static $allowedStatuses = [
+		'publish'
+	];
+
 	public function run()
 	{
+		add_filter('acf/fields/post_object/query', [$this, 'restrictStatus']);
+		add_filter('acf/fields/relationship/query', [$this, 'restrictStatus']);
 		add_action('acf/input/admin_footer', [$this, 'colorPickerPalette']);
 	}
 
@@ -62,5 +72,16 @@ class ACF
 			})(jQuery);</script>',
 			implode(',', $colors)
 		);
+	}
+
+	/**
+	 * Retrict statuses which are allowed to be selected in the ACF field
+	 * @param  array $options Field options
+	 * @return array           The modified options
+	 */
+	public function restrictStatus($options)
+	{
+		$options['post_status'] = self::$allowedStatuses;
+		return $options;
 	}
 }
