@@ -40,8 +40,11 @@ window.addEventListener('load', () => {
      const allowBlocks = ['core/paragraph', 'core/image', 'core/heading', 'core/list'];
 
      const blocksToRemove = activeBlocks.filter(
-         activeBlock => allowBlocks.indexOf(activeBlock) === -1 && activeBlock.indexOf('sht/') !== 0
-     );
+        activeBlock =>
+            allowBlocks.indexOf(activeBlock) === -1 &&
+            activeBlock.indexOf('sht/') !== 0 &&
+            activeBlock.indexOf('acf/sht-') !== 0
+    );
 
      blocksToRemove.map(block => unregisterBlockType(block));
 });
