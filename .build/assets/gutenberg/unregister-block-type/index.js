@@ -37,7 +37,14 @@ window.addEventListener('load', () => {
 /*
 window.addEventListener('load', () => {
      const activeBlocks = getBlockTypes().map(blockType => blockType.name);
-     const allowBlocks = ['core/paragraph', 'core/image', 'core/heading', 'core/list'];
+
+     const allowBlocks = [
+        'core/block', // reusable blocks
+        'core/paragraph',
+        'core/image',
+        'core/heading',
+        'core/list'
+     ];
 
      const blocksToRemove = activeBlocks.filter(
         activeBlock =>
