@@ -1,0 +1,7 @@
+// Reusable blocks
+
+@include context-edit {
+    .wp-block-block {
+        max-width: none !important;
+    }
+}
