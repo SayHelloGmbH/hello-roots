@@ -49,7 +49,7 @@
         "style-loader": "^2.0.0",
         "verge": "^1.10.2",
         "webpack": "^5.65.0",
-        "webpack-stream": "^6.1.2"
+        "webpack-stream": "^7.0.0"
     },
     "author": "Say Hello GmbH - https://sayhello.ch",
     "license": "GPL-3.0-or-later",
