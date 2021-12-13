@@ -44,9 +44,11 @@
         "gulp-uglify": "^3.0.2",
         "gulp-wp-pot": "^2.5.0",
         "jquery-easing": "^0.0.1",
+        "npm": "^8.3.0",
         "object-fit-images": "^3.2.4",
         "style-loader": "^2.0.0",
         "verge": "^1.10.2",
+        "webpack": "^5.65.0",
         "webpack-stream": "^6.1.2"
     },
     "author": "Say Hello GmbH - https://sayhello.ch",
