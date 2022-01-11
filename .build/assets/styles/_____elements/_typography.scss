@@ -261,7 +261,7 @@ h6 {
     &:focus {
         clip: auto !important;
         clip-path: none;
-        color: c(black);
+        color: var(--wp--preset--color-black);
         display: block;
         font-size: 1em;
         height: auto;
