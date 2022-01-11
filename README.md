@@ -18,7 +18,7 @@ Please visit [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
 
 This theme comes with some very handy gulp tasks to make your life much easier.
 
-You can install the packages using `npm install`.
+You can install the packages using `npm install`. The current required versions of Node and NPM are included in the _package.json_ file.
 
 ```bash
 $ cd path/to/your/project/
