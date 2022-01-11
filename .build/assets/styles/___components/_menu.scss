@@ -20,7 +20,8 @@
     &__entries {
         &--primary {
             @include breakpoint(laptop) {
-                @include flex-row;
+                display: flex;
+                flex-flow: row wrap;
             }
         }
         &--mobile {
