@@ -5,9 +5,12 @@
             "customRadius": false
         },
         "color": {
+            "background": false,
             "custom": false,
             "customDuotone": false,
             "customGradient": false,
+            "defaultGradients": false,
+            "defaultPalette": false,
             "duotone": [],
             "gradients": [],
             "link": false,
@@ -57,7 +60,8 @@
                     "color": "#f0f0f0",
                     "name": "Hellste Grau"
                 }
-            ]
+            ],
+            "text": false
         },
         "custom": {
             "line-height": {
