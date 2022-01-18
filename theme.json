@@ -100,8 +100,8 @@
         },
         "typography": {
             "customFontSize": false,
-            "customLineHeight": false,
             "dropCap": false,
+            "fontFamilies": [],
             "fontSizes": [
                 {
                     "slug": "tiny",
