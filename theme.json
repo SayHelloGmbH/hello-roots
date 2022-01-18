@@ -128,7 +128,13 @@
                     "size": "var(--font-size--huge)",
                     "name": "Huge"
                 }
-            ]
+            ],
+            "fontStyle": false,
+            "fontWeight": false,
+            "letterSpacing": false,
+            "lineHeight": false,
+            "textDecoration": false,
+            "textTransform": false
         },
         "blocks": {
             "core/button": {
