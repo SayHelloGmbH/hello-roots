@@ -27,7 +27,6 @@ class Assets
 		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
 		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
 		add_action('wp_head', [$this, 'loadFonts']);
-		add_action('sht_after_body_open', [$this, 'loadSvgFilter']);
 	}
 
 	public function registerAssets()
@@ -134,10 +133,5 @@ class Assets
 		}
 
 		return $settings[$setting];
-	}
-
-	public function loadSvgFilter()
-	{
-		get_template_part('partials/svg/svg-filter');
 	}
 }
