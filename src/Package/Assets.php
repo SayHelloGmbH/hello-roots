@@ -76,7 +76,6 @@ class Assets
 	public function registerAdminAssets()
 	{
 		// CSS
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css'));
 		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css'));
 
 		// Javascript
