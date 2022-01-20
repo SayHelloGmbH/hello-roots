@@ -4,7 +4,7 @@ body {
 
     // Current custom definition via theme.json not working
     // https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/#what-is-blockgap-and-how-can-i-use-it
-    --wp--style--block-gap: var(--unit);
+    --wp--style--block-gap: var(--unit) !important;
 
     color: var(--body-color);
     background-color: var(--body-background-color);
