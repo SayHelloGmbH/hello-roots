@@ -72,6 +72,15 @@ body {
     .gfield + .gfield {
         margin-top: var(--sht--gform--unit--large);
     }
+    .gchoice + [type='button'] {
+        @extend %button-generics;
+    }
+    .ginput_container_fileupload,
+    .ginput_container_post_image {
+        [type='file']::file-selector-button {
+            @extend %button-generics;
+        }
+    }
 }
 
 // styles for legacy markup (version < 2.5)
