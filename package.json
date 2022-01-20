@@ -45,8 +45,6 @@
         "gulp-uglify": "^3.0.2",
         "gulp-wp-pot": "^2.5.0",
         "jquery-easing": "^0.0.1",
-        "node": "^14.15.0",
-        "npm": "^8.3.0",
         "object-fit-images": "^3.2.4",
         "style-loader": "^2.0.0",
         "verge": "^1.10.2",
@@ -70,6 +68,6 @@
     ],
     "engines": {
         "node": "14.18.3",
-        "npm": "6.14.15"
+        "npm": "8.3.0"
     }
 }
