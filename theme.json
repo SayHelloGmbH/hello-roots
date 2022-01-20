@@ -1,18 +1,21 @@
 {
-    "version": 1,
+    "version": 2,
     "settings": {
-        "border": {
-            "customRadius": false
+        "appearanceTools": false,
+        "blocks": {
+            "core/button": {
+                "border": {
+                    "radius": false
+                }
+            }
         },
         "color": {
-            "background": false,
+            "background": true,
             "custom": false,
             "customDuotone": false,
             "customGradient": false,
             "defaultGradients": false,
             "defaultPalette": false,
-            "duotone": [],
-            "gradients": [],
             "link": false,
             "palette": [
                 {
@@ -54,14 +57,9 @@
                     "slug": "gray-light",
                     "color": "#ccc",
                     "name": "Hellgrau"
-                },
-                {
-                    "slug": "gray-xlight",
-                    "color": "#f0f0f0",
-                    "name": "Hellste Grau"
                 }
             ],
-            "text": false
+            "text": true
         },
         "custom": {
             "line-height": {
@@ -94,55 +92,20 @@
             "wideSize": "1280px"
         },
         "spacing": {
-            "blockGap": false,
             "margin": false,
-            "padding": false,
-            "units": ["px", "em", "rem", "vh", "vw"]
+            "padding": false
         },
         "typography": {
             "customFontSize": false,
             "dropCap": false,
             "fontFamilies": [],
-            "fontSizes": [
-                {
-                    "slug": "tiny",
-                    "size": "var(--font-size--tiny)",
-                    "name": "Tiny"
-                },
-                {
-                    "slug": "small",
-                    "size": "var(--font-size--small)",
-                    "name": "Small"
-                },
-                {
-                    "slug": "medium",
-                    "size": "var(--font-size--medium)",
-                    "name": "Medium"
-                },
-                {
-                    "slug": "large",
-                    "size": "var(--font-size--large)",
-                    "name": "Large"
-                },
-                {
-                    "slug": "huge",
-                    "size": "var(--font-size--huge)",
-                    "name": "Huge"
-                }
-            ],
+            "fontSizes": [],
             "fontStyle": false,
             "fontWeight": false,
             "letterSpacing": false,
             "lineHeight": false,
             "textDecoration": false,
             "textTransform": false
-        },
-        "blocks": {
-            "core/button": {
-                "border": {
-                    "customRadius": false
-                }
-            }
         }
     }
 }
