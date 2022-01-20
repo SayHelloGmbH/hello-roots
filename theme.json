@@ -7,6 +7,11 @@
                 "border": {
                     "radius": false
                 }
+            },
+            "core/column": {
+                "spacing": {
+                    "units": ["px", "em", "rem", "vh", "vw", "%"]
+                }
             }
         },
         "color": {
@@ -92,6 +97,7 @@
             "wideSize": "1280px"
         },
         "spacing": {
+            "blockGap": false,
             "margin": false,
             "padding": false
         },
