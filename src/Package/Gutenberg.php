@@ -70,6 +70,13 @@ class Gutenberg
 		// add_theme_support('wp-block-styles');
 	}
 
+	/**
+	 * Called via the enqueue_block_editor_assets hook. This is for
+	 * scripts and styles for the block editor UI, not for the content.
+	 * Don't add CSS here.
+	 *
+	 * @return void
+	 */
 	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
