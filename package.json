@@ -46,6 +46,7 @@
         "gulp-wp-pot": "^2.5.0",
         "jquery-easing": "0.0.1",
         "object-fit-images": "^3.2.4",
+        "sass": "^1.49.0",
         "style-loader": "^3.3.1",
         "verge": "^1.10.2",
         "webpack": "^5.66.0",

@@ -3,7 +3,7 @@
 
     @if type-of($min) == 'number' {
         @if unit($min) == '' {
-            @media screen and (min-width: ($min/map-get($rem-base, value))+0em) {
+            @media screen and (min-width: (math.div($min, map-get($rem-base, value))) + 0em) {
                 @content;
             }
         } @else {
@@ -21,7 +21,7 @@
 
     @if type-of($max) == 'number' {
         @if unit($max) == '' {
-            @media screen and (max-width: ($max/map-get($rem-base, value))+0em) {
+            @media screen and (max-width: (math.div($max, map-get($rem-base, value)))+0em) {
                 @content;
             }
         } @else {
