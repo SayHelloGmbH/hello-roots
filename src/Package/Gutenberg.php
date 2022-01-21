@@ -36,7 +36,7 @@ class Gutenberg
 			return; // Gutenberg is not active.
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
-		add_action('admin_init', [$this, 'editorStyle']);
+		add_action('after_setup_theme', [$this, 'editorStyle']);
 		add_action('admin_init', [$this, 'disableBlockDirectory']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
 
@@ -64,9 +64,6 @@ class Gutenberg
 		// Add support for custom units.
 		// https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#support-custom-units
 		add_theme_support('custom-units', []);
-
-		// Add support for editor styles.
-		add_theme_support('editor-styles');
 
 		// Load standard CSS from core.
 		// (Optional.)
@@ -97,9 +94,7 @@ class Gutenberg
 	 */
 	public function editorStyle()
 	{
-		if (file_exists(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
-			add_editor_style(get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
-		}
+		add_editor_style('assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 	}
 
 	/**
