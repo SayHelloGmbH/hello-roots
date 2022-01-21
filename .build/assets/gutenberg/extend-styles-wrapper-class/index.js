@@ -31,7 +31,10 @@ window.addEventListener('load', () => {
             const post_type = matches[1];
             const post_name = matches[2];
 
-            domElement.classList.add(`block-editor-block-list__layout--${post_type} ${post_name}`);
+            domElement.classList.add(
+                `block-editor-block-list__layout--${post_type}`,
+                `${post_name}`
+            );
         }
     }
 });
