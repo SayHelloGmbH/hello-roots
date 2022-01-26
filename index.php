@@ -1,3 +1,2 @@
 <?php
-
-include_once 'archive.php';
+// Explizit leer. Datei wird aber benötigt.

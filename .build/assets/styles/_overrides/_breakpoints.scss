@@ -1,0 +1,13 @@
+// Get all 'breakpoints' values from theme.json.
+// Convert them to EM if they're numeric, otherwise use them as-is.
+
+body {
+    @each $size, $sizeValue in $breakpoints {
+        @if type-of($sizeValue) == 'number' and (unit($sizeValue) == '' or unit($sizeValue) == 'px')
+        {
+            --constraint-#{$size}: #{math.div($sizeValue, 16) + 0rem};
+        } @else {
+            --constraint-#{$size}: #{$sizeValue};
+        }
+    }
+}

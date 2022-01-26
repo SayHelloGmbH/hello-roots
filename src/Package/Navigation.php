@@ -2,6 +2,10 @@
 
 namespace SayHello\Theme\Package;
 
+use DOMDocument;
+use DOMNode;
+use DOMXPath;
+
 /**
  * Everything to do with menus and site navigation
  *
@@ -25,7 +29,9 @@ class Navigation
 		add_filter('wp_nav_menu_args', [$this, 'navMenuArgs'], 1, 1);
 		add_filter('nav_menu_css_class', [$this, 'menuItemClasses'], 10, 4);
 		add_filter('nav_menu_link_attributes', [$this, 'menuLinkAttributes']);
-		add_filter('paginate_links_output', [$this, 'paginateLinks']);
+
+		// Optional - replaces "next/previous" with arrows
+		// add_filter('paginate_links_output', [$this, 'paginateLinks']);
 
 		if (count($this->menus)) {
 			add_action('after_setup_theme', [$this, 'themeSupport']);
@@ -88,7 +94,7 @@ class Navigation
 		$domDocument = new DOMDocument();
 		$domDocument->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
-		$xpath = new DOMXpath($domDocument);
+		$xpath = new DOMXPath($domDocument);
 
 		global $wp_query;
 		$last = intval($wp_query->max_num_pages);

@@ -1,3 +1,5 @@
+// Base size '--wp--custom--spacing--unit' read in from theme.json
+
 body {
     --unit: var(--wp--custom--spacing--unit);
     --unit-xxxxsmall: calc(var(--unit) / 12);
@@ -11,5 +13,4 @@ body {
     --unit-xxlarge: calc(var(--unit) * 8);
     --unit-xxxlarge: calc(var(--unit) * 10);
     --unit-xxxxlarge: calc(var(--unit) * 12);
-    --gutter: var(--unit);
 }

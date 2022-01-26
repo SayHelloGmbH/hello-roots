@@ -1,0 +1,14 @@
+.wp-site-blocks {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100 * var(--vh));
+
+    > * {
+        // Stop child elements from collapsing horizontally
+        width: 100%;
+    }
+
+    .admin-bar & {
+        min-height: calc(100 * var(--vh) - var(--admin-bar-height));
+    }
+}

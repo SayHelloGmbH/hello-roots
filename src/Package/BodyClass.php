@@ -26,6 +26,8 @@ class Bodyclass
 	 */
 	public function bodyClasses(array $classes)
 	{
+		$classes[] = 'no-js';
+
 		if (sht_theme()->debug) {
 			$classes[] = 'c-body--themedev';
 		}

@@ -1,93 +1,89 @@
 body {
     // Variables for Gravity Forms. Comment in only if plugin in use.
-    --gf-ajaxspinner-borderoff-color: var(--color-gray-xlight);
-    --gf-ajaxspinner-borderon-color: var(--color-primary);
+    --gf-ajaxspinner-borderoff-color: var(--wp--preset--color--gray-xlight);
+    --gf-ajaxspinner-borderon-color: var(--wp--preset--color--primary);
     --gf-ajaxspinner-width: var(--unit-medium);
     --gf-ajaxspinner-height: var(--unit-medium);
 }
 
-@keyframes gf_ajaxspinner {
-    0% {
-        transform: rotate(0deg);
+// gravity-theme (version > 2.5)
+// Mainly missing margins from GF Core CSS and bcakground color for HTML field
+:root {
+    --sht--gform--unit: 8px;
+    --sht--gform--unit--large: 16px;
+    --sht--gform--html--background-color: #f4f4f4;
+}
+
+.gform_wrapper.gravity-theme {
+    .gform_heading {
+        .gform_title {
+            display: block;
+
+            + * {
+                margin-top: var(--sht--gform--unit--large);
+            }
+        }
+
+        .gform_description,
+        .gform_required_legend {
+            display: block;
+
+            + * {
+                margin-top: var(--sht--gform--unit);
+            }
+        }
     }
-    100% {
-        transform: rotate(360deg);
+    .gchoice {
+        + .gchoice {
+            margin-top: var(--sht--gform--unit);
+        }
+    }
+    .gsection {
+        .gsection_title,
+        .gsection_description {
+            display: block;
+
+            + * {
+                margin-top: var(--sht--gform--unit);
+            }
+        }
+    }
+    .gfield_html {
+        display: block;
+        background-color: var(--sht--gform--html--background-color);
+        padding: var(--sht--gform--unit--large);
+    }
+    &.gravity-theme .gfield_description {
+        &.gfield_consent_description {
+            padding: var(--sht--gform--unit);
+
+            + * {
+                margin-top: var(--sht--gform--unit);
+            }
+        }
+    }
+    .ginput_container_post_image {
+        [id*='extensions_message'] {
+            display: block;
+            margin-top: var(--sht--gform--unit);
+        }
+    }
+
+    .gfield + .gfield {
+        margin-top: var(--sht--gform--unit--large);
+    }
+    .gchoice + [type='button'] {
+        @extend %button-generics;
+    }
+    .ginput_container_fileupload,
+    .ginput_container_post_image {
+        [type='file']::file-selector-button {
+            @extend %button-generics;
+        }
     }
 }
 
-.gform {
-    &_confirmation_message {
-        border: 1px solid var(--color-success-border);
-        background-color: var(--color-success-background);
-        color: var(--color-success);
-        padding: var(--unit);
-    }
-
-    &_description:not(:empty) {
-        display: block;
-    }
-
-    &_fields {
-        margin: 0;
-    }
-
-    &_heading {
-        @extend .h-stack;
-    }
-
-    &_required_legend {
-        &::empty {
-            display: none;
-        }
-        .gfield_required {
-            color: inherit;
-        }
-    }
-
-    &_wrapper.gravity-theme {
-        .gform_fields {
-            grid-gap: var(--unit);
-        }
-
-        .gfield {
-            @extend .h-stack--xsmall;
-
-            &_checkbox {
-                @extend .h-stack--small;
-            }
-
-            &_description {
-                padding-top: var(--unit-xsmall);
-            }
-
-            &_radio {
-                @extend .h-stack--small;
-            }
-
-            &_required {
-                font-size: 1em;
-            }
-
-            &_validation_message.gfield_description {
-                padding: 0;
-                border: none;
-                background-color: transparent;
-            }
-        }
-
-        &.gravity-theme .ginput_complex label {
-            padding-top: var(--unit-xsmall);
-        }
-    }
-
-    &_ajax_spinner {
-        border: var(--unit-xsmall) solid var(--gf-ajaxspinner-borderoff-color);
-        border-left: var(--unit-xsmall) solid var(--gf-ajaxspinner-borderon-color);
-        animation: gf_ajaxspinner 1s infinite linear;
-        border-radius: 50%;
-        width: var(--gf-ajaxspinner-width);
-        height: var(--gf-ajaxspinner-height);
-        margin-left: var(--unit);
-        padding: 0;
-    }
+// styles for legacy markup (version < 2.5)
+.gform_wrapper.gform_legacy_markup_wrapper {
+    // …
 }

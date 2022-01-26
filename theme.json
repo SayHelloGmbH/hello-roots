@@ -1,48 +1,27 @@
 {
-    "$schema": "https://json.schemastore.org/theme-v1.json",
-    "version": 1,
+    "version": 2,
     "settings": {
-        "custom": {
-            "line-height": {
-                "regular": 1.5,
-                "heading": 1.2
+        "appearanceTools": false,
+        "blocks": {
+            "core/button": {
+                "border": {
+                    "radius": false
+                }
             },
-            "spacing": {
-                "unit": "1rem"
-            },
-            "breakpoint": {
-                "zero": 0,
-                "phone": 320,
-                "wordpress_small": 600,
-                "narrow": 640,
-                "phone_wide": 667,
-                "tablet": 768,
-                "wordpress_medium": 783,
-                "medium": 960,
-                "tablet_landscape": 1024,
-                "wide": 1280,
-                "laptop": 1280,
-                "full": "100%",
-                "desktop": 1440,
-                "desktop_large": 1600,
-                "desktop_xlarge": 1920
+            "core/column": {
+                "spacing": {
+                    "units": ["px", "em", "rem", "vh", "vw", "%"]
+                }
             }
         },
-        "layout": {
-            "contentSize": "728px",
-            "wideSize": "1280px"
-        },
-        "spacing": {
-            "customMargin": false,
-            "customPadding": false
-        },
-        "typography": {
-            "customFontSize": false,
-            "customLineHeight": false,
-            "dropCap": false,
-            "fontSizes": []
-        },
         "color": {
+            "background": true,
+            "custom": false,
+            "customDuotone": false,
+            "customGradient": false,
+            "defaultGradients": false,
+            "defaultPalette": false,
+            "link": false,
             "palette": [
                 {
                     "slug": "primary",
@@ -84,7 +63,62 @@
                     "color": "#ccc",
                     "name": "Hellgrau"
                 }
-            ]
+            ],
+            "text": true
+        },
+        "custom": {
+            "line-height": {
+                "regular": 1.5,
+                "heading": 1.2
+            },
+            "spacing": {
+                "unit": "1rem"
+            },
+            "breakpoint": {
+                "zero": 0,
+                "phone": 320,
+                "wordpress_small": 600,
+                "narrow": 640,
+                "phone_wide": 667,
+                "tablet": 768,
+                "wordpress_medium": 783,
+                "medium": 960,
+                "tablet_landscape": 1024,
+                "wide": 1280,
+                "laptop": 1280,
+                "full": "100%",
+                "desktop": 1440,
+                "desktop_large": 1600,
+                "desktop_xlarge": 1920
+            }
+        },
+        "customTemplates": [
+            {
+                "name": "header-footer-only",
+                "title": "Header and Footer Only",
+                "postTypes": ["page"]
+            }
+        ],
+        "layout": {
+            "contentSize": "728px",
+            "wideSize": "1280px"
+        },
+        "spacing": {
+            "blockGap": false,
+            "margin": false,
+            "padding": false
+        },
+        "typography": {
+            "customFontSize": false,
+            "dropCap": false,
+            "fontFamilies": [],
+            "fontSizes": [],
+            "fontStyle": false,
+            "fontWeight": false,
+            "letterSpacing": false,
+            "lineHeight": false,
+            "textDecoration": false,
+            "textTransform": false
         }
     }
 }

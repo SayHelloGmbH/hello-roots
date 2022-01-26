@@ -1,3 +1,13 @@
+:root {
+    // Temporary solution until fontSizes is fully supported in FSE
+    --font-size--tiny: #{rem-calc(12px)};
+    --font-size--small: #{rem-calc(14px)};
+    --font-size--medium: #{rem-calc(18px)};
+    --font-size--large: #{rem-calc(24px)};
+    --font-size--xlarge: #{rem-calc(36px)};
+    --font-size--huge: #{rem-calc(42px)};
+}
+
 body {
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
         'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -5,11 +15,12 @@ body {
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
     --font-weight-normal: 400;
+    --font-weight-bold: 700;
 
     --radius: 0;
 
     // Probably not necessary but useful for browser debugging
-    --font-size-rem-base: #{$rem-font-size};
+    --wp--preset--font-size--rem-base: #{$rem-font-size};
 }
 
 body {
@@ -22,6 +33,10 @@ body {
 abbr,
 acronym {
     cursor: help;
+}
+
+a {
+    color: var(--wp--preset--color--primary);
 }
 
 a,
@@ -47,7 +62,7 @@ cite {
 }
 
 code {
-    background-color: c(gray, light);
+    background-color: var(--wp--preset--color--gray-xlight);
     display: inline-block;
     padding: 0.0625em 0.25em;
 }
@@ -76,9 +91,8 @@ figure {
 }
 
 figcaption {
-    font-size: var(--font-size-small);
+    font-size: var(--wp--preset--font-size--small);
     text-align: center;
-    color: var(--color-gray);
 }
 
 hr {
@@ -148,7 +162,7 @@ q {
 
 sub,
 sup {
-    font-size: var(--font-size-xsmall);
+    font-size: var(--wp--preset--font-size--tiny);
     -webkit-font-smoothing: subpixel-antialiased;
     line-height: 0;
     position: relative;
@@ -190,99 +204,27 @@ h6 {
 }
 
 h1 {
-    font-size: var(--font-size-h1);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h1) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h1) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h1) * 1.4);
-    }
+    font-size: var(--font-size--huge);
 }
 
 h2 {
-    font-size: var(--font-size-h2);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h2) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h2) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h2) * 1.4);
-    }
+    font-size: var(--font-size--xlarge);
 }
 
 h3 {
-    font-size: var(--font-size-h3);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h3) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h3) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h3) * 1.4);
-    }
+    font-size: var(--font-size--large);
 }
 
 h4 {
-    font-size: var(--font-size-h4);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h4) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h4) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h4) * 1.4);
-    }
+    font-size: var(--font-size--medium);
 }
 
 h5 {
-    font-size: var(--font-size-h5);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h5) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h5) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h5) * 1.4);
-    }
+    font-size: var(--font-size--small);
 }
 
 h6 {
-    font-size: var(--font-size-h6);
-
-    &.is-style-small-text {
-        font-size: calc(var(--font-size-h6) * 0.9);
-    }
-
-    &.is-style-large-text {
-        font-size: calc(var(--font-size-h6) * 1.2);
-    }
-
-    &.is-style-xlarge-text {
-        font-size: calc(var(--font-size-h6) * 1.4);
-    }
+    font-size: var(--font-size--tiny);
 }
 
 @include context-edit {
@@ -319,7 +261,7 @@ h6 {
     &:focus {
         clip: auto !important;
         clip-path: none;
-        color: c(black);
+        color: var(--wp--preset--color-black);
         display: block;
         font-size: 1em;
         height: auto;
@@ -337,26 +279,26 @@ h6 {
 @include context-view {
     a,
     button {
-        color: var(--color-link);
+        color: var(--sht--color--link);
 
         &:active,
         &:hover {
-            color: var(--color-link-hover);
+            color: var(--sht--color--link-hover);
         }
     }
 }
 
 @include context-edit {
     a {
-        color: var(--color-link);
+        color: var(--sht--color--link);
     }
 
     .block-editor-rich-text__editable a {
-        color: var(--color-link) !important;
+        color: var(--sht--color--link) !important;
 
         &:active,
         &:hover {
-            color: var(--color-link-hover) !important;
+            color: var(--sht--color--link-hover) !important;
         }
     }
 }

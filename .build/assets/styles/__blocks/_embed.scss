@@ -21,13 +21,13 @@
 
         &.wp-embed-aspect-16-9 {
             .wp-block-embed__wrapper {
-                padding-bottom: percentage(9/16);
+                padding-bottom: percentage(calc(9 / 16));
             }
         }
 
         &.wp-embed-aspect-4-3 {
             .wp-block-embed__wrapper {
-                padding-bottom: percentage(3/4);
+                padding-bottom: percentage(calc(3 / 4));
             }
         }
     }

@@ -1,0 +1,18 @@
+body.c-body--themedev::after {
+    position: fixed;
+    padding: 0.5em 0.75em;
+    font-size: var(--wp--preset--font-size--small);
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: red;
+    outline: 1px dotted red;
+    z-index: 9999;
+    display: block;
+    content: '';
+    @each $bp in map-keys($breakpoints) {
+        @include breakpoint($bp only) {
+            content: '#{$bp}';
+        }
+    }
+}

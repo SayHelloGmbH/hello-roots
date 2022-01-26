@@ -1,5 +1,4 @@
 body {
-    --column-grid-gap: var(--gutter);
     --column-row-gap: var(--unit-medium);
 
     @include breakpoint(tablet) {
@@ -16,29 +15,34 @@ body {
     & + .wp-block-column {
         margin-top: var(--column-row-gap);
     }
-
-    &:nth-child(2n) {
-        @include breakpoint(wordpress_small up) {
-            @include breakpoint(wordpress_medium down) {
-                margin-left: var(--column-grid-gap);
-            }
-        }
-    }
-
-    &:not(:only-child) {
-        @include breakpoint(wordpress_small up) {
-            @include breakpoint(wordpress_medium down) {
-                flex-basis: calc(50% - var(--column-grid-gap)) !important;
-            }
-        }
-    }
 }
 
-@include context-edit {
-    @include breakpoint(wordpress_small) {
-        [data-type='core/columns'][data-align='full'] .wp-block-columns {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
+.wp-block-columns {
+    margin-bottom: 0;
 }
+
+/*
+ * By default, WordPress Core converts column layouts to 2
+ * between 600px and 781px. This example code shows how to
+ * override that, e.g. for columns set to 66.66% and 33.33%.
+ *
+ * mark@sayhello.ch 12.11.2021
+ */
+
+// .wp-block-columns:not(.is-not-stacked-on-mobile) {
+//     & > .wp-block-column:not(:only-child)[style*='flex-basis:66.66%'] {
+//         @include breakpoint(wordpress_small up) {
+//             @include breakpoint(wordpress_medium down) {
+//                 flex-basis: calc(66.66% - 1em) !important;
+//             }
+//         }
+//     }
+
+//     & > .wp-block-column:not(:only-child)[style*='flex-basis:33.33%'] {
+//         @include breakpoint(wordpress_small up) {
+//             @include breakpoint(wordpress_medium down) {
+//                 flex-basis: calc(33.33% - 1em) !important;
+//             }
+//         }
+//     }
+// }

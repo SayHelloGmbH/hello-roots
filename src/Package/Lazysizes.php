@@ -27,6 +27,7 @@ class Lazysizes
 	public function run()
 	{
 		add_action('wp_head', [$this, 'noscriptCSS'], 50);
+		add_action('wp_body_open', [$this, 'svgFilter']);
 		add_action('wp_enqueue_scripts', [$this, 'addAssets']);
 		add_action('rest_api_init', [$this, 'registerRoute']);
 		add_filter('lazy_sizes_size', [$this, 'customLazyBreakpoints'], 10, 0);
@@ -127,6 +128,16 @@ class Lazysizes
 			'smallsquare' => 180,
 			'small' => 160,
 		];
-		return $image_object->getImage($background);
+	}
+
+
+	/**
+	 * Load the SVG filter for lazyimages after the BODY tag is open
+	 *
+	 * @return void
+	 */
+	public function svgFilter()
+	{
+		get_template_part('partials/svg/svg-filter');
 	}
 }

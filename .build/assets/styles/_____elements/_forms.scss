@@ -1,15 +1,15 @@
 body {
     --checkbox-size: calc(var(--unit) * 1.5);
     --checkbox-size-small: var(--unit); // used in other SCSS files, not here
-    --field-border: 1px solid var(--color-gray);
+    --field-border: 1px solid var(--wp--preset--color--gray);
     --field-radius: var(--radius);
     --checkbox-radius: #{rem-calc(2px)};
-    --checkbox-background-color: var(--color-white);
-    --checkbox-checked-background-color: var(--color-primary);
-    --checkbox-checked-border-color: var(--color-primary);
+    --checkbox-background-color: var(--wp--preset--color--white);
+    --checkbox-checked-background-color: var(--wp--preset--color--primary);
+    --checkbox-checked-border-color: var(--wp--preset--color--primary);
     --field-radius: var(--radius);
-    --field-placeholder-color: var(--color-gray);
-    --field-border-focus-color: var(--color-primary);
+    --field-placeholder-color: var(--wp--preset--color--gray);
+    --field-border-focus-color: var(--wp--preset--color--primary);
 }
 
 ::placeholder {
@@ -152,11 +152,11 @@ textarea {
 }
 
 label.error {
-    color: var(--color-danger);
-    font-size: var(--font-size-small);
+    color: var(--sht--color--danger);
+    font-size: var(--wp--preset--font-size--small);
 }
 
 .input.error {
-    border-color: var(--color-danger-border);
-    outline-color: var(--color-danger-border);
+    border-color: var(--sht--color--danger-border);
+    outline-color: var(--sht--color--danger-border);
 }
