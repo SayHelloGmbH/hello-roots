@@ -37,11 +37,21 @@ window.addEventListener('load', () => {
 /*
 window.addEventListener('load', () => {
      const activeBlocks = getBlockTypes().map(blockType => blockType.name);
-     const allowBlocks = ['core/paragraph', 'core/image', 'core/heading', 'core/list'];
+
+     const allowBlocks = [
+        'core/block', // reusable blocks
+        'core/paragraph',
+        'core/image',
+        'core/heading',
+        'core/list'
+     ];
 
      const blocksToRemove = activeBlocks.filter(
-         activeBlock => allowBlocks.indexOf(activeBlock) === -1 && activeBlock.indexOf('sht/') !== 0
-     );
+        activeBlock =>
+            allowBlocks.indexOf(activeBlock) === -1 &&
+            activeBlock.indexOf('sht/') !== 0 &&
+            activeBlock.indexOf('acf/sht-') !== 0
+    );
 
      blocksToRemove.map(block => unregisterBlockType(block));
 });
