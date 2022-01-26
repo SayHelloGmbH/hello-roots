@@ -19,54 +19,60 @@ class Archives
 	{
 		if (is_category()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge aus der Kategorie', 'Archive title category', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge aus der Kategorie', 'Archive title category', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_tag()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge mit dem Schlagwort', 'Archive title post tag', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge mit dem Schlagwort', 'Archive title post tag', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_author()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge von', 'Archive title author', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge von', 'Archive title author', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_year()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge aus', 'Archive title year', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge aus', 'Archive title year', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_month()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge aus', 'Archive title month/year', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge aus', 'Archive title month/year', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_day()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
-				_x('Newsbeiträge aus', 'Archive title day', 'sht')
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Beiträge aus', 'Archive title day', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_post_type_archive()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
+				'<span class="wp-block-query-title__prefix">%s</span>',
 				_x('Beitragsarchiv', 'CPT archive title', 'sht')
 			);
 			$title = ' ' . $original_title;
 		} elseif (is_tax()) {
 			$prefix = sprintf(
-				'<span class="c-archive__titleprefix">%s</span>',
+				'<span class="wp-block-query-title__prefix">%s</span>',
 				_x('Beiträge aus der Kategorie', 'Archive title year', 'sht')
 			);
 			$title = ' ' . $original_title;
+		} elseif (is_search()) {
+			$prefix = sprintf(
+				'<span class="wp-block-query-title__prefix">%s</span>',
+				_x('Suchergebnisse für', 'Archive title year', 'sht')
+			);
+			$title = ' ' . _x('«', 'Quote left', 'sht') . esc_html(get_search_query()) . _x('»', 'Quote right', 'sht');
 		} else {
-			$title = _x('Neueste Newsbeiträge', 'Archive title default', 'sht');
+			$title = _x('Neueste Beiträge', 'Archive title default', 'sht');
 		}
 		return $prefix . $title;
 	}

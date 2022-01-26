@@ -1,19 +1,21 @@
 .editor-post-title__block .editor-post-title__input {
-  font-family: var(--font-heading); }
+  font-family: var(--font-heading);
+}
 
 body.post-type-block_area .editor-post-title__block,
 body.post-type-page .editor-post-title__block {
-  opacity: 0.5; }
-  body.post-type-block_area .editor-post-title__block::after,
-  body.post-type-page .editor-post-title__block::after {
-    content: 'Wird nicht als Inhalt ausgegeben';
-    position: absolute;
-    top: 50%;
-    left: -10rem;
-    max-width: 9rem;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    font-size: small;
-    transform: translateY(-50%); }
-
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWRtaW4uY3NzIiwic291cmNlcyI6WyJhZG1pbi5zY3NzIiwiX19fX19fX19zZXR0aW5ncy9fX2FsbC5zZXR0aW5ncy5zY3NzIiwiX19fX19fX19zZXR0aW5ncy9fYnJlYWtwb2ludHMuc2NzcyIsIl9fX19fX19fc2V0dGluZ3MvX3RyYW5zaXRpb24uc2NzcyIsIl9fX19fX190b29scy9taXhpbnMvX2NvbnRleHQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFpQkksQUFBQSx5QkFBeUIsQ0FBQyx5QkFBeUIsQ0FBQztFQUNoRCxXQUFXLEVBQUUsbUJBQW1CLEdBQ25DOztBQUVELEFBRUksSUFGQSxBQUFBLHFCQUFxQixDQUVyQix5QkFBeUI7QUFEN0IsSUFBSSxBQUFBLGVBQWUsQ0FDZix5QkFBeUIsQ0FBQztFQUN0QixPQUFPLEVBQUUsR0FBRyxHQWFmO0VBaEJMLEFBS1EsSUFMSixBQUFBLHFCQUFxQixDQUVyQix5QkFBeUIsQUFHcEIsT0FBTztFQUpoQixJQUFJLEFBQUEsZUFBZSxDQUNmLHlCQUF5QixBQUdwQixPQUFPLENBQUM7SUFDTCxPQUFPLEVBQUUsa0NBQWtDO0lBQzNDLFFBQVEsRUFBRSxRQUFRO0lBQ2xCLEdBQUcsRUFBRSxHQUFHO0lBQ1IsSUFBSSxFQUFFLE1BQU07SUFDWixTQUFTLEVBQUUsSUFBSTtJQUNmLFdBQVcsRUFBRSxVQUFVO0lBQ3ZCLGNBQWMsRUFBRSxTQUFTO0lBQ3pCLFNBQVMsRUFBRSxLQUFLO0lBQ2hCLFNBQVMsRUFBRSxnQkFBZ0IsR0FDOUIifQ== */
+  opacity: 0.5;
+}
+body.post-type-block_area .editor-post-title__block::after,
+body.post-type-page .editor-post-title__block::after {
+  content: "Wird nicht als Inhalt ausgegeben";
+  position: absolute;
+  top: 50%;
+  left: -10rem;
+  max-width: 9rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: small;
+  transform: translateY(-50%);
+}
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBb0JJO0VBQ0k7OztBQUtBO0FBQUE7RUFDSTs7QUFFQTtBQUFBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBIiwiZmlsZSI6ImFkbWluLmNzcyJ9 */

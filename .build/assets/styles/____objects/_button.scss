@@ -1,8 +1,7 @@
 body {
-    --button-color-primary: var(--color-white);
-    --button-background-color-primary: var(--color-primary);
-    --button-color-primary-hover: var(--color-white);
-    --button-background-color-primary-hover: var(--color-primary-dark);
+    --button-color: var(--wp--preset--color--white);
+    --button-background-color: var(--wp--preset--color--primary);
+    --button-border-color: var(--button-background-color);
 
     --button-font-size: 1em;
     --button-font-size-small: 0.8em;
@@ -16,7 +15,7 @@ body {
     user-select: none;
     display: inline-block;
     text-decoration: none;
-    border: 1px solid;
+    border: 1px solid currentColor;
     padding: var(--button-padding);
     border-radius: var(--button-radius);
     text-align: center;
@@ -27,7 +26,7 @@ body {
             --button-background-color
         ); // default. can be overridden by has- classes (via editor)
         border-color: var(
-            --button-background-color
+            --button-border-color
         ); // default. can be overridden by has- classes (via editor)
     }
 
@@ -47,7 +46,8 @@ body {
 
     &:active,
     &:hover {
-        filter: saturate(0.8);
+        --button-background-color: var(--wp--preset--color--primary-dark);
+        --button-border-color: var(--wp--preset--color--primary-dark);
     }
 }
 

@@ -1,0 +1,7 @@
+.wp-block-post-comments {
+    &-form {
+        input[type='submit'] {
+            border: 1px solid var(--button-border-color);
+        }
+    }
+}

@@ -1,0 +1,58 @@
+.alignleft,
+.alignright {
+    position: relative;
+    z-index: 1;
+    margin-bottom: var(--unit);
+}
+
+.alignleft {
+    float: left;
+    margin-right: var(--unit) !important; // important to override unsuppressable inline core rules
+}
+
+.alignright {
+    float: right;
+    margin-left: var(--unit) !important; // important to override unsuppressable inline core rules
+}
+
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aligncenter,
+.alignleft,
+.alignnone,
+.alignright {
+    img {
+        display: block;
+    }
+
+    a,
+    img {
+        margin: 0;
+    }
+}
+
+figure.alignleft,
+figure.alignright,
+img.alignleft,
+img.alignright {
+    max-width: 50%;
+}
+
+.alignwide,
+.alignfull {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignwide {
+    max-width: var(--constraint-wide);
+}
+
+.alignfull {
+    max-width: none;
+}

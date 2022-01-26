@@ -5,10 +5,15 @@
 
 @function device-breakpoints-max($name, $sizes: $breakpoints) {
     $next: device-breakpoints-next($name, $sizes);
-    @return if($next, device-breakpoints-min($next, $sizes) - 0.1, null);
+    @return if($next, device-breakpoints-min($next, $sizes) - 0.0001, null);
 }
 
 @function device-breakpoints-next($name, $sizes, $breakpoint-names: map-keys($breakpoints)) {
     $n: index($breakpoint-names, $name);
+
+    @if type-of($n) != 'number' {
+        @return null;
+    }
+
     @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }

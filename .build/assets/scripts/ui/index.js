@@ -1,7 +1,19 @@
-import './modules/settings';
+// import { c, color, theme, is_mobile } from './modules/settings.js';
+// import './modules/settings';
 import './_polyfill';
 import './a11y';
 import './aria-toggler';
 import './cssvars';
-import './main';
+import './link-target';
 import './object-fit';
+import './vh';
+
+console.log('%cDesigned by', 'font-style: italic; font-size: 12px;');
+console.log('%csome cool agency', 'font-weight: bold; color: #000; font-size: 16px;');
+console.log('%chttps://sayhello.ch', 'color: #000; font-size: 12px;');
+console.log('');
+
+console.log('%cDeveloped by', 'font-style: italic; font-size: 12px;');
+console.log('%cSay Hello GmbH', 'font-weight: bold; color: #000; font-size: 16px;');
+console.log('%chttps://sayhello.ch', 'color: #000; font-size: 12px;');
+console.log('');

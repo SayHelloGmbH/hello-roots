@@ -24,12 +24,6 @@ class ThemeOptions
 		add_action('acf/init', [$this, 'page'], 1);
 		add_action('acf/init', [$this, 'options']);
 		add_action('acf/init', [$this, 'acfInit']);
-		add_action('after_setup_theme', [$this, 'disableEMRNews']);
-	}
-
-	public function disableEMRNews()
-	{
-		update_option('emr_news', true);
 	}
 
 	public function acfInit()
@@ -105,57 +99,6 @@ class ThemeOptions
 				'active' => true,
 				'description' => '',
 			]);
-
-			// We can't use is_plugin_active() here because
-			// that function hasn't been defined when this
-			// code is being called.
-			if (in_array('block-areas/block-areas.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-				acf_add_local_field_group([
-					'key' => "{$prefix}-blockarea-group",
-					'title' => 'Inhaltsbereiche',
-					'fields' => [
-						[
-							'key' => "{$prefix}-blockarea-footer",
-							'label' => 'Footer Block Area',
-							'name' => "{$prefix}-blockarea-footer",
-							'type' => 'post_object',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => [
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							],
-							'post_type' => [
-								0 => 'block_area',
-							],
-							'taxonomy' => '',
-							'allow_null' => 0,
-							'multiple' => 0,
-							'return_format' => 'object',
-							'ui' => 1,
-						],
-					],
-					'location'   => [
-						[
-							[
-								'param'    => 'options_page',
-								'operator' => '==',
-								'value'    => $this->main_slug,
-							],
-						],
-					],
-					'menu_order' => 5,
-					'position' => 'normal',
-					'style' => 'default',
-					'label_placement' => 'top',
-					'instruction_placement' => 'label',
-					'hide_on_screen' => '',
-					'active' => true,
-					'description' => '',
-				]);
-			}
 		}
 	}
 }

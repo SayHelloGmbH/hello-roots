@@ -1,4 +1,6 @@
 .wp-block-group {
+    @extend .h-stack;
+
     &.has-background {
         padding: var(--unit);
     }

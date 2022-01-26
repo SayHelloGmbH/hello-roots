@@ -1,0 +1,48 @@
+body {
+    --sht--color--link: var(--wp--preset--color--primary);
+    --sht--color--link-hover: var(--wp--preset--color--primary-dark);
+
+    // This is needed by Core for some reason
+    --wp--style--color--link: var(--sht--color--link);
+
+    @each $colour, $colourSet in $theme_colors {
+        @each $variant, $value in $colourSet {
+            @if $variant == 'base' {
+                --sht--color--#{$colour}: #{$value};
+            } @else {
+                --sht--color--#{$colour}-#{$variant}: #{$value};
+            }
+        }
+    }
+}
+
+.has-overlay {
+    &::before {
+        content: '';
+        @include flood;
+        top: 50%;
+        z-index: 1;
+        opacity: 0.9;
+    }
+}
+
+// Ensures color inheritance down the tree (frontend)
+@include context-view {
+    .has-text-color *:not(.has-text-color),
+    .has-text-color *:not(.has-text-color):active,
+    .has-text-color *:not(.has-text-color):hover {
+        color: inherit;
+    }
+}
+
+// Ensures color inheritance down the tree (admin)
+@include context-edit {
+    .has-text-color
+        *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']):hover,
+    .has-text-color
+        *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']),
+    .has-text-color
+        *:not(.has-text-color):not([class*='block-editor-']):not([class*='components-']):active {
+        color: inherit !important;
+    }
+}

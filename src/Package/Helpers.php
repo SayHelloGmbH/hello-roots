@@ -16,7 +16,7 @@ class Helpers
 	 *
 	 * @return string         The usable tel: link
 	 */
-	public static function telephoneUrl($number)
+	public function telephoneUrl($number)
 	{
 		$nationalprefix  = '+41';
 		$protocol        = 'tel:';

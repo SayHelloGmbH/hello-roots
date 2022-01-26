@@ -16,7 +16,7 @@ $rem-font-size: map-get($rem-base, value) + 0px;
 }
 
 @function convert-to-rem($value, $base-value: $rem-font-size) {
-    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
     @if ($value==0rem) {
         $value: 0;
     }
@@ -25,7 +25,7 @@ $rem-font-size: map-get($rem-base, value) + 0px;
 }
 
 @function strip-unit($num) {
-    @return $num / ($num * 0 + 1);
+    @return math.div($num, ($num * 0 + 1));
 }
 
 /**
@@ -103,5 +103,5 @@ $rem-font-size: map-get($rem-base, value) + 0px;
  * https://scotch.io/tutorials/converting-photoshop-letter-spacing-to-css
  */
 @mixin av($size) {
-    letter-spacing: ($size / 1000) * 1em;
+    letter-spacing: calc($size / 1000) * 1em;
 }

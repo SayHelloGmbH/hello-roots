@@ -90,7 +90,7 @@ body {
     }
 
     .comment-metadata {
-        font-size: var(--font-size-xsmall);
+        font-size: var(--wp--preset--font-size--tiny);
         text-align: right;
         @include breakpoint(tablet) {
             flex: 0 0 40%;

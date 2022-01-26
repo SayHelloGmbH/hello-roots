@@ -9,7 +9,7 @@ namespace SayHello\Theme\Package;
  */
 class Gutenberg
 {
-	public $min = false;
+	public $min = true;
 	public $js = false;
 	public $admin_font_url = false;
 	public $admin_font_path = false;
@@ -17,7 +17,7 @@ class Gutenberg
 	public function __construct()
 	{
 		if (sht_theme()->debug && is_user_logged_in()) {
-			$this->min = true;
+			$this->min = false;
 		}
 
 		if (file_exists(get_template_directory() . '/assets/gutenberg/blocks' . ($this->min ? '.min' : '') . '.js')) {
@@ -36,8 +36,12 @@ class Gutenberg
 			return; // Gutenberg is not active.
 		}
 		add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockAssets']);
+		add_action('after_setup_theme', [$this, 'editorStyle']);
+		add_action('admin_init', [$this, 'disableBlockDirectory']);
 		add_filter('block_categories_all', [$this, 'blockCategories']);
-		add_action('after_setup_theme', [$this, 'themeSupports']);
+
+		add_action('after_setup_theme', [$this, 'themeSupports'], 10);
+
 		add_action('init', [$this, 'setScriptTranslations']);
 		add_action('init', [$this, 'addBlockPatternCategory']);
 
@@ -54,10 +58,25 @@ class Gutenberg
 		// (We can add our own to the pattern category sht-block-patterns)
 		remove_theme_support('core-block-patterns');
 
-		// Since WordPress 5.8: DISALLOW full-site editing
-		remove_theme_support('block-templates');
+		// Allows blocks to be set to full and wide.
+		add_theme_support('align-wide');
+
+		// Add support for custom units.
+		// https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#support-custom-units
+		add_theme_support('custom-units', []);
+
+		// Load standard CSS from core.
+		// (Optional.)
+		// add_theme_support('wp-block-styles');
 	}
 
+	/**
+	 * Called via the enqueue_block_editor_assets hook. This is for
+	 * scripts and styles for the block editor UI, not for the content.
+	 * Don't add CSS here.
+	 *
+	 * @return void
+	 */
 	public function enqueueBlockAssets()
 	{
 		if ($this->js) {
@@ -73,6 +92,16 @@ class Gutenberg
 		if ($this->admin_font_url) {
 			wp_enqueue_style(sht_theme()->prefix . '-gutenberg-font', $this->admin_font_url, [], filemtime($this->admin_font_path));
 		}
+	}
+
+	/**
+	 * Add stylesheet which is specifically targeted to the Gutenberg editor
+	 *
+	 * @return void
+	 */
+	public function editorStyle()
+	{
+		add_editor_style('assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
 	}
 
 	/**
@@ -152,5 +181,10 @@ class Gutenberg
 		if (function_exists('register_block_pattern_category')) {
 			register_block_pattern_category('sht-block-patterns', ['label' => __('Say Hello', 'sht')]);
 		}
+	}
+
+	public function disableBlockDirectory()
+	{
+		remove_action('enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets');
 	}
 }

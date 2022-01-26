@@ -10,20 +10,23 @@ namespace SayHello\Theme\Package;
 class Assets
 {
 
-	public $font_version = '1.0';
+	private $font_version = '1.0';
+	private $min = true;
 
 	public function __construct()
 	{
 		$this->font_version = sht_theme()->version;
+
+		if (sht_theme()->debug && is_user_logged_in()) {
+			$this->min = false;
+		}
 	}
 
 	public function run()
 	{
 		add_action('wp_enqueue_scripts', [$this, 'registerAssets']);
 		add_action('admin_enqueue_scripts', [$this, 'registerAdminAssets']);
-		add_action('admin_init', [$this, 'editorStyle']);
 		add_action('wp_head', [$this, 'loadFonts']);
-		add_action('sht_after_body_open', [$this, 'loadSvgFilter']);
 	}
 
 	public function registerAssets()
@@ -34,7 +37,7 @@ class Assets
 		}
 
 		// CSS
-		$deps_css = ['wp-block-library'];
+		$deps_css = [];
 
 		if (class_exists('GFForms')) {
 			$deps_css[] = 'gform_basic';
@@ -43,7 +46,8 @@ class Assets
 
 		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
 		$deps_css[] = 'fancybox';
-		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css', $deps_css, filemtime(get_template_directory() . '/assets/styles/ui' . (sht_theme()->debug ? '' : '.min') . '.css'));
+
+		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css', $deps_css, filemtime(get_template_directory() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css'));
 
 		// JavaScript
 		$deps_js = [];
@@ -52,7 +56,7 @@ class Assets
 		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
 		$deps_js[] = 'fancybox';
 
-		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
+		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js'), true);
 
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
@@ -71,31 +75,24 @@ class Assets
 	public function registerAdminAssets()
 	{
 		// CSS
-		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css'));
-		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . (sht_theme()->debug ? '' : '.min') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-editor-style', get_template_directory_uri() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css', ['wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin-editor' . ($this->min ? '.min' : '') . '.css'));
+		wp_enqueue_style(sht_theme()->prefix . '-admin-style', get_template_directory_uri() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css', [sht_theme()->prefix . '-admin-editor-style', 'wp-edit-blocks'], filemtime(get_template_directory() . '/assets/styles/admin' . ($this->min ? '.min' : '') . '.css'));
 
 		// Javascript
-		wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . (sht_theme()->debug ? '' : '.min') . '.js'), true);
-		if (function_exists('acf_get_setting')) {
-			wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
-				'google_api_key' => acf_get_setting('google_api_key'),
-			]);
-		}
-	}
-
-	public function editorStyle()
-	{
-		if (file_exists(get_template_directory() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css')) {
-			add_editor_style(get_template_directory_uri() . '/assets/styles/admin-editor' . (sht_theme()->debug ? '' : '.min') . '.css');
-		}
+		// wp_enqueue_script(sht_theme()->prefix . '-admin-script', get_template_directory_uri() . '/assets/scripts/admin' . ($this->min ? '.min' : '') . '.js', [], filemtime(get_template_directory() . '/assets/scripts/admin' . ($this->min ? '.min' : '') . '.js'), true);
+		// if (function_exists('acf_get_setting')) {
+		// 	wp_localize_script(sht_theme()->prefix . '-admin-script', 'sht_map_data', [
+		// 		'google_api_key' => acf_get_setting('google_api_key'),
+		// 	]);
+		// }
 	}
 
 	public function loadFonts()
 	{
 
-		$fontver = $this->getSetting('theme_fontver');
-		if ($fontver) {
-			$this->font_version = $fontver;
+		$font_version = $this->getSetting('theme_fontver');
+		if ($font_version) {
+			$this->font_version = $font_version;
 		}
 
 		$theme_url = str_replace(get_home_url(), '', get_template_directory_uri());
@@ -116,18 +113,17 @@ class Assets
 		echo '</noscript>';
 	}
 
+
 	/**
-	 * This function returns the settings value from assets/settings.js
+	 * This function returns the settings value from assets/settings.json
 	 *
-	 * @since 0.1.0
-	 *
-	 * @param string $setting settings key
-	 *
-	 * @return string | bool
+	 * @param string $setting	The name of the setting to fetch
+	 * @param string $filename	Optional, name/path of file.
+	 * @return mixed
 	 */
-	public function getSetting($setting)
+	public function getSetting(string $setting, string $filename = 'assets/settings.json')
 	{
-		$path = trailingslashit(get_template_directory()) . 'assets/settings.json';
+		$path = trailingslashit(get_template_directory()) . $filename;
 		if (!is_file($path)) {
 			return false;
 		}
@@ -138,10 +134,5 @@ class Assets
 		}
 
 		return $settings[$setting];
-	}
-
-	public function loadSvgFilter()
-	{
-		get_template_part('partials/svg/svg-filter');
 	}
 }
