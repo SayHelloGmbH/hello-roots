@@ -92,6 +92,13 @@
                 "desktop_xlarge": 1920
             }
         },
+        "customTemplates": [
+            {
+                "name": "header-footer-only",
+                "title": "Header and Footer Only",
+                "postTypes": ["page"]
+            }
+        ],
         "layout": {
             "contentSize": "728px",
             "wideSize": "1280px"

@@ -1,7 +1,7 @@
 <!-- wp:template-part {"slug":"header-single","tagName":"header","className":"c-masthead","layout":{"inherit":true}} /-->
 
-<!-- wp:group {"className":"c-main","layout":{"inherit":true}} -->
-<div class="wp-block-group c-main">
+<!-- wp:group {"layout":{"inherit":true}} -->
+<div class="wp-block-group">
 
 <!-- wp:post-featured-image {} /-->
 
@@ -17,7 +17,11 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:post-content {"align":"full", "layout":{"inherit":true}} /-->
+<!-- wp:group {"tagName":"main"} -->
+<main class="wp-block-group">
+    <!-- wp:post-content {"align":"full","layout":{"inherit":true}} /-->
+</main>
+<!-- /wp:group -->
 
 <!-- wp:separator {"className":"is-style-wide"} -->
 <hr class="wp-block-separator is-style-wide" />
