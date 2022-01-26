@@ -1,3 +1,12 @@
+/*! Created by Say Hello GmbH (Switzerland), hello@sayhello.ch */
+/*
+
+This stylesheet was generated using Sass (http://sass-lang.com).
+Original files can be found inside the /.build/assets/styles/ folder inside the main folder of this project.
+
+The structure follows the principles of ITCSS (http://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528)
+
+*/
 .editor-post-title__block .editor-post-title__input {
   font-family: var(--font-heading);
 }
@@ -18,4 +27,4 @@ body.post-type-page .editor-post-title__block::after {
   font-size: small;
   transform: translateY(-50%);
 }
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBb0JJO0VBQ0k7OztBQUtBO0FBQUE7RUFDSTs7QUFFQTtBQUFBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBIiwiZmlsZSI6ImFkbWluLmNzcyJ9 */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZUE7QUFDQTs7QUFBQTtBQUFBOztBQUFBOztBQUFBO0FBZUk7RUFDSTs7O0FBS0E7QUFBQTtFQUNJOztBQUVBO0FBQUE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0EiLCJmaWxlIjoiYWRtaW4uY3NzIn0= */
