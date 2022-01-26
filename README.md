@@ -81,22 +81,21 @@ The _[theme.json](https://developer.wordpress.org/block-editor/how-to-guides/the
 
 _assets/settings.json_ is a non-standard settings file, which forms part of the specific logic of Hello Roots. There are shared settings between CSS and JavaScript files which are stored inside this file. You can import them into any JavaScript module (`import settings from '../../../../../assets/settings.json';`), use them inside any scss file (for example: `$my_easing_speed: $easing_speed;`), or load them into PHP using the methods `getThemeJson` or `getSettings` in the Theme class.
 
-You can also load the contents of the _theme.json_ file into SCSS and/or JavaScript by the same means. For example, `import theme_json from '../../../../assets/theme.json';`
+You can also load the contents of the _theme.json_ file into SCSS and/or JavaScript by the same means. For example, `import theme_json from '../../../../assets/theme.json';`. This will currently throw an error from `sass` because of the `$schema` entry key. If you really need to import _theme.json_ then remove the `$schema` entry. (This entry is valuable because it validates the structure of the JSON file automatically in your IDE. Further details are [here](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/#developing-with-theme-json).)
 
 The import functionality in SCSS and JavaScript is part of the build process. It uses [gulp-sass-import-json](https://www.npmjs.com/package/gulp-sass-import-json) by [Renat Gafarov](https://www.npmjs.com/~acusticdemon).
 
-#### Example for PHP
+## Breakpoints
 
-```php
-$settings = sht_theme()->getThemeJson();
-var_dump($settings['custom']['breakpoint']['tablet'] ?? 'not defined');
-```
+Breakpoints are read in from _assets/settings.json_ by Sass, and generate CSS properties like `--constraint-wide`. These are used in your own CSS. The values used by WordPress Core, however, come from the content width settings in your _theme.json_ file.
 
 ## Content width
 
-WordPress loads external content - e.g. responsive images or external video embeds - at an appropriate size using the `$content_width` variable. Since the introduction of [theme.json](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/), this variable is set from the value of `settings.layout.contentSize` in the theme.json file. Modify the value of this entry based on the standard width of a content element in the single blog post view.
+WordPress loads external content - e.g. responsive images or external video embeds - at an appropriate size using the `$content_width` variable. Since the introduction of _[theme.json](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/)_, this variable is set from the value of `settings.layout.contentSize` in the _theme.json_ file. Modify the value of this entry based on the standard width of a content element in the single blog post view.
 
 In order to allow wide- and full- width content, ensure that the correct value is set for `settings.layout.wideSize`.
+
+If you want to use CSS properties like `--constraint-wide` in your CSS, then make sure that the same breakpoint values for `narrow` and `wide` are set in settings.json as you have set in `settings.layout.contentSize` and `settings.layout.wideSize`.
 
 ## Styles
 
@@ -145,7 +144,7 @@ body,
 
 ### Colours
 
-The colour selection for blocks in the editor is defined within the `settings.color.palette` entry of theme.json. These values can also be overridden for specific block types. (e.g. if you only want to allow the selection of black or blue on _core/heading_ blocks.) WordPress generates CSS custom properties for the values: for example, `--wp--preset--color--red`. Hello Roots does not interfere with the generation of these class names.
+The colour selection for blocks in the editor is defined within the `settings.color.palette` entry of _theme.json_. These values can also be overridden for specific block types. (e.g. if you only want to allow the selection of black or blue on _core/heading_ blocks.) WordPress generates CSS custom properties for the values: for example, `--wp--preset--color--red`. Hello Roots does not interfere with the generation of these class names.
 
 If you need to define colours which generate CSS custom properties, but which are _not_ to be displayed to the user for editorial selection, then add them to the definitions for `theme_colors` in _assets/settings.json_. The SCSS file _colors.scss_ in the overrides folder generates CSS custom properties with the syntax `--sht--color--{name}` or `--sht--color--{name}-{variant}` for use in theme CSS.
 

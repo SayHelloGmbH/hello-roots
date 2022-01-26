@@ -1,38 +1,50 @@
 {
-	"theme_colors": {
-		"success": {
-			"base": "#489324",
-			"background": "#dff0d8",
-			"border": "#34cf7a"
-		},
-		"info": {
-			"base": "#333333",
-			"background": "#eaeaea",
-			"border": "#989898"
-		},
-		"warning": {
-			"base": "#E2912A",
-			"background": "#EFD7B9",
-			"border": "#F3DF5D"
-		},
-		"danger": {
-			"base": "#FF0000",
-			"background": "#FFE9E9",
-			"border": "#A01E32"
-		}
-	},
+    "breakpoints": {
+        "zero": 0,
+        "phone": 320,
+        "wordpress_small": 600,
+        "narrow": 800,
+        "phone_wide": 667,
+        "tablet": 768,
+        "wordpress_medium": 783,
+        "medium": 960,
+        "tablet_landscape": 1024,
+        "wide": 1000,
+        "laptop": 1280,
+        "full": "100%",
+        "desktop": 1440,
+        "desktop_large": 1600,
+        "desktop_xlarge": 1920
+    },
+    "theme_colors": {
+        "success": {
+            "base": "#489324",
+            "background": "#dff0d8",
+            "border": "#34cf7a"
+        },
+        "info": {
+            "base": "#333333",
+            "background": "#eaeaea",
+            "border": "#989898"
+        },
+        "warning": {
+            "base": "#E2912A",
+            "background": "#EFD7B9",
+            "border": "#F3DF5D"
+        },
+        "danger": {
+            "base": "#FF0000",
+            "background": "#FFE9E9",
+            "border": "#A01E32"
+        }
+    },
     "rem-base": {
-		"name": "REM-Basis",
-		"value": 16
-	},
-	"easing_speed": 300,
-	"easing_speed_fast": 150,
-	"easing_speed_slow": 450,
-	"easing_bezier": [
-		0.455,
-		0.03,
-		0.515,
-		0.955
-	],
-	"theme_fontver": 1
+        "name": "REM-Basis",
+        "value": 16
+    },
+    "easing_speed": 300,
+    "easing_speed_fast": 150,
+    "easing_speed_slow": 450,
+    "easing_bezier": [0.455, 0.03, 0.515, 0.955],
+    "theme_fontver": 1
 }
