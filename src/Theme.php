@@ -191,9 +191,6 @@ class Theme
 
 		// Adding support for responsive embedded content.
 		add_theme_support('responsive-embeds');
-
-		// Deactivate the welcome panel in the WordPress Dashboard
-		remove_action('welcome_panel', 'wp_welcome_panel');
 	}
 
 	public function cleanHead()
