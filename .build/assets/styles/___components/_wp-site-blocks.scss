@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     min-height: calc(100 * var(--vh));
+    padding-left: var(--wp--custom--spacing--outer-gutter); // Set in theme.json
+    padding-right: var(--wp--custom--spacing--outer-gutter); // Set in theme.json
 
     > * {
         // Stop child elements from collapsing horizontally
@@ -10,5 +12,15 @@
 
     .admin-bar & {
         min-height: calc(100 * var(--vh) - var(--admin-bar-height));
+    }
+}
+
+@include context-view {
+    .wp-site-blocks {
+        .alignfull {
+            width: unset;
+            margin-left: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
+            margin-right: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
+        }
     }
 }

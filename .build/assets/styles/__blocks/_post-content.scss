@@ -1,15 +1,15 @@
 .wp-block-post-content {
     @extend .h-stack;
-    padding-left: var(--wp--custom--spacing--outer); // Set in theme.json
-    padding-right: var(--wp--custom--spacing--outer); // Set in theme.json
+    padding-left: var(--wp--custom--spacing--outer-gutter); // Set in theme.json
+    padding-right: var(--wp--custom--spacing--outer-gutter); // Set in theme.json
 }
 
 @include context-view {
     .wp-block-post-content {
         .alignfull {
             width: unset;
-            margin-left: calc(-1 * var(--wp--custom--spacing--outer)) !important;
-            margin-right: calc(-1 * var(--wp--custom--spacing--outer)) !important;
+            margin-left: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
+            margin-right: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
         }
     }
 }

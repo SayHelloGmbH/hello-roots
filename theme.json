@@ -76,7 +76,7 @@
             },
             "spacing": {
                 "unit": "var(--wp--style--block-gap, 1rem)",
-                "outer": "var(--wp--style--block-gap, 1rem)"
+                "outer-gutter": "var(--wp--style--block-gap, 1rem)"
             }
         },
         "layout": {
