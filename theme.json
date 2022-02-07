@@ -73,6 +73,10 @@
             "line-height": {
                 "regular": 1.5,
                 "heading": 1.2
+            },
+            "spacing": {
+                "unit": "var(--wp--style--block-gap, 1rem)",
+                "outer": "var(--wp--style--block-gap, 1rem)"
             }
         },
         "layout": {
