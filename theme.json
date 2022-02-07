@@ -77,7 +77,7 @@
         },
         "layout": {
             "contentSize": "728px",
-            "wideSize": "1280px"
+            "wideSize": "1200px"
         },
         "spacing": {
             "blockGap": true,

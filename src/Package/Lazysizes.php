@@ -123,7 +123,7 @@ class Lazysizes
 		return [
 			'window' => 2560,
 			'page' => 1376,
-			'large' => 1280,
+			'large' => 1200,
 			'medium' => 330,
 			'smallsquare' => 180,
 			'small' => 160,
