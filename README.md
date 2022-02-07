@@ -85,6 +85,13 @@ You can also load the contents of the _theme.json_ file into SCSS and/or JavaScr
 
 The import functionality in SCSS and JavaScript is part of the build process. It uses [gulp-sass-import-json](https://www.npmjs.com/package/gulp-sass-import-json) by [Renat Gafarov](https://www.npmjs.com/~acusticdemon).
 
+#### Unit and block section gutter
+
+(In the theme development community, it's common to refer as the various settings in dot notation; for example `settings.color.background`.)
+
+-   `settings.custom.spacing.unit`: the standard unit from which many spacings and scalings are calculated. Uses the WordPress `blockGap` standard CSS property `--wp--style--block-gap` by default.
+-   `settings.custom.spacing.outer-gutter`: the gap to the left and right of the content blocks (usually only visible in mobile).
+
 ## Breakpoints
 
 Breakpoints are read in from _assets/settings.json_ by Sass, and generate CSS properties like `--constraint-wide`. These are used in your own CSS. The values used by WordPress Core, however, come from the content width settings in your _theme.json_ file.
