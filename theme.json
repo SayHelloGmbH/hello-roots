@@ -106,5 +106,69 @@
         "spacing": {
             "blockGap": "1rem"
         }
-    }
+    },
+    "customTemplates": [
+        {
+            "name": "header-footer-only",
+            "title": "Layout ohne Seitentitel",
+            "postTypes": ["page"]
+        }
+    ],
+    "templateParts": [
+        {
+            "name": "comments",
+            "title": "Kommentare",
+            "area": "uncategorized"
+        },
+        {
+            "name": "header",
+            "title": "Header",
+            "area": "header"
+        },
+        {
+            "name": "menu-toggler",
+            "title": "Menü-Button",
+            "area": "header"
+        },
+        {
+            "name": "navigation-primary",
+            "title": "Primäre Navigation",
+            "area": "header"
+        },
+        {
+            "name": "post-categories",
+            "title": "Beitragskategorien",
+            "area": "uncategorized"
+        },
+        {
+            "name": "post-tags",
+            "title": "Beitragsschlagwörter",
+            "area": "uncategorized"
+        },
+        {
+            "name": "post-meta",
+            "title": "Beitragsmetadaten",
+            "area": "uncategorized"
+        },
+        {
+            "name": "post-next-previous",
+            "title": "Beitragsnavigation (nächster/voriger)",
+            "area": "uncategorized"
+        },
+        {
+            "name": "footer",
+            "title": "Fusszeile",
+            "area": "footer"
+        },
+        {
+            "name": "loop-default",
+            "title": "Beitrags-Loop",
+            "area": "uncategorized"
+        },
+        {
+            "name": "spacer",
+            "title": "Abstandshalter",
+            "area": "uncategorized"
+        }
+    ]
 }
