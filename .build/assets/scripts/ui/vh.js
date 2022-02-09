@@ -1,11 +1,20 @@
-const root_element = document.documentElement;
+/**
+ * CSS custom properties like --vh are set on the :root and on
+ * the BODY element, in order to comply with current WordPress
+ * core CSS. This script ensures that the values are set dynamically
+ * on both elements, for maximum compatibility.
+ *
+ * mark@sayhello.ch 9.2.2022
+ *
+ */
 
-root_element.style.setProperty('--vh', window.innerHeight / 100 + 'px');
+const setVh = () => {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight / 100}px`);
+    document.body.style.setProperty('--vh', `${window.innerHeight / 100}px`);
+};
 
-window.addEventListener('resize', () => {
-    root_element.style.setProperty('--vh', window.innerHeight / 100 + 'px');
-});
+setVh();
 
-window.addEventListener('orientationchange', () => {
-    root_element.style.setProperty('--vh', window.innerHeight / 100 + 'px');
-});
+window.addEventListener('load', setVh);
+window.addEventListener('resize', setVh);
+window.addEventListener('orientationchange', setVh);
