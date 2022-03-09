@@ -26,7 +26,7 @@ fieldset {
     margin: 0;
 }
 
-input {
+input:not([name*='acf-block']) {
     &[disabled] {
         opacity: 0.75;
     }
@@ -73,8 +73,8 @@ input {
     }
 }
 
-[type='radio'],
-[type='checkbox'] {
+[type='radio']:not([name*='acf-block']),
+[type='checkbox']:not([name*='acf-block']) {
     position: absolute;
     transform: scale(0);
     z-index: -1;
@@ -118,15 +118,15 @@ input {
     }
 }
 
-[type='checkbox'] ~ label:before {
+[type='checkbox']:not([name*='acf-block']) ~ label:before {
     border-radius: var(--checkbox-radius);
 }
 
-[type='radio'] ~ label:before {
+[type='radio']:not([name*='acf-block']) ~ label:before {
     border-radius: 50%;
 }
 
-textarea {
+textarea:not([name*='acf-block']) {
     -webkit-appearance: none; // remove inner shadow
     resize: vertical;
     border: var(--field-border);
