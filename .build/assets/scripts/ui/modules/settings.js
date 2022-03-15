@@ -4,8 +4,6 @@ const settings = theme_json.settings;
 // import 'jquery-easing';
 // import './jquery.bez.js';
 
-//import verge from 'verge';
-
 // jQuery.easing.def = jQuery.bez(settings.easing_bezier);
 // jQuery.fx.speeds = {
 //     slow: settings.easing_speed_slow,
@@ -41,5 +39,5 @@ export const c = (mycolor, tone = 'base') => {
 };
 
 // export const is_mobile = () => {
-//     return verge.viewportW() <= settings.custom.breakpoint.tablet;
+//     return window.matchMedia(`(min-width: ${settings.custom.breakpoint.tablet}px)`).matches;
 // };
