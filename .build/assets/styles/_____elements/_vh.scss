@@ -1,4 +1,8 @@
 :root,
 body {
     --vh: 1vh;
+
+    @supports (height: 1dvh) {
+        --vh: 1dvh;
+    }
 }
