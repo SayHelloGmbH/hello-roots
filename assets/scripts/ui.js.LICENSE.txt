@@ -14,8 +14,6 @@
  * MIT license
  */
 
-/*! npm.im/object-fit-images 3.2.4 */
-
 /**
  * Fetches, parses, and transforms CSS custom properties from specified
  * <style> and <link> elements into static values, then appends a new <style>
