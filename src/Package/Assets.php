@@ -59,6 +59,12 @@ class Assets
 		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js'), true);
 
 		if (function_exists('acf_get_setting')) {
+			wp_localize_script(sht_theme()->prefix . '-script', 'sht_theme', [
+				'version' => wp_get_theme()->get('Version')
+			]);
+		}
+
+		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_map_data', [
 				'google_api_key' => acf_get_setting('google_api_key'),
 			]);
