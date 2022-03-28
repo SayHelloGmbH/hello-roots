@@ -46,7 +46,6 @@ class Gutenberg
 		add_action('init', [$this, 'addBlockPatternCategory']);
 
 		add_filter('admin_body_class', [$this, 'extendAdminBodyClass']);
-		add_action('admin_menu', [$this, 'reusableBlocksAdminMenu']);
 	}
 
 	/**
@@ -126,17 +125,6 @@ class Gutenberg
 				'title' => _x('Blöcke von Say Hello', 'Custom block category name', 'sha'),
 			],
 		]);
-	}
-
-	public function reusableBlocksAdminMenu()
-	{
-		add_submenu_page(
-			'themes.php',
-			_x('Wiederverwendbare Blöcke', 'Admin page title', 'sht'),
-			_x('Wiederverwendbare Blöcke', 'Admin menu label', 'sht'),
-			'edit_posts',
-			'edit.php?post_type=wp_block'
-		);
 	}
 
 	public function isContextEdit()
