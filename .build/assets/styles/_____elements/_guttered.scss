@@ -1,0 +1,35 @@
+/**
+ * In order to ensure that the content doesn't align against the
+ * edge of the browser window at small screen sizes, we apply a
+ * gutter using var(--wp--custom--spacing--outer-gutter), which
+ * is defined in theme.json. This will indent all content on the
+ * left and right.
+ *
+ * In order to allow alignfull to work with this guttering, we
+ * stretch the alignfull elements by the amount of the guttering.
+ * This only applies to elements which are direct children of the
+ * main container. (By default, this wrapper is .wp-block-post-content.)
+ *
+ * If you need these rules to apply to an additional container, use
+ * e.g. .c-mycontainer { @extend %h-guttered; }
+ *
+ * To apply the stretching rules to an element (to mimic alignfull)
+ * then use e.g. .c-my-full-container { @extend %h-guttered-full; }
+ *
+ * This version mark@sayhello.ch 28.3.2022
+ */
+
+%h-guttered-full {
+    width: unset;
+    margin-left: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
+    margin-right: calc(-1 * var(--wp--custom--spacing--outer-gutter)) !important;
+}
+
+%h-guttered {
+    padding-left: var(--wp--custom--spacing--outer-gutter);
+    padding-right: var(--wp--custom--spacing--outer-gutter);
+
+    > .alignfull {
+        @extend %h-guttered-full;
+    }
+}
