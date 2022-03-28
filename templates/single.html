@@ -1,35 +1,40 @@
 <!-- wp:template-part {"slug":"header","theme":"hello-roots","tagName":"header","className":"c-masthead"} /-->
 
-<!-- wp:group {"layout":{"inherit":true}} -->
-<div class="wp-block-group"><!-- wp:post-featured-image /-->
+<!-- wp:group {"tagName":"main","className":"c-main","layout":{"inherit":true}} -->
+<main class="wp-block-group c-main">
 
-<!-- wp:group {"className":"c-article__header"} -->
-<div class="wp-block-group c-article__header"><!-- wp:post-title {"level":1,"isLink":true} /-->
+    <!-- wp:post-featured-image /-->
 
-<!-- wp:post-date /--></div>
-<!-- /wp:group -->
+    <!-- wp:group {"className":"c-article__header"} -->
+        <div class="wp-block-group c-article__header">
+            <!-- wp:post-title {"level":1,"isLink":true} /-->
+            <!-- wp:post-date /-->
+        </div>
+    <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"main","align":"full","className":"c-article__content","layout":{"inherit":true}} -->
-<main class="wp-block-group alignfull c-article__content"><!-- wp:post-content {"align":"full","layout":{"inherit":true}} /--></main>
-<!-- /wp:group -->
+    <!-- wp:group {"align":"full","className":"c-article__content","layout":{"inherit":true}} -->
+        <div class="wp-block-group alignfull c-article__content"><!-- wp:post-content {"align":"full","layout":{"inherit":true}} /--></div>
+    <!-- /wp:group -->
 
-<!-- wp:separator {"className":"is-style-wide"} -->
-<hr class="wp-block-separator is-style-wide"/>
-<!-- /wp:separator -->
+    <!-- wp:separator {"className":"is-style-wide"} -->
+        <hr class="wp-block-separator is-style-wide"/>
+    <!-- /wp:separator -->
 
-<!-- wp:template-part {"slug":"post-meta","theme":"hello-roots"} /-->
+    <!-- wp:template-part {"slug":"post-meta","theme":"hello-roots"} /-->
 
-<!-- wp:separator {"className":"is-style-wide"} -->
-<hr class="wp-block-separator is-style-wide"/>
-<!-- /wp:separator -->
+    <!-- wp:separator {"className":"is-style-wide"} -->
+        <hr class="wp-block-separator is-style-wide"/>
+    <!-- /wp:separator -->
 
-<!-- wp:template-part {"slug":"comments","theme":"hello-roots"} /-->
+    <!-- wp:template-part {"slug":"comments","theme":"hello-roots"} /-->
 
-<!-- wp:separator {"className":"is-style-wide"} -->
-<hr class="wp-block-separator is-style-wide"/>
-<!-- /wp:separator -->
+    <!-- wp:separator {"className":"is-style-wide"} -->
+        <hr class="wp-block-separator is-style-wide"/>
+    <!-- /wp:separator -->
 
-<!-- wp:template-part {"slug":"post-next-previous","theme":"hello-roots"} /--></div>
+    <!-- wp:template-part {"slug":"post-next-previous","theme":"hello-roots"} /-->
+
+</main>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","theme":"hello-roots","tagName":"footer","className":"c-footer"} /-->
