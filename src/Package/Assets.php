@@ -60,7 +60,8 @@ class Assets
 
 		if (function_exists('acf_get_setting')) {
 			wp_localize_script(sht_theme()->prefix . '-script', 'sht_theme', [
-				'version' => wp_get_theme()->get('Version')
+				'version' => wp_get_theme()->get('Version'),
+				'directory_uri' => get_template_directory_uri(),
 			]);
 		}
 
