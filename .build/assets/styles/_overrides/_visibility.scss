@@ -13,7 +13,7 @@
         }
         &--tablet {
             @include for-screen-min(tablet) {
-                @include for-screen-max(laptop) {
+                @include for-screen-max(wide) {
                     display: none !important;
                 }
             }
