@@ -1,0 +1,27 @@
+/**
+ * Rules which are applied by a custom
+ * block filter toggle switch in the editor.
+ *
+ */
+
+@include context-view {
+    .is-hidden-for {
+        &--mobile {
+            @include for-screen-max(phone_wide) {
+                display: none !important;
+            }
+        }
+        &--tablet {
+            @include for-screen-min(tablet) {
+                @include for-screen-max(laptop) {
+                    display: none !important;
+                }
+            }
+        }
+        &--desktop {
+            @include for-screen-min(laptop) {
+                display: none !important;
+            }
+        }
+    }
+}
