@@ -1,0 +1,1 @@
+!function(){if(!CSS.supports||!CSS.supports("height","1dvh")){var e=function(){document.documentElement.style.setProperty("--vh","".concat(window.innerHeight/100,"px")),document.body.style.setProperty("--vh","".concat(window.innerHeight/100,"px"))};e(),window.addEventListener("load",e),window.addEventListener("resize",e),window.addEventListener("orientationchange",e)}}();
