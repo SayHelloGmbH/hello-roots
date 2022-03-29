@@ -95,6 +95,7 @@ class Theme
 				PostType\Post::class,
 
 				Block\ArchiveTitleSearch::class,
+				Block\TemplatePart::class,
 
 				Plugin\ACF::class,
 				Plugin\EnableMediaReplace::class, // Delete if the "Enable Media Replace" plugin is not in use
