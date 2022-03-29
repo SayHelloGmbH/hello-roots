@@ -32,11 +32,17 @@ class TemplatePart
 		}
 
 		libxml_use_internal_errors(true);
-		$document = new DOMDocument();
-		$document_out = new DOMDocument();
-		$document->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
+		$document = new DOMDocument();
+		$document->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 		$wrapper = $document->documentElement->childNodes[0]->childNodes[0];
+
+		// Make sure that the wrapper contains the standard template part class name
+		if (strpos($wrapper->getAttribute('class'), 'wp-block-template-part') === FALSE) {
+			return $html;
+		}
+
+		$document_out = new DOMDocument();
 
 		foreach ($wrapper->childNodes as $child) {
 			$document_out->appendChild($document_out->importNode($child->cloneNode(true), true));
