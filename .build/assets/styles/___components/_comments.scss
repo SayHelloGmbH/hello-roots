@@ -1,10 +1,10 @@
 body {
-    --c-comments-border-color: var(--wp--preset--color--gray-light);
-    --c-comments-background-even: var(--wp--preset--color--gray-light);
-    --c-comments-background-odd: var(--wp--preset--color--white);
-    --c-comments-respond-border-color: var(--wp--preset--color--gray-light);
-    --c-comments-cancel-link-color: var(--wp--preset--color--primary);
-    --c-comments-cancel-link-color-hover: var(--wp--preset--color--primary-dark);
+    --comments--border-color: var(--wp--preset--color--gray-light);
+    --comments--background-even: var(--wp--preset--color--gray-light);
+    --comments--background-odd: var(--wp--preset--color--white);
+    --comments--respond-border-color: var(--wp--preset--color--gray-light);
+    --comments--cancel-link-color: var(--wp--preset--color--primary);
+    --comments--cancel-link-color-hover: var(--wp--preset--color--primary-dark);
 }
 
 .c-comments {
@@ -28,7 +28,7 @@ body {
     .pingback,
     .trackback {
         padding: var(--unit);
-        border: 1px solid var(--c-comments-border-color);
+        border: 1px solid var(--comments--border-color);
         @extend .h-stack;
 
         &[class*='depth'] {
@@ -37,18 +37,18 @@ body {
         }
 
         &.even {
-            background: var(--c-comments-background-even);
+            background: var(--comments--background-even);
         }
 
         &.odd {
-            background-color: var(--c-comments-background-odd);
+            background-color: var(--comments--background-odd);
         }
 
         // Only if inside an existing comment (so as a specific reply)
         .comment-respond {
             padding-top: var(--unit);
             padding-bottom: var(--unit);
-            border-top: 1px solid var(--c-comments-respond-border-color);
+            border-top: 1px solid var(--comments--respond-border-color);
         }
     }
 
@@ -112,12 +112,12 @@ body {
 
     #cancel-comment-reply-link {
         font-weight: normal;
-        color: var(--c-comments-cancel-link-color);
+        color: var(--comments--cancel-link-color);
         text-decoration: underline;
 
         &:active,
         &:hover {
-            color: var(--c-comments-cancel-link-color-hover);
+            color: var(--comments--cancel-link-color-hover);
         }
     }
 }
