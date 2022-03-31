@@ -96,7 +96,7 @@ The import functionality in SCSS and JavaScript is part of the build process. It
 
 Hello Roots delivers a standard set of [templates](https://github.com/SayHelloGmbH/hello-roots/tree/master/templates) and [template parts](https://github.com/SayHelloGmbH/hello-roots/tree/master/parts) for the most common requirements. This can be (and should be) modified to suit the project and theme.
 
-The HTML structure of the templates is kept as simple as possible in the unchanged version of the theme. The **masthead** is the banner across the top of the page which usually contains the navigation, and the **footer** is the section at the bottom of each page.
+The HTML structure of the templates is kept as simple as possible in the unchanged version of the theme. The **masthead** is the banner across the top of the page which usually contains the navigation, and the **footer** is the section at the bottom of each page. Each of these areas are contained within their own template parts.
 
 The `main` element contains the main body of the page content and the editorially-created content is output by the [post content block](https://wordpress.org/support/article/post-content-block/).
 
