@@ -209,6 +209,31 @@ Output:
 }
 ```
 
+### The Stack and block gap
+
+The stacking [placeholder selector](https://sass-lang.com/documentation/style-rules/placeholder-selectors) `%h-stack` is used via `@extend` to create a [stack](https://every-layout.dev/layouts/stack/) of elements, in which the top and bottom margins are initially set to zero. Then, every element which has a predecessor receives a top margin. This allows any element containing children to neatly and regularly “stack“ its children with equal spacing, with one simple CSS rule. This rule can be used widely throughout the site, avoiding unnecessary re-definition by referring to the same placeholder selector every time.
+
+`%h-stack` uses the CSS custom property `--wp--style-block-gap` which is implemented by WordPress Core. ([More information about Block Gap](https://fullsiteediting.com/lessons/theme-json-layout-and-spacing-options/#h-blockgap).) In the event that a specific element needs the same logic to be applied but with a different spacing, then use the `%h-stack` rule and set the `--wp--style-block-gap` CSS custom property to the value you need. You can alternatively use one of the pre-defined rules like `%h-stack--medium`, which do the same thing but which allow a regular, logically-scaled layout logic.
+
+```scss
+.wp-block-post-content {
+    @extend %h-stack;
+}
+
+.c-main {
+    @extend %h-stack;
+}
+
+ul {
+    @extend %h-stack;
+    --wp--style-block-gap: 5px;
+}
+
+.c-random-component {
+    @extend %h-stack--medium;
+}
+```
+
 ## Gutenberg Blocks
 
 The Theme is provided with built-in SCSS and Webpack support for developing Gutenberg blocks using React. There is a specific PHP `Gutenberg` Package for some functionality.
