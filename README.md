@@ -114,9 +114,9 @@ The **footer** is forced to the bottom edge of the browser on shorter pages thro
 
 ##### Template part wrapper is removed
 
-By default, WordPress wraps full-site-editing template parts with a `div`. The [code in the Theme](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Block/TemplatePart.php#L27) removes this element, in order to maintain a clean HTML structure. Assigning a class name to the template part block using the CSS class name field in the Editor **will not work**. Use a group block inside the template part instead.
+By default, WordPress wraps full-site-editing template parts with a `div`. The [code in the Theme](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Block/TemplatePart.php#L27) removes this element, in order to maintain a clean HTML structure.
 
-If a template part needs to contain a wrapper with a specific class name, this should be applied using a group block _inside_ the template part file. (e.g. the [masthead](https://github.com/SayHelloGmbH/hello-roots/blob/master/parts/header.html).)
+Assigning a class name to the template part block using the CSS class name field in the Editor **will not work**. If a template part needs to contain a wrapper with a specific class name, this should be applied using a group block _inside_ the template part file. (e.g. the [masthead](https://github.com/SayHelloGmbH/hello-roots/blob/master/parts/header.html).)
 
 #### Translatability
 
