@@ -92,6 +92,36 @@ The import functionality in SCSS and JavaScript is part of the build process. It
 -   `settings.custom.spacing.unit`: the standard unit from which many spacings and scalings are calculated. Uses the WordPress `blockGap` standard CSS property `--wp--style--block-gap` by default.
 -   `settings.custom.spacing.outer-gutter`: the gap to the left and right of the content blocks (usually only visible in mobile).
 
+### HTML structure
+
+Hello Roots delivers a standard set of [templates](https://github.com/SayHelloGmbH/hello-roots/tree/master/templates) and [template parts](https://github.com/SayHelloGmbH/hello-roots/tree/master/parts) for the most common requirements. This can be (and should be) modified to suit the project and theme.
+
+The HTML structure of the templates is kept as simple as possible in the unchanged version of the theme. The **masthead** is the banner across the top of the page which usually contains the navigation, and the **footer** is the section at the bottom of each page.
+
+The `main` element contains the main body of the page content and the editorially-created content is output by the [post content block](https://wordpress.org/support/article/post-content-block/).
+
+Direct children of the post content block are assigned [a gutter](https://github.com/SayHelloGmbH/hello-roots/blob/master/.build/assets/styles/_____elements/_guttered.scss) to the left and right, so that they don't hit the edge of the screen at smaller screen sizes. Direct children of the post content block which have been assigned with full-width alignment receive a negative margin on the left and right to offset the gutter. The gutter is defined in the [custom spacing section of theme.json](https://github.com/SayHelloGmbH/hello-roots/blob/master/theme.json#L79).
+
+The **footer** is forced to the bottom edge of the browser on shorter pages through the use of `display: flex` on the `.wp-site-blocks` element.
+
+    .wp-site-blocks
+      .c-masthead
+      .c-main
+        .wp-block-post-content
+      .c-footer
+
+#### Template parts
+
+##### Template part wrapper is removed
+
+By default, WordPress wraps full-site-editing template parts with a `div`. The [code in the Theme](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Block/TemplatePart.php#L27) removes this element, in order to maintain a clean HTML structure.
+
+If a template part needs to contain a wrapper with a specific class name, this should be applied using a group block _inside_ the template part file. (e.g. the [masthead](https://github.com/SayHelloGmbH/hello-roots/blob/master/parts/header.html).)
+
+##### Translatability
+
+The current [beta version 3.2](https://polylang.pro/its-official-polylang-3-2-is-available/) of the translation plugin [Polylang Pro](https://polylang.pro/) supports the direct translation of template parts (but not templates). If the fixed templates in the theme contain a string which may need to be translated, move this section to its own template part.
+
 ## Breakpoints
 
 Breakpoints are read in from _assets/settings.json_ by Sass, and generate CSS properties like `--constraint-wide`. These are used in your own CSS. The values used by WordPress Core, however, come from the content width settings in your _theme.json_ file.
