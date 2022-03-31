@@ -107,13 +107,7 @@
             "blockGap": "1rem"
         }
     },
-    "customTemplates": [
-        {
-            "name": "header-footer-only",
-            "title": "Layout ohne Seitentitel",
-            "postTypes": ["page"]
-        }
-    ],
+    "customTemplates": [],
     "templateParts": [
         {
             "name": "comments",
