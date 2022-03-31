@@ -1,7 +1,7 @@
 <!-- wp:group {"tagName":"header","className":"c-masthead","layout":{"inherit":true}} -->
 <header class="wp-block-group c-masthead">
-    <!-- wp:columns {"align":"wide"} -->
-    <div class="wp-block-columns alignwide">
+    <!-- wp:columns {"verticalAlignment":null,"isStackedOnMobile":false,"align":"wide"} -->
+    <div class="wp-block-columns alignwide is-not-stacked-on-mobile">
         <!-- wp:column {"verticalAlignment":"center"} -->
         <div class="wp-block-column is-vertically-aligned-center">
             <!-- wp:site-title {"isLink":false} /-->
@@ -11,6 +11,13 @@
         <!-- wp:column {"verticalAlignment":"center"} -->
         <div class="wp-block-column is-vertically-aligned-center">
             <!-- wp:template-part {"slug":"navigation-primary","theme":"hello-roots"} /-->
+        </div>
+        <!-- /wp:column -->
+
+        <!-- wp:column {"verticalAlignment":"center","width":"3rem","hiddenForDesktop":true} -->
+        <div class="wp-block-column is-vertically-aligned-center is-hidden-for--desktop"
+            style="flex-basis:3rem">
+            <!-- wp:template-part {"slug":"menu-toggle","theme":"hello-roots"} /-->
         </div>
         <!-- /wp:column -->
     </div>

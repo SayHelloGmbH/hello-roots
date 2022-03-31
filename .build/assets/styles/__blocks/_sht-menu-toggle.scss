@@ -1,0 +1,90 @@
+/**
+ * Menu toggle button for primary use in the masthead.
+ * The toggle function (show/hide) uses the regular
+ * aria-toggler script.
+ *
+ * The visibility state (e.g. hide for desktop) is
+ * controlled using the visibility toggle in the editor;
+ * either on the block itself or the containing
+ * group/column block.
+ *
+ * This version 31.3.2022 mark@sayhello.ch
+ **/
+
+body {
+    --menutoggle-color: currentColor;
+    --menutoggle-color-open: currentColor;
+    --menutoggle-width: #{rem-calc(26px)};
+    --menutoggle-height: #{rem-calc(21px)}; // needs to be an odd number
+    --menutoggle-width-closer: #{rem-calc(21px)};
+    --menutoggle-height-closer: #{rem-calc(21px)};
+    --menutoggle-margin: 0;
+}
+
+.wp-block-sht-menu-toggle {
+    position: relative;
+    cursor: pointer;
+    color: var(--menutoggle-color);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    flex: 0 0 var(--menutoggle-width);
+    width: var(--menutoggle-width);
+    height: var(--menutoggle-height);
+    margin: var(--menutoggle-margin);
+    transition: none;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    &:active,
+    &:hover {
+        color: var(--menutoggle-color-open);
+        outline: none;
+    }
+
+    &__line {
+        display: block;
+        will-change: transform;
+        position: absolute;
+        width: var(--menutoggle-width);
+        height: 3px;
+        transform: translateY(-50%);
+        background-color: currentColor;
+        @include transition;
+        &:nth-child(1) {
+            top: 0;
+        }
+        &:nth-child(2) {
+            top: 50%;
+        }
+        &:nth-child(3) {
+            top: 100%;
+        }
+    }
+
+    &__text {
+        font-size: rem-calc(12px);
+        @include av(66.667);
+        line-height: 1;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &[aria-expanded='true'] {
+        .wp-block-sht-menu-toggle__line {
+            &:nth-child(1) {
+                transform: rotate(45deg);
+                top: 50%;
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: rotate(-45deg);
+                top: 50%;
+            }
+        }
+    }
+}

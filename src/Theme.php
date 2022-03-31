@@ -95,6 +95,7 @@ class Theme
 				PostType\Post::class,
 
 				Block\ArchiveTitleSearch::class,
+				Block\ShtMenuToggle::class,
 				Block\TemplatePart::class,
 
 				Plugin\ACF::class,

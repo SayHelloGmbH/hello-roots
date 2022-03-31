@@ -18,7 +18,7 @@ import classnames from 'classnames';
 /**
  * Restrict to specific blocks
  */
-const allowedBlocks = ['core/group', 'sht/menu-toggler'];
+const allowedBlocks = ['core/group', 'sht/menu-toggle', 'core/columns', 'core/column'];
 
 /**
  * Add custom attributes for mobile visibility.
