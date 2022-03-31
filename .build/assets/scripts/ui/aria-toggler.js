@@ -37,12 +37,6 @@
  *
  */
 
-// Ensure that the mobile menu has an aria-hidden attribute set
-const mobilemenu = document.querySelector('#mobile-menu');
-if (!!mobilemenu && !mobilemenu.hasAttribute('aria-hidden')) {
-    mobilemenu.setAttribute('aria-hidden', 'true');
-}
-
 const controllers = document.querySelectorAll('[aria-controls]');
 
 if (!!controllers) {

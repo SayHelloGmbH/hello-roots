@@ -6,6 +6,7 @@ import './_polyfill';
 import './a11y';
 import './aria-toggler';
 import './link-target';
+import './mobile-menu';
 
 console.log('---');
 console.log('%cDeveloped by', 'font-style: italic; font-size: 12px;');
