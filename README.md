@@ -100,7 +100,11 @@ The HTML structure of the templates is kept as simple as possible in the unchang
 
 The `main` element contains the main body of the page content and the editorially-created content is output by the [post content block](https://wordpress.org/support/article/post-content-block/).
 
+#### Gutter for smaller screen sizes
+
 Direct children of the post content block are assigned [a gutter](https://github.com/SayHelloGmbH/hello-roots/blob/master/.build/assets/styles/_____elements/_guttered.scss) to the left and right, so that they don't hit the edge of the screen at smaller screen sizes. Direct children of the post content block which have been assigned with full-width alignment receive a negative margin on the left and right to offset the gutter. The gutter is defined in the [custom spacing section of theme.json](https://github.com/SayHelloGmbH/hello-roots/blob/master/theme.json#L79).
+
+#### Footer
 
 The **footer** is forced to the bottom edge of the browser on shorter pages through the use of `display: flex` on the `.wp-site-blocks` element.
 
