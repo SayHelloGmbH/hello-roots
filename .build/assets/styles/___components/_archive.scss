@@ -8,8 +8,4 @@
     &__entries {
         @extend .h-stack--medium;
     }
-
-    &__header {
-        padding-bottom: var(--unit-medium);
-    }
 }
