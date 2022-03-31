@@ -1,16 +1,19 @@
 body {
-    --c-masthead-height: #{rem-calc(85px)};
-    --c-masthead-padding-top: var(--unit-medium);
-    --c-masthead-padding-bottom: var(--c-masthead-padding-top);
+    --masthead--height: #{rem-calc(85px)};
+    --masthead--padding-top: var(--unit-medium);
+    --masthead--padding-bottom: var(--masthead--padding-top);
 
     @include breakpoint(laptop) {
-        --c-masthead-height: #{rem-calc(104px)};
+        --masthead--height: #{rem-calc(104px)};
     }
 }
 
 .c-masthead {
-    padding-top: var(--c-masthead-padding-top);
-    padding-bottom: var(--c-masthead-padding-bottom);
+    // Guttering for smaller screens
+    @extend %h-guttered;
+
+    padding-top: var(--masthead--padding-top);
+    padding-bottom: var(--masthead--padding-bottom);
 
     &__toggler {
         @include breakpoint(laptop) {
