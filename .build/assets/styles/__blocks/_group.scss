@@ -1,12 +1,12 @@
 .wp-block-group {
-    @extend .h-stack;
+    @extend %h-stack;
 
     &.has-background {
         padding: var(--unit);
     }
 
     &__inner-container {
-        @extend .h-stack;
+        @extend %h-stack;
         > * {
             margin-left: auto;
             margin-right: auto;

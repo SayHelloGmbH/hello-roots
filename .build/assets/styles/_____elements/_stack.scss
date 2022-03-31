@@ -2,90 +2,38 @@
  * https://every-layout.dev/layouts/stack/
  */
 
-.h-stack {
+%h-stack {
     > * {
         margin-top: 0;
         margin-bottom: 0;
 
         & + * {
-            margin-top: var(--unit);
+            margin-top: var(--wp--style--block-gap);
         }
     }
 
     &--small {
-        > * {
-            margin-top: 0;
-            margin-bottom: 0;
-
-            & + * {
-                margin-top: var(--unit-small);
-            }
-        }
+        @extend %h-stack;
+        --wp--style--block-gap: var(--unit--small);
     }
 
     &--xsmall {
-        > * {
-            margin-top: 0;
-            margin-bottom: 0;
-
-            & + * {
-                margin-top: var(--unit-xsmall);
-            }
-        }
+        @extend %h-stack;
+        --wp--style--block-gap: var(--unit--xsmall);
     }
 
     &--medium {
-        > * {
-            margin-top: 0;
-            margin-bottom: 0;
-
-            & + * {
-                margin-top: var(--unit-medium);
-            }
-        }
+        @extend %h-stack;
+        --wp--style--block-gap: var(--unit--medium);
     }
 
     &--large {
-        > * {
-            margin-top: 0;
-            margin-bottom: 0;
-
-            & + * {
-                margin-top: var(--unit-large);
-            }
-        }
+        @extend %h-stack;
+        --wp--style--block-gap: var(--unit--large);
     }
 
     &--xlarge {
-        > * {
-            margin-top: 0;
-            margin-bottom: 0;
-
-            & + * {
-                margin-top: var(--unit-xlarge);
-            }
-        }
-    }
-}
-
-.h-stack-row {
-    > * {
-        margin-left: 0;
-        margin-right: 0;
-
-        & + * {
-            margin-left: var(--unit);
-        }
-    }
-}
-
-.h-stack-row--xsmall {
-    > * {
-        margin-left: 0;
-        margin-right: 0;
-
-        & + * {
-            margin-left: var(--unit-xsmall);
-        }
+        @extend %h-stack;
+        --wp--style--block-gap: var(--unit--xlarge);
     }
 }

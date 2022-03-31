@@ -1,16 +1,20 @@
-// Base size '--wp--custom--spacing--unit' read in from theme.json
+/**
+ * Base size '--wp--custom--spacing--unit' read in from theme.json
+ * This sizing is more specific than the use of block gap
+ * elsewhere in the theme.
+ **/
 
 body {
     --unit: var(--wp--custom--spacing--unit);
-    --unit-xxxxsmall: calc(var(--unit) / 12);
-    --unit-xxxsmall: calc(var(--unit) / 10);
-    --unit-xxsmall: calc(var(--unit) / 8);
-    --unit-xsmall: calc(var(--unit) / 4);
-    --unit-small: calc(var(--unit) / 2);
-    --unit-medium: calc(var(--unit) * 2);
-    --unit-large: calc(var(--unit) * 4);
-    --unit-xlarge: calc(var(--unit) * 6);
-    --unit-xxlarge: calc(var(--unit) * 8);
-    --unit-xxxlarge: calc(var(--unit) * 10);
-    --unit-xxxxlarge: calc(var(--unit) * 12);
+    --unit--xxxxsmall: calc(var(--unit) / 12);
+    --unit--xxxsmall: calc(var(--unit) / 10);
+    --unit--xxsmall: calc(var(--unit) / 8);
+    --unit--xsmall: calc(var(--unit) / 4);
+    --unit--small: calc(var(--unit) / 2);
+    --unit--medium: calc(var(--unit) * 2);
+    --unit--large: calc(var(--unit) * 4);
+    --unit--xlarge: calc(var(--unit) * 6);
+    --unit--xxlarge: calc(var(--unit) * 8);
+    --unit--xxxlarge: calc(var(--unit) * 10);
+    --unit--xxxxlarge: calc(var(--unit) * 12);
 }

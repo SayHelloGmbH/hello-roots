@@ -1,6 +1,6 @@
 .c-content {
     &__content {
-        @extend .h-stack;
+        @extend %h-stack;
         padding-left: var(--unit);
         padding-right: var(--unit);
 

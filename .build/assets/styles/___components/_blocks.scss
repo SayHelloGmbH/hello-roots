@@ -4,12 +4,12 @@ body {
 
 .c-blocks {
     @include clearfix_after();
-    @extend .h-stack;
+    @extend %h-stack;
 }
 
 @include context-edit {
     .is-root-container {
-        @extend .h-stack;
+        @extend %h-stack;
     }
 
     .wp-block {

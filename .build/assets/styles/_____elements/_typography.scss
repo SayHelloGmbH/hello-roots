@@ -50,7 +50,7 @@ button {
 
 blockquote {
     margin: 0;
-    @extend .h-stack;
+    @extend %h-stack;
 }
 
 button {
@@ -102,23 +102,23 @@ hr {
 }
 
 li {
-    @extend .h-stack;
+    @extend %h-stack;
 }
 
 ol {
     padding-left: 0;
     list-style: none;
-    @extend .h-stack--small;
+    @extend %h-stack--small;
     counter-reset: item;
 
     li:before {
-        margin-right: var(--unit-small);
+        margin-right: var(--wp--style--block-gap);
         content: counters(item, '.') '. ';
         counter-increment: item;
     }
 
     ol {
-        margin-top: var(--unit-small);
+        margin-top: var(--wp--style--block-gap);
         padding-left: 1.2em;
     }
 }
@@ -126,10 +126,11 @@ ol {
 ul {
     padding-left: 1.2em;
     list-style: revert;
-    @extend .h-stack--small;
+    @extend %h-stack;
+    --wp--style--block-gap: var(--unit--small);
 
     ul {
-        margin-top: var(--unit);
+        margin-top: var(--wp--style--block-gap);
     }
 }
 

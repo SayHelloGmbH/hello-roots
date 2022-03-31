@@ -1,5 +1,5 @@
 .wp-block-image {
-    @extend .h-stack;
+    @extend %h-stack;
 
     .alignleft {
         margin-top: var(--unit-xsmall);

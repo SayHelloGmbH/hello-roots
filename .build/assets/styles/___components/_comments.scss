@@ -29,7 +29,7 @@ body {
     .trackback {
         padding: var(--unit);
         border: 1px solid var(--comments--border-color);
-        @extend .h-stack;
+        @extend %h-stack;
 
         &[class*='depth'] {
             padding-left: var(--unit);
@@ -59,7 +59,7 @@ body {
 
     .comment-body,
     .comment-content {
-        @extend .h-stack;
+        @extend %h-stack;
 
         pre {
             padding: 0;
@@ -77,7 +77,7 @@ body {
     }
 
     .comment-meta {
-        @extend .h-stack--small;
+        @extend %h-stack--small;
         @include breakpoint(tablet) {
             display: flex;
             justify-content: space-between;

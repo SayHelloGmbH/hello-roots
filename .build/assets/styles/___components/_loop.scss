@@ -1,5 +1,5 @@
 .c-loop {
     &__entryheader {
-        @extend .h-stack--small;
+        @extend %h-stack--small;
     }
 }

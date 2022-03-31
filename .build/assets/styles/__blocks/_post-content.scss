@@ -1,5 +1,5 @@
 .wp-block-post-content {
-    @extend .h-stack;
+    @extend %h-stack;
 
     // Guttering for smaller screens
     @extend %h-guttered;

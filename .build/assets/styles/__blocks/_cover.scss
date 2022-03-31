@@ -4,7 +4,7 @@
     }
 
     &__inner-container {
-        @extend .h-stack;
+        @extend %h-stack;
         padding-top: var(--unit);
         padding-bottom: var(--unit);
         width: 100vw;

@@ -1,11 +1,11 @@
 .c-archive {
-    @extend .h-stack;
+    @extend %h-stack;
 
     &__content {
-        @extend .h-stack--medium;
+        @extend %h-stack--medium;
     }
 
     &__entries {
-        @extend .h-stack--medium;
+        @extend %h-stack--medium;
     }
 }

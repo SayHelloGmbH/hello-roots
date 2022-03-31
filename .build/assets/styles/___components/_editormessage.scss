@@ -8,7 +8,7 @@
         color: var(--editormessage--color);
         background-color: var(--editormessage--background-color);
         padding: 1rem;
-        @extend .h-stack;
+        @extend %h-stack;
 
         &--error {
             --editormessage--color: var(--sht-color--danger);
