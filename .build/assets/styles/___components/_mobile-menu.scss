@@ -1,0 +1,32 @@
+body {
+    --mobile-menu--background-color: var(--wp--preset--color--white);
+}
+
+.c-mobile-menu {
+    background-color: var(--mobile-menu--background-color);
+    width: 100vw;
+    transition: opacity 300ms ease;
+
+    &[aria-hidden='false'] {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .admin-bar & {
+        top: calc(var(--masthead--height) + var(--admin-bar-height));
+    }
+}
+
+@include context-view {
+    .c-mobile-menu {
+        position: fixed;
+        top: var(--masthead--height);
+        bottom: 0;
+        right: 0;
+        transform: translateY(100vw);
+        opacity: 0;
+        z-index: 2;
+        overflow: auto;
+        @include transition;
+    }
+}

@@ -1,5 +1,5 @@
 html {
-    &.is--menuopen {
+    &.is--mobilemenu--open {
         overflow: hidden;
         position: fixed;
         top: 0;
@@ -10,7 +10,7 @@ html {
             margin-top: 0 !important;
 
             body {
-                margin-top: var(--c-adminbar-height);
+                margin-top: var(--admin-bar-height);
             }
         }
 
