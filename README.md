@@ -114,11 +114,11 @@ The **footer** is forced to the bottom edge of the browser on shorter pages thro
 
 ##### Template part wrapper is removed
 
-By default, WordPress wraps full-site-editing template parts with a `div`. The [code in the Theme](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Block/TemplatePart.php#L27) removes this element, in order to maintain a clean HTML structure.
+By default, WordPress wraps full-site-editing template parts with a `div`. The [code in the Theme](https://github.com/SayHelloGmbH/hello-roots/blob/master/src/Block/TemplatePart.php#L27) removes this element, in order to maintain a clean HTML structure. Assigning a class name to the template part block using the CSS class name field in the Editor **will not work**. Use a group block inside the template part instead.
 
 If a template part needs to contain a wrapper with a specific class name, this should be applied using a group block _inside_ the template part file. (e.g. the [masthead](https://github.com/SayHelloGmbH/hello-roots/blob/master/parts/header.html).)
 
-##### Translatability
+#### Translatability
 
 The current [beta version 3.2](https://polylang.pro/its-official-polylang-3-2-is-available/) of the translation plugin [Polylang Pro](https://polylang.pro/) supports the direct translation of template parts (but not templates). If the fixed templates in the theme contain a string which may need to be translated, move this section to its own template part.
 
