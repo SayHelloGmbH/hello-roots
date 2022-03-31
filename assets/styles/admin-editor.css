@@ -61,7 +61,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 
 /**
  * https://utopia.fyi/type/calculator
- * Usage: h1 { @include fluid-font-size(16px, 24px); }
+ * Usage: h1 { font-size: fluid-font-size(16px, 24px); }
  **/
 /**
  * Base size '--wp--custom--spacing--unit' read in from theme.json
