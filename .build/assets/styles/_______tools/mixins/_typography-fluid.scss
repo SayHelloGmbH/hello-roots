@@ -1,0 +1,25 @@
+body {
+    --fluid-min-width: 375;
+    --fluid-max-width: 1440;
+    --fluid-screen: 100vw;
+    --fluid-bp: calc(
+        (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+            (var(--fluid-max-width) - var(--fluid-min-width))
+    );
+
+    @include breakpoint(desktop) {
+        --fluid-screen: calc(var(--fluid-max-width) * 1px);
+    }
+}
+
+/**
+ * https://utopia.fyi/type/calculator
+ * Usage: h1 { @include fluid-font-size(16px, 24px); }
+ **/
+
+@function fluid-font-size($smallest, $largest) {
+    @return calc(
+        ((#{strip-unit($smallest)} / 16) * 1rem) +
+            (#{strip-unit($largest)} - #{strip-unit($smallest)}) * var(--fluid-bp)
+    );
+}
