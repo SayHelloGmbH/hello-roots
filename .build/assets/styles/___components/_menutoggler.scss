@@ -1,5 +1,5 @@
 body {
-    --c-menutoggler-color: var(--wp--preset--color--primary);
+    --menutoggler--color: var(--wp--preset--color--primary);
 }
 
 .c-menutoggler {
@@ -11,7 +11,7 @@ body {
     width: 4rem;
     position: relative;
     cursor: pointer;
-    color: var(--c-menutoggler-color);
+    color: var(--menutoggler--color);
 
     &__line {
         position: absolute;
