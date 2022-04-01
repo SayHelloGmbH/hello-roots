@@ -13,14 +13,14 @@ body {
 
 .wp-block-column {
     @extend %h-stack;
-
-    & + .wp-block-column {
-        margin-top: var(--column-row-gap);
-    }
 }
 
-.wp-block-columns {
-    margin-bottom: 0;
+.wp-block-columns:not(.is-not-stacked-on-mobile) {
+    .wp-block-column {
+        & + .wp-block-column {
+            margin-top: var(--column-row-gap);
+        }
+    }
 }
 
 /*
