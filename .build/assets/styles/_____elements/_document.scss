@@ -7,6 +7,7 @@
 :root,
 body {
     --admin-bar--offset: calc(-1 * var(--admin-bar-height));
+    --scroll-margin-top: var(--unit);
 
     @include breakpoint(wordpress_small) {
         --admin-bar--offset: 0;
@@ -35,8 +36,8 @@ html {
 
 @include context-view {
     [id] {
-        scroll-snap-margin-top: var(--unit); // Safari
-        scroll-margin-top: var(--unit);
+        scroll-snap-margin-top: var(--scroll-margin-top); // Safari
+        scroll-margin-top: var(--scroll-margin-top);
     }
 
     body {
