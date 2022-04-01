@@ -1,16 +1,18 @@
-body {
-    --column-row-gap: var(--unit-medium);
+/**
+ * Column row gap is to add space between the columns
+ * at the smallest screen sizes. (< 600px)
+ */
 
-    @include breakpoint(tablet) {
+body {
+    --column-row-gap: var(--wp--style--block-gap);
+
+    @include breakpoint(wordpress_small) {
         --column-row-gap: 0;
     }
 }
 
 .wp-block-column {
     @extend %h-stack;
-
-    margin-top: 0;
-    margin-bottom: 0;
 
     & + .wp-block-column {
         margin-top: var(--column-row-gap);
