@@ -1,3 +1,18 @@
+/**
+ * Special offset handling for admin bar because of
+ * core-defined top margins and position fixed from
+ * 600px +.
+ */
+
+:root,
+body {
+    --admin-bar--offset: calc(-1 * var(--admin-bar-height));
+
+    @include breakpoint(wordpress_small) {
+        --admin-bar--offset: 0;
+    }
+}
+
 html {
     &.is--mobilemenu--open {
         overflow: hidden;
@@ -6,12 +21,8 @@ html {
         width: 100vw;
         height: calc(100 * var(--vh));
 
-        &.admin-bar {
-            margin-top: 0 !important;
-
-            body {
-                margin-top: var(--admin-bar-height);
-            }
+        #wpadminbar {
+            margin-top: var(--admin-bar--offset);
         }
 
         @include breakpoint(desktop) {
