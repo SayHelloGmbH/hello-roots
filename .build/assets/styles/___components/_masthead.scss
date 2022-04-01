@@ -1,6 +1,6 @@
 body {
     --masthead--height: #{rem-calc(85px)};
-    --masthead--padding-top: var(--unit-medium);
+    --masthead--padding-top: var(--unit--medium);
     --masthead--padding-bottom: var(--masthead--padding-top);
 
     @include breakpoint(laptop) {
@@ -28,7 +28,7 @@ body {
         max-width: var(--constraint-narrow);
         margin-left: auto;
         margin-right: auto;
-        padding: var(--unit-medium) var(--unit);
+        padding: var(--unit--medium) var(--unit);
 
         @include breakpoint(narrow) {
             padding-left: 0;

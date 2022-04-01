@@ -2,12 +2,12 @@
     @extend %h-stack;
 
     .alignleft {
-        margin-top: var(--unit-xsmall);
+        margin-top: var(--unit--xsmall);
         margin-right: var(--unit);
     }
 
     .alignright {
-        margin-top: var(--unit-xsmall);
+        margin-top: var(--unit--xsmall);
         margin-left: var(--unit);
     }
 }

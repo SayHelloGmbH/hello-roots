@@ -2,13 +2,11 @@ body {
     // Variables for Gravity Forms. Comment in only if plugin in use.
     --gf-ajaxspinner-borderoff-color: var(--wp--preset--color--gray-xlight);
     --gf-ajaxspinner-borderon-color: var(--wp--preset--color--primary);
-    --gf-ajaxspinner-width: var(--unit-medium);
-    --gf-ajaxspinner-height: var(--unit-medium);
-}
+    --gf-ajaxspinner-width: var(--unit--medium);
+    --gf-ajaxspinner-height: var(--unit--medium);
 
-// gravity-theme (version > 2.5)
-// Mainly missing margins from GF Core CSS and bcakground color for HTML field
-:root {
+    // gravity-theme (version > 2.5)
+    // Mainly missing margins from GF Core CSS and bcakground color for HTML field
     --sht--gform--unit: 8px;
     --sht--gform--unit--large: 16px;
     --sht--gform--html--background-color: #f4f4f4;

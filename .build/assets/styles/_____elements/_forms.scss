@@ -52,7 +52,7 @@ input:not([name*='acf-block']) {
         -webkit-appearance: none; // remove inner shadow
         border: var(--field-border);
         border-radius: var(--field-radius);
-        padding: var(--unit-small);
+        padding: var(--unit--small);
         display: block;
         width: 100%;
 
@@ -131,7 +131,7 @@ textarea:not([name*='acf-block']) {
     resize: vertical;
     border: var(--field-border);
     border-radius: var(--field-radius);
-    padding: var(--unit-small);
+    padding: var(--unit--small);
     display: block;
     width: 100%;
 

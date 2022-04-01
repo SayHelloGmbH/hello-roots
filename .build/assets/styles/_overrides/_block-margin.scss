@@ -13,23 +13,23 @@
     }
 
     &--small {
-        margin-top: var(--unit-small);
-        margin-bottom: var(--unit-small);
+        margin-top: var(--unit--small);
+        margin-bottom: var(--unit--small);
     }
 
     &--medium {
-        margin-top: var(--unit-medium);
-        margin-bottom: var(--unit-medium);
+        margin-top: var(--unit--medium);
+        margin-bottom: var(--unit--medium);
     }
 
     &--large {
-        margin-top: var(--unit-large);
-        margin-bottom: var(--unit-large);
+        margin-top: var(--unit--large);
+        margin-bottom: var(--unit--large);
     }
 
     &--xlarge {
-        margin-top: var(--unit-xlarge);
-        margin-bottom: var(--unit-xlarge);
+        margin-top: var(--unit--xlarge);
+        margin-bottom: var(--unit--xlarge);
     }
 }
 

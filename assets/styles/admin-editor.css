@@ -517,7 +517,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   -webkit-appearance: none;
   border: var(--field-border);
   border-radius: var(--field-radius);
-  padding: var(--unit-small);
+  padding: var(--unit--small);
   display: block;
   width: 100%;
 }
@@ -592,7 +592,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   resize: vertical;
   border: var(--field-border);
   border-radius: var(--field-radius);
-  padding: var(--unit-small);
+  padding: var(--unit--small);
   display: block;
   width: 100%;
 }
@@ -1295,7 +1295,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   clear: both;
 }
 .editor-styles-wrapper .c-comments .edit-link {
-  margin-left: var(--unit-small);
+  margin-left: var(--unit--small);
 }
 .editor-styles-wrapper .c-comments .navigation:after, .editor-styles-wrapper .c-comments .navigation:before {
   content: " ";
@@ -1334,7 +1334,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 
 .editor-styles-wrapper {
   --masthead--height: 5.3125rem;
-  --masthead--padding-top: var(--unit-medium);
+  --masthead--padding-top: var(--unit--medium);
   --masthead--padding-bottom: var(--masthead--padding-top);
 }
 @media screen and (min-width: 80em) {
@@ -1359,7 +1359,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   max-width: var(--constraint-narrow);
   margin-left: auto;
   margin-right: auto;
-  padding: var(--unit-medium) var(--unit);
+  padding: var(--unit--medium) var(--unit);
 }
 @media screen and (min-width: 50em) {
   .editor-styles-wrapper .c-masthead__inner {
@@ -1459,8 +1459,8 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   }
 }
 .editor-styles-wrapper .c-pagelinks__entry {
-  margin-left: var(--unit-small);
-  margin-right: var(--unit-small);
+  margin-left: var(--unit--small);
+  margin-right: var(--unit--small);
 }
 
 .editor-styles-wrapper .single .c-taxonomy {
@@ -1596,11 +1596,11 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 }
 
 .editor-styles-wrapper .wp-block-image .alignleft {
-  margin-top: var(--unit-xsmall);
+  margin-top: var(--unit--xsmall);
   margin-right: var(--unit);
 }
 .editor-styles-wrapper .wp-block-image .alignright {
-  margin-top: var(--unit-xsmall);
+  margin-top: var(--unit--xsmall);
   margin-left: var(--unit);
 }
 
@@ -1608,7 +1608,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   margin-top: var(--c-block-margin-top-medium);
 }
 .editor-styles-wrapper .wp-block-media-text .wp-block-media-text__content {
-  padding: var(--unit-medium) var(--unit);
+  padding: var(--unit--medium) var(--unit);
 }
 
 .editor-styles-wrapper .wp-block-navigation-item.current-menu-item {
@@ -1880,20 +1880,20 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   margin-bottom: 0;
 }
 .editor-styles-wrapper .has-block-margin--small {
-  margin-top: var(--unit-small);
-  margin-bottom: var(--unit-small);
+  margin-top: var(--unit--small);
+  margin-bottom: var(--unit--small);
 }
 .editor-styles-wrapper .has-block-margin--medium {
-  margin-top: var(--unit-medium);
-  margin-bottom: var(--unit-medium);
+  margin-top: var(--unit--medium);
+  margin-bottom: var(--unit--medium);
 }
 .editor-styles-wrapper .has-block-margin--large {
-  margin-top: var(--unit-large);
-  margin-bottom: var(--unit-large);
+  margin-top: var(--unit--large);
+  margin-bottom: var(--unit--large);
 }
 .editor-styles-wrapper .has-block-margin--xlarge {
-  margin-top: var(--unit-xlarge);
-  margin-bottom: var(--unit-xlarge);
+  margin-top: var(--unit--xlarge);
+  margin-bottom: var(--unit--xlarge);
 }
 
 .editor-styles-wrapper .wp-block:first-child .has-block-margin--large, .editor-styles-wrapper .wp-block:first-child .has-block-margin--medium, .editor-styles-wrapper .wp-block:first-child .has-block-margin--small, .editor-styles-wrapper .wp-block:first-child .has-block-margin--xlarge {
@@ -1908,20 +1908,20 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   padding-bottom: 0;
 }
 .editor-styles-wrapper .has-block-vertical-padding.has-block-vertical-padding--small {
-  padding-top: var(--unit-small);
-  padding-bottom: var(--unit-small);
+  padding-top: var(--unit--small);
+  padding-bottom: var(--unit--small);
 }
 .editor-styles-wrapper .has-block-vertical-padding.has-block-vertical-padding--medium {
-  padding-top: var(--unit-medium);
-  padding-bottom: var(--unit-medium);
+  padding-top: var(--unit--medium);
+  padding-bottom: var(--unit--medium);
 }
 .editor-styles-wrapper .has-block-vertical-padding.has-block-vertical-padding--large {
-  padding-top: var(--unit-large);
-  padding-bottom: var(--unit-large);
+  padding-top: var(--unit--large);
+  padding-bottom: var(--unit--large);
 }
 .editor-styles-wrapper .has-block-vertical-padding.has-block-vertical-padding--xlarge {
-  padding-top: var(--unit-xlarge);
-  padding-bottom: var(--unit-xlarge);
+  padding-top: var(--unit--xlarge);
+  padding-bottom: var(--unit--xlarge);
 }
 
 :root,
