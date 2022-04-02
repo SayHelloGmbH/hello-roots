@@ -668,7 +668,7 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
 }
 
 .editor-styles-wrapper img {
-  max-width: 100% !important;
+  max-width: 100%;
   height: auto;
 }
 
