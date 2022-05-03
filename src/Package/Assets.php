@@ -103,7 +103,7 @@ class Assets
 		$theme_url = str_replace(get_home_url(), '', get_template_directory_uri());
 		$font_name = sanitize_title(sht_theme()->name) . '-font-' . $this->font_version;
 
-		$file = get_template_directory() . '/assets/scripts/loadfonts.min.js';
+		$file = get_template_directory() . '/assets/scripts/loadfonts.js';
 		if (!file_exists($file)) {
 			echo 'loadfonts.min.js not found!';
 			die;
