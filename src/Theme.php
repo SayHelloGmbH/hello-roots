@@ -113,7 +113,7 @@ class Theme
 		add_filter('style_loader_tag', [$this, 'removeTypeAttributes']);
 		add_filter('script_loader_tag', [$this, 'removeTypeAttributes']);
 
-		add_action('wp_head', [$this, 'headExtras']);
+		add_action('wp_head', [$this, 'headExtras'], 0, 0);
 		add_action('wp_footer', [$this, 'noJsScript']);
 
 		$this->cleanHead();
@@ -212,6 +212,7 @@ class Theme
 
 	public function headExtras()
 	{
+		echo chr(10) . '<!-- Developed for WordPress by Say Hello GmbH - https://sayhello.ch -->' . chr(10) . chr(10);
 		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 
 		// XFN is a HTML profile which describes the meaning of extra semantic data that can be added to the rel attribute of outbound links.

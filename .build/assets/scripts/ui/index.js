@@ -10,6 +10,10 @@ import './mobile-menu';
 
 console.log('---');
 console.log('%cDeveloped by', 'font-style: italic; font-size: 12px;');
-console.log('%cSay Hello GmbH', 'font-weight: bold; color: #000; font-size: 16px;');
-console.log('%chttps://sayhello.ch', 'color: #000; font-size: 12px;');
+console.log('%cSay Hello GmbH', 'font-weight: bold; color: #000; font-size:20px;');
+console.log(
+    '%cWant to work with us? Stop by at https://sayhello.ch and Say Hello!',
+    'color: #000; font-size: 12px;'
+);
+console.log('🥷');
 console.log('---');
