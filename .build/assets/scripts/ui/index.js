@@ -1,6 +1,9 @@
 // Optionally load settings from JSON
-// import { c, color, theme, is_mobile } from './modules/settings.js';
-// import './modules/settings';
+// import { theme_json, sht_settings, c, color, is_mobile } from './modules/settings.js';
+
+// OR load JSON file contents directly
+// import theme_json from '../../../../../theme.json';
+// import sht_settings from '../../../../../assets/settings.json';
 
 import './_polyfill';
 import './a11y';

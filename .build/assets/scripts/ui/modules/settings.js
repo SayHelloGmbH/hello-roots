@@ -1,14 +1,19 @@
 import theme_json from '../../../../../theme.json';
-const settings = theme_json.settings;
+import sht_settings from '../../../../../assets/settings.json';
+
+// Code which still uses jQuery
+// If you need to use this, you will need to add jQuery as a
+// dependency in the Assets Package. jQuery is not enqueued
+// by default
 
 // import 'jquery-easing';
 // import './jquery.bez.js';
 
-// jQuery.easing.def = jQuery.bez(settings.easing_bezier);
+// jQuery.easing.def = jQuery.bez(sht_settings.easing_bezier);
 // jQuery.fx.speeds = {
-//     slow: settings.easing_speed_slow,
-//     fast: settings.easing_speed_fast,
-//     _default: settings.easing_speed,
+//     slow: sht_settings.easing_speed_slow,
+//     fast: sht_settings.easing_speed_fast,
+//     _default: sht_settings.easing_speed,
 // };
 
 /**
@@ -24,7 +29,7 @@ export const color = (mycolor, tone = 'base') => {
         mycolor = `${mycolor}-${tone}`;
     }
 
-    const found = settings.color.palette.find(entry => {
+    const found = theme_json.settings.color.palette.find(entry => {
         return entry.slug === mycolor;
     });
 
@@ -38,6 +43,6 @@ export const c = (mycolor, tone = 'base') => {
     return color(mycolor, tone);
 };
 
-// export const is_mobile = () => {
-//     return window.matchMedia(`(min-width: ${settings.custom.breakpoint.tablet}px)`).matches;
-// };
+export const is_mobile = () => {
+    return window.matchMedia(`(max-width: ${sht_settings.breakpoints.tablet - 0.1}px)`).matches;
+};

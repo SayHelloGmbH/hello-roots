@@ -11,10 +11,10 @@
         "tablet_landscape": 1024,
         "wide": 1200,
         "laptop": 1280,
-        "full": "100%",
         "desktop": 1440,
         "desktop_large": 1600,
-        "desktop_xlarge": 1920
+        "desktop_xlarge": 1920,
+        "full": "100%"
     },
     "theme_colors": {
         "success": {
