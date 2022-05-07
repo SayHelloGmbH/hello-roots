@@ -1,19 +1,14 @@
-(function ($) {
-    const CheckClass = 'c-body--no-outline';
-    const $body = $('body');
+const checkClass = 'c-body--no-outline';
+const body = document.querySelector('body');
 
-    $(function () {
-        $body.addClass(CheckClass);
+body.classList.add(checkClass);
 
-        $(window).keydown(function (e) {
-            const code = e.keyCode ? e.keyCode : e.which;
-            if (code === 9) {
-                $body.removeClass(CheckClass);
-            }
-        });
+window.addEventListener('keydown', event => {
+    if (event.key.toLowerCase() === 'tab') {
+        body.classList.remove(checkClass);
+    }
+});
 
-        $(window).mousemove(function (e) {
-            $body.addClass(CheckClass);
-        });
-    });
-})(jQuery);
+window.addEventListener('mousemove', () => {
+    body.classList.add(checkClass);
+});
