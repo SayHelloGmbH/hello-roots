@@ -17,3 +17,17 @@ console.log(
 );
 console.log('🥷');
 console.log('---');
+
+// Load script if there are any images on the page which require Fancybox
+const linked_images = document.querySelectorAll(
+    'a[href*=".jpg"], a[href*=".png"], a[href*=".gif"], a[href*=".webp"], a[data-fslightbox]'
+);
+
+if (!!linked_images.length) {
+    let script = document.createElement('script');
+    script.setAttribute(
+        'src',
+        `${sht_theme.directory_uri}/assets/scripts/fslightbox.min.js?version=${sht_theme.version}`
+    );
+    document.head.appendChild(script);
+}

@@ -44,17 +44,10 @@ class Assets
 			$deps_css[] = 'gform_theme';
 		}
 
-		wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.css', [], '3.4.0');
-		$deps_css[] = 'fancybox';
-
 		wp_enqueue_style(sht_theme()->prefix . '-style', get_template_directory_uri() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css', $deps_css, filemtime(get_template_directory() . '/assets/styles/ui' . ($this->min ? '.min' : '') . '.css'));
 
 		// JavaScript
 		$deps_js = [];
-		$deps_js[] = 'jquery';
-
-		wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/plugins/fancybox/jquery.fancybox.min.js', ['jquery'], '3.4.0', true);
-		$deps_js[] = 'fancybox';
 
 		wp_enqueue_script(sht_theme()->prefix . '-script', get_template_directory_uri() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js', $deps_js, filemtime(get_template_directory() . '/assets/scripts/ui' . ($this->min ? '.min' : '') . '.js'), true);
 
