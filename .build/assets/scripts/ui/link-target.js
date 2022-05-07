@@ -1,7 +1,3 @@
-import '@sayhellogmbh/maybe-set-link-target';
+import { maybeSetLinkTarget } from '@sayhellogmbh/maybe-set-link-target';
 
-(function ($) {
-    $(function () {
-        $('a').maybeSetLinkTarget();
-    });
-})(jQuery);
+maybeSetLinkTarget(document.querySelectorAll('a'));
