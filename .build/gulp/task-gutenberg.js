@@ -39,6 +39,10 @@ export const task = config => {
                             filename: 'blocks.js',
                         },
                         plugins: [new DependencyExtractionWebpackPlugin()],
+                        externals: {
+                            react: 'React',
+                            'react-dom': 'ReactDOM',
+                        },
                     },
                     webpack
                 )
