@@ -81,6 +81,24 @@ class Gutenberg
 		if ($this->js) {
 			$script_asset_path = get_template_directory() . '/assets/gutenberg/blocks.asset.php';
 			$script_asset = file_exists($script_asset_path) ? require($script_asset_path) : ['dependencies' => [], 'version' => sht_theme()->version];
+
+			// Dependency workaround to get domReady working
+			// https://github.com/WordPress/gutenberg/issues/27607#issuecomment-1022935579
+			$forced_dependency = 'wp-edit-post';
+
+			if (get_current_screen()->id == 'site-editor') {
+				$forced_dependency = 'wp-edit-site';
+			} elseif (get_current_screen()->id == 'widgets') {
+				$forced_dependency = 'wp-edit-widgets';
+			};
+
+			if (!in_array(
+				$forced_dependency,
+				$script_asset['dependencies']
+			)) {
+				$script_asset['dependencies'][] = $forced_dependency;
+			}
+
 			wp_enqueue_script(
 				sht_theme()->prefix . '-gutenberg-script',
 				$this->js,
