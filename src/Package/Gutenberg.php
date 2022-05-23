@@ -185,7 +185,7 @@ class Gutenberg
 	public function addBlockPatternCategory()
 	{
 		if (function_exists('register_block_pattern_category')) {
-			register_block_pattern_category('sht-block-patterns', ['label' => __('Say Hello', 'sht')]);
+			register_block_pattern_category('sht', ['label' => __('Projekt-eigene', 'sht')]);
 		}
 	}
 }
