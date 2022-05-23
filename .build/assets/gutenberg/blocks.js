@@ -4,5 +4,6 @@ import './collections';
 import './extend-styles-wrapper-class';
 import './post-controls';
 import './unregister-block-type';
+import './variations';
 
 import './blocks/';
