@@ -62,5 +62,6 @@ export const watch = () => {
 };
 
 // Add 'preact' as a task here if necessary in your project
-export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
+//export const taskDefault = gulp.series(gulp.parallel(styles, scripts, reload, svg), watch);
+export const taskDefault = gulp.series(watch);
 export default taskDefault;
