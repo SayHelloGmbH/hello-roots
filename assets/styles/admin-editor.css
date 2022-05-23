@@ -2003,67 +2003,67 @@ The structure follows the principles of ITCSS (http://www.creativebloq.com/web-d
   display: block;
   content: "";
 }
-@media screen and (min-width: 0em) and (max-width: 37.49999375em) {
+@media screen and (min-width: 0em) and (max-width: 37.484375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "zero";
   }
 }
-@media screen and (min-width: 20em) and (max-width: 49.99999375em) {
+@media screen and (min-width: 20em) and (max-width: 49.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "phone";
   }
 }
-@media screen and (min-width: 37.5em) and (max-width: 41.68749375em) {
+@media screen and (min-width: 37.5em) and (max-width: 41.671875em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "wordpress_small";
   }
 }
-@media screen and (min-width: 50em) and (max-width: 47.99999375em) {
+@media screen and (min-width: 50em) and (max-width: 47.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "narrow";
   }
 }
-@media screen and (min-width: 41.6875em) and (max-width: 48.93749375em) {
+@media screen and (min-width: 41.6875em) and (max-width: 48.921875em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "phone_wide";
   }
 }
-@media screen and (min-width: 48em) and (max-width: 59.99999375em) {
+@media screen and (min-width: 48em) and (max-width: 59.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "tablet";
   }
 }
-@media screen and (min-width: 48.9375em) and (max-width: 63.99999375em) {
+@media screen and (min-width: 48.9375em) and (max-width: 63.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "wordpress_medium";
   }
 }
-@media screen and (min-width: 60em) and (max-width: 74.99999375em) {
+@media screen and (min-width: 60em) and (max-width: 74.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "medium";
   }
 }
-@media screen and (min-width: 64em) and (max-width: 79.99999375em) {
+@media screen and (min-width: 64em) and (max-width: 79.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "tablet_landscape";
   }
 }
-@media screen and (min-width: 75em) and (max-width: 89.99999375em) {
+@media screen and (min-width: 75em) and (max-width: 89.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "wide";
   }
 }
-@media screen and (min-width: 80em) and (max-width: 99.99999375em) {
+@media screen and (min-width: 80em) and (max-width: 99.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "laptop";
   }
 }
-@media screen and (min-width: 90em) and (max-width: 119.99999375em) {
+@media screen and (min-width: 90em) and (max-width: 119.984375em) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "desktop";
   }
 }
-@media screen and (min-width: 100em) and (max-width: 99.9999%) {
+@media screen and (min-width: 100em) and (max-width: 99.75%) {
   .editor-styles-wrapper body.c-body--themedev::after {
     content: "desktop_large";
   }
