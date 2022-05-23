@@ -2,7 +2,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
 import { _x } from '@wordpress/i18n';
-import { archiveTitle as icon } from '@wordpress/icons';
+import { archive as icon } from '@wordpress/icons';
 
 const blockName = 'sht/archive-title-search';
 
