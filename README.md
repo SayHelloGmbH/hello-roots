@@ -1,3 +1,7 @@
+# Project no longer maintained
+
+**This project is no longer maintained**. Please use https://github.com/sayhellogmbh/hello-fse instead.
+
 # Project Description
 
 This is a boilerplate WordPress theme by [say hello](https://sayhello.ch). It has an object oriented php architecture and comes with some very handy build workflows for CSS and JavaScript.
